@@ -5,6 +5,11 @@
 //  Created by Lawrence Liu on 1/11/24.
 //
 
+
+/*
+ Overall view for app
+ */
+
 import SwiftUI
 
 struct ContentView: View {

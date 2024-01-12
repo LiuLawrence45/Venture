@@ -23,11 +23,11 @@ struct NavigationBar: View {
                 .opacity(hasScrolled ? 1 : 0)
             
             Text(title)
-//                .animatableFont(size: hasScrolled ? 22 : 34, weight: .bold)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                .padding(.leading, 20)
-//                .padding(.top, 20)
-//                .offset(y: hasScrolled ? -4 : 0)
+                .animatableFont(size: hasScrolled ? 22 : 34, weight: .bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 20)
+                .padding(.top, 20)
+                .offset(y: hasScrolled ? -4 : 0)
             
             HStack(spacing: 16) {
                 Button {

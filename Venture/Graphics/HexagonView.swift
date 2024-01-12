@@ -5,6 +5,11 @@
 //  Created by Lawrence Liu on 1/11/24.
 //
 
+
+/*
+ Coloured gradient Hexagon; to be used in tandem with BlobView()
+ */
+
 import SwiftUI
 
 struct HexagonView: View {
