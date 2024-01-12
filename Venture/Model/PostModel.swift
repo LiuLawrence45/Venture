@@ -10,11 +10,13 @@ import SwiftUI
 struct PostModel: Identifiable {
     let id = UUID()
     var title: String
-    var info: String
-    var caption: String
+    var info: String?
+    var caption: String?
     var images: Array <String>
     var author: String
+    var itinerary: ItineraryModel?
 }
+
 
 
 

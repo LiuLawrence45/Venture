@@ -64,16 +64,6 @@ struct FeedView: View {
                 }
             }
         }
-        
-//        .onChange(of: show) { newValue in
-//            withAnimation(.closeCard) {
-//                if newValue {
-//                    showStatusBar = false
-//                } else {
-//                    showStatusBar = true
-//                }
-//            }
-//        }
     }
     
     var scrollDetection: some View {
@@ -115,7 +105,7 @@ struct FeedView: View {
                     .zIndex(1)
                     .transition(.asymmetric(
                         insertion: .opacity.animation(.easeInOut(duration: 0.1)),
-                    removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))))
+                        removal: .opacity.animation(.easeInOut(duration: 0.2).delay(0.1))))
             }
         }
     }

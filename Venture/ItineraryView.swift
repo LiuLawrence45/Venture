@@ -23,6 +23,7 @@ struct ItineraryView: View {
             ScrollView {
                 cover
                     .padding(.bottom, 100)
+                Spacer()
                 content
                     .opacity(appear[2] ? 1 : 0)
             }
@@ -86,56 +87,7 @@ struct ItineraryView: View {
 
     
     var content: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            
-            //Event number 1
-            VStack(alignment: .leading) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("1. sunflowers @ bay family farms")
-                        .font(.title3.weight(.semibold))
-                    Text("don't forget to make a reservation on their website: andreottifamilyfarms.com")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Text("for entrance and 5 flowers, its $15 per adult, $10 per kid. really really worth it though")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Text("wear bad shoes--it gets muddy easily")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(20)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-            .strokeStyle(cornerRadius: 30)
-            
-            // Event Number 2
-            VStack(alignment: .leading) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("2. pumpkin patch @ moss beach")
-                        .font(.title3.weight(.semibold))
-                    Text("like 30 mins away from half mooon bay. we took a small detour.")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Text("arata's pumpkin patch is around $10 per adult--not so fun though, keep your money")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Text("good homemade honey though, definitely buy.")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(20)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-            .strokeStyle(cornerRadius: 30)
-            
-        }
-        .padding(20)
+        PostItineraryDescription(itinerary: post.itinerary)
         
     }
     
@@ -164,10 +116,10 @@ struct ItineraryView: View {
                 .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(post.info.uppercased())
+            Text(post.info?.uppercased() ?? "")
                 .font(.footnote.weight(.semibold))
                 .matchedGeometryEffect(id: "subtitle\(post.id)", in: namespace)
-            Text(post.caption)
+            Text(post.caption ?? "")
                 .font(.footnote)
                 .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
             Divider()
@@ -253,11 +205,6 @@ struct ItineraryView: View {
         isDraggable = false
     }
 }
-
-//#Preview {
-//    @Namespace static var namespace
-//    ItineraryView(namespace: namespace, show: .constant(true))
-//}
 
 struct ItineraryView_Previews: PreviewProvider {
     @Namespace static var namespace

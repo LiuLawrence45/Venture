@@ -22,12 +22,12 @@ struct Post: View {
                 Spacer()
                 VStack(alignment: .leading, spacing: 12) {
                     Group {
-                        Text("Post Title")
+                        Text(post.title)
                             .font(.subheadline.weight(.bold))
                             .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
                             .opacity(0.5)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Post Text")
+                        Text(post.caption ?? "")
                             .font(.footnote)
                             .opacity(0.5)
                             .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
