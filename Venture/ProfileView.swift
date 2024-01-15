@@ -42,7 +42,7 @@ struct ProfileView: View {
                         TabBarButton(image: "text.justify", isSystemImage: true, animation: animation, selectedTab: $selectedTab, identifier: "downtogo")
                     }
                     .offset(y: 14)
-                    .frame(height: 70) // You can adjust this as necessary
+                    .frame(height: 53) // You can adjust this as necessary
                     
 
                     //PostView
@@ -140,7 +140,7 @@ struct TabBarButton: View {
     var body: some View {
         
         Button(action: {
-            withAnimation(.easeInOut){
+            withAnimation(.easeInOut(duration: 0.1)){
                 selectedTab = image
             }
         }, label: {
