@@ -50,6 +50,7 @@ struct ContentView: View {
         }
         //.dynamicTypeSize(.large ... .xxLarge)
         .dynamicTypeSize(.large ... .xxLarge)
+        .dynamicTypeSize(.large ... .xLarge)
         
     }
 }

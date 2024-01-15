@@ -25,16 +25,12 @@ struct ProfileView: View {
     var body: some View {
          
         ZStack {
-            
-            
-
-            
             Color("Background").ignoresSafeArea()
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 
                 ProfileBlurb()
-                    .padding(20)
+                    .padding(.horizontal, 20)
                 
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
@@ -42,7 +38,7 @@ struct ProfileView: View {
                         TabBarButton(image: "text.justify", isSystemImage: true, animation: animation, selectedTab: $selectedTab, identifier: "downtogo")
                     }
                     .offset(y: 14)
-                    .frame(height: 53) // You can adjust this as necessary
+                    .frame(height: 54 ) // You can adjust this as necessary
                     
 
                     //PostView
@@ -69,7 +65,7 @@ struct ProfileView: View {
                 Color.clear.frame(height: 70)
             }
             .overlay(NavigationBar(title: "Profile", hasScrolled: .constant(true)))
-            .background(Image("Blob 1").offset(x: -100, y: -400))
+            //.background(Image("Blob 1").offset(x: -100, y: -400))
         }
         
         
@@ -104,10 +100,23 @@ struct ProfileView: View {
 var PostView: some View {
     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
         ForEach(1...9, id: \.self) { index in // Assuming you want to display images 1 through 9
-            ImageView(index: index, width: UIScreen.main.bounds.width / 3)
-                .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3)
+            ImageView(index: index, width: (UIScreen.main.bounds.width) / 3)
+                .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
         }
     }
+
+    .overlay(
+        RoundedRectangle(cornerRadius: 30, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+            .stroke(Color.clear, lineWidth: 2)
+    )
+    .clipShape(RoundedRectangle(cornerRadius: 30))
+    .padding(20)
+ 
+
+//    .padding(20)
+//    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//    .strokeStyle(cornerRadius: 30)
+//    .padding(.horizontal, 20)
     
 }
 
