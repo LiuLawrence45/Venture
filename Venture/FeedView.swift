@@ -16,6 +16,7 @@ struct FeedView: View {
     @State var showCourse = false
     @State var selectedIndex = 0
     @AppStorage("isLiteMode") var isLiteMode = true
+    @AppStorage("showModal") var showModal = false
     
     var body: some View {
         ZStack {
@@ -46,7 +47,9 @@ struct FeedView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay(
-                NavigationBar(title: "Journeys", hasScrolled: $hasScrolled)
+                NavigationBar(title: "Journeys", 
+                              hasScrolled: $hasScrolled
+                             )
             )
             
             if show {
@@ -58,9 +61,11 @@ struct FeedView: View {
             withAnimation(.closeCard) {
                 if show == true {
                     showStatusBar = false
+                    showModal = true
                 }
                 else {
                     showStatusBar = true
+                    showModal = false
                 }
             }
         }

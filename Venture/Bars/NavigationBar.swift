@@ -11,10 +11,13 @@ struct NavigationBar: View {
     var title = ""
     @Binding var hasScrolled: Bool
     @State var showSearch = false
+    @State var showNotifications = false
     @State var showAccount = false
     @AppStorage("showModal") var showModal = false
     @AppStorage("isLogged") var isLogged = false
+    @Environment(\.presentationMode) var presentationMode
     
+    var displayIcons = true
     var body: some View {
         ZStack {
             Color.clear
@@ -34,38 +37,37 @@ struct NavigationBar: View {
                     showSearch = true
                 } label: {
                     Image(systemName: "magnifyingglass")
-                        .font(.body.weight(.bold))
-                        .frame(width: 36, height: 36)
-                        .foregroundColor(.secondary)
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-                    .strokeStyle(cornerRadius: 14)
+                        //.font(.title3.weight(.bold))
+                        .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
+                        .frame(width: 48, height: 48)
+                        .foregroundColor(.primary)
                 }
+
                 .sheet(isPresented: $showSearch) {
                     SearchView()
                 }
-                
+
                 Button {
-                    if isLogged {
-                        showAccount = true
-                    } else {
-                        withAnimation {
-                            showModal = true
-                        }
-                    }
+                    showNotifications = true
                 } label: {
-                    AvatarView()
+                    Image(systemName: "bell")
+                        //.font(.title3.weight(.bold))
+                        .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
+                        .frame(width: 48, height: 48)
+                        .foregroundColor(.primary)
                 }
-                .accessibilityElement()
-                .accessibilityLabel("Account")
-                .accessibilityAddTraits(.isButton)
-                .sheet(isPresented: $showAccount) {
-                    AccountView()
+                .sheet(isPresented: $showNotifications) {
+                    NotificationsView(hasScrolled: .constant(false))
+                       
                 }
+                
+
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
             .padding(.top, 20)
             .offset(y: hasScrolled ? -4 : 0)
+            .opacity(displayIcons ? 100 : 0)
         }
         .frame(height: hasScrolled ? 44 : 70)
         .frame(maxHeight: .infinity, alignment: .top)
@@ -74,6 +76,9 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(title: "Featured", hasScrolled: .constant(false))
+        NavigationBar(title: "Featured", 
+                      hasScrolled: .constant(false)
+        
+        )
     }
 }

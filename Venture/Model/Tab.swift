@@ -2,17 +2,34 @@
 //  Tab.swift
 //  Venture
 //
-//  Created by Lawrence Liu on 1/12/24.
+//  Created by Lawrence Liu on 1/11/24.
 //
 
 import SwiftUI
 
-struct Tab: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct TabItem: Identifiable {
+    var id = UUID()
+    var text: String
+    var icon: String
+    var tab: Tab
+    var color: Color
 }
 
-#Preview {
-    Tab()
+var tabItems = [
+    TabItem(text: "Journeys", icon: "figure.run", tab: .feed, color: .teal),
+    TabItem(text: "Post", icon: "timelapse", tab: .post, color: .blue),
+    TabItem(text: "Profile", icon: "person.crop.circle", tab: .profile, color: .pink)
+]
+
+enum Tab: String {
+    case feed
+    case post
+    case profile
+}
+
+struct TabPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
 }

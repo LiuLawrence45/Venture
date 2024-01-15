@@ -18,7 +18,8 @@ struct SearchView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    //content
+                    content
+                    Spacer()
                 }
                 .padding(20)
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -36,56 +37,57 @@ struct SearchView: View {
                     Image("Blob 1").offset(x: -100, y: -200)
                 )
             }
-//            .searchable(text: $text, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Rooftops, Cafe Dates, Late Nights...")) {
-//                ForEach(suggestions) { suggestion in
-//                    Button {
-//                        text = suggestion.text
-//                    } label: {
-//                        Text(suggestion.text)
-//                            .searchCompletion(suggestion.text)
-//                    }
-//                }
-//            }
-//            .navigationTitle("Search")
-//            .navigationBarTitleDisplayMode(.inline)
-//            .navigationBarItems(trailing: Button { presentationMode.wrappedValue.dismiss() } label: { Text("Done").bold() })
-//            .sheet(isPresented: $show) {
-//                CourseView(namespace: namespace, course: courses[selectedIndex], show: $show)
-//            }
+            .searchable(text: $text, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Rooftops, Cafe Dates, Late Nights...")) {
+                ForEach(recommendations) { recommendation in
+                    Button {
+                        text = recommendation.text
+                    } label: {
+                        Text(recommendation.text)
+                            .searchCompletion(recommendation.text)
+                    }
+                }
+            }
+            .navigationTitle("Search")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button { presentationMode.wrappedValue.dismiss() } label: { Text("Done").bold() })
+            .fullScreenCover(isPresented: $show){
+                ItineraryView(namespace: namespace, post: posts[selectedIndex], show: $show)
+            }
+            //fullScreenCover, replacing the modalSheets. Same exact code, except just .sheet
         }
     }
     
-//    var content: some View {
-//        ForEach(Array(courses.enumerated()), id: \.offset) { index, item in
-//            if item.title.contains(text) || text == "" {
-//                if index != 0 { Divider() }
-//                Button {
-//                    show = true
-//                    selectedIndex = index
-//                } label: {
-//                    HStack(alignment: .top, spacing: 12) {
-//                        Image(item.image)
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                            .frame(width: 44, height: 44)
-//                            .background(Color("Background"))
-//                            .mask(Circle())
-//                        VStack(alignment: .leading, spacing: 4) {
-//                            Text(item.title).bold()
-//                                .foregroundColor(.primary)
-//                            Text(item.text)
-//                                .font(.footnote)
-//                                .foregroundColor(.secondary)
-//                                .frame(maxWidth: .infinity, alignment: .leading)
-//                                .multilineTextAlignment(.leading)
-//                        }
-//                    }
-//                    .padding(.vertical, 4)
-//                    .listRowSeparator(.hidden)
-//                }
-//            }
-//        }
-//    }
+    var content: some View {
+        ForEach(Array(posts.enumerated()), id: \.offset) { index, item in
+            if item.title.contains(text) || text == "" {
+                if index != 0 { Divider() }
+                Button {
+                    show = true
+                    selectedIndex = index
+                } label: {
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(item.images[0])
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 44, height: 44)
+                            .background(Color("Background"))
+                            .mask(Circle())
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(item.title).bold()
+                                .foregroundColor(.primary)
+                            Text(item.caption ?? "")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .multilineTextAlignment(.leading)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                    .listRowSeparator(.hidden)
+                }
+            }
+        }
+    }
 }
 
 struct SearchView_Previews: PreviewProvider {

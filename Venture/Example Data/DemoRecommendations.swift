@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-struct DemoRecommendations: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    DemoRecommendations()
-}
+var recommendations = [
+    RecommendationModel(text: "Rooftop"),
+    RecommendationModel(text: "Late Nights"),
+    RecommendationModel(text: "Chill Days")
+]
