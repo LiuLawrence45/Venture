@@ -8,20 +8,30 @@
 import SwiftUI
 
 struct PostHeader: View {
+    var post: PostModel
     var body: some View {
         //Profile intro
         HStack(alignment: .center){
-            Image("Avatar 2")
+            Image(post.profilePicture)
                 .resizable()
                 .frame(width: 36, height: 36)
                 .mask(Circle())
             VStack(alignment: .leading){
-                Text("liu.lawrence45") //replace with structure after
+                Text(post.username) //replace with structure after
                     .font(.caption)
                     .multilineTextAlignment(.leading)
                     .fontWeight(.semibold)
                     .frame(alignment: .leading)
-                Text("_For you: **5** friends and **6** mutuals are down to go..._")
+                Group {
+                    Text("_For you:_") +
+                    Text(" ") +
+                    Text(String(post.friendsMutuals[0])).bold().italic() +
+                    Text(" friends, ") +
+                    Text(String(post.friendsMutuals[1])).bold().italic() +
+                    Text(" mutuals are down to go.").italic()
+                    
+                    
+                }
                     .font(.caption2)
                     .multilineTextAlignment(.trailing)
                     .frame(alignment: .trailing)
@@ -47,5 +57,5 @@ struct PostHeader: View {
 }
 
 #Preview {
-    PostHeader()
+    PostHeader(post: posts[0])
 }

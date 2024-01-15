@@ -109,7 +109,20 @@ struct ProfileView: View {
                 .padding(.top, 20)
                 .padding(.bottom, 10)
             
-            PostView
+            
+            //Temporary hard coding
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
+                
+                ImageView(image: "IMG_5136", width: (UIScreen.main.bounds.width) / 3)
+                    .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+            }
+
+            .overlay(
+                RoundedRectangle(cornerRadius: 30, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    .stroke(Color.clear, lineWidth: 2)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 30))
+            .padding(10)
             
             Rectangle()
                 .foregroundColor(Color.black.opacity(0.0))
@@ -118,19 +131,26 @@ struct ProfileView: View {
         
         
     }
-
-    let bucketListItems = ["2 AM Drive to Berkeley", "Late Night Beach Hopping", "Super Smash Bros on a Rooftop"]
-    
 }
 
 
 var PostView: some View {
     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
-        ForEach(1...6, id: \.self) { index in // Assuming you want to display images 1 through 9
-            ImageView(index: index, width: (UIScreen.main.bounds.width) / 3)
-                .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
-            
-        }
+        
+        ImageView(image: "IMG_8239", width: (UIScreen.main.bounds.width) / 3)
+            .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+        ImageView(image: "IMG_7533", width: (UIScreen.main.bounds.width) / 3)
+            .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+        ImageView(image: "DSCN1352", width: (UIScreen.main.bounds.width) / 3)
+            .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+        
+//Looping through a set. For later logic
+        
+//        ForEach(1...6, id: \.self) { index in // Assuming you want to display images 1 through 9
+//            ImageView(index: index, width: (UIScreen.main.bounds.width) / 3)
+//                .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+//            
+//        }
     }
 
     .overlay(
@@ -150,11 +170,14 @@ var PostView: some View {
 
 struct ImageView: View {
     
-    var index: Int
+    //var index: Int
+    var image: String
     var width: CGFloat
+
     
     var body: some View {
-        Image("Background \(index)")
+        Image(image)
+        //Image("Background \(index)")
             .resizable()
             .scaledToFill() // This will fill the frame while maintaining the aspect ratio
             .frame(width: width, height: width)

@@ -14,14 +14,14 @@ struct ProfileBlurb: View {
             
             HStack (alignment: .center, spacing: 24){
                 Spacer()
-                Image("Avatar 1")
+                Image("04B0D33D-83BB-4E23-BE56-50EFA4FB1B7C")
                     .resizable()
                     .frame(width: 72, height: 72)
                     .mask(Circle())
                     .offset(x: -20)
                 
                 VStack (alignment: .leading){
-                    Text("Tony Nguyen")
+                    Text("Lawrence Liu")
                         .font(.title2.weight(.bold))
                         .padding(.bottom)
                     
@@ -43,7 +43,7 @@ struct ProfileBlurb: View {
                         .font(.footnote)
                         HStack {
                             Image(systemName: "hand.point.right")
-                            Text("Resident Physician @ SMC")
+                            Text("CompBio @ SMC")
 
                         }
                         .foregroundStyle(.secondary)

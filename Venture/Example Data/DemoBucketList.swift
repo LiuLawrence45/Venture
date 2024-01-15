@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-struct DemoBucketList: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    DemoBucketList()
-}
+let bucketListItems = [
+    "a late night out at UCSC",
+    "romantic walk at the palace of fine arts :D",
+    "watching the stars @ night on the beach"
+]

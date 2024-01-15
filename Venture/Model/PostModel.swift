@@ -9,11 +9,25 @@ import SwiftUI
 
 struct PostModel: Identifiable {
     let id = UUID()
+    
+    //Title refers to the large text summary
     var title: String
+    //Info is optional
     var info: String?
+    
+    //The caption displayed
     var caption: String?
-    var images: Array <String>
-    var author: String
+    
+    //The list of media to include
+    var media: Array <String>
+    
+    //The username of the person posting
+    var username: String
+    var profilePicture: String
+    
+    var numberOfComments: Int
+    var friendsMutuals: Array <Int>
+    
     var itinerary: ItineraryModel?
 }
 

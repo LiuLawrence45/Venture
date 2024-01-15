@@ -41,6 +41,10 @@ struct FeedView: View {
                     }
                 }
                 .padding(.horizontal, 10 )
+                
+                Rectangle()
+                    .foregroundColor(Color.black.opacity(0.0))
+                    .frame(height: 75)
             }
             .coordinateSpace(name: "scroll")
             .safeAreaInset(edge: .top, content: {
@@ -69,6 +73,8 @@ struct FeedView: View {
                 }
             }
         }
+        
+
     }
 
     var scrollDetection: some View {
@@ -90,14 +96,27 @@ struct FeedView: View {
     var cards: some View {
         ForEach(posts) { post in
             Post(namespace: namespace, post: post, show: $show)
-                .onTapGesture {
+                .gesture(TapGesture(count: 2).onEnded {
+                    
+                }.exclusively(before: TapGesture(count: 1).onEnded {
                     withAnimation(.openCard) {
                         show.toggle()
                         //model.showDetail.toggle()
                         showStatusBar = false
                         selectedID = post.id
                     }
-                }
+                }))
+//                .onTapGesture(count: 2) {
+//                    
+//                }
+//                .onTapGesture(count: 1){
+//                    withAnimation(.openCard) {
+//                        show.toggle()
+//                        //model.showDetail.toggle()
+//                        showStatusBar = false
+//                        selectedID = post.id
+//                    }
+//                }
                 .accessibilityElement(children: .combine)
                 .accessibilityAddTraits(.isButton)
         }

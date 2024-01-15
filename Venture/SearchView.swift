@@ -74,7 +74,7 @@ struct SearchView: View {
                     selectedIndex = index
                 } label: {
                     HStack(alignment: .top, spacing: 12) {
-                        Image(item.images[0])
+                        Image(item.media[0])
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 44, height: 44)

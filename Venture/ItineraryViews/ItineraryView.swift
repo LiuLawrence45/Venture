@@ -64,7 +64,7 @@ struct ItineraryView: View {
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .foregroundStyle(.black)
             .background(
-                Image(post.images[0])
+                Image(post.media[0])
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .matchedGeometryEffect(id: "background\(post.id)", in: namespace)
