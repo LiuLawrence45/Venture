@@ -55,10 +55,12 @@ struct ProfileView: View {
                     PostView
                 }
             })
+            .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
             .overlay(NavigationBar(title: "Profile", hasScrolled: .constant(true)))
+
             //.background(Image("Blob 1").offset(x: -100, y: -400))
         }
         
@@ -108,6 +110,10 @@ struct ProfileView: View {
                 .padding(.bottom, 10)
             
             PostView
+            
+            Rectangle()
+                .foregroundColor(Color.black.opacity(0.0))
+                .frame(height: 75)
         }
         
         

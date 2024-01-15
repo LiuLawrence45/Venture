@@ -46,7 +46,6 @@
 		7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19372B5175C20020FE88 /* TabBar.swift */; };
 		7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19392B51760B0020FE88 /* Tab.swift */; };
 		7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA193C2B517A220020FE88 /* ProfileView.swift */; };
-		7BDA19412B540E110020FE88 /* ProfileView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19402B540E110020FE88 /* ProfileView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +108,6 @@
 		7BDA19372B5175C20020FE88 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		7BDA19392B51760B0020FE88 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		7BDA193C2B517A220020FE88 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		7BDA19402B540E110020FE88 /* ProfileView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +162,6 @@
 				7B6275362B50BECE00FDA0F0 /* ContentView.swift */,
 				7BDA193C2B517A220020FE88 /* ProfileView.swift */,
 				7B6275A02B514DED00FDA0F0 /* NotificationsView.swift */,
-				7BDA19402B540E110020FE88 /* ProfileView2.swift */,
 				7BDA193B2B5176590020FE88 /* OldFiles */,
 				7B6275A62B514E6700FDA0F0 /* NotificationRow.swift */,
 				7B6275872B51041D00FDA0F0 /* FeedView.swift */,
@@ -449,7 +446,6 @@
 				7B62758C2B51066E00FDA0F0 /* DemoFeed.swift in Sources */,
 				7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */,
 				7B6275A12B514DED00FDA0F0 /* NotificationsView.swift in Sources */,
-				7BDA19412B540E110020FE88 /* ProfileView2.swift in Sources */,
 				7B6275882B51041D00FDA0F0 /* FeedView.swift in Sources */,
 				7B6275A72B514E6700FDA0F0 /* NotificationRow.swift in Sources */,
 				7B6275802B50D2DE00FDA0F0 /* HexagonView.swift in Sources */,
