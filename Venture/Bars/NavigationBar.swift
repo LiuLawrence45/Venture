@@ -24,6 +24,10 @@ struct NavigationBar: View {
             NavigationLink(destination: SearchView(), isActive: $showSearch) {
                 EmptyView()
             }
+            
+            NavigationLink(destination: NotificationsView(hasScrolled: .constant(true)), isActive: $showNotifications) {
+                EmptyView()
+            }
 
             Color.clear
                 .background(.ultraThinMaterial)
@@ -61,10 +65,10 @@ struct NavigationBar: View {
                         .frame(width: 48, height: 48)
                         .foregroundColor(.primary)
                 }
-                .sheet(isPresented: $showNotifications) {
-                    NotificationsView(hasScrolled: .constant(false))
-                       
-                }
+//                .sheet(isPresented: $showNotifications) {
+//                    NotificationsView(hasScrolled: .constant(false))
+//                       
+//                }
                 
 
             }

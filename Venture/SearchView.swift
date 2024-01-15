@@ -17,55 +17,52 @@ struct SearchView: View {
     @AppStorage("showModal") var showModal = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    content
-                    Spacer()
-                }
-                .padding(20)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-                .strokeStyle(cornerRadius: 30)
-                .padding(20)
-                .background(
-                    Rectangle()
-                        .fill(.regularMaterial)
-                        .frame(height: 200)
-                        .frame(maxHeight: .infinity, alignment: .top)
-                        .blur(radius: 20)
-                        .offset(y: -200)
-                )
-                .background(
-                    Image("Blob 1").offset(x: -100, y: -200)
-                )
+        ScrollView {
+            VStack {
+                content
+                Spacer()
             }
-            .searchable(text: $text, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Rooftops, Cafe Dates, Late Nights...")) {
-                ForEach(recommendations) { recommendation in
-                    Button {
-                        text = recommendation.text
-                        show.toggle()
-                    } label: {
-                        Text(recommendation.text)
-                            .searchCompletion(recommendation.text)
-                    }
+            .padding(20)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+            .strokeStyle(cornerRadius: 30)
+            .padding(20)
+            .background(
+                Rectangle()
+                    .fill(.regularMaterial)
+                    .frame(height: 200)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                    .blur(radius: 20)
+                    .offset(y: -200)
+            )
+            .background(
+                Image("Blob 1").offset(x: -100, y: -200)
+            )
+        }
+        .searchable(text: $text, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Rooftops, Cafe Dates, Late Nights...")) {
+            ForEach(recommendations) { recommendation in
+                Button {
+                    text = recommendation.text
+                    show.toggle()
+                } label: {
+                    Text(recommendation.text)
+                        .searchCompletion(recommendation.text)
                 }
             }
-            .navigationTitle("Search")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button { presentationMode.wrappedValue.dismiss() } label: { Text("Done").bold() })
-            .fullScreenCover(isPresented: $show){
-                ItineraryView(namespace: namespace, post: posts[selectedIndex], show: $show)
-            }
-            //fullScreenCover, replacing the modalSheets. Same exact code, except just .sheet
         }
-        .statusBar(hidden: !showStatusBar)
-        .onAppear {
-            self.showStatusBar = false
+        .navigationTitle("Search")
+        .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(isPresented: $show){
+            ItineraryView(namespace: namespace, post: posts[selectedIndex], show: $show)
         }
-        
-        .onDisappear {
-            self.showStatusBar = true
-        }
+        .statusBar(hidden: false)
+//        .statusBar(hidden: true)
+//        .onAppear {
+//            self.showStatusBar = false
+//        }
+//        
+//        .onDisappear {
+//            self.showStatusBar = true
+//        }
     }
     
     var content: some View {
