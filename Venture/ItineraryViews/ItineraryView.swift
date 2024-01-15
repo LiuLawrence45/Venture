@@ -175,13 +175,13 @@ struct ItineraryView: View {
     }
     
     func fadeIn() {
-        withAnimation(.easeOut.delay(0.3)) {
+        withAnimation(.easeOut) {
             appear[0] = true
         }
-        withAnimation(.easeOut.delay(0.4)) {
+        withAnimation(.easeOut) {
             appear[1] = true
         }
-        withAnimation(.easeOut.delay(0.5)) {
+        withAnimation(.easeOut) {
             appear[2] = true
         }
     }
