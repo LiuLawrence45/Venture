@@ -34,14 +34,16 @@ struct ProfileBlurb: View {
                         .font(.footnote)
                         HStack {
                             Image(systemName: "house")
+                                .offset(x: -1 )
                             Text("Stanford University")
+                                .offset(x: -2 )
 
                         }
                         .foregroundStyle(.secondary)
                         .font(.footnote)
                         HStack {
                             Image(systemName: "hand.point.right")
-                            Text("Stanford University")
+                            Text("Resident Physician @ SMC")
 
                         }
                         .foregroundStyle(.secondary)

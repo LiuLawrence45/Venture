@@ -50,6 +50,7 @@ struct ItineraryView: View {
                 fadeOut()
             }
         }
+        .statusBar(hidden: true)
     }
     
     var cover: some View {

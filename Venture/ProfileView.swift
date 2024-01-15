@@ -30,15 +30,15 @@ struct ProfileView: View {
             ScrollView(.vertical, showsIndicators: false, content: {
                 
                 ProfileBlurb()
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 10)
                 
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
-                        TabBarButton(image: "person.3.fill", isSystemImage: true, animation: animation, selectedTab: $selectedTab, identifier: "posts")
-                        TabBarButton(image: "text.justify", isSystemImage: true, animation: animation, selectedTab: $selectedTab, identifier: "downtogo")
+                        TabBarButton(text: "Posts", selectedTab: $selectedTab, identifier: "posts")
+                        TabBarButton(text: "Down to Go", selectedTab: $selectedTab, identifier: "downtogo")
                     }
                     .offset(y: 14)
-                    .frame(height: 54 ) // You can adjust this as necessary
+                    .frame(height: 52 ) // You can adjust this as necessary
                     
 
                     //PostView
@@ -54,12 +54,6 @@ struct ProfileView: View {
                 default:
                     PostView
                 }
-                
-                //bucketList
-                
-
-                
-                //likedExperiences
             })
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
@@ -72,36 +66,64 @@ struct ProfileView: View {
     }
     
     var bucketList: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-                ForEach(posts) { course in
-                    //SmallCourseItem(course: course)
+        
+        VStack {
+            Text("Public Bucket List")
+                .font(.title3)
+                .fontWeight(.semibold)
+                .padding(.top, 20)
+                .padding(.bottom, 10)
+            VStack() {
+                ForEach(Array(bucketListItems.enumerated()), id: \.offset) { index, item in
+                    if index != 0 { Divider() }
+                    HStack {
+                        Image(systemName: "heart.fill") // Replace with the actual heart icon image if it's not a system image
+                            .font(.body.weight(.bold))
+                            .frame(width: 36, height: 36)
+                            .foregroundColor(.secondary)
+                            .background(.ultraThinMaterial, in: Circle())
+                        .strokeStyle(cornerRadius: 14)
+
+                        
+                        
+                        Text(item)
+                            .fontWeight(.regular)
+                            .opacity(0.8)
+                        
+                        Spacer()
+                    }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal)
                 }
             }
-            .padding(.horizontal, 20)
-            Spacer()
+            .padding()
+            //.background(RoundedRectangle(cornerRadius: 30).fill(Color("Overlay")))
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+            .padding(.horizontal)
+            
+            Text("'D2G' Experiences")
+                .font(.title3)
+                .fontWeight(.semibold)
+                .padding(.top, 20)
+                .padding(.bottom, 10)
+            
+            PostView
         }
+        
+        
     }
+
+    let bucketListItems = ["2 AM Drive to Berkeley", "Late Night Beach Hopping", "Super Smash Bros on a Rooftop"]
     
-    var likedExperiences: some View {
-        VStack {
-            ForEach(posts) { topic in
-                //ListRow(topic: topic)
-            }
-        }
-        .padding(20)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .strokeStyle(cornerRadius: 30)
-        .padding(.horizontal, 20)
-    }
 }
 
 
 var PostView: some View {
     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
-        ForEach(1...9, id: \.self) { index in // Assuming you want to display images 1 through 9
+        ForEach(1...6, id: \.self) { index in // Assuming you want to display images 1 through 9
             ImageView(index: index, width: (UIScreen.main.bounds.width) / 3)
                 .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+            
         }
     }
 
@@ -110,8 +132,8 @@ var PostView: some View {
             .stroke(Color.clear, lineWidth: 2)
     )
     .clipShape(RoundedRectangle(cornerRadius: 30))
-    .padding(20)
- 
+    .padding(10)
+
 
 //    .padding(20)
 //    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -141,45 +163,43 @@ struct ImageView: View {
 
 
 struct TabBarButton: View {
-    var image: String
-    var isSystemImage: Bool
-    var animation: Namespace.ID
+    var text: String // New property for text
     @Binding var selectedTab: String
     var identifier: String
+    
     var body: some View {
-        
         Button(action: {
             withAnimation(.easeInOut(duration: 0.1)){
-                selectedTab = image
+                selectedTab = identifier // Use identifier for selection logic
             }
         }, label: {
-            VStack(spacing: 12){
+            VStack(spacing: 4 ){
+                Text(text) // Use Text instead of Image
+                    .font(.system(size: 14, weight: .bold)) // Customize the font as needed
+                    .foregroundColor(selectedTab == identifier ? .primary : .secondary)
                 
-                (
-                    isSystemImage ? Image(systemName: image)  : Image(image)
-                )
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 28, height: 28)
-                .foregroundColor(selectedTab == image ? .primary : .secondary)
-            
-                
-                ZStack {
-                    if selectedTab == image {
+                // Conditionally show underline only under the selected tab
+                if selectedTab == identifier {
+                    Group {
                         Rectangle()
                             .fill(Color.primary)
-                            .matchedGeometryEffect(id: "TAB", in: animation)
+                            .frame(height: 2)
+                            .frame(width: 30)
                     }
-                    else {
-                        Rectangle()
-                            .fill(Color.secondary)
-                    }
+                    .frame(width: (UIScreen.main.bounds.width/2))
+
                 }
-                .frame(height: 1)
-                
+                else {
+                    Group {
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(height: 2)
+                            .frame(width: 30)
+                    }
+                    .frame(width: (UIScreen.main.bounds.width/2))
+
+                }
             }
         })
-        
     }
-    
 }

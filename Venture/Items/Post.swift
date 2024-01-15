@@ -18,6 +18,7 @@ struct Post: View {
     @Binding var show: Bool
     var body: some View {
         VStack {
+            
             VStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 12) {
@@ -67,6 +68,8 @@ struct Post: View {
                     .matchedGeometryEffect(id: "mask\(post.id)", in: namespace)
             )
         .frame(height: 460)
+            
+        Text("Hello")
         }
     }
 }
