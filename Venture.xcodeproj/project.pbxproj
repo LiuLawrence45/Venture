@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
+		7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BE2B55586A00FF4213 /* PostFooter.swift */; };
 		7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275342B50BECE00FDA0F0 /* VentureApp.swift */; };
 		7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275362B50BECE00FDA0F0 /* ContentView.swift */; };
 		7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6275382B50BECF00FDA0F0 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
+		7B5901BE2B55586A00FF4213 /* PostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooter.swift; sourceTree = "<group>"; };
 		7B6275312B50BECE00FDA0F0 /* Venture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6275342B50BECE00FDA0F0 /* VentureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentureApp.swift; sourceTree = "<group>"; };
 		7B6275362B50BECE00FDA0F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				7B6275602B50C5DE00FDA0F0 /* ProfileBlurb.swift */,
 				7B6275702B50CA6B00FDA0F0 /* FeaturedPost.swift */,
 				7B62756E2B50C96400FDA0F0 /* Post.swift */,
+				7B5901BC2B55583E00FF4213 /* PostHeader.swift */,
+				7B5901BE2B55586A00FF4213 /* PostFooter.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				7B62759C2B513B9F00FDA0F0 /* PostItineraryDescription.swift in Sources */,
 				7B6275AB2B51682400FDA0F0 /* RecommendationModel.swift in Sources */,
 				7B62757A2B50CEAB00FDA0F0 /* SearchView.swift in Sources */,
+				7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */,
 				7B6275902B5107CD00FDA0F0 /* PreferenceKeys.swift in Sources */,
 				7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */,
 				7B6275942B512D1200FDA0F0 /* AnimatableFontModifier.swift in Sources */,
@@ -442,6 +449,7 @@
 				7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */,
 				7B6275A92B51547300FDA0F0 /* OldNavigationBar.swift in Sources */,
 				7B62757C2B50CF4700FDA0F0 /* AvatarView.swift in Sources */,
+				7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */,
 				7B6275922B5128CC00FDA0F0 /* ItineraryView.swift in Sources */,
 				7B6275752B50CD1000FDA0F0 /* OldTab.swift in Sources */,
 				7B6275712B50CA6B00FDA0F0 /* FeaturedPost.swift in Sources */,
