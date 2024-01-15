@@ -17,8 +17,48 @@ struct Post: View {
     var post: PostModel = posts[0]
     @Binding var show: Bool
     var body: some View {
-        VStack {
+        VStack{
             
+            
+            //Profile intro
+            HStack(alignment: .center){
+                Image("Avatar 2")
+                    .resizable()
+                    .frame(width: 36, height: 36)
+                    .mask(Circle())
+                VStack(alignment: .leading){
+                    Text("liu.lawrence45") //replace with structure after
+                        .font(.caption)
+                        .multilineTextAlignment(.leading)
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                    Text("_For you: **5** friends and **6** mutuals are down to go..._")
+                        .font(.caption2)
+                        .multilineTextAlignment(.trailing)
+                        .frame(alignment: .trailing)
+                        .opacity(0.6)
+
+                }
+                
+                Spacer()
+                
+                Button {
+                    
+                }
+                label: {
+                    Image(systemName: "ellipsis")
+                        .padding(.trailing, 10)
+                        .opacity(0.6)
+                }
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 15)
+            
+            
+            
+            
+            //Post and following
             VStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 12) {
@@ -69,10 +109,19 @@ struct Post: View {
             )
         .frame(height: 460)
             
-        Text("Hello")
+        Text("View all 2 comments...")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 2)
+                .opacity(0.5)
+                .font(.footnote)
         }
+        
     }
+
 }
+
+
 
 struct Post_Previews: PreviewProvider {
     @Namespace static var namespace

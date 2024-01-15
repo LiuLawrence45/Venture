@@ -49,7 +49,6 @@ struct ContentView: View {
             Color.clear.frame(height: 88)
         }
         //.dynamicTypeSize(.large ... .xxLarge)
-        .dynamicTypeSize(.large ... .xxLarge)
         .dynamicTypeSize(.large ... .large)
         
     }
