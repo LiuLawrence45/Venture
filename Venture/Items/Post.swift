@@ -101,7 +101,7 @@ struct Post: View {
 
                 }.tabViewStyle(PageTabViewStyle())
                 
-
+ 
             )
             .mask(
                 RoundedRectangle(cornerRadius: 30, style: .continuous)

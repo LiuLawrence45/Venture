@@ -26,7 +26,6 @@
 		7B62757E2B50CF8400FDA0F0 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62757D2B50CF8400FDA0F0 /* AccountView.swift */; };
 		7B6275802B50D2DE00FDA0F0 /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62757F2B50D2DE00FDA0F0 /* HexagonView.swift */; };
 		7B6275822B50D37000FDA0F0 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275812B50D37000FDA0F0 /* BlobView.swift */; };
-		7B6275882B51041D00FDA0F0 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275872B51041D00FDA0F0 /* FeedView.swift */; };
 		7B62758A2B5104DA00FDA0F0 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275892B5104DA00FDA0F0 /* PostModel.swift */; };
 		7B62758C2B51066E00FDA0F0 /* DemoFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62758B2B51066E00FDA0F0 /* DemoFeed.swift */; };
 		7B62758E2B51078700FDA0F0 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62758D2B51078700FDA0F0 /* Animations.swift */; };
@@ -46,6 +45,8 @@
 		7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19372B5175C20020FE88 /* TabBar.swift */; };
 		7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19392B51760B0020FE88 /* Tab.swift */; };
 		7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA193C2B517A220020FE88 /* ProfileView.swift */; };
+		7BDA19492B5554690020FE88 /* OldFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19482B5554690020FE88 /* OldFeedView.swift */; };
+		7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA194C2B5554F50020FE88 /* FeedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +89,6 @@
 		7B62757D2B50CF8400FDA0F0 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		7B62757F2B50D2DE00FDA0F0 /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
 		7B6275812B50D37000FDA0F0 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
-		7B6275872B51041D00FDA0F0 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		7B6275892B5104DA00FDA0F0 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		7B62758B2B51066E00FDA0F0 /* DemoFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoFeed.swift; sourceTree = "<group>"; };
 		7B62758D2B51078700FDA0F0 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
@@ -108,6 +108,8 @@
 		7BDA19372B5175C20020FE88 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		7BDA19392B51760B0020FE88 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		7BDA193C2B517A220020FE88 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7BDA19482B5554690020FE88 /* OldFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFeedView.swift; sourceTree = "<group>"; };
+		7BDA194C2B5554F50020FE88 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +166,8 @@
 				7B6275A02B514DED00FDA0F0 /* NotificationsView.swift */,
 				7BDA193B2B5176590020FE88 /* OldFiles */,
 				7B6275A62B514E6700FDA0F0 /* NotificationRow.swift */,
-				7B6275872B51041D00FDA0F0 /* FeedView.swift */,
+				7BDA194C2B5554F50020FE88 /* FeedView.swift */,
+				7BDA19482B5554690020FE88 /* OldFeedView.swift */,
 				7B62759E2B5148A100FDA0F0 /* Example Data */,
 				7B62759D2B51483600FDA0F0 /* ItineraryViews */,
 				7B62759F2B5148D500FDA0F0 /* Buttons */,
@@ -434,6 +437,7 @@
 				7B6275902B5107CD00FDA0F0 /* PreferenceKeys.swift in Sources */,
 				7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */,
 				7B6275942B512D1200FDA0F0 /* AnimatableFontModifier.swift in Sources */,
+				7BDA19492B5554690020FE88 /* OldFeedView.swift in Sources */,
 				7B6275612B50C5DE00FDA0F0 /* ProfileBlurb.swift in Sources */,
 				7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */,
 				7B6275A92B51547300FDA0F0 /* OldNavigationBar.swift in Sources */,
@@ -446,12 +450,12 @@
 				7B62758C2B51066E00FDA0F0 /* DemoFeed.swift in Sources */,
 				7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */,
 				7B6275A12B514DED00FDA0F0 /* NotificationsView.swift in Sources */,
-				7B6275882B51041D00FDA0F0 /* FeedView.swift in Sources */,
 				7B6275A72B514E6700FDA0F0 /* NotificationRow.swift in Sources */,
 				7B6275802B50D2DE00FDA0F0 /* HexagonView.swift in Sources */,
 				7B62758E2B51078700FDA0F0 /* Animations.swift in Sources */,
 				7B6275632B50C60B00FDA0F0 /* Styles.swift in Sources */,
 				7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */,
+				7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */,
 				7B6275732B50CCD600FDA0F0 /* OldTabBar.swift in Sources */,
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
 				7B6275A32B514E2E00FDA0F0 /* NotificationModel.swift in Sources */,

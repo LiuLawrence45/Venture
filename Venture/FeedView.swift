@@ -17,14 +17,14 @@ struct FeedView: View {
     @State var selectedIndex = 0
     @AppStorage("isLiteMode") var isLiteMode = true
     @AppStorage("showModal") var showModal = false
-    
+
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
-            
+
             ScrollView {
                 scrollDetection
-                
+
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 40) {
                     if !show {
                         cards
@@ -47,11 +47,11 @@ struct FeedView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay(
-                NavigationBar(title: "Journeys", 
+                NavigationBar(title: "Journeys",
                               hasScrolled: $hasScrolled
                              )
             )
-            
+
             if show {
                 detail
             }
@@ -70,7 +70,7 @@ struct FeedView: View {
             }
         }
     }
-    
+
     var scrollDetection: some View {
         GeometryReader { proxy in
             Color.clear.preference(key: ScrollPreferenceKey.self, value: proxy.frame(in: .named("scroll")).minY)
@@ -86,7 +86,7 @@ struct FeedView: View {
             }
         })
     }
-    
+
     var cards: some View {
         ForEach(posts) { post in
             Post(namespace: namespace, post: post, show: $show)
@@ -102,7 +102,7 @@ struct FeedView: View {
                 .accessibilityAddTraits(.isButton)
         }
     }
-    
+
     var detail: some View {
         ForEach(posts) { post in
             if post.id == selectedID {
