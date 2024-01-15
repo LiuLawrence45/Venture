@@ -11,8 +11,10 @@ struct SearchView: View {
     @State var text = ""
     @State var show = false
     @Namespace var namespace
+    @State var showStatusBar = true
     @State var selectedIndex = 0
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage("showModal") var showModal = false
     
     var body: some View {
         NavigationView {
@@ -41,6 +43,7 @@ struct SearchView: View {
                 ForEach(recommendations) { recommendation in
                     Button {
                         text = recommendation.text
+                        show.toggle()
                     } label: {
                         Text(recommendation.text)
                             .searchCompletion(recommendation.text)
@@ -54,6 +57,14 @@ struct SearchView: View {
                 ItineraryView(namespace: namespace, post: posts[selectedIndex], show: $show)
             }
             //fullScreenCover, replacing the modalSheets. Same exact code, except just .sheet
+        }
+        .statusBar(hidden: !showStatusBar)
+        .onAppear {
+            self.showStatusBar = false
+        }
+        
+        .onDisappear {
+            self.showStatusBar = true
         }
     }
     

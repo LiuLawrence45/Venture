@@ -20,6 +20,11 @@ struct NavigationBar: View {
     var displayIcons = true
     var body: some View {
         ZStack {
+            
+            NavigationLink(destination: SearchView(), isActive: $showSearch) {
+                EmptyView()
+            }
+
             Color.clear
                 .background(.ultraThinMaterial)
                 .blur(radius: 10)
@@ -43,9 +48,9 @@ struct NavigationBar: View {
                         .foregroundColor(.primary)
                 }
 
-                .sheet(isPresented: $showSearch) {
-                    SearchView()
-                }
+//                .sheet(isPresented: $showSearch) {
+//                    SearchView()
+//                }
 
                 Button {
                     showNotifications = true

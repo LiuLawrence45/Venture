@@ -14,25 +14,29 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
-    @AppStorage("showModal") var showModal = true
+    @AppStorage("showModal") var showModal = false
+    @AppStorage("showSearch") var showSearch: Bool = false
     //@EnvironmentObject var model: Model
     
     var body: some View { 
+        
         ZStack(alignment: .bottom) {
             
-            switch selectedTab {
-            case .feed:
-                FeedView()
-            case .post:
-                //ExploreView()
-                FeedView()
-//            case .notifications:
-//                //NotificationsView()
-//                FeedView()
-            case .profile:
-//                LibraryView()
-                ProfileView()
-                 
+            NavigationView {
+                switch selectedTab {
+                case .feed:
+                    FeedView()
+                case .post:
+                    //ExploreView()
+                    FeedView()
+                    //            case .notifications:
+                    //                //NotificationsView()
+                    //                FeedView()
+                case .profile:
+                    //                LibraryView()
+                    ProfileView()
+                    
+                }
             }
             
             TabBar()
