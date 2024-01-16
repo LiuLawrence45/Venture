@@ -61,6 +61,8 @@ struct FeedView: View {
             }
         }
         .statusBar(hidden: !showStatusBar)
+        
+        //iOS 17
         .onChange(of: show) {
             withAnimation(.closeCard) {
                 if show == true {

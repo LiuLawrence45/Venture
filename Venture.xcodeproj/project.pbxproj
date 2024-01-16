@@ -10,7 +10,6 @@
 		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
 		7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BE2B55586A00FF4213 /* PostFooter.swift */; };
 		7B5901C12B55599600FF4213 /* DemoBucketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901C02B55599600FF4213 /* DemoBucketList.swift */; };
-		7B5901C32B55612F00FF4213 /* CustomVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901C22B55612F00FF4213 /* CustomVideoPlayer.swift */; };
 		7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275342B50BECE00FDA0F0 /* VentureApp.swift */; };
 		7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275362B50BECE00FDA0F0 /* ContentView.swift */; };
 		7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6275382B50BECF00FDA0F0 /* Assets.xcassets */; };
@@ -74,7 +73,6 @@
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
 		7B5901BE2B55586A00FF4213 /* PostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooter.swift; sourceTree = "<group>"; };
 		7B5901C02B55599600FF4213 /* DemoBucketList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoBucketList.swift; sourceTree = "<group>"; };
-		7B5901C22B55612F00FF4213 /* CustomVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoPlayer.swift; sourceTree = "<group>"; };
 		7B6275312B50BECE00FDA0F0 /* Venture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6275342B50BECE00FDA0F0 /* VentureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentureApp.swift; sourceTree = "<group>"; };
 		7B6275362B50BECE00FDA0F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				7B62756E2B50C96400FDA0F0 /* Post.swift */,
 				7B5901BC2B55583E00FF4213 /* PostHeader.swift */,
 				7B5901BE2B55586A00FF4213 /* PostFooter.swift */,
-				7B5901C22B55612F00FF4213 /* CustomVideoPlayer.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -475,7 +472,6 @@
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
 				7B6275A32B514E2E00FDA0F0 /* NotificationModel.swift in Sources */,
 				7B6275822B50D37000FDA0F0 /* BlobView.swift in Sources */,
-				7B5901C32B55612F00FF4213 /* CustomVideoPlayer.swift in Sources */,
 				7B6275962B512FDF00FDA0F0 /* ItineraryModel.swift in Sources */,
 				7B6275AD2B51685D00FDA0F0 /* DemoRecommendations.swift in Sources */,
 				7B62759A2B513B9500FDA0F0 /* ItineraryDescription.swift in Sources */,
@@ -645,11 +641,14 @@
 				DEVELOPMENT_TEAM = B9LTMN6KAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Venture;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -674,11 +673,14 @@
 				DEVELOPMENT_TEAM = B9LTMN6KAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Venture;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

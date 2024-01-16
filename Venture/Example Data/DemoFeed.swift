@@ -62,14 +62,26 @@ var posts = [
         numberOfComments: 10,
         friendsMutuals: [15, 15],
         itinerary: ItineraryModel(
-            title: ["", ""],
+            title: ["driving to the venture retreat center", "beach pit stop", "formal night"],
             caption: [
                 """
+                started off with a quick drive to the venture retreat center: https://www.ventureretreat.org
+                super duper fun, make sure to do karaoke with the windows down
+                the california breeze can make anyone's day...
                 """,
+                
                 """
+                made a quick beach stop at san gregorio state beach. we honestly were supposed to get to the retreat center on time,
+                but thankfully we stopped.
+                just something out of a movie.
+                future recs: definitely stop at any beaches you see
+                """,
+                
                 """
-            ],
-            checklist: ""
+                fun formal night with all friends and digicams!
+                """
+            ]
+            //checklist: ""
         )
     ),
     
