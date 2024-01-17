@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileBlurb: View {
+    
+    //var profile: ProfileModel = profiles[0]
     var body: some View {
 
         VStack() {

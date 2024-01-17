@@ -76,7 +76,7 @@ struct ProfileView: View {
                 .padding(.top, 20)
                 .padding(.bottom, 10)
             VStack() {
-                ForEach(Array(bucketListItems.enumerated()), id: \.offset) { index, item in
+                ForEach(Array(profiles[0].bucketList.enumerated()), id: \.offset) { index, item in
                     if index != 0 { Divider() }
                     HStack {
                         Image(systemName: "heart.fill") // Replace with the actual heart icon image if it's not a system image
