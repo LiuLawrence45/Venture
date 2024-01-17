@@ -15,9 +15,13 @@ import AVKit
 
 struct Post: View {
     var namespace: Namespace.ID
-    var post: PostModel = posts[0]
+    var post: PostModel = posts[0] // for preview
+    
     @Binding var show: Bool
     @State private var player: AVPlayer?
+    
+    
+    var profile = profiles[0] // for preview
 //    var player: AVPlayer
 //    
 //    init (post: PostModel) {
@@ -27,7 +31,7 @@ struct Post: View {
     var body: some View {
         VStack{
             
-            PostHeader(post: post)
+            PostHeader(post: post, profile: profile)
             
             //Post and following
             VStack {

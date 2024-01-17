@@ -97,7 +97,7 @@ struct FeedView: View {
 
     var cards: some View {
         ForEach(posts) { post in
-            Post(namespace: namespace, post: post, show: $show)
+            Post(namespace: namespace, post: post, show: $show, profile: findProfile(username: post.username, profiles: profiles) ?? profiles[0])
                 .gesture(TapGesture(count: 2).onEnded {
                     
                 }.exclusively(before: TapGesture(count: 1).onEnded {

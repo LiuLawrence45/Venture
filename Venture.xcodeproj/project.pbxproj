@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1402B586EDF00FBBAB9 /* Functions.swift */; };
 		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
 		7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BE2B55586A00FF4213 /* PostFooter.swift */; };
 		7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275342B50BECE00FDA0F0 /* VentureApp.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B4FD1402B586EDF00FBBAB9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
 		7B5901BE2B55586A00FF4213 /* PostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooter.swift; sourceTree = "<group>"; };
 		7B6275312B50BECE00FDA0F0 /* Venture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4FD13F2B586ECF00FBBAB9 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				7B4FD1402B586EDF00FBBAB9 /* Functions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		7B6275282B50BECE00FDA0F0 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		7B6275332B50BECE00FDA0F0 /* Venture */ = {
 			isa = PBXGroup;
 			children = (
+				7B4FD13F2B586ECF00FBBAB9 /* Functions */,
 				7B6275342B50BECE00FDA0F0 /* VentureApp.swift */,
 				7B6275362B50BECE00FDA0F0 /* ContentView.swift */,
 				7BDA193C2B517A220020FE88 /* ProfileView.swift */,
@@ -463,6 +474,7 @@
 				7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */,
 				7B6275A92B51547300FDA0F0 /* OldNavigationBar.swift in Sources */,
 				7B62757C2B50CF4700FDA0F0 /* AvatarView.swift in Sources */,
+				7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */,
 				7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */,
 				7B6275922B5128CC00FDA0F0 /* ItineraryView.swift in Sources */,
 				7B6275752B50CD1000FDA0F0 /* OldTab.swift in Sources */,

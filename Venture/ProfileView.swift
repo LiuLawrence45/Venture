@@ -13,15 +13,19 @@ struct ProfileView: View {
     @Namespace var animation
     @Environment(\.colorScheme) var scheme
     
-    @State var topHeaderOffset: CGFloat = 0
     
-    init() {
-        
-        UIPickerView.appearance().backgroundColor = .clear
-    }
+    @State var topHeaderOffset: CGFloat = 0
+    var profile: ProfileModel //Dynamic Profile
+    
+//    init() {
+//        
+//        UIPickerView.appearance().backgroundColor = .clear
+//    }
     
     
     @State var selection = ""
+    
+
     var body: some View {
          
         ZStack {
@@ -29,7 +33,7 @@ struct ProfileView: View {
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 
-                ProfileBlurb()
+                ProfileBlurb(profile: profile)
                     .padding(.horizontal, 10)
                 
                 VStack(spacing: 0) {
@@ -76,7 +80,7 @@ struct ProfileView: View {
                 .padding(.top, 20)
                 .padding(.bottom, 10)
             VStack() {
-                ForEach(Array(profiles[0].bucketList.enumerated()), id: \.offset) { index, item in
+                ForEach(Array(profile.bucketList.enumerated()), id: \.offset) { index, item in
                     if index != 0 { Divider() }
                     HStack {
                         Image(systemName: "heart.fill") // Replace with the actual heart icon image if it's not a system image
@@ -187,7 +191,7 @@ struct ImageView: View {
 
 
 #Preview {
-    ProfileView()
+    ProfileView(profile: profiles[1])
 }
 
 

@@ -10,8 +10,9 @@ import SwiftUI
 struct ProfileModel: Identifiable {
     
     let id = UUID()
-    var first_name: String
-    var last_name: String
+    var profilePicture: String
+    var firstName: String
+    var lastName: String
     var username: String
     var gender: String
     var school: String
@@ -19,7 +20,7 @@ struct ProfileModel: Identifiable {
     
     var profileDescription: String
     
-    var numPosts: Int
+    
     var numFriends: Int
     
     var posts: Array <PostModel>

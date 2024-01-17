@@ -10,14 +10,14 @@ import SwiftUI
 var profiles = [
 
     ProfileModel(
-        first_name: "Lawrence",
-        last_name: "Liu",
+        profilePicture: "04B0D33D-83BB-4E23-BE56-50EFA4FB1B7C",
+        firstName: "Lawrence",
+        lastName: "Liu",
         username: "liulawrence45",
         gender: "he/him",
         school: "Stanford University",
-        occupation: "BioE @ SMC",
-        profileDescription: "Adventurer of all types",
-        numPosts: 6,
+        occupation: "CompBio @ SMC",
+        profileDescription: "Lover all of things adventure-wise",
         numFriends: 180,
         posts: lawrencePosts, //just linked for viewing sake
         bucketList: [    "a late night out at UCSC",
@@ -28,14 +28,14 @@ var profiles = [
     
     
     ProfileModel(
-        first_name: "Katie",
-        last_name: "Cheng",
+        profilePicture: "IMG_5155",
+        firstName: "Katie",
+        lastName: "Cheng",
         username: "kcheng05",
         gender: "she/her",
         school: "Stanford University",
         occupation: "Research @ SIEPR",
         profileDescription: "Californian at heart",
-        numPosts: 1,
         numFriends: 200,
         posts: lawrencePosts, //just linked for conciseness
         bucketList: [    "Chinatown in SF",

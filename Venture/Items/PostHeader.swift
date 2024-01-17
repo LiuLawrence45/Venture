@@ -9,14 +9,15 @@ import SwiftUI
 
 struct PostHeader: View {
     var post: PostModel
+    var profile: ProfileModel
     var body: some View {
         //Profile intro
         HStack(alignment: .center){
             Button {
                 //NavigationLink(<#T##LocalizedStringKey#>, value: <#T##P?#>)
             } label: {
-                NavigationLink(destination: ProfileView()){
-                    Image(post.profilePicture)
+                NavigationLink(destination: ProfileView(profile: profile)){
+                    Image(profile.profilePicture)
                         .resizable()
                         .frame(width: 36, height: 36)
                         .mask(Circle())
@@ -29,8 +30,8 @@ struct PostHeader: View {
                 Button {
                     
                 } label:  {
-                    NavigationLink(destination: ProfileView()){
-                        Text(post.username) //replace with structure after
+                    NavigationLink(destination: ProfileView(profile: profile)){
+                        Text(profile.username) //replace with structure after
                             .font(.caption)
                             .multilineTextAlignment(.leading)
                             .fontWeight(.semibold)
@@ -76,5 +77,5 @@ struct PostHeader: View {
 }
 
 #Preview {
-    PostHeader(post: posts[0])
+    PostHeader(post: posts[0], profile: profiles[0])
 }

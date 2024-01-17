@@ -16,6 +16,8 @@ struct ContentView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
     @AppStorage("showModal") var showModal = false
     @AppStorage("showSearch") var showSearch: Bool = false
+    //var profile: ProfileModel()
+    var profile = profiles[0]
     //@EnvironmentObject var model: Model
     
     var body: some View { 
@@ -34,7 +36,7 @@ struct ContentView: View {
                     //                FeedView()
                 case .profile:
                     //                LibraryView()
-                    ProfileView()
+                    ProfileView(profile: profile)
                     
                 }
             }

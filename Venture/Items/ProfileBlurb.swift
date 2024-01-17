@@ -9,35 +9,36 @@ import SwiftUI
 
 struct ProfileBlurb: View {
     
-    //var profile: ProfileModel = profiles[0]
+    var profile: ProfileModel = profiles[1]
     var body: some View {
 
         VStack() {
             
             HStack (alignment: .center, spacing: 24){
                 Spacer()
-                Image("04B0D33D-83BB-4E23-BE56-50EFA4FB1B7C")
+                Image(profile.profilePicture)
                     .resizable()
                     .frame(width: 72, height: 72)
                     .mask(Circle())
                     .offset(x: -20)
                 
                 VStack (alignment: .leading){
-                    Text("Lawrence Liu")
+                    Text("\(profile.firstName) \(profile.lastName)")
+                    //Text("Lawrence Liu")
                         .font(.title2.weight(.bold))
-                        .padding(.bottom)
+                        .padding(.bottom, 10)
                     
                     VStack(alignment: .leading, spacing: 6){
                         HStack {
                             Image(systemName: "person.crop.circle")
-                            Text("he/him")
+                            Text(profile.gender)
                         }
                         .foregroundStyle(.secondary)
                         .font(.footnote)
                         HStack {
                             Image(systemName: "house")
                                 .offset(x: -1 )
-                            Text("Stanford University")
+                            Text(profile.school)
                                 .offset(x: -2 )
 
                         }
@@ -45,7 +46,7 @@ struct ProfileBlurb: View {
                         .font(.footnote)
                         HStack {
                             Image(systemName: "hand.point.right")
-                            Text("CompBio @ SMC")
+                            Text(profile.occupation)
 
                         }
                         .foregroundStyle(.secondary)
@@ -58,16 +59,17 @@ struct ProfileBlurb: View {
 
             }
             .padding(.bottom,  20)
-            Text("_Lover all of things adventure-wise._")
+            Text(profile.profileDescription)
                 .opacity(0.8)
                 .font(.footnote)
                 .padding(.bottom, 20)
+                .italic()
             
             
             HStack(spacing: 40){
-                Text("6 Posts")
+                Text("\(profile.posts.count) Posts")
                     .fontWeight(.semibold)
-                Text ("170 friends")
+                Text ("\(profile.numFriends) friends")
                     .fontWeight(.semibold)
             }
         }
