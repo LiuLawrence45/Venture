@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PostHeader: View {
+struct CommentView: View {
     var post: PostModel
     var body: some View {
         //Profile intro
@@ -41,13 +41,8 @@ struct PostHeader: View {
                 .accentColor(.primary)
                 
                 Group {
-                    Text("_For you:_") +
-                    Text(" ") +
-                    Text(String(post.friendsMutuals[0])).bold().italic() +
-                    Text(" friends, ") +
-                    Text(String(post.friendsMutuals[1])).bold().italic() +
-                    Text(" mutuals are down to go.").italic()
                     
+                    Text("This looks so fun!")
                     
                 }
                 .font(.caption2)
@@ -63,9 +58,10 @@ struct PostHeader: View {
                 
             }
         label: {
-            Image(systemName: "ellipsis")
+            Image(systemName: "heart")
                 .padding(.trailing, 10)
-                .opacity(0.6)
+                .opacity(0.4)
+                .foregroundColor(.gray)
         }
         .accentColor(.primary)
             
@@ -76,5 +72,5 @@ struct PostHeader: View {
 }
 
 #Preview {
-    PostHeader(post: posts[0])
+    CommentView(post: posts[0])
 }

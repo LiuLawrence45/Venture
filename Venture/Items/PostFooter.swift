@@ -8,19 +8,43 @@
 import SwiftUI
 
 struct PostFooter: View {
+    
     var post: PostModel
+    @State private var showModal = false
     var body: some View {
         
-        Group {
-            Text("View all ") +
-            Text(String(post.numberOfComments)) +
-            Text(" comments...")
+        Button {
+            self.showModal = true
+            
+        } label: {
+            Group {
+                Text("View all ") +
+                Text(String(post.numberOfComments)) +
+                Text(" comments...")
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 2)
+            .opacity(0.5)
+            .font(.footnote)
+            .accentColor(.primary)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 20)
-        .padding(.vertical, 2)
-        .opacity(0.5)
-        .font(.footnote)
+        .sheet(isPresented: $showModal) {
+            ModalView()
+                .presentationDetents([.medium, .large])
+        }
+
+    }
+}
+
+struct ModalView: View {
+    var body: some View {
+        VStack {
+            CommentView(post: posts[0])
+            Spacer()
+        }
+        .padding(.vertical, 20)
+
     }
 }
 

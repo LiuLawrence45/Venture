@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItineraryView: View {
     var namespace: Namespace.ID
-    var post: PostModel = posts[0]
+    var post: PostModel = posts[2]
     @Binding var show: Bool
     @State var appear = [false, false, false]
     //@EnvironmentObject var model: Model
@@ -22,8 +22,9 @@ struct ItineraryView: View {
         ZStack {
             ScrollView {
                 cover
-                    .padding(.bottom, 100)
-                Spacer()
+                    .padding(.bottom, 80 )
+               Spacer()
+                    .frame(height: 10)
                 content
                     .opacity(appear[2] ? 1 : 0)
             }
@@ -146,7 +147,8 @@ struct ItineraryView: View {
                     .matchedGeometryEffect(id: "blur\(post.id)", in: namespace)
             )
             .offset(y: 250)
-            .padding(20)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
     }
     
     var drag: some Gesture {

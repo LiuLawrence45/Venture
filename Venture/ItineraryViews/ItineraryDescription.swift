@@ -19,26 +19,29 @@ struct ItineraryDescription: View {
     var body: some View {
         VStack(alignment: .leading) {
             ForEach(Array(zip(itinerary.title.indices, itinerary.title)), id: \.0) { index, title in
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.title3.weight(.semibold))
-                    Spacer(minLength: 8) // Adjust this value as needed
-                                       Divider()
-                                       Spacer(minLength: 8)
-//                    Spacer()
-//                    Divider()
-//                    Spacer()
-                    if itinerary.caption.count > index {
-                        Text(itinerary.caption[index])
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                
+                Section {
+                    VStack(alignment: .center) {
+                        Text(title)
+                            .multilineTextAlignment(.center)
+                            .font(.title3.weight(.semibold))
+                                           Divider()
+                        if itinerary.caption.count > index {
+                            Text(itinerary.caption[index])
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+                    Spacer()
+                        .frame(height: 20)
                 }
-                    
+                     
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(20)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+
             
             if let checklistItems = itinerary.checklist?.components(separatedBy: "\n") {
                 ChecklistView(items: checklistItems)
@@ -64,3 +67,16 @@ struct ChecklistView: View {
         .padding(.horizontal)
     }
 }
+
+
+struct ItineraryDescription_Previews: PreviewProvider {
+    @Namespace static var namespace
+    
+    static var previews: some View {
+        ItineraryDescription(itinerary: posts[2].itinerary!)
+        
+        //(namespace: namespace, show: .constant(true))
+            //.environmentObject(Model())
+    }
+}
+
