@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1402B586EDF00FBBAB9 /* Functions.swift */; };
+		7B4FD1442B58982400FBBAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B4FD1432B58982400FBBAB9 /* LaunchScreen.storyboard */; };
+		7B4FD1472B58989600FBBAB9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */; };
 		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
 		7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BE2B55586A00FF4213 /* PostFooter.swift */; };
 		7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275342B50BECE00FDA0F0 /* VentureApp.swift */; };
@@ -75,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		7B4FD1402B586EDF00FBBAB9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		7B4FD1432B58982400FBBAB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
 		7B5901BE2B55586A00FF4213 /* PostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooter.swift; sourceTree = "<group>"; };
 		7B6275312B50BECE00FDA0F0 /* Venture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +163,15 @@
 			path = Functions;
 			sourceTree = "<group>";
 		};
+		7B4FD1452B58982800FBBAB9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				7B4FD1432B58982400FBBAB9 /* LaunchScreen.storyboard */,
+				7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		7B6275282B50BECE00FDA0F0 = {
 			isa = PBXGroup;
 			children = (
@@ -182,11 +195,13 @@
 		7B6275332B50BECE00FDA0F0 /* Venture */ = {
 			isa = PBXGroup;
 			children = (
+				7B4FD1452B58982800FBBAB9 /* Onboarding */,
 				7B4FD13F2B586ECF00FBBAB9 /* Functions */,
 				7B6275342B50BECE00FDA0F0 /* VentureApp.swift */,
 				7B6275362B50BECE00FDA0F0 /* ContentView.swift */,
 				7BDA193C2B517A220020FE88 /* ProfileView.swift */,
 				7B6275A02B514DED00FDA0F0 /* NotificationsView.swift */,
+				7B6275792B50CEAB00FDA0F0 /* SearchView.swift */,
 				7BDA193B2B5176590020FE88 /* OldFiles */,
 				7B6275A62B514E6700FDA0F0 /* NotificationRow.swift */,
 				7BDA194C2B5554F50020FE88 /* FeedView.swift */,
@@ -194,8 +209,6 @@
 				7B62759E2B5148A100FDA0F0 /* Example Data */,
 				7B62759D2B51483600FDA0F0 /* ItineraryViews */,
 				7B62759F2B5148D500FDA0F0 /* Buttons */,
-				7B6275792B50CEAB00FDA0F0 /* SearchView.swift */,
-				7B62757B2B50CF4700FDA0F0 /* AvatarView.swift */,
 				7B6275832B50D3AE00FDA0F0 /* Bars */,
 				7B6275842B50D3F700FDA0F0 /* Graphics */,
 				7B6275762B50CD8700FDA0F0 /* Model */,
@@ -312,6 +325,7 @@
 		7B62759F2B5148D500FDA0F0 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				7B62757B2B50CF4700FDA0F0 /* AvatarView.swift */,
 				7B62757D2B50CF8400FDA0F0 /* AccountView.swift */,
 			);
 			path = Buttons;
@@ -431,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B4FD1442B58982400FBBAB9 /* LaunchScreen.storyboard in Resources */,
 				7B62753C2B50BECF00FDA0F0 /* Preview Assets.xcassets in Resources */,
 				7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */,
 			);
@@ -485,6 +500,7 @@
 				7B62758C2B51066E00FDA0F0 /* DemoFeed.swift in Sources */,
 				7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */,
 				7B6275A12B514DED00FDA0F0 /* NotificationsView.swift in Sources */,
+				7B4FD1472B58989600FBBAB9 /* OnboardingViewController.swift in Sources */,
 				7B6275A72B514E6700FDA0F0 /* NotificationRow.swift in Sources */,
 				7B6275802B50D2DE00FDA0F0 /* HexagonView.swift in Sources */,
 				7B9B502E2B582AF100A3AD61 /* CommentView.swift in Sources */,
