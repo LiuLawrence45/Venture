@@ -32,7 +32,7 @@ struct Post: View {
     }
     
     func performAnimation(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             likeAnimation = false
         }
     }
@@ -80,11 +80,30 @@ struct Post: View {
                 TabView {
                     ForEach(post.media, id: \.self) { mediaItem in
                         
-                        Image(mediaItem)
+                        ZStack {
+                            Image(mediaItem)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.width)
+                                .clipped()
+                                .onTapGesture(count: 2){
+                                    likeAnimation = true
+                                    performAnimation()
+                                    self.isLiked = true
+                            }
+                            
+                            Image(systemName: isLiked ?
+                                  "bolt.heart" : "heart")
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width)
-                            .clipped()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .scaleEffect(likeAnimation ? 1: 0)
+                            .opacity(likeAnimation ? 1 : 0)
+                            .animation(.spring())
+                            .foregroundColor(isLiked ? .red : .black)
+                        }
+                        
+
                         
                     }
 
