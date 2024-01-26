@@ -87,7 +87,6 @@ struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
         NavigationBar(title: "Featured", 
                       hasScrolled: .constant(false)
-        
         )
     }
 }

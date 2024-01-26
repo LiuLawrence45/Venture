@@ -29,10 +29,7 @@ struct ContentView: View {
                 case .feed:
                     FeedView()
                 case .post:
-                    //ExploreView()
-                    FeedView()
-                    //            case .notifications:
-                    //                //NotificationsView()
+                    PhotoPicker()
                     //                FeedView()
                 case .profile:
                     //                LibraryView()
@@ -61,11 +58,7 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .environment(\.sizeCategory, .accessibilityLarge)
-            ContentView()
-                .preferredColorScheme(.dark)
-                .previewDevice("iPhone 13 mini")
         }
-        //.environmentObject(Model())
     }
 }
 

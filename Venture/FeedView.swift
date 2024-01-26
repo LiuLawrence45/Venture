@@ -51,7 +51,7 @@ struct FeedView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay(
-                NavigationBar(title: "Journeys",
+                NavigationBar(title: "Discover",
                               hasScrolled: $hasScrolled
                 )
             )
