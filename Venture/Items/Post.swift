@@ -20,6 +20,24 @@ struct Post: View {
     @Binding var show: Bool
     @State private var player: AVPlayer?
     
+    //For liking
+    @State private var animateHeart = false
+    @State private var animateDown = false
+    @State private var likeAnimation = false
+    @State private var isLiked = false
+    @State private var isDown = false
+    private let duration: Double = 0.2
+    private var animationScale: CGFloat{
+        isLiked ? 0.6 : 2.0
+    }
+    
+    func performAnimation(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
+            likeAnimation = false
+        }
+    }
+    
+    
     
     var profile = profiles[0] // for preview
     var body: some View {
@@ -77,6 +95,49 @@ struct Post: View {
             .mask(
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
                     .matchedGeometryEffect(id: "mask\(post.id)", in: namespace)
+            )
+            .overlay(
+                
+                VStack {
+                    Button {
+                        self.animateDown = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + self.duration, execute: {
+                            self.animateDown = false
+                            self.isDown.toggle()
+                        })
+                    } label: {
+                        Image(systemName: "figure.wave").imageScale(.large)
+                    }
+                    .padding(.vertical, 20)
+                    .opacity(0.9)
+                    .accentColor(isDown ? .blue : .white)
+                    .scaleEffect(animateDown ? animationScale : 1)
+                    .animation(.easeIn(duration: duration))
+                    
+                    Button {
+                        self.animateHeart = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + self.duration, execute: {
+                            self.animateHeart = false
+                            self.isLiked.toggle()
+                        })
+                        
+                    } label: {
+                        Image(systemName: "bolt.heart").imageScale(.large)
+                    }
+                    .opacity(0.9)
+                    .accentColor(isLiked ? .red : .white)
+                    .scaleEffect(animateHeart ? animationScale : 1)
+                    .animation(.easeIn(duration: duration))
+                        
+                }
+                .padding(.horizontal, 10)
+           
+
+                
+                ,
+                alignment: .trailing
+                
+                    
             )
         .frame(height: 460)
         PostFooter(post: post)
