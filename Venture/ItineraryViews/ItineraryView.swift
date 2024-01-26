@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItineraryView: View {
     var namespace: Namespace.ID
-    var post: PostModel = posts[2]
+    var post: PostModel = posts[0]
     @Binding var show: Bool
     @State var appear = [false, false, false]
     //@EnvironmentObject var model: Model
@@ -29,8 +29,6 @@ struct ItineraryView: View {
                     .opacity(appear[2] ? 1 : 0)
             }
             .coordinateSpace(name: "scroll")
-            //.onAppear { model.showDetail = true }
-            //.onDisappear { model.showDetail = false }
             .background(Color("Background"))
             .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
             .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 10)
@@ -115,15 +113,15 @@ struct ItineraryView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text(post.title)
                 .font(.largeTitle.weight(.bold))
-                .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
+//                .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Text(post.info?.uppercased() ?? "")
                 .font(.footnote.weight(.semibold))
-                .matchedGeometryEffect(id: "subtitle\(post.id)", in: namespace)
+//                .matchedGeometryEffect(id: "subtitle\(post.id)", in: namespace)
             Text(post.caption ?? "")
                 .font(.footnote)
-                .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
+//                .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
             Divider()
                 .opacity(appear[0] ? 1 : 0)
             HStack {
