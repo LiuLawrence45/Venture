@@ -24,7 +24,7 @@ var posts = [
         numberOfComments: 2,
         friendsMutuals: [1, 2],
         itinerary: ItineraryModel(
-            title: ["Overall Costs", "Booking Zip Car", "Basa Seafood Express in Mission District", "Catching Sunset @ Twin Peaks", "Bingsu and Boba @ Sweetheart Cafe", "Late Night In-N-Out!"],
+            title: ["🤑 Overall Costs", "🚗 Booking Zip Car", "📍 Basa Seafood Express in Mission District", "📍 Catching Sunset @ Twin Peaks", "📍 Bingsu and Boba @ Sweetheart Cafe", "📍 Late Night In-N-Out!"],
             caption: [
                 
                 """
