@@ -11,5 +11,6 @@ struct ItineraryModel: Identifiable {
     let id = UUID()
     var title: Array <String>
     var caption: Array <String>
+    var images: Array <String>? 
     var checklist: String?
 }

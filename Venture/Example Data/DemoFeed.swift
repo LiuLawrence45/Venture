@@ -64,8 +64,10 @@ var posts = [
                 
                 Comfort food of all students here in the Bay Area. 
                 """
-            ]
+            ],
+            images: ["861A6374", "IMG_5186"]
         )
+        
     ),
     
     PostModel(

@@ -21,25 +21,30 @@ struct ItineraryDescription: View {
         ZStack {
             Color("White").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
-            ScrollView {
-                VStack{
-                    
+            ScrollView {    
+                VStack{ 
+                      
                     ForEach(0..<itinerary.title.count, id: \.self) { index in
                         let title = itinerary.title[index]
-                        var caption = itinerary.caption[index]
+                        let caption = itinerary.caption[index]
+//                        let images = itinerary.images?[index]
                         
                         
                         VStack(alignment: .center) {
                             Text(title)
                                 .multilineTextAlignment(.center)
                                 .font(.title3.weight(.semibold))
-                            
-                            //Divider()
-                                Image("861A6374")
+                             
+                            if let images = itinerary.images, images.count > index {
+                                Image(images[index])
                                     .resizable()
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 200)
                                     .padding(.bottom, 20)
+                            }
+                            else {
+                                Text("")
+                            }
                             if itinerary.caption.count > index {
                                 Text(itinerary.caption[index])
                                     .font(.subheadline)
@@ -92,6 +97,7 @@ struct ItineraryDescription: View {
                         
                     }
                     .padding(.horizontal, 10)
+                    .padding(.vertical, 10)
                 }
             }
             

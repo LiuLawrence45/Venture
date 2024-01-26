@@ -76,7 +76,7 @@ struct FeedView: View {
             }
         }
         
-
+ 
     }
 
     var scrollDetection: some View {

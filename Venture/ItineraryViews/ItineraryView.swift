@@ -37,6 +37,7 @@
                 .ignoresSafeArea()
                 
                 button
+
             }
             .onAppear {
                 fadeIn()
@@ -48,6 +49,8 @@
                 }
             }
             .statusBar(hidden: true)
+            
+
         }
         
         var cover: some View {
@@ -69,6 +72,7 @@
                             .offset(y: scrollY > 0 ? -scrollY : 0)
                             .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
                             .blur(radius: scrollY / 10)
+                            
                         
                         VStack {
                             Spacer()
@@ -76,7 +80,7 @@
                                 Group {
                                     Text(post.title)
                                         .font(.title.weight(.bold))
-                                        .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
+//                                        .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
                                         //.opacity(0.5)
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     Text(post.caption ?? "")
@@ -119,7 +123,7 @@
                         .offset(y: scrollY > 0 ? -scrollY : 0)
                 )
             }
-            .frame(height: 420)
+            .frame(height: 430 )
 
         }
 
@@ -137,9 +141,12 @@
                 }
             } label: {
                 Image(systemName: "xmark")
+                    //.resizable()
+                    //.frame(width: 20, height: 20)
                     .font(.body.weight(.bold))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
                     .padding(8)
+                    //.opacity(0.2)
                     .background(.ultraThinMaterial, in: Circle())
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
@@ -147,70 +154,39 @@
             .ignoresSafeArea()
         }
         
-        var overlayContent: some View {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(post.title)
-                    .font(.largeTitle.weight(.bold))
-    //                .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text(post.info?.uppercased() ?? "")
-                    .font(.footnote.weight(.semibold))
-    //                .matchedGeometryEffect(id: "subtitle\(post.id)", in: namespace)
-                Text(post.caption ?? "")
-                    .font(.footnote)
-    //                .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
-                Divider()
-                    .opacity(appear[0] ? 1 : 0)
-                HStack {
-                    Image("Avatar Default")
-                        .resizable()
-                        .frame(width: 26, height: 26)
-                        .cornerRadius(10)
-                        .padding(8)
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                        .strokeStyle(cornerRadius: 18)
-                    Text("Itinerary edited by Lawrence Liu")
-                        .font(.footnote)
-                }
-                .opacity(appear[1] ? 1 : 0)
-            }
-                .padding(20)
-                .background(
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                        .matchedGeometryEffect(id: "blur\(post.id)", in: namespace)
-                )
-                .offset(y: 250)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 10)
-        }
-        
         var drag: some Gesture {
-            DragGesture(minimumDistance: 30, coordinateSpace: .local)
+            
+            DragGesture()
                 .onChanged { value in
-                    guard value.translation.width > 0 else { return }
-                    
-                    if value.startLocation.x < 100 {
-                        withAnimation(.closeCard) {
-                            viewState = value.translation
-                        }
-                    }
-                    
-                    if viewState.width > 120 {
-                        close()
-                    }
+                    viewState = value.translation
                 }
                 .onEnded { value in
-                    if viewState.width > 80 {
+                    if value.translation.height > 200 {
                         close()
-                    } else {
-                        withAnimation(.closeCard) {
-                            viewState = .zero
-                        }
                     }
                 }
+//            DragGesture(minimumDistance: 30, coordinateSpace: .local)
+//                .onChanged { value in
+//                    guard value.translation.width > 0 else { return }
+//                    if value.startLocation.x < 100 {
+//                        withAnimation(.closeCard) {
+//                            viewState = value.translation
+//                        }
+//                    }
+//                    
+//                    if viewState.width > 120 {
+//                        close()
+//                    }
+//                }
+//                .onEnded { value in
+//                    if viewState.width > 80 {
+//                        close()
+//                    } else {
+//                        withAnimation(.closeCard) {
+//                            viewState = .zero
+//                        }
+//                    }
+//                }
         }
         
         func fadeIn() {
