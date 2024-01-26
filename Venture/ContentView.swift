@@ -24,7 +24,7 @@ struct ContentView: View {
         
         ZStack(alignment: .bottom) {
             
-            NavigationView {
+            NavigationView { 
                 switch selectedTab {
                 case .feed:
                     FeedView()

@@ -22,12 +22,6 @@ struct Post: View {
     
     
     var profile = profiles[0] // for preview
-//    var player: AVPlayer
-//    
-//    init (post: PostModel) {
-//        self.post = post
-////        self.player = AVPlayer(url: URL(string: post.))
-//    }
     var body: some View {
         VStack{
             
@@ -67,36 +61,6 @@ struct Post: View {
                 
                 TabView {
                     ForEach(post.media, id: \.self) { mediaItem in
-                        
-                        if isVideo(mediaItem) {
-                            
-                            VideoPlayer(player: self.player)
-                                .frame(width: UIScreen.main.bounds.width, height: 460)
-                                .onAppear {
-                                  // Initialize the player with the video URL
-                                  self.player = AVPlayer(url: URL(fileURLWithPath: mediaItem))
-//                                    self.player = AVPlayer(url: URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!)
-
-                                  // Start playing the video after a short delay
-                                  DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                     self.player?.play()
-                                  }
-                              }
-
-//                            CustomVideoPlayer(player: AVPlayer(url: URL(fileURLWithPath: mediaItem)))
-//                                .containerRelativeFrame([.horizontal, .vertical])
-//                                .onAppear(
-//                                    
-//                                )
-//                            VideoPlayer(player: AVPlayer(url: URL(fileURLWithPath: mediaItem)))
-//                                                .frame(width: UIScreen.main.bounds.width, height: 460)
-//                                                .onAppear {
-//                                                    player.play() // Start playing the video
-//                                                }
-//                            VideoPlayer(player: AVPlayer(url: URL(fileURLWithPath: mediaItem)))
-//                                .frame(width: UIScreen.main.bounds.width, height: 460)
-//                                .clipped()
-                        }
                         
                         Image(mediaItem)
                             .resizable()

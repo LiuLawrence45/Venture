@@ -30,7 +30,7 @@ struct PostFooter: View {
             .accentColor(.primary)
         }
         .sheet(isPresented: $showModal) {
-            ModalView()
+            ModalView() 
                 .presentationDetents([.medium, .large])
         }
 
@@ -41,11 +41,11 @@ struct ModalView: View {
     var body: some View {
         VStack {
             CommentView(post: posts[0], profile: profiles[0])
-            Spacer()
         }
-        .padding(.vertical, 20)
+        .padding(.top, 20)
+        .padding(.bottom, 0) 
 
-    }
+    } 
 }
 
 #Preview {
