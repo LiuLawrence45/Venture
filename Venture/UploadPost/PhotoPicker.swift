@@ -26,11 +26,6 @@ struct PhotoPicker: View {
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 200)
                                         .padding(.bottom, 20)
-                                    
-//                                    Text("Itinerary Caption")
-//                                        .font(.subheadline)
-//                                        .foregroundColor(.primary)
-//                                        .opacity(0.8)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -45,7 +40,6 @@ struct PhotoPicker: View {
 
                             
                         } else {
-                            // Snappy carousel using TabView
                             TabView(selection: $selectedIndex) {
                                 ForEach(images.indices, id: \.self) { index in
                                     
@@ -60,11 +54,6 @@ struct PhotoPicker: View {
                                             .frame(maxWidth: .infinity)
                                             .frame(height: 200)
                                             .padding(.bottom, 20)
-                                        
-//                                        Text("Itinerary Caption")
-//                                            .font(.subheadline)
-//                                            .foregroundColor(.primary)
-//                                            .opacity(0.8)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
@@ -94,14 +83,6 @@ struct PhotoPicker: View {
                 .padding(.bottom, 10)
                 
                 Divider()
-//                .frame(maxWidth: .infinity)
-//
-//                .fixedSize(horizontal: false, vertical: true)
-//                .padding(.horizontal, 10)
-//                .padding(.vertical, 20)
-//                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                .padding(10)
-                
                 
                 HStack {
                     Text("📍 _Location!_")
@@ -114,8 +95,6 @@ struct PhotoPicker: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 20)
-                //.background(.ultraThinMaterial, in: Rectangle())
-//                .background(.ultraThinMaterial, in: TopRoundedRectangle(cornerRadius: 30, style: .continuous))
                 .padding(.horizontal, 10)
                 
                 HStack {
