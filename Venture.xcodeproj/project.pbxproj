@@ -12,6 +12,7 @@
 		7B4FD1472B58989600FBBAB9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */; };
 		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
 		7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BE2B55586A00FF4213 /* PostFooter.swift */; };
+		7B5EC74B2B64FA70007C3233 /* AlternatePhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EC74A2B64FA70007C3233 /* AlternatePhotoPicker.swift */; };
 		7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275342B50BECE00FDA0F0 /* VentureApp.swift */; };
 		7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275362B50BECE00FDA0F0 /* ContentView.swift */; };
 		7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6275382B50BECF00FDA0F0 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
 		7B5901BE2B55586A00FF4213 /* PostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooter.swift; sourceTree = "<group>"; };
+		7B5EC74A2B64FA70007C3233 /* AlternatePhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternatePhotoPicker.swift; sourceTree = "<group>"; };
 		7B6275312B50BECE00FDA0F0 /* Venture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6275342B50BECE00FDA0F0 /* VentureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentureApp.swift; sourceTree = "<group>"; };
 		7B6275362B50BECE00FDA0F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */,
+				7B5EC74A2B64FA70007C3233 /* AlternatePhotoPicker.swift */,
 			);
 			path = UploadPost;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				7B62757A2B50CEAB00FDA0F0 /* SearchView.swift in Sources */,
 				7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */,
 				7B6275902B5107CD00FDA0F0 /* PreferenceKeys.swift in Sources */,
+				7B5EC74B2B64FA70007C3233 /* AlternatePhotoPicker.swift in Sources */,
 				7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */,
 				7B6275942B512D1200FDA0F0 /* AnimatableFontModifier.swift in Sources */,
 				7BF48A782B63E1B400720BB5 /* PhotoPicker.swift in Sources */,

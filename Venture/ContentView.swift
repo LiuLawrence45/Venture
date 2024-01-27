@@ -51,6 +51,8 @@ struct ContentView: View {
         .dynamicTypeSize(.large ... .large)
         
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

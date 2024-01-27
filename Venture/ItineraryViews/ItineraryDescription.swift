@@ -58,43 +58,6 @@ struct ItineraryDescription: View {
                         .padding(.vertical, 20)
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
                         
-                        
-                        
-//                        GeometryReader { geometry in
-//                            
-//                            let minY = geometry.frame(in: .global).minY
-//                            let centerY = UIScreen.main.bounds.height / 2
-//                            let distanceFromCenter = abs(minY - centerY)
-//                            let relativeDistance = distanceFromCenter / centerY
-//                            let scale = 1 - (relativeDistance / 2)
-//                            
-//                        VStack(alignment: .center) {
-//                            Text(title)
-//                                .multilineTextAlignment(.center)
-//                                .font(.title3.weight(.semibold))
-//                            Divider()
-////                            Image("861A6374")
-////                                .resizable()
-////                                .frame(maxWidth: .infinity)
-////                                .frame(height: 20)
-//                            if itinerary.caption.count > index {
-//                                Text(itinerary.caption[index])
-//                                    .font(.subheadline)
-//                                    .foregroundColor(.secondary)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .fixedSize(horizontal: false, vertical: true)
-//                        .padding(.horizontal, 20)
-//                        .padding(.vertical, 10)
-//                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                        .scaleEffect(max(0.5, scale))
-//                            
-//                        }
-//                        .frame(maxWidth: .infinity)
-////                        .frame(height: CGFloat(caption.count))
-//                        .frame(height: 200)
-                        
                     }
                     .padding(.horizontal, 10)
                     .padding(.vertical, 10)
