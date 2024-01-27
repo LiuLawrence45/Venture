@@ -22,7 +22,7 @@ struct ContentView: View {
     
     //For showing photo picker
     @State private var showingPhotoPicker = false
-    @State private var selectedPhotos: [PhotosPickerItem] = []
+    @State private var selectedItems: [PhotosPickerItem] = []
     @State private var isEditingPhotos = false
     
     var profile = profiles[0]
@@ -37,7 +37,7 @@ struct ContentView: View {
                     FeedView()
                 case .post:
                     if readyForPhotoEditing {
-                        PhotoPicker() // Assuming PhotoPicker is a view you've defined for editing
+                        PhotoPicker(selectedItems: $selectedItems) // Assuming PhotoPicker is a view you've defined for editing
                     } else {
                         // Perhaps another view or action to select photos
                         EmptyView() // Placeholder until photos are picked and readyForPhotoEditing is true
@@ -52,9 +52,9 @@ struct ContentView: View {
                     showingPhotoPicker = true
                 }
             }
-            .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedPhotos, matching: .images, photoLibrary: .shared())
-            .onChange(of: selectedPhotos) { _ in
-                if !selectedPhotos.isEmpty {
+            .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedItems, matching: .images, photoLibrary: .shared())
+            .onChange(of: selectedItems) { _ in
+                if !selectedItems.isEmpty {
                     readyForPhotoEditing = true
                 }
             }
