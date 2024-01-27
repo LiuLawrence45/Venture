@@ -17,15 +17,7 @@ struct PhotoPicker: View {
             Color("Background").ignoresSafeArea()
             
             ScrollView{
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
+                Spacer().frame(height: 80)
                 VStack {
                         if images.isEmpty {
                             TabView {
@@ -34,10 +26,12 @@ struct PhotoPicker: View {
                                         .multilineTextAlignment(.center)
                                         .font(.title3.weight(.semibold))
                                     
-                                    Image("Background 1")
+                                    Image("Default")
                                         .resizable()
+                                        .aspectRatio(contentMode: .fill)
                                         .frame(maxWidth: .infinity)
                                         .frame(height: 200)
+                                        .clipped()
                                         .padding(.bottom, 20)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
