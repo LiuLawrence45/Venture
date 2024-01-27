@@ -14,40 +14,33 @@ struct AlternateAgainPhotoPicker: View {
             VStack{
                 VStack {
                         if images.isEmpty {
-                            
-                            Image("Background 2")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .padding(20)
-                                .frame(maxHeight: 200)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
-                                .padding(10)
-//                            TabView {
-//                                VStack(alignment: .center) {
-//                                    Text("Hello")
-//                                        .multilineTextAlignment(.center)
-//                                        .font(.title3.weight(.semibold))
-//                                    
-//                                    Image("Background 1")
-//                                        .resizable()
-//                                        .frame(maxWidth: .infinity)
-//                                        .frame(height: 200)
-//                                        .padding(.bottom, 20) 
-//                                    
+                            TabView {
+                                VStack(alignment: .center) {
+                                    Text("📍 Enter Category")
+                                        .multilineTextAlignment(.center)
+                                        .font(.title3.weight(.semibold))
+                                    
+                                    Image("Background 1")
+                                        .resizable()
+                                        .frame(maxWidth: .infinity)
+                                        .frame(height: 200)
+                                        .padding(.bottom, 20) 
+                                    
 //                                    Text("Itinerary Caption")
 //                                        .font(.subheadline)
 //                                        .foregroundColor(.primary)
 //                                        .opacity(0.8)
-//                                }
-//                                .frame(maxWidth: .infinity, alignment: .leading)
-//                                
-//                                .fixedSize(horizontal: false, vertical: true)
-//                                .padding(.horizontal, 20)
-//                                .padding(.vertical, 20)
-//                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                                .padding(20)
-//                            }
-//                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 20)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+                                .padding(20)
+                            }
+                            .tabViewStyle(.page)
+                            .frame(height: 320)
 
                             
                         } else {
@@ -57,7 +50,7 @@ struct AlternateAgainPhotoPicker: View {
                                     
                                     
                                     VStack(alignment: .center) {
-                                        Text("Hello")
+                                        Text("📍 Enter Category")
                                             .multilineTextAlignment(.center)
                                             .font(.title3.weight(.semibold))
                                         
@@ -67,10 +60,10 @@ struct AlternateAgainPhotoPicker: View {
                                             .frame(height: 200)
                                             .padding(.bottom, 20)
                                         
-                                        Text("Itinerary Caption")
-                                            .font(.subheadline)
-                                            .foregroundColor(.primary)
-                                            .opacity(0.8)
+//                                        Text("Itinerary Caption")
+//                                            .font(.subheadline)
+//                                            .foregroundColor(.primary)
+//                                            .opacity(0.8)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
@@ -82,7 +75,8 @@ struct AlternateAgainPhotoPicker: View {
                                     
                                 }
                             }
-                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            .frame(height: 320)
 
                         }
 
@@ -105,6 +99,15 @@ struct AlternateAgainPhotoPicker: View {
                     loadImages()
                 }
                 .accentColor(.primary)
+                .padding(.bottom, 20)
+                HStack {
+                    Text("📍 Add Location")
+                    Spacer()
+                    
+                }
+                .padding(20)
+                
+                Spacer()
                 
             }
             
