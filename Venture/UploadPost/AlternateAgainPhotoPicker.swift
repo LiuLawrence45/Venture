@@ -16,7 +16,7 @@ struct AlternateAgainPhotoPicker: View {
                         if images.isEmpty {
                             TabView {
                                 VStack(alignment: .center) {
-                                    Text("📍 Enter Category")
+                                    Text("Upload Photos!")
                                         .multilineTextAlignment(.center)
                                         .font(.title3.weight(.semibold))
                                     
@@ -32,12 +32,12 @@ struct AlternateAgainPhotoPicker: View {
 //                                        .opacity(0.8)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
                                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                .padding(20)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 20)
                             }
                             .tabViewStyle(.page)
                             .frame(height: 320)
@@ -50,7 +50,7 @@ struct AlternateAgainPhotoPicker: View {
                                     
                                     
                                     VStack(alignment: .center) {
-                                        Text("📍 Enter Category")
+                                        Text("🔥 Enter Category")
                                             .multilineTextAlignment(.center)
                                             .font(.title3.weight(.semibold))
                                         
@@ -68,7 +68,7 @@ struct AlternateAgainPhotoPicker: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .padding(.horizontal, 20)
+                                    .padding(.horizontal, 10)
                                     .padding(.vertical, 20)
                                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
                                     .padding(20)
@@ -99,13 +99,35 @@ struct AlternateAgainPhotoPicker: View {
                     loadImages()
                 }
                 .accentColor(.primary)
-                .padding(.bottom, 20)
+                
+                
                 HStack {
                     Text("📍 Add Location")
+                        .font(.callout)
+                    Spacer()
+                     
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+                .background(.ultraThinMaterial, in: TopRoundedRectangle(cornerRadius: 30, style: .continuous))
+                .padding(.horizontal, 10)
+                
+                HStack {
+                    Text("🤑 Add Money")
+                        .font(.callout)
                     Spacer()
                     
                 }
-                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+                .background(.ultraThinMaterial, in: Rectangle())
+                .offset(y: -5)
+                .padding(.horizontal, 10)
+                
                 
                 Spacer()
                 
