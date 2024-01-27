@@ -11,7 +11,7 @@ struct PhotoPicker: View {
         ZStack {
             Color("Background").ignoresSafeArea()
             
-            ScrollView(.vertical, showsIndicators: false) {
+            VStack {
                 if images.isEmpty {
                     // Default image or placeholder view
                     Image("Background 2")
@@ -19,6 +19,7 @@ struct PhotoPicker: View {
                         .aspectRatio(contentMode: .fill)
                         .padding(.horizontal, 20)
                         .frame(width: UIScreen.main.bounds.width)
+                        .frame(maxHeight: 200)
                         .clipped()
                         .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 } else {
@@ -38,7 +39,7 @@ struct PhotoPicker: View {
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                     .frame(height: 200)
                 }
-                
+                Spacer()
                 PhotosPicker(
                     selection: $selectedItems,
                     matching: .images
@@ -48,13 +49,17 @@ struct PhotoPicker: View {
                 .onChange(of: selectedItems) { _ in
                     loadImages()
                 }
+                
+                
+                
             }
             .scrollClipDisabled() //iOS 17.0
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
-            .overlay(NavigationBar(title: "Document", hasScrolled: .constant(true)))
+
         }
+        .overlay(NavigationBar(title: "Document", hasScrolled: .constant(true)))
     }
     
     func loadImages() {
