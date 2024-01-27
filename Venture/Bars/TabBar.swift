@@ -58,7 +58,6 @@ struct TabBar: View {
             .blendMode(selectedTab == item.tab ? .overlay : .normal)
             .overlay(
                 GeometryReader { proxy in
-//                            Text("\(proxy.size.width)")
                     Color.clear.preference(key: TabPreferenceKey.self, value: proxy.size.width)
                 }
             )

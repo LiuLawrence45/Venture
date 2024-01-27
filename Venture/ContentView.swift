@@ -11,14 +11,21 @@
  */
 
 import SwiftUI
+import PhotosUI
 
 struct ContentView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
     @AppStorage("showModal") var showModal = false
     @AppStorage("showSearch") var showSearch: Bool = false
-    //var profile: ProfileModel()
+    @State private var readyForPhotoEditing = false
+    
+    
+    //For showing photo picker
+    @State private var showingPhotoPicker = false
+    @State private var selectedPhotos: [PhotosPickerItem] = []
+    @State private var isEditingPhotos = false
+    
     var profile = profiles[0]
-    //@EnvironmentObject var model: Model
     
     var body: some View { 
         
@@ -29,12 +36,29 @@ struct ContentView: View {
                 case .feed:
                     FeedView()
                 case .post:
-                    PhotoPicker()
+                    if readyForPhotoEditing {
+                        PhotoPicker() // Assuming PhotoPicker is a view you've defined for editing
+                    } else {
+                        // Perhaps another view or action to select photos
+                        EmptyView() // Placeholder until photos are picked and readyForPhotoEditing is true
+                    }
                 case .profile:
                     ProfileView(profile: profile)
                     
                 }
             }
+            .onChange(of: selectedTab) { newTab in
+                if newTab == .post {
+                    showingPhotoPicker = true
+                }
+            }
+            .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedPhotos, matching: .images, photoLibrary: .shared())
+            .onChange(of: selectedPhotos) { _ in
+                if !selectedPhotos.isEmpty {
+                    readyForPhotoEditing = true
+                }
+            }
+
             
             TabBar()
                 .offset(y: showModal ? 200 : 0) 

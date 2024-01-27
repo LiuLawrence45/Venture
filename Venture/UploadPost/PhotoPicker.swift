@@ -14,7 +14,7 @@ struct PhotoPicker: View {
     
     var body: some View {
         ZStack {
-            Color("Background").ignoresSafeArea()
+            Color("Background").ignoresSafeArea() 
             
             ScrollView{
                 Spacer().frame(height: 80)
