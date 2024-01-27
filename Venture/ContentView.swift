@@ -29,9 +29,9 @@ struct ContentView: View {
                 case .feed:
                     FeedView()
                 case .post:
-                    AlternateAgainPhotoPicker()
+                    PhotoPicker()
                     //                FeedView()
-                case .profile:
+                case .profile: 
                     //                LibraryView()
                     ProfileView(profile: profile)
                     
