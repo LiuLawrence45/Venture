@@ -7,11 +7,24 @@ struct PhotoPicker: View {
     @State private var images: [UIImage] = [] // Hold multiple images
     @State private var selectedIndex: Int = 0 // Track the currently visible image's index
     
+    
+    @State private var description: String = ""
+    @State private var location: String = ""
+    @State private var cost: String = ""
+    
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
             
-            VStack{
+            ScrollView{
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
                 Spacer()
                 VStack {
                         if images.isEmpty {
@@ -52,8 +65,11 @@ struct PhotoPicker: View {
                                         Image(uiImage: images[index])
                                             .resizable()
                                             .frame(maxWidth: .infinity)
+                                            .aspectRatio(contentMode: .fill)
+                                            
                                             .frame(height: 200)
                                             .padding(.bottom, 20)
+                                            .clipped()
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
@@ -77,20 +93,22 @@ struct PhotoPicker: View {
                     .padding(.bottom, 10)
                 
                 VStack(alignment: .center) {
-                    Text("_Add Description Here..._")
+                    TextField("_Add Description Here..._", text: $description)
                         .foregroundStyle(.secondary)
+                        .padding(.leading, 20)
                 }
                 .padding(.bottom, 10)
                 
                 Divider()
                 
-                HStack {
-                    Text("📍 _Location!_")
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
+                HStack(spacing: 0){
+                    Text("📍")
+                    TextField(" _Location!_", text: $location)
                     Spacer()
                      
                 }
+                .font(.callout)
+                .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 20)
@@ -98,12 +116,13 @@ struct PhotoPicker: View {
                 .padding(.horizontal, 10)
                 
                 HStack {
-                    Text("🤑 _Cost!_")
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
+                    Text("🤑")
+                    TextField(" _Cost!_", text: $cost)
                     Spacer()
                     
                 }
+                .font(.callout)
+                .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 20)
@@ -141,8 +160,11 @@ struct PhotoPicker: View {
                 }
                 .accentColor(.primary)
                 .frame(alignment: .bottomTrailing)
+ // Add padding at the bottom equal to the safe area inset
                 .offset(x: 140)
-                .offset(y: 40)
+                .offset(y: UIScreen.main.bounds.height - 820)
+//                .offset(x: 140)
+//                .offset(y: 40)
                 
                 
                 Spacer()
