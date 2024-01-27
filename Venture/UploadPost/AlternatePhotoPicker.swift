@@ -14,20 +14,6 @@ struct AlternatePhotoPicker: View {
             VStack {
                 
                 Group {
-                    PhotosPicker(
-                        selection: $selectedItems,
-                        matching: .images
-                    ) {
-                        HStack {
-                            Image(systemName: "pencil.and.outline").dynamicTypeSize(.xxLarge)
-                            Text("Choose Photos to Upload")
-                        }
-                    }
-                    .onChange(of: selectedItems) { _ in
-                        loadImages()
-                    }
-                    .padding(20)
-                    .accentColor(.primary)
                     
                     if images.isEmpty {
                         // Default image or placeholder view
@@ -64,6 +50,20 @@ struct AlternatePhotoPicker: View {
                         .padding(20)
                     }
                 }
+                PhotosPicker(
+                    selection: $selectedItems,
+                    matching: .images
+                ) {
+                    HStack {
+                        Image(systemName: "pencil.and.outline").dynamicTypeSize(.xxLarge)
+                        Text("Choose Photos to Upload")
+                    }
+                }
+                .onChange(of: selectedItems) { _ in
+                    loadImages()
+                }
+                .padding(20)
+                .accentColor(.primary)
                 
                 Spacer()
             }

@@ -29,7 +29,7 @@ struct ContentView: View {
                 case .feed:
                     FeedView()
                 case .post:
-                    PhotoPicker()
+                    AlternateAgainPhotoPicker()
                     //                FeedView()
                 case .profile:
                     //                LibraryView()
@@ -39,7 +39,7 @@ struct ContentView: View {
             }
             
             TabBar()
-                .offset(y: showModal ? 200 : 0)
+                .offset(y: showModal ? 200 : 0) 
                 .animation(.easeInOut(duration: 0.3), value: showModal)
             
 

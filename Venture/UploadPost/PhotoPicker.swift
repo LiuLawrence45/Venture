@@ -18,7 +18,8 @@ struct PhotoPicker: View {
                             TabView {
                                 cover
                             }
-                                .frame(height: 460)
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            .frame(height: 460)
                             
                             // Default image or placeholder view
 //                            Image("Background 2")
@@ -56,7 +57,7 @@ struct PhotoPicker: View {
 //                                        .tag(index) // Tag each view with its index
                                 }
                             }
-                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                             .frame(height: 460)
 //                            .padding(20)
                         }
@@ -154,50 +155,53 @@ struct PhotoPicker: View {
                 ZStack {
                     Image("Background 2") 
                         .resizable()
-                        //.aspectRatio(contentMode: .fill)
+                        .aspectRatio(contentMode: .fill)
                         .scaledToFill()
                         .offset(y: scrollY > 0 ? -scrollY : 0)
                         .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
                         .blur(radius: scrollY / 10)
                         
                     
-//                    VStack {
-//                        Spacer()
-//                        VStack(alignment: .center, spacing: 12) {
-//                            Group {
-//                                Text("Post title")
-//                                    //.animatableFont(size: 34, weight: .bold )
-//                                    .font(.title.weight(.bold))
-//                                    //.opacity(0.5)
-//                                .frame(maxWidth: .infinity, alignment: .center)
-//                                Text("Post caption")
-//                                    .font(.footnote)
-//                                    .fontWeight(.semibold)
-//                                    //.opacity(0.5)
-//                                
-//                                HStack {
-//                                    Image("Avatar Default")
-//                                        .resizable()
-//                                        .frame(width: 26, height: 26)
-//                                        .cornerRadius(10)
-//                                        .padding(8)
-//                                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-//                                        .strokeStyle(cornerRadius: 18)
-//                                    Text("Itinerary edited by Lawrence Liu")
-//                                        .font(.footnote)
-//                                }
-//                            }
-//                            .offset(y: -20)
-//
-//                        }
-//                        .padding(20)
-//                        .background(
-//                            Rectangle()
-//                                .fill(.ultraThinMaterial)
-//                                .blur(radius: 50 )
-//                        )
-//                    }
-//                    .foregroundStyle(.white)
+                    VStack {
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        VStack(alignment: .center, spacing: 12) {
+                            Group {
+                                Text("Post title")
+                                    //.animatableFont(size: 34, weight: .bold )
+                                    .font(.title.weight(.bold))
+                                    //.opacity(0.5)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                Text("Post caption")
+                                    .font(.footnote)
+                                    .fontWeight(.semibold)
+                                    //.opacity(0.5)
+                                
+                                HStack {
+                                    Image("Avatar Default")
+                                        .resizable()
+                                        .frame(width: 26, height: 26)
+                                        .cornerRadius(10)
+                                        .padding(8)
+                                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                                        .strokeStyle(cornerRadius: 18)
+                                    Text("Itinerary edited by Lawrence Liu")
+                                        .font(.footnote)
+                                }
+                            }
+                            .offset(y: -20)
+
+                        }
+                        .padding(20)
+                        .background(
+                            Rectangle()
+                                .fill(.ultraThinMaterial)
+                                .blur(radius: 50 )
+                        )
+                        Spacer()
+                    }
+                    .foregroundStyle(.white)
                 }
 
             )
