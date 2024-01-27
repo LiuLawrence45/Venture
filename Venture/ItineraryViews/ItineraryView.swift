@@ -67,7 +67,8 @@
                     ZStack {
                         Image(post.media[0])
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            //.aspectRatio(contentMode: .fill)
+                            .scaledToFill()
                             .matchedGeometryEffect(id: "background\(post.id)", in: namespace)
                             .offset(y: scrollY > 0 ? -scrollY : 0)
                             .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
@@ -77,10 +78,11 @@
                         VStack {
                             Spacer()
                             VStack(alignment: .center, spacing: 12) {
-                                Group {
+                                Group {   
                                     Text(post.title)
+                                        //.animatableFont(size: 34, weight: .bold )
                                         .font(.title.weight(.bold))
-//                                        .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
+                                        .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
                                         //.opacity(0.5)
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     Text(post.caption ?? "")
@@ -190,13 +192,13 @@
         }
         
         func fadeIn() {
-            withAnimation(.easeOut) {
+            withAnimation(.linear) {
                 appear[0] = true
             }
-            withAnimation(.easeOut) {
+            withAnimation(.linear) {
                 appear[1] = true
             }
-            withAnimation(.easeOut) {
+            withAnimation(.linear) {
                 appear[2] = true
             }
         }

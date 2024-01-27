@@ -51,7 +51,8 @@ struct Post: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Group {
                         Text(post.title)
-                            .font(.subheadline.weight(.bold))
+                            //.font(.subheadline.weight(.bold))
+                            .animatableFont(size: 18, weight: .bold)
                             .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
                             //.opacity(0.5)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -91,6 +92,7 @@ struct Post: View {
                                     performAnimation()
                                     self.isLiked = true
                             }
+
                             
                             Image(systemName: isLiked ?
                                   "bolt.heart" : "heart")

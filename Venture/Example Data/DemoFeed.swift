@@ -121,14 +121,19 @@ var posts = [
         numberOfComments: 6,
         friendsMutuals: [10, 4],
         itinerary: ItineraryModel(
-            title: ["dorm rooms in okada", "go to main quad", "late nights at branner?"],
+            title: ["😎 Okada Dorm Rooms are LIT AF!", "🤫 Going to THE Main Quad Now to GET LIT!", "🔥 LIT LATE nights at Branner! The COOLEST Frosh Dorm. "],
             caption: [
                 """
+                With my friends, Young and Aaron. Shoutout mew boys!!! Get lit!!!
                 """,
                 """
+                Wow this is where the Stanford engineering mind comes from I see... great job guys good work, keep it up, amazing job, wowowwwwww. I loveee Stanford.
+                """,
+                """
+                This was my first time gambling and I won money but I wasn't paid. I never gambled again. Did you know 90% of gamblers give up before their big win? That's what I tell my friends who may have a gambling addiction. HAHA.
                 """
             ],
-            checklist: ""
+            images: ["71949328572__F6A582E5-6E06-437D-80E5-9F0A5199AA65", "DSCN1352", "IMG_7536"]
         )
     ),
     
