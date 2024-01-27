@@ -12,6 +12,7 @@ struct AlternateAgainPhotoPicker: View {
             Color("Background").ignoresSafeArea()
             
             VStack{
+                Spacer()
                 VStack {
                         if images.isEmpty {
                             TabView {
@@ -50,7 +51,7 @@ struct AlternateAgainPhotoPicker: View {
                                     
                                     
                                     VStack(alignment: .center) {
-                                        Text("🔥 Enter Category")
+                                        Text("✌️ Enter Title")
                                             .multilineTextAlignment(.center)
                                             .font(.title3.weight(.semibold))
                                         
@@ -82,15 +83,76 @@ struct AlternateAgainPhotoPicker: View {
 
                     
                 }
-
+                
+                Divider()
+                    .padding(.bottom, 10)
+                
+                VStack(alignment: .center) {
+                    Text("_Add Description Here..._")
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.bottom, 10)
+                
+                Divider()
+//                .frame(maxWidth: .infinity)
+//                
+//                .fixedSize(horizontal: false, vertical: true)
+//                .padding(.horizontal, 10)
+//                .padding(.vertical, 20)
+//                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//                .padding(10)
+                
+                
+                HStack {
+                    Text("📍 _Location!_")
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                     
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+                //.background(.ultraThinMaterial, in: Rectangle())
+//                .background(.ultraThinMaterial, in: TopRoundedRectangle(cornerRadius: 30, style: .continuous))
+                .padding(.horizontal, 10)
+                
+                HStack {
+                    Text("🤑 _Cost!_")
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+                //.background(.ultraThinMaterial, in: Rectangle())
+                .offset(y: -5)
+                .padding(.horizontal, 10)
+                
                 PhotosPicker(
                     selection: $selectedItems,
                     matching: .images
                 ) {
                     HStack(alignment: .top){
-                        Image(systemName: "pencil.and.outline").dynamicTypeSize(.xxLarge)
-                        Text("Choose Photos to Upload")
+                        //Image(systemName: "pencil.and.outline").dynamicTypeSize(.xxLarge)
+                        Image(systemName: "pencil.and.outline")
+                            .resizable()
+                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                            .frame(maxWidth: 12)
+                            .frame(maxHeight: 24)
+                        
+                        //Text("Choose Photos to Upload")
                     }
+                    .background(
+                        Circle()
+                            .frame(width: 64, height: 64)
+                            .opacity(0.4)
+                    )
+                    
                     .foregroundColor(.secondary)
                     
                     
@@ -99,35 +161,12 @@ struct AlternateAgainPhotoPicker: View {
                     loadImages()
                 }
                 .accentColor(.primary)
+                .frame(alignment: .bottomTrailing)
+                .offset(x: 140)
+                .offset(y: 40)
                 
                 
-                HStack {
-                    Text("📍 Add Location")
-                        .font(.callout)
-                    Spacer()
-                     
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-                .background(.ultraThinMaterial, in: TopRoundedRectangle(cornerRadius: 30, style: .continuous))
-                .padding(.horizontal, 10)
-                
-                HStack {
-                    Text("🤑 Add Money")
-                        .font(.callout)
-                    Spacer()
-                    
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-                .background(.ultraThinMaterial, in: Rectangle())
-                .offset(y: -5)
-                .padding(.horizontal, 10)
-                
+                Spacer()
                 
                 Spacer()
                 
@@ -135,7 +174,7 @@ struct AlternateAgainPhotoPicker: View {
             
 
         }
-        //.overlay(NavigationBar(title: "Document", hasScrolled: .constant(true)))
+        .overlay(NavigationBar(title: "Your Venture", hasScrolled: .constant(true)))
     }
     
     func loadImages() {
