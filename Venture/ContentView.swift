@@ -30,9 +30,7 @@ struct ContentView: View {
                     FeedView()
                 case .post:
                     PhotoPicker()
-                    //                FeedView()
-                case .profile: 
-                    //                LibraryView()
+                case .profile:
                     ProfileView(profile: profile)
                     
                 }
