@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B4C9DD92B65908E00BAE8F3 /* ImageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */; };
 		7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1402B586EDF00FBBAB9 /* Functions.swift */; };
 		7B4FD1442B58982400FBBAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B4FD1432B58982400FBBAB9 /* LaunchScreen.storyboard */; };
 		7B4FD1472B58989600FBBAB9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetails.swift; sourceTree = "<group>"; };
 		7B4FD1402B586EDF00FBBAB9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7B4FD1432B58982400FBBAB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B4FD1462B58989600FBBAB9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */,
+				7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */,
 			);
 			path = UploadPost;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */,
 				7B6275922B5128CC00FDA0F0 /* ItineraryView.swift in Sources */,
 				7B6275752B50CD1000FDA0F0 /* OldTab.swift in Sources */,
+				7B4C9DD92B65908E00BAE8F3 /* ImageDetails.swift in Sources */,
 				7B89DFE42B58608A00DA1EC6 /* DemoUserPosts.swift in Sources */,
 				7B6275712B50CA6B00FDA0F0 /* FeaturedPost.swift in Sources */,
 				7B6275782B50CE7F00FDA0F0 /* NavigationBar.swift in Sources */,

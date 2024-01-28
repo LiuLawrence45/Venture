@@ -25,137 +25,133 @@ struct PhotoPicker: View {
                             
                             
                             VStack(alignment: .center) {
-                                Text("✌️ Enter Title")
-                                    .multilineTextAlignment(.center)
-                                    .font(.title3.weight(.semibold))
-                                
-                                Image(uiImage: images[index])
-                                    .resizable()
-                                    .frame(maxWidth: .infinity)
-                                    .aspectRatio(contentMode: .fill)
+                                VStack {
+                                    Text("_Enter Title_")
+                                        .multilineTextAlignment(.center)
+                                        .font(.title3)
                                     
-                                    .frame(height: 200)
-                                    .padding(.bottom, 20)
-                                    .clipped()
+                                    Image(uiImage: images[index])
+                                        .resizable()
+                                        .frame(maxWidth: .infinity)
+                                        .aspectRatio(contentMode: .fill)
+                                        
+                                        .frame(height: 200)
+                                        .padding(.bottom, 20)
+                                        .clipped()
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 20)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+                                .padding(20)
+                                .background(Color.red.opacity(0.2))
+                                
+                                Divider()
+                                    .padding(.bottom, 10)
+                
+                                VStack(alignment: .center) {
+                                    TextField("_Add Description Here..._", text: $description)
+                                        .foregroundStyle(.secondary)
+                                        .padding(.leading, 20)
+                                }
+                                .padding(.bottom, 10)
+                
+                                Divider()
+                                
+                                
+                                HStack(spacing: 0){
+                                    Text("📍")
+                                    TextField(" _Location!_", text: $location)
+                                    Spacer()
+                
+                                }
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 20)
+                                .padding(.horizontal, 10)
+                
+                                HStack {
+                                    Text("🤑")
+                                    TextField(" _Cost!_", text: $cost)
+                                    Spacer()
+                
+                                }
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 20)
+                                //.background(.ultraThinMaterial, in: Rectangle())
+                                .offset(y: -5)
+                                .padding(.horizontal, 10)
+                                
+                                Spacer() 
+
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxHeight: .infinity)
                             
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 20)
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-                            .padding(20)
+                            
+                         
+
+
+                            
+
                             
                         }
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    .frame(height: 320)
-                    
-//                        if images.isEmpty {
-//                            TabView {
-//                                VStack(alignment: .center) {
-//                                    Text("Upload Photos!")
-//                                        .multilineTextAlignment(.center)
-//                                        .font(.title3.weight(.semibold))
-//                                    
-//                                    Image("Default")
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fill)
-//                                        .frame(maxWidth: .infinity)
-//                                        .frame(height: 200)
-//                                        .clipped()
-//                                        .padding(.bottom, 20)
-//                                }
-//                                .frame(maxWidth: .infinity, alignment: .leading)
-//                                .fixedSize(horizontal: false, vertical: true)
-//                                .padding(.horizontal, 20)
-//                                .padding(.vertical, 20)
-//                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                                .padding(.horizontal, 10)
-//                                .padding(.vertical, 20)
-//                            }
-//                            .tabViewStyle(.page)
-//                            .frame(height: 320)
-//
-//                            
-//                        } else {
-//                            TabView(selection: $selectedIndex) {
-//                                ForEach(images.indices, id: \.self) { index in
-//                                    
-//                                    
-//                                    VStack(alignment: .center) {
-//                                        Text("✌️ Enter Title")
-//                                            .multilineTextAlignment(.center)
-//                                            .font(.title3.weight(.semibold))
-//                                        
-//                                        Image(uiImage: images[index])
-//                                            .resizable()
-//                                            .frame(maxWidth: .infinity)
-//                                            .aspectRatio(contentMode: .fill)
-//                                            
-//                                            .frame(height: 200)
-//                                            .padding(.bottom, 20)
-//                                            .clipped()
-//                                    }
-//                                    .frame(maxWidth: .infinity, alignment: .leading)
-//                                    
-//                                    .fixedSize(horizontal: false, vertical: true)
-//                                    .padding(.horizontal, 10)
-//                                    .padding(.vertical, 20)
-//                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                                    .padding(20)
-//                                    
-//                                }
-//                            }
-//                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//                            .frame(height: 320)
-//
-//                        }
+                    .frame(height: 680)
+                    .background(Color.blue.opacity(0.2))
 
                     
                 }
-                
-                Divider()
-                    .padding(.bottom, 10)
-                
-                VStack(alignment: .center) {
-                    TextField("_Add Description Here..._", text: $description)
-                        .foregroundStyle(.secondary)
-                        .padding(.leading, 20)
-                }
-                .padding(.bottom, 10)
-                
-                Divider()
-                
-                HStack(spacing: 0){
-                    Text("📍")
-                    TextField(" _Location!_", text: $location)
-                    Spacer()
-                     
-                }
-                .font(.callout)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-                .padding(.horizontal, 10)
-                
-                HStack {
-                    Text("🤑")
-                    TextField(" _Cost!_", text: $cost)
-                    Spacer()
-                    
-                }
-                .font(.callout)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
-                //.background(.ultraThinMaterial, in: Rectangle())
-                .offset(y: -5)
-                .padding(.horizontal, 10)
+//                
+//                Divider()
+//                    .padding(.bottom, 10)
+//                
+//                VStack(alignment: .center) {
+//                    TextField("_Add Description Here..._", text: $description)
+//                        .foregroundStyle(.secondary)
+//                        .padding(.leading, 20)
+//                }
+//                .padding(.bottom, 10)
+//                
+//                Divider()
+//                
+//                HStack(spacing: 0){
+//                    Text("📍")
+//                    TextField(" _Location!_", text: $location)
+//                    Spacer()
+//                     
+//                }
+//                .font(.callout)
+//                .foregroundStyle(.secondary)
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                .fixedSize(horizontal: false, vertical: true)
+//                .padding(.horizontal, 20)
+//                .padding(.vertical, 20)
+//                .padding(.horizontal, 10)
+//                
+//                HStack {
+//                    Text("🤑")
+//                    TextField(" _Cost!_", text: $cost)
+//                    Spacer()
+//                    
+//                }
+//                .font(.callout)
+//                .foregroundStyle(.secondary)
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                .fixedSize(horizontal: false, vertical: true)
+//                .padding(.horizontal, 20)
+//                .padding(.vertical, 20)
+//                //.background(.ultraThinMaterial, in: Rectangle())
+//                .offset(y: -5)
+//                .padding(.horizontal, 10)
                 
                 PhotosPicker(
                     selection: $selectedItems,
