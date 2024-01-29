@@ -127,10 +127,10 @@ struct Post: View {
                             self.isDown.toggle()
                         })
                     } label: {
-                        Image(systemName: "figure.wave").imageScale(.large)
+                        Image(systemName: "arrow.down.heart").imageScale(.large)
                     }
                     .padding(.vertical, 20)
-                    .opacity(0.9)
+                    .opacity(0.3)
                     .accentColor(isDown ? .blue : .white)
                     .scaleEffect(animateDown ? animationScale : 1)
                     .animation(.easeIn(duration: duration))
@@ -145,7 +145,7 @@ struct Post: View {
                     } label: {
                         Image(systemName: "bolt.heart").imageScale(.large)
                     }
-                    .opacity(0.9)
+                    .opacity(isLiked ? 1 : 0.3)
                     .accentColor(isLiked ? .red : .white)
                     .scaleEffect(animateHeart ? animationScale : 1)
                     .animation(.easeIn(duration: duration))

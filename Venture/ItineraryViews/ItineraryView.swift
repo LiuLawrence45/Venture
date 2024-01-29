@@ -18,13 +18,31 @@
         @State var showSection = false
         @State var selectedIndex = 0
         
+        @State var selectedTab: String = "main"
+        
         var body: some View {
             ZStack {
                 ScrollView {
                     cover
                         .padding(.bottom, 80 )
-                    content
-                        .opacity(appear[2] ? 1 : 0)
+                    
+                    HStack(spacing: 0) {
+                        ItineraryTabBarButton(text: "Main Vibes", selectedTab: $selectedTab, identifier: "main")
+                        ItineraryTabBarButton(text: "Map", selectedTab: $selectedTab, identifier: "map")
+                    }
+                    
+                    switch selectedTab {
+                        case "posts":
+                            content
+                                .opacity(appear[2] ? 1 : 0)
+                        case "map":
+                            ItineraryMapView()
+                            .frame(height: 300)
+                    default:
+                        content
+                    }
+                    
+                        
                 }
                 .coordinateSpace(name: "scroll")
                 .background(Color("Background"))
@@ -33,7 +51,7 @@
                 .scaleEffect(viewState.width / -500 + 1)
                 .background(.black.opacity(viewState.width / 500))
                 .background(.ultraThinMaterial)
-                .gesture(isDraggable ? drag : nil)
+                //.gesture(isDraggable ? drag : nil)
                 .ignoresSafeArea()
                 
                 button
@@ -77,8 +95,11 @@
                         
                         VStack {
                             Spacer()
+
+                            
                             VStack(alignment: .center, spacing: 12) {
-                                Group {   
+                                
+                                Group {
                                     Text(post.title)
                                         //.animatableFont(size: 34, weight: .bold )
                                         .font(.title.weight(.bold))
@@ -232,3 +253,49 @@
                 //.environmentObject(Model())
         }
     }
+
+
+
+struct ItineraryTabBarButton: View {
+    var text: String // New property for text
+    @Binding var selectedTab: String
+    var identifier: String
+    
+    var body: some View {
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.1)){
+                selectedTab = identifier // Use identifier for selection logic
+            }
+        }, label: {
+            VStack(spacing: 4 ){
+                Text(text) // Use Text instead of Image
+                    .font(.system(size: 14, weight: .bold)) // Customize the font as needed
+                    .foregroundColor(selectedTab == identifier ? .primary : .secondary)
+                
+                // Conditionally show underline only under the selected tab
+                if selectedTab == identifier {
+                    Group {
+                        Rectangle()
+                            .fill(Color.primary)
+                            .frame(height: 2)
+                            .frame(width: 30)
+                    }
+                    .frame(width: (UIScreen.main.bounds.width/2))
+
+                }
+                else {
+                    Group {
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(height: 2)
+                            .frame(width: 30)
+                    }
+                    .frame(width: (UIScreen.main.bounds.width/2))
+
+                }
+            }
+        })
+    }
+    
+
+}

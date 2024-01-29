@@ -57,7 +57,7 @@ var posts = [
     
     PostModel(
         title: "Our ASES Group in SF!",
-        info: "7 photos",
+        info: "10 photos",
         caption: "core memories, best friends forever.",
         media: ["Low Quality Twin Peaks", "Car Ride", "861A6368" , "Chinatown 3", "Fish", "Fish 2", "Twin Peaks Phone", "Chinatown 2", "861A6384", "861A6371", "861A6419"],
         username: "kcheng05",
@@ -65,7 +65,7 @@ var posts = [
         numberOfComments: 1,
         friendsMutuals: [1, 2],
         itinerary: ItineraryModel(
-            title: ["🤑 Overall Costs", "🚗 Booking Zip Car", "📍 Basa Seafood Express in Mission District", "📍 Catching Sunset @ Twin Peaks", "📍 Bingsu and Boba @ Sweetheart Cafe", "📍 Late Night In-N-Out!"],
+            title: ["🤑 Overall Costs", "🚗 Booking Zip Car", "📍 Basa Seafood Express in Mission District", "📍 Catching Sunset @ Twin Peaks", "📍 Bingsu and Boba @ Sweetheart Cafe"],
             caption: [
                 
                 """
@@ -98,13 +98,13 @@ var posts = [
                 A ($11) treat for our sweet tooth. Best bingsu… ever? Chocolate and Strawberry ftw!
                 
                 Please Lawrence, if you ever look back at this, don't eat all the strawberry BingSu in the future.
-                """,
-                
                 """
-                Double-double animal style, please! Burgers for <$5. Totally cheap.
-                
-                Comfort food of all students here in the Bay Area.
-                """
+//                
+//                """
+//                Double-double animal style, please! Burgers for <$5. Totally cheap.
+//                
+//                Comfort food of all students here in the Bay Area.
+//                """
             ],
             images: ["861A6374", "Car Ride", "Fish Mart", "Low Quality Twin Peaks", "Bingsuu!"]
         )
