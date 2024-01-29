@@ -92,14 +92,15 @@
                                         .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
                                     
                                     HStack {
-                                        Image("Avatar Default")
+                                        Image("IMG_5155")
                                             .resizable()
                                             .frame(width: 26, height: 26)
-                                            .cornerRadius(10)
-                                            .padding(8)
-                                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                                            .strokeStyle(cornerRadius: 18)
-                                        Text("Itinerary edited by Lawrence Liu")
+                                            .mask(Circle())
+//                                            .cornerRadius(10)
+//                                            .padding(8)
+//                                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+//                                            .strokeStyle(cornerRadius: 18)
+                                        Text("Itinerary edited by Katie Cheng") 
                                             .font(.footnote)
                                     }
                                     .opacity(appear[1] ? 1 : 0)

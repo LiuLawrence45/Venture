@@ -57,6 +57,7 @@
 		7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA193C2B517A220020FE88 /* ProfileView.swift */; };
 		7BDA19492B5554690020FE88 /* OldFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19482B5554690020FE88 /* OldFeedView.swift */; };
 		7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA194C2B5554F50020FE88 /* FeedView.swift */; };
+		7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFCF062B6730590052825C /* ItineraryMapView.swift */; };
 		7BF48A782B63E1B400720BB5 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,7 @@
 		7BDA193C2B517A220020FE88 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7BDA19482B5554690020FE88 /* OldFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFeedView.swift; sourceTree = "<group>"; };
 		7BDA194C2B5554F50020FE88 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		7BEFCF062B6730590052825C /* ItineraryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryMapView.swift; sourceTree = "<group>"; };
 		7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,6 +313,7 @@
 				7B62759B2B513B9F00FDA0F0 /* PostItineraryDescription.swift */,
 				7B6275992B513B9500FDA0F0 /* ItineraryDescription.swift */,
 				7B6275912B5128CC00FDA0F0 /* ItineraryView.swift */,
+				7BEFCF062B6730590052825C /* ItineraryMapView.swift */,
 			);
 			path = ItineraryViews;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */,
 				7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */,
 				7B6275732B50CCD600FDA0F0 /* OldTabBar.swift in Sources */,
+				7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */,
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
 				7B6275A32B514E2E00FDA0F0 /* NotificationModel.swift in Sources */,
 				7B6275822B50D37000FDA0F0 /* BlobView.swift in Sources */,

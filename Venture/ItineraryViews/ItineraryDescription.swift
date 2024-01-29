@@ -19,10 +19,10 @@ struct ItineraryDescription: View {
     var body: some View {
         
         ZStack {
-            Color("White").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//            Color("White").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
             ScrollView {    
-                VStack{ 
+                VStack(alignment: .center){
                       
                     ForEach(0..<itinerary.title.count, id: \.self) { index in
                         let title = itinerary.title[index]
@@ -39,7 +39,9 @@ struct ItineraryDescription: View {
                                 Image(images[index])
                                     .resizable()
                                     .frame(maxWidth: .infinity)
+                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                                     .frame(height: 200)
+                                    .clipped()
                                     .padding(.bottom, 20)
                             }
                             else {
@@ -92,7 +94,7 @@ struct ItineraryDescription_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        ItineraryDescription(itinerary: posts[0].itinerary!)
+        ItineraryDescription(itinerary: posts[1].itinerary!)
         
         //(namespace: namespace, show: .constant(true))
             //.environmentObject(Model())

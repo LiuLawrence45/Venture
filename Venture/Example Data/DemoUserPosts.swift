@@ -34,9 +34,9 @@ var lawrencePosts = [
     
     PostModel(
         title: "Our Annual ASES Retreat",
-        info: "6 photos, 1 video",
+        info: "5 photos, 1 video",
         caption: "Good friends, food, and really cold weather!",
-        media: ["IMG_8239", "IMG_1437", "IMG_8224", "IMG_0021", "IMG_7749", "DSCN1457"],
+        media: ["Lawrence Neva", "Aarav Lawrence", "Group Photo ASES", "ASES Group!", "Dawen Thinking"],
         username: "liu.lawrence45",
         profilePicture: "04B0D33D-83BB-4E23-BE56-50EFA4FB1B7C",
         numberOfComments: 10,
@@ -47,16 +47,22 @@ var lawrencePosts = [
                 """
                 We started off with a quick drive to the venture retreat center: https://www.ventureretreat.org
                 
+                
                 Some info about Venture Retreat:
+                
                        1. Pricing was relatively well-off, around $1k per night for 30+.
+                
                        2. You basically live in huts (if you see on the website). Worth it for the experience.
+                
                        3. There's a pool advertised as well: you won't be able to swim most likely from Oct. - March because of the cold.
                 
                 The car ride was super fun. The road is extremely windy close to the home though, so be careful!
                 """,
                 
                 """
-                We made a quick beach stop at San Gregorio State Beach. We honestly were supposed to get to the retreat center on time,
+                We made a quick beach stop at San Gregorio State Beach.
+                
+                We honestly were supposed to get to the retreat center on time,
                 but thankfully we stopped.
                 
                 Truly just something out of a movie.
@@ -65,9 +71,12 @@ var lawrencePosts = [
                 """,
                 
                 """
-                fun formal night with all friends and digicams!
+                A fun formal night with all friends and digicams!
+                
+                Please please please, bring digi-cams. So much fun.
                 """
-            ]
+            ],
+            images: ["Venture Retreat", "Beach Pic", "Aarav Lawrence"]
             //checklist: ""
         )
     )

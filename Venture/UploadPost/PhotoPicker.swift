@@ -45,15 +45,16 @@ struct PhotoPicker: View {
                                 .padding(.vertical, 20)
                                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
                                 .padding(20)
-                                .background(Color.red.opacity(0.2))
+                                //.background(Color.red.opacity(0.2))
                                 
                                 Divider()
                                     .padding(.bottom, 10)
                 
                                 VStack(alignment: .center) {
-                                    TextField("_Add Description Here..._", text: $description)
+                                    TextField("_Add Description Here..._", text: $description, axis: .vertical)
                                         .foregroundStyle(.secondary)
                                         .padding(.leading, 20)
+                                        .lineLimit(20)
                                 }
                                 .padding(.bottom, 10)
                 
@@ -63,6 +64,7 @@ struct PhotoPicker: View {
                                 HStack(spacing: 0){
                                     Text("📍")
                                     TextField(" _Location!_", text: $location)
+                                        .lineLimit(1)
                                     Spacer()
                 
                                 }
@@ -77,6 +79,7 @@ struct PhotoPicker: View {
                                 HStack {
                                     Text("🤑")
                                     TextField(" _Cost!_", text: $cost)
+                                        .lineLimit(1)
                                     Spacer()
                 
                                 }
@@ -106,7 +109,7 @@ struct PhotoPicker: View {
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .frame(height: 680)
-                    .background(Color.blue.opacity(0.2))
+                    //.background(Color.blue.opacity(0.2))
 
                     
                 }
