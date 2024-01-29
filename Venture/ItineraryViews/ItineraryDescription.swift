@@ -29,7 +29,7 @@ struct ItineraryDescription: View {
                         let caption = itinerary.caption[index]
 //                        let images = itinerary.images?[index]
                         
-                        
+                         
                         VStack(alignment: .center) {
                             Text(title)
                                 .multilineTextAlignment(.center)
@@ -94,7 +94,7 @@ struct ItineraryDescription_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        ItineraryDescription(itinerary: posts[1].itinerary!)
+        ItineraryDescription(itinerary: posts[0].itinerary!)
         
         //(namespace: namespace, show: .constant(true))
             //.environmentObject(Model())

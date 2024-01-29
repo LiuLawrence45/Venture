@@ -24,7 +24,7 @@ var profiles = [
                          "romantic walk at the palace of fine arts :D",
                          "watching the stars @ night on the beach"],
         
-        downToGo: lawrencePosts),
+        downToGo: katiePosts),
     
     
     ProfileModel(
@@ -37,7 +37,7 @@ var profiles = [
         occupation: "Research @ SIEPR",
         profileDescription: "Californian at heart",
         numFriends: 200,
-        posts: lawrencePosts, //just linked for conciseness
+        posts: katiePosts, //just linked for conciseness
         bucketList: [    "Chinatown in SF",
                          "Bingsu Date Night",
                          "Twin Peaks @ Midnight"],

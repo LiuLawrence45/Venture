@@ -26,6 +26,17 @@ struct ProfileView: View {
     @State var selection = ""
     
     
+    // Add a state variable to track liked items for the bucket list
+    // Initialize with false for each item, assuming you have the count of bucketList items
+    @State var likedItems: [Bool]
+
+    // Modify your initializer to initialize likedItems based on the bucketList count
+    init(profile: ProfileModel) {
+        self.profile = profile
+        _likedItems = State(initialValue: Array(repeating: false, count: profile.bucketList.count))
+    }
+    
+    
 
 
     var body: some View {
@@ -85,12 +96,12 @@ struct ProfileView: View {
                 ForEach(Array(profile.bucketList.enumerated()), id: \.offset) { index, item in
                     if index != 0 { Divider() }
                     HStack {
-                        Image(systemName: "heart.fill") // Replace with the actual heart icon image if it's not a system image
+                        Image(systemName: likedItems[index] ? "heart.fill" : "heart") // Replace with the actual heart icon image if it's not a system image
                             .font(.body.weight(.bold))
                             .frame(width: 36, height: 36)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(likedItems[index] ? .red : .secondary)
                             .background(.ultraThinMaterial, in: Circle())
-                        .strokeStyle(cornerRadius: 14)
+                            .strokeStyle(cornerRadius: 14)
 
                         
                         
@@ -100,6 +111,11 @@ struct ProfileView: View {
                         
                         Spacer()
                     }
+                    .onTapGesture(count: 2){
+                         // Toggle the liked state when the heart icon is tapped
+                         likedItems[index].toggle()
+                     }
+
                     .padding(.vertical, 8)
                     .padding(.horizontal)
                 }
@@ -143,7 +159,7 @@ struct ProfileView: View {
 var PostView: some View {
     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
         
-        ImageView(image: "IMG_8239", width: (UIScreen.main.bounds.width) / 3)
+        ImageView(image: "Bingsuu!", width: (UIScreen.main.bounds.width) / 3)
             .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
         ImageView(image: "IMG_7533", width: (UIScreen.main.bounds.width) / 3)
             .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
