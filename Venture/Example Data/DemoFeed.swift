@@ -59,7 +59,7 @@ var posts = [
         title: "Our ASES Group in SF!",
         info: "10 photos",
         caption: "core memories, best friends forever.",
-        media: ["Low Quality Twin Peaks", "Car Ride", "861A6368" , "Chinatown 3", "Fish", "Fish 2", "Twin Peaks Phone", "Chinatown 2", "861A6384", "861A6371", "861A6419"],
+        media: ["Low Quality Twin Peaks", "Car Ride" , "Chinatown 3", "Fish", "Fish 2", "Twin Peaks Phone", "Chinatown 2", "861A6419"],
         username: "kcheng05",
         profilePicture: "IMG_5155",
         numberOfComments: 1,
