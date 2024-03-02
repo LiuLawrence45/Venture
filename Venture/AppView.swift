@@ -17,12 +17,12 @@ struct AppView: View {
             if isAuthenticated {
                 ContentView()
                     .environmentObject(model)
-                    .statusBarHidden(true) // This is a temporary measure just since I can't figure it out right now.
+                    // .statusBarHidden(true) // This is a temporary measure just since I can't figure it out right now.
             }
             else {
                 ParentView()
                     .environmentObject(model)
-                    .statusBarHidden(true)
+                    // .statusBarHidden(true)
             }
         }
         .task {

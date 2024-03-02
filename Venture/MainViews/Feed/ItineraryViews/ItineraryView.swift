@@ -15,6 +15,7 @@ struct ItineraryView: View {
     
     var post: PostModel = posts[0] // for preview
     @State var selectedTab: String = "main"
+    @EnvironmentObject var model: Model
     
     var body: some View {
         ZStack {
@@ -70,6 +71,18 @@ struct ItineraryView: View {
             }
         }
         .edgesIgnoringSafeArea(.bottom) // Ensure the floating bar can extend to the bottom edge of the screen 
+//        .onAppear {
+//            withAnimation(.easeOut) {
+//                print("Appear")
+//                model.showTab = false
+//            }
+//        }
+//        .onDisappear {
+//            withAnimation(.easeIn){
+//                print("Disappear")
+//                model.showTab = true
+//            }
+//        }
 
         
         
@@ -251,7 +264,7 @@ struct ItineraryView_Previews: PreviewProvider {
     
     static var previews: some View {
         ItineraryView()
-        //.environmentObject(Model())
+        .environmentObject(Model())
     }
 }
 

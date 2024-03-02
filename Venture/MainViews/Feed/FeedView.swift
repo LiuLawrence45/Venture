@@ -12,7 +12,6 @@ struct FeedView: View {
     var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
     
     @State var show = false
-    @State var showStatusBar = true
     @State var showPost = false
     @State var selectedPost: PostModel = posts[0]
     @State var contentHasScrolled = false
@@ -22,6 +21,8 @@ struct FeedView: View {
     
     var body: some View {
         ZStack {
+            
+            //Either we want VSCO vibe or this. Change background color.
             Color("Background").ignoresSafeArea()
             
 //            if model.showDetail {
@@ -41,22 +42,36 @@ struct FeedView: View {
             }
             .coordinateSpace(name: "scroll")
         }
-        .onChange(of: model.showDetail) { value in
+        .onChange(of: model.showDetail) {value in
             withAnimation {
                 model.showTab.toggle()
-                model.showNav.toggle()
-                showStatusBar.toggle()
+                print("Hello")
             }
         }
         .overlay(NavigationBar(title: "Featured", context: "default", hasScrolled: $contentHasScrolled))
-        .statusBar(hidden: !showStatusBar)
     }
     
     var showPosts: some View {
         ForEach(posts) { post in
-            Post(namespace: namespace, post: post)
-                .accessibilityElement(children: .combine)
-                .accessibilityAddTraits(.isButton)
+            NavigationLink(destination: ItineraryView(post: post)){
+                Post(namespace: namespace, post: post)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityAddTraits(.isButton)
+            }
+            .accentColor(.primary)
+//            .onAppear {
+//                withAnimation(.easeIn) {
+//                    print("Appear")
+//                    model.showTab = false
+//                }
+//            }
+//            .onDisappear {
+//                withAnimation(.easeOut){
+//                    print("Disappear")
+//                    model.showTab = true
+//                }
+//            }
+
         }
     }
     
@@ -76,137 +91,7 @@ struct FeedView: View {
             }
         }
     }
-    
-    
-    //This is the Itinerary View.
-//    var detail: some View {
-//        ForEach(posts) { post in
-//            if post.index == model.selectedPost {
-//
-//            }
-//        }
-//    }
-    
-    
-    
-    
-    
-//    @State var hasScrolled = false
-//    @Namespace var namespace
-//    @State var show = false
-//    @State var showStatusBar = true
-//    @State var selectedID = UUID()
-//    @State var showCourse = false
-//    @State var selectedIndex = 0
-//    @AppStorage("isLiteMode") var isLiteMode = true
-//    @AppStorage("showModal") var showModal = false
-//
-//    var body: some View {
-//        ZStack {
-//            Color("Background").ignoresSafeArea()
-//
-//            ScrollView {
-//                scrollDetection
-//
-//                LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 40) {
-//                    if !show {
-//                        cards
-//                    } else {
-//                        ForEach(posts) { post in
-//                            Rectangle()
-//                                .fill(.white)
-//                                .frame(height: 300)
-//                                .cornerRadius(60)
-//                                .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
-//                                .opacity(0.3)
-//                            .padding(.horizontal, 30)
-//                        }
-//                    }
-//                }
-//                .padding(.horizontal, 10 )
-//                 
-//                Rectangle()
-//                    .foregroundColor(Color.black.opacity(0.0))
-//                    .frame(height: 75)
-//            }
-//            .coordinateSpace(name: "scroll")
-//            .safeAreaInset(edge: .top, content: {
-//                Color.clear.frame(height: 70)
-//            })
-//            .overlay(
-//                NavigationBar(title: "Ventures", context: "default", 
-//                              hasScrolled: $hasScrolled
-//                )
-//            )
-////            .background(Image("Blob 1").offset(x: 400, y: -300))
-//
-//            if show {
-//                detail
-//            }
-//        }
-//        .statusBar(hidden: !showStatusBar)
-//        
-//        .onChange(of: show) {
-//            withAnimation(.closeCard) {
-//                if show == true {
-//                    showStatusBar = false
-//                    showModal = true
-//                }
-//                else {
-//                    showStatusBar = true
-//                    showModal = false
-//                }
-//            }
-//        }
-//        
-// 
-//    }
-//
-//    var scrollDetection: some View {
-//        GeometryReader { proxy in
-//            Color.clear.preference(key: ScrollPreferenceKey.self, value: proxy.frame(in: .named("scroll")).minY)
-//        }
-//        .frame(height: 0)
-//        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
-//            withAnimation(.easeInOut) {
-//                if value < 0 {
-//                    hasScrolled = true
-//                } else {
-//                    hasScrolled = false
-//                }
-//            }
-//        })
-//    }
-//
-//    var cards: some View {
-//        ForEach(posts) { post in
-//            Post(namespace: namespace, post: post, show: $show, profile: findProfile(username: post.username, profiles: profiles) ?? profiles[0])
-//                .gesture(TapGesture(count: 2).onEnded {
-//                    
-//                }.exclusively(before: TapGesture(count: 1).onEnded {
-//                    withAnimation(.openCard) {
-//                        show.toggle()
-//                        //model.showDetail.toggle()
-//                        showStatusBar = false
-//                        selectedID = post.id
-//                    }
-//                })) 
-//                .accessibilityElement(children: .combine)
-//                .accessibilityAddTraits(.isButton)
-//        }
-//    }
-// 
-//    var detail: some View {
-//        ForEach(posts) { post in
-//            if post.id == selectedID {
-////                ItineraryView(namespace: namespace, post: post, show: $show)
-////                    .zIndex(1)
-////                    .transition(.asymmetric(
-////                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
-////                        removal: .opacity.animation(.easeInOut(duration: 0.2).delay(0.1))))
-//            }
-//        }
-//    }
+
 }
 
 #Preview {

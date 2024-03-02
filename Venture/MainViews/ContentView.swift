@@ -18,6 +18,7 @@ struct ContentView: View {
     @AppStorage("showModal") var showModal = false
     @AppStorage("showSearch") var showSearch: Bool = false
     @State private var readyForPhotoEditing = false
+    @EnvironmentObject var model: Model
     
     
     //For showing photo picker
@@ -61,8 +62,8 @@ struct ContentView: View {
 
             
             TabBar()
-                .offset(y: showModal ? 200 : 0) 
-                .animation(.easeInOut(duration: 0.3), value: showModal)
+//                .offset(y: model.showTab ? 200 : 0)
+//                .animation(.easeInOut(duration: 0.3), value: showModal)
             
 
         }
@@ -82,6 +83,7 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .environment(\.sizeCategory, .accessibilityLarge)
+                .environmentObject(Model())
         }
     }
 }

@@ -11,6 +11,7 @@ struct TabBar: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
     @State var color: Color = .teal
     @State var tabItemWidth: CGFloat = 0
+    @EnvironmentObject var model: Model
     
     var body: some View {
         GeometryReader { proxy in
@@ -32,6 +33,8 @@ struct TabBar: View {
             .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
+            .offset(y: model.showTab ? 200 : 0)
+            .accessibility(hidden: !model.showTab)
         }
     }
     
@@ -97,6 +100,7 @@ struct TabBar: View {
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
         TabBar()
-.previewInterfaceOrientation(.portrait)
+            .environmentObject(Model())
+            .previewInterfaceOrientation(.portrait)
     }
 }
