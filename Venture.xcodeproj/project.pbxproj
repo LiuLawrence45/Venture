@@ -239,7 +239,6 @@
 			children = (
 				7B62759D2B51483600FDA0F0 /* ItineraryViews */,
 				7BDA194C2B5554F50020FE88 /* FeedView.swift */,
-				7B481ED92B93571D00F08899 /* OldFeedView.swift */,
 				7B481ED12B93332200F08899 /* Post */,
 			);
 			path = Feed;
@@ -301,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				7B481EE32B9366CA00F08899 /* OldItineraryView.swift */,
+				7B481ED92B93571D00F08899 /* OldFeedView.swift */,
 			);
 			path = OldItinerary;
 			sourceTree = "<group>";

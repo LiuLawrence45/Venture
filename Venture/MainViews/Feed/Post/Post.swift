@@ -17,7 +17,7 @@ struct Post: View {
     var namespace: Namespace.ID
     var post: PostModel = posts[0] // for preview
     
-    @Binding var show: Bool
+//    @Binding var show: Bool
     @State private var player: AVPlayer?
     
     //For liking
@@ -200,6 +200,7 @@ struct Post_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        Post(namespace: namespace, show: .constant(true))
+        //Post(namespace: namespace, show: .constant(true))
+        Post(namespace: namespace)
     }
 }

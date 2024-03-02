@@ -106,7 +106,8 @@ var floatingCommentBar: some View {
 
 
         }
-        .padding(.vertical, 20)
+        .padding(.bottom, 15)
+        .padding(.top, 10)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 0, style: .continuous))
 
 }

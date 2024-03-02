@@ -1,96 +1,13 @@
+////
+////  FeedView.swift
+////  Venture
+////
+////  Created by Lawrence Liu on 1/11/24.
+////
 //
-//  FeedView.swift
-//  Venture
+//import SwiftUI
 //
-//  Created by Lawrence Liu on 1/11/24.
-//
-
-import SwiftUI
-
-struct FeedView: View {
-    
-    var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
-    
-    @State var show = false
-    @State var showStatusBar = true
-    @State var showPost = false
-    @State var selectedPost: PostModel = posts[0]
-    @State var contentHasScrolled = false
-    
-    @EnvironmentObject var model: Model
-    @Namespace var namespace
-    
-    var body: some View {
-        ZStack {
-            Color("Background").ignoresSafeArea()
-            
-//            if model.showDetail {
-//                detail
-//            }
-            
-            ScrollView {
-                scrollDetection
-                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    showPosts
-                        .padding(.bottom, 10)
-                }
-                .offset(y: 68)
-                
-
-            }
-            .coordinateSpace(name: "scroll")
-        }
-        .onChange(of: model.showDetail) { value in
-            withAnimation {
-                model.showTab.toggle()
-                model.showNav.toggle()
-                showStatusBar.toggle()
-            }
-        }
-        .overlay(NavigationBar(title: "Featured", context: "default", hasScrolled: $contentHasScrolled))
-        .statusBar(hidden: !showStatusBar)
-    }
-    
-    var showPosts: some View {
-        ForEach(posts) { post in
-            Post(namespace: namespace, post: post)
-                .accessibilityElement(children: .combine)
-                .accessibilityAddTraits(.isButton)
-        }
-    }
-    
-    
-    var scrollDetection: some View {
-        GeometryReader { proxy in
-            let offset = proxy.frame(in: .named("scroll")).minY
-            Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
-        }
-        .onPreferenceChange(ScrollPreferenceKey.self) { value in
-            withAnimation(.easeInOut) {
-                if value < 0 {
-                    contentHasScrolled = true
-                } else {
-                    contentHasScrolled = false
-                }
-            }
-        }
-    }
-    
-    
-    //This is the Itinerary View.
-//    var detail: some View {
-//        ForEach(posts) { post in
-//            if post.index == model.selectedPost {
-//
-//            }
-//        }
-//    }
-    
-    
-    
-    
-    
+//struct OldFeedView: View {
 //    @State var hasScrolled = false
 //    @Namespace var namespace
 //    @State var show = false
@@ -124,7 +41,7 @@ struct FeedView: View {
 //                    }
 //                }
 //                .padding(.horizontal, 10 )
-//                 
+//                
 //                Rectangle()
 //                    .foregroundColor(Color.black.opacity(0.0))
 //                    .frame(height: 75)
@@ -134,11 +51,11 @@ struct FeedView: View {
 //                Color.clear.frame(height: 70)
 //            })
 //            .overlay(
-//                NavigationBar(title: "Ventures", context: "default", 
+//                NavigationBar(title: "Ventures", context: "default",
 //                              hasScrolled: $hasScrolled
 //                )
 //            )
-////            .background(Image("Blob 1").offset(x: 400, y: -300))
+//            .background(Image("Blob 1").offset(x: 400, y: -300))
 //
 //            if show {
 //                detail
@@ -190,29 +107,28 @@ struct FeedView: View {
 //                        showStatusBar = false
 //                        selectedID = post.id
 //                    }
-//                })) 
+//                }))
 //                .accessibilityElement(children: .combine)
 //                .accessibilityAddTraits(.isButton)
 //        }
 //    }
-// 
+//
 //    var detail: some View {
 //        ForEach(posts) { post in
 //            if post.id == selectedID {
-////                ItineraryView(namespace: namespace, post: post, show: $show)
-////                    .zIndex(1)
+//                OldItineraryView(namespace: namespace, post: post, show: $show)
+//                    .zIndex(1)
 ////                    .transition(.asymmetric(
 ////                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
 ////                        removal: .opacity.animation(.easeInOut(duration: 0.2).delay(0.1))))
 //            }
 //        }
 //    }
-}
-
-#Preview {
-    FeedView()
-        .environmentObject(Model())
-}
-
-
-
+//}
+//
+//#Preview {
+//    OldFeedView()
+//}
+//
+//
+//
