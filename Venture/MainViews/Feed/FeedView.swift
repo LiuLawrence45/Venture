@@ -55,7 +55,7 @@ struct FeedView: View {
                               hasScrolled: $hasScrolled
                 )
             )
-            .background(Image("Blob 1").offset(x: 400, y: -300))
+//            .background(Image("Blob 1").offset(x: 400, y: -300))
 
             if show {
                 detail
