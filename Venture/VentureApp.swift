@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Foundation
 
 @main
 struct VentureApp: App {
+//    @StateObject var model = Model()
+//    @State var isAuthenticated = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
         }
     }
 }
