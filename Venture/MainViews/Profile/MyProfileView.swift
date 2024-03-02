@@ -1,49 +1,39 @@
 //
-//  ProfileView.swift
+//  MyProfile.swift
 //  Venture
 //
-//  Created by Lawrence Liu on 1/12/24.
-//
+//  Created by Lawrence Liu on 3/2/24.
 
 import SwiftUI
 
-struct ProfileView: View {
+struct MyProfileView: View {
     
     @State var selectedTab: String = "posts"
     @Namespace var animation
     @Environment(\.colorScheme) var scheme
     @State var hasScrolled = false
     
-    
     @State var topHeaderOffset: CGFloat = 0
-    var profile: ProfileModel //Dynamic Profile
-
+    var profile: ProfileModel
+    
     
     @State var selection = ""
-    
-    
-    // Add a state variable to track liked items for the bucket list
-    // Initialize with false for each item, assuming you have the count of bucketList items
     @State var likedItems: [Bool]
 
-    // Modify your initializer to initialize likedItems based on the bucketList count
     init(profile: ProfileModel) {
         self.profile = profile
         _likedItems = State(initialValue: Array(repeating: false, count: profile.bucketList.count))
     }
-    
-    
-
 
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
             
             ScrollView(.vertical, showsIndicators: false, content: {
-                scrollDetection 
                 
                 ProfileBlurb(profile: profile)
                     .padding(.horizontal, 10)
+                    .padding(.bottom, 10)
                 
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
@@ -53,11 +43,8 @@ struct ProfileView: View {
                     .offset(y: 14)
                     .frame(height: 52 ) // You can adjust this as necessary
                     
-
-                    //PostView
-                    
                 }
-                .frame(maxWidth: .infinity, alignment: .leading) // This ensures there is no extra space on the sides
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 switch selectedTab {
                     case "posts":
@@ -68,11 +55,13 @@ struct ProfileView: View {
                     PostView
                 }
             })
-            .scrollClipDisabled() //iOS 17.0
+            .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
-                Color.clear.frame(height: 0)
+                Color.clear.frame(height: 70)
             }
-            //.background(Image("Blob 1").offset(x: -100, y: -400))
+            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
+
+            .background(Image("Blob 1").offset(x: -100, y: -400))
         }
         
         
@@ -94,6 +83,8 @@ struct ProfileView: View {
             }
         })
     }
+    
+     
     
     var bucketList: some View {
         
@@ -167,103 +158,7 @@ struct ProfileView: View {
 }
 
 
-var PostView: some View {
-    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
-        
-        ImageView(image: "Bingsuu!", width: (UIScreen.main.bounds.width) / 3)
-            .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
-        ImageView(image: "IMG_7533", width: (UIScreen.main.bounds.width) / 3)
-            .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
-        ImageView(image: "DSCN1352", width: (UIScreen.main.bounds.width) / 3)
-            .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
-        
-//Looping through a set. For later logic
-        
-//        ForEach(1...6, id: \.self) { index in // Assuming you want to display images 1 through 9
-//            ImageView(index: index, width: (UIScreen.main.bounds.width) / 3)
-//                .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
-//            
-//        }
-    }
-
-    .overlay(
-        RoundedRectangle(cornerRadius: 30, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-            .stroke(Color.clear, lineWidth: 2)
-    )
-    .clipShape(RoundedRectangle(cornerRadius: 30))
-    .padding(10)
-
-
-//    .padding(20)
-//    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//    .strokeStyle(cornerRadius: 30)
-//    .padding(.horizontal, 20)
-    
-}
-
-struct ImageView: View {
-    
-    //var index: Int
-    var image: String
-    var width: CGFloat
-
-    
-    var body: some View {
-        Image(image)
-        //Image("Background \(index)")
-            .resizable()
-            .scaledToFill() // This will fill the frame while maintaining the aspect ratio
-            .frame(width: width, height: width)
-            .clipped() // This will clip the overflowed part of the image
-    }
-}
-
-
 #Preview {
-    ProfileView(profile: profiles[1])
+    MyProfileView(profile: profiles[1])
 }
 
-
-struct TabBarButton: View {
-    var text: String // New property for text
-    @Binding var selectedTab: String
-    var identifier: String
-    
-    var body: some View {
-        Button(action: {
-            withAnimation(.easeInOut(duration: 0.1)){
-                selectedTab = identifier // Use identifier for selection logic
-            }
-        }, label: {
-            VStack(spacing: 4 ){
-                Text(text) // Use Text instead of Image
-                    .font(.system(size: 14, weight: .bold)) // Customize the font as needed
-                    .foregroundColor(selectedTab == identifier ? .primary : .secondary)
-                
-                // Conditionally show underline only under the selected tab
-                if selectedTab == identifier {
-                    Group {
-                        Rectangle()
-                            .fill(Color.primary)
-                            .frame(height: 2)
-                            .frame(width: 30)
-                    }
-                    .frame(width: (UIScreen.main.bounds.width/2))
-
-                }
-                else {
-                    Group {
-                        Rectangle()
-                            .fill(Color.clear)
-                            .frame(height: 2)
-                            .frame(width: 30)
-                    }
-                    .frame(width: (UIScreen.main.bounds.width/2))
-
-                }
-            }
-        })
-    }
-    
-
-}

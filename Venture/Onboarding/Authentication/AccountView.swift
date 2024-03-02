@@ -20,7 +20,7 @@ struct AccountView: View {
     @State var result: Result<Void, Error>?
     
     var body: some View {
-        NavigationView {
+        Group {
             List {
                 profile
                 
@@ -45,7 +45,8 @@ struct AccountView: View {
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Account")
-            .navigationBarItems(trailing: Button { dismiss() } label: { Text("Done").bold() })
+            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarItems(trailing: Button { dismiss() } label: { Text("Done").bold() })
         }
     }
     

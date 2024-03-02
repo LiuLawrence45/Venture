@@ -43,7 +43,7 @@ struct ContentView: View {
                         EmptyView() // Placeholder until photos are picked and readyForPhotoEditing is true
                     }
                 case .profile:
-                    ProfileView(profile: profile)
+                    MyProfileView(profile: profile)
                     
                 }
             }

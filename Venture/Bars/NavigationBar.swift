@@ -14,6 +14,7 @@ struct NavigationBar: View {
     @State var showSearch = false
     @State var showNotifications = false
     @State var showAccount = false
+    @State var showEditProfile = false
     @AppStorage("showModal") var showModal = false
     @AppStorage("isLogged") var isLogged = false
     @Environment(\.presentationMode) var presentationMode
@@ -32,6 +33,10 @@ struct NavigationBar: View {
             }
             
             NavigationLink(destination: AccountView(), isActive: $showAccount) {
+                EmptyView()
+            }
+            
+            NavigationLink(destination: EditProfileView(profile: profiles[0]), isActive: $showEditProfile) {
                 EmptyView()
             }
 
@@ -75,6 +80,16 @@ struct NavigationBar: View {
                         showAccount = true
                     } label: {
                         Image(systemName: "gear")
+                            .font(.title3.weight(.bold))
+                            .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
+                            .frame(width: 48, height: 48)
+                            .foregroundColor(.primary)
+                    }
+                    
+                    Button {
+                        showEditProfile = true
+                    } label: {
+                        Image(systemName: "pencil")
                             .font(.title3.weight(.bold))
                             .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
                             .frame(width: 48, height: 48)
