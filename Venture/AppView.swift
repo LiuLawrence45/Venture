@@ -22,6 +22,7 @@ struct AppView: View {
             else {
                 ParentView()
                     .environmentObject(model)
+                    .statusBarHidden(true)
             }
         }
         .task {

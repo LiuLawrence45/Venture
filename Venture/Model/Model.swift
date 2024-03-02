@@ -16,7 +16,7 @@ class Model: ObservableObject {
     @Published var showNav: Bool = true
     
     // Modal
-    @Published var selectedModal: Modal = .signUp
+    @Published var selectedModal: Modal = .signIn
     @Published var showModal: Bool = false
     @Published var dismissModal: Bool = false
     

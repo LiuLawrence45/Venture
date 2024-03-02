@@ -11,10 +11,12 @@ struct SignupView: View {
     @EnvironmentObject var model: Model
     @State var email = ""
     @State var password = ""
+    @State var confirmPassword = ""
     @State var circleInitialY = CGFloat.zero
     @State var circleY = CGFloat.zero
     @FocusState var isEmailFocused: Bool
     @FocusState var isPasswordFocused: Bool
+    @FocusState var isConfirmPasswordFocused: Bool
     @State var appear = [false, false, false]
     var dismissModal: () -> Void
     @AppStorage("isLogged") var isLogged = false
@@ -102,12 +104,43 @@ struct SignupView: View {
                     }
                 }
             
+            SecureField("", text: $confirmPassword)
+                .textContentType(.password)
+                .placeholder(when: confirmPassword.isEmpty) {
+                    Text("Confirm Password")
+                        .foregroundColor(.primary)
+                        .blendMode(.overlay)
+                }
+                .customField(icon: "key.fill")
+                .focused($isPasswordFocused)
+                .onChange(of: isPasswordFocused) { isPasswordFocused in
+                    if isPasswordFocused {
+                        withAnimation {
+                            circleY = circleInitialY + 70
+                        }
+                    }
+                }
+            
             Button {
                 dismissModal()
                 signUpButtonTapped()
             } label: {
                 AngularButton(title: "Create Account")
             }
+            
+            if let result  {
+                Section {
+                    switch result {
+                    case .success:
+                        Text("Success")
+                    case .failure(let error):
+                        Text(error.localizedDescription).foregroundStyle(.red)
+                    }
+
+                    
+                }
+            }
+            
             
             Text("By clicking on Sign up, you agree to our **[Terms of service](https://designcode.io)** and **Privacy policy**.")
                 .font(.footnote)
@@ -145,15 +178,23 @@ struct SignupView: View {
             isLoading = true
             defer { isLoading = false }
             
+            guard password == confirmPassword else {
+                result = .failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Passwords do not match."]))
+                return
+            }
+            
             do {
                 try await supabase.auth.signUp(
                     email: email,
                     password: password
                 )
                 result = .success(())
-            }
-            
-            catch {
+                try await supabase.auth.signIn(
+                    email: email,
+                    password: password
+                )
+                result = .success(())
+            } catch {
                 result = .failure(error)
             }
         }
