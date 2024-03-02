@@ -112,12 +112,12 @@ struct FeedView: View {
                 .accessibilityAddTraits(.isButton)
         }
     }
-
+ 
     var detail: some View {
         ForEach(posts) { post in
             if post.id == selectedID {
-                ItineraryView(namespace: namespace, post: post, show: $show)
-                    .zIndex(1)
+//                ItineraryView(namespace: namespace, post: post, show: $show)
+//                    .zIndex(1)
 //                    .transition(.asymmetric(
 //                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
 //                        removal: .opacity.animation(.easeInOut(duration: 0.2).delay(0.1))))

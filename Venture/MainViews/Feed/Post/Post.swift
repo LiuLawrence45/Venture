@@ -64,7 +64,7 @@ struct Post: View {
                         .scaledToFit()
                         .frame(width: 150, height: 150)
                         .scaleEffect(likeAnimation ? 1: 0)
-                        .opacity(likeAnimation ? 1 : 0)
+                        .opacity(likeAnimation ? 0.5 : 0)
                         .animation(.spring())
                         .foregroundColor(isLiked ? .red : .black)
                     }

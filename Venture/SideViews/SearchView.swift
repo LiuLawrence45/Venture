@@ -51,9 +51,9 @@ struct SearchView: View {
         }
         .navigationTitle("Search")
         .navigationBarTitleDisplayMode(.inline)
-        .fullScreenCover(isPresented: $show){
-            ItineraryView(namespace: namespace, post: posts[selectedIndex], show: $show)
-        }
+//        .fullScreenCover(isPresented: $show){
+//            ItineraryView(namespace: namespace, post: posts[selectedIndex], show: $show)
+//        }
         .statusBar(hidden: false)
 //        .statusBar(hidden: true)
 //        .onAppear {

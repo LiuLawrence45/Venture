@@ -13,6 +13,7 @@
 		7B481EDC2B93583000F08899 /* OldPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EDB2B93583000F08899 /* OldPost.swift */; };
 		7B481EDE2B9359D800F08899 /* OldPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EDD2B9359D800F08899 /* OldPostHeader.swift */; };
 		7B481EE02B935A2600F08899 /* OldPostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EDF2B935A2600F08899 /* OldPostFooter.swift */; };
+		7B481EE42B9366CA00F08899 /* OldItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE32B9366CA00F08899 /* OldItineraryView.swift */; };
 		7B4C9DD92B65908E00BAE8F3 /* ImageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */; };
 		7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1402B586EDF00FBBAB9 /* Functions.swift */; };
 		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
@@ -98,6 +99,7 @@
 		7B481EDB2B93583000F08899 /* OldPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPost.swift; sourceTree = "<group>"; };
 		7B481EDD2B9359D800F08899 /* OldPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostHeader.swift; sourceTree = "<group>"; };
 		7B481EDF2B935A2600F08899 /* OldPostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostFooter.swift; sourceTree = "<group>"; };
+		7B481EE32B9366CA00F08899 /* OldItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldItineraryView.swift; sourceTree = "<group>"; };
 		7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetails.swift; sourceTree = "<group>"; };
 		7B4FD1402B586EDF00FBBAB9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
@@ -291,6 +293,14 @@
 			path = OldPost;
 			sourceTree = "<group>";
 		};
+		7B481EE22B9366B300F08899 /* OldItinerary */ = {
+			isa = PBXGroup;
+			children = (
+				7B481EE32B9366CA00F08899 /* OldItineraryView.swift */,
+			);
+			path = OldItinerary;
+			sourceTree = "<group>";
+		};
 		7B4FD13F2B586ECF00FBBAB9 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,9 +422,10 @@
 		7B62759D2B51483600FDA0F0 /* ItineraryViews */ = {
 			isa = PBXGroup;
 			children = (
+				7B481EE22B9366B300F08899 /* OldItinerary */,
 				7B62759B2B513B9F00FDA0F0 /* PostItineraryDescription.swift */,
-				7B6275992B513B9500FDA0F0 /* ItineraryDescription.swift */,
 				7B6275912B5128CC00FDA0F0 /* ItineraryView.swift */,
+				7B6275992B513B9500FDA0F0 /* ItineraryDescription.swift */,
 				7BAA41B02B67739F009D67DC /* Location.swift */,
 				7BEFCF062B6730590052825C /* ItineraryMapView.swift */,
 			);
@@ -664,6 +675,7 @@
 				7B62758E2B51078700FDA0F0 /* Animations.swift in Sources */,
 				7B6275632B50C60B00FDA0F0 /* Styles.swift in Sources */,
 				7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */,
+				7B481EE42B9366CA00F08899 /* OldItineraryView.swift in Sources */,
 				7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */,
 				7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */,
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
