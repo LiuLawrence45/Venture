@@ -9,10 +9,14 @@ import SwiftUI
 
 
 struct EditProfileView: View {
-    var profile: ProfileModel
+
     @State var username = ""
-    @State var fullName = ""
-    @State var website = ""
+    @State var firstName = ""
+    @State var lastName = ""
+    @State var gender = ""
+    @State var school = ""
+    @State var occupation = ""
+    @State var profileDescription = ""
     
     @State var isLoading = false
     
@@ -23,10 +27,18 @@ struct EditProfileView: View {
                     TextField("Username", text: $username)
                         .textContentType(.username)
                         .textInputAutocapitalization(.never)
-                    TextField("Full name", text: $fullName)
+                    TextField("First Name", text: $firstName)
                         .textContentType(.name)
-                    TextField("Website", text: $website)
-                        .textContentType(.URL)
+                    TextField("Last Name", text: $lastName)
+                        .textContentType(.name)
+                    TextField("Gender", text: $gender)
+                        .textContentType(.name)
+                    TextField("School", text: $school)
+                        .textContentType(.name)
+                    TextField("Occupation", text: $occupation)
+                        .textContentType(.name)
+                    TextField("Profile Description", text: $profileDescription)
+                        .textContentType(.username)
                         .textInputAutocapitalization(.never)
                 }
                 
@@ -61,8 +73,12 @@ struct EditProfileView: View {
                 .value
             
             self.username = profile.username ?? ""
-            self.fullName = profile.fullName ?? ""
-            self.website = profile.website ?? ""
+            self.firstName = profile.firstName ?? ""
+            self.lastName = profile.lastName ?? ""
+            self.gender = profile.gender ?? ""
+            self.school = profile.school ?? ""
+            self.occupation = profile.occupation ?? ""
+            self.profileDescription = profile.profileDescription ?? ""
             
         } catch {
             debugPrint(error)
@@ -81,8 +97,12 @@ struct EditProfileView: View {
                     .update(
                         UpdateProfileParams(
                             username: username,
-                            fullName: fullName,
-                            website: website
+                            firstName: firstName,
+                            lastName: lastName,
+                            gender: gender,
+                            school: school,
+                            occupation: occupation,
+                            profileDescription: profileDescription
                         )
                     )
                     .eq("id", value: currentUser.id)
@@ -94,5 +114,5 @@ struct EditProfileView: View {
     }
 }
 #Preview {
-    EditProfileView(profile: profiles[0])
+    EditProfileView()
 }

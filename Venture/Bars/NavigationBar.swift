@@ -36,7 +36,7 @@ struct NavigationBar: View {
                 EmptyView()
             }
             
-            NavigationLink(destination: EditProfileView(profile: profiles[0]), isActive: $showEditProfile) {
+            NavigationLink(destination: EditProfileView(), isActive: $showEditProfile) {
                 EmptyView()
             }
 
