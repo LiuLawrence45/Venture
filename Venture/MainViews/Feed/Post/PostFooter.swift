@@ -13,27 +13,53 @@ struct PostFooter: View {
     @State private var showModal = false
     var body: some View {
         
-        Button {
-            self.showModal = true
-            
-        } label: {
-            Group {
-                Text("View all ") +
-                Text(String(post.numberOfComments)) +
-                Text(" comments...")
+        VStack(alignment: .leading){
+            HStack {
+                Text("Our Very First ASES Trip!")
+                    .bold()
+                    .font(.footnote)
+                Spacer()
+                Image(systemName: "cursorarrow.rays")
+//                    .font(.system(size: 10))
+                Text("4.82")
+                    .font(.caption)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 2)
-            .opacity(0.5)
-            .font(.footnote)
-            .accentColor(.primary)
+            .padding(.vertical, 1)
+            HStack(spacing: 0){
+                Text("Stanford Area, ")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                Text("4 days")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                Spacer()
+                Text("$280 total")
+                    .font(.caption)
+            }
         }
-        .sheet(isPresented: $showModal) {
-            ModalView() 
-                .presentationDetents([.medium, .large])
-        }
-
+        .padding(.horizontal, 8)
+        
+//        Button {
+//            self.showModal = true
+//            
+//        } label: {
+//            Group {
+//                Text("View all ") +
+//                Text(String(post.numberOfComments)) +
+//                Text(" comments...")
+//            }
+//            .frame(maxWidth: .infinity, alignment: .leading)
+//            .padding(.horizontal, 20)
+//            .padding(.vertical, 2)
+//            .opacity(0.5)
+//            .font(.footnote)
+//            .accentColor(.primary)
+//        }
+//        .sheet(isPresented: $showModal) {
+//            ModalView() 
+//                .presentationDetents([.medium, .large])
+//        }
+//
     }
 }
 

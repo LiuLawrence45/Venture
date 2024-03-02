@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct PostHeader: View {
+struct OldPostHeader: View {
     var post: PostModel
     var profile: ProfileModel
     var body: some View {
         //Profile intro
         HStack(alignment: .center){
             Button {
+                //NavigationLink(<#T##LocalizedStringKey#>, value: <#T##P?#>)
             } label: {
                 NavigationLink(destination: ProfileView(profile: profile)){
                     Image(profile.profilePicture)
@@ -72,10 +73,10 @@ struct PostHeader: View {
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 15)
     }
 }
 
 #Preview {
-    PostHeader(post: posts[0], profile: profiles[0])
+    OldPostHeader(post: posts[0], profile: profiles[0])
 }

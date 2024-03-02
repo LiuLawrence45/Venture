@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FeedView: View {
+struct OldFeedView: View {
     @State var hasScrolled = false
     @Namespace var namespace
     @State var show = false
@@ -51,7 +51,7 @@ struct FeedView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay(
-                NavigationBar(title: "Ventures", context: "default", 
+                NavigationBar(title: "Ventures", context: "default",
                               hasScrolled: $hasScrolled
                 )
             )
@@ -107,7 +107,7 @@ struct FeedView: View {
                         showStatusBar = false
                         selectedID = post.id
                     }
-                })) 
+                }))
                 .accessibilityElement(children: .combine)
                 .accessibilityAddTraits(.isButton)
         }
@@ -127,7 +127,7 @@ struct FeedView: View {
 }
 
 #Preview {
-    FeedView()
+    OldFeedView()
 }
 
 
