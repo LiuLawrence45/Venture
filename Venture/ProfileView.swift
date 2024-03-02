@@ -75,7 +75,7 @@ struct ProfileView: View {
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
-            .overlay(NavigationBar(title: "Profile", hasScrolled: .constant(true)))
+            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
 
             //.background(Image("Blob 1").offset(x: -100, y: -400))
         }

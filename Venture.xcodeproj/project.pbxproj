@@ -46,6 +46,7 @@
 		7B6275A92B51547300FDA0F0 /* OldNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275A82B51547300FDA0F0 /* OldNavigationBar.swift */; };
 		7B6275AB2B51682400FDA0F0 /* RecommendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275AA2B51682400FDA0F0 /* RecommendationModel.swift */; };
 		7B6275AD2B51685D00FDA0F0 /* DemoRecommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275AC2B51685D00FDA0F0 /* DemoRecommendations.swift */; };
+		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
 		7B89DFE42B58608A00DA1EC6 /* DemoUserPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFE32B58608A00DA1EC6 /* DemoUserPosts.swift */; };
@@ -131,6 +132,7 @@
 		7B6275A82B51547300FDA0F0 /* OldNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldNavigationBar.swift; sourceTree = "<group>"; };
 		7B6275AA2B51682400FDA0F0 /* RecommendationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationModel.swift; sourceTree = "<group>"; };
 		7B6275AC2B51685D00FDA0F0 /* DemoRecommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRecommendations.swift; sourceTree = "<group>"; };
+		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		7B89DFE32B58608A00DA1EC6 /* DemoUserPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUserPosts.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				7B96D5FB2B92C230001F060F /* SigninView.swift */,
 				7B62757D2B50CF8400FDA0F0 /* AccountView.swift */,
 				7B96D6002B92C6FC001F060F /* FakeProfileView.swift */,
+				7B84D4282B93216F007141B9 /* ParentView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				7B6275612B50C5DE00FDA0F0 /* ProfileBlurb.swift in Sources */,
 				7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */,
 				7B6275A92B51547300FDA0F0 /* OldNavigationBar.swift in Sources */,
+				7B84D4292B93216F007141B9 /* ParentView.swift in Sources */,
 				7B96D6032B92C7B3001F060F /* FakeModels.swift in Sources */,
 				7B62757C2B50CF4700FDA0F0 /* AvatarView.swift in Sources */,
 				7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */,

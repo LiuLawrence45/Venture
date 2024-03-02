@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NavigationBar: View {
     var title = ""
+    var context: String
     @Binding var hasScrolled: Bool
     @State var showSearch = false
     @State var showNotifications = false
@@ -21,11 +22,16 @@ struct NavigationBar: View {
     var body: some View {
         ZStack {
             
+            //Navigation Links for NavBar
             NavigationLink(destination: SearchView(), isActive: $showSearch) {
                 EmptyView()
             }
             
             NavigationLink(destination: NotificationsView(hasScrolled: .constant(true)), isActive: $showNotifications) {
+                EmptyView()
+            }
+            
+            NavigationLink(destination: AccountView(), isActive: $showAccount) {
                 EmptyView()
             }
 
@@ -42,35 +48,39 @@ struct NavigationBar: View {
                 .offset(y: hasScrolled ? -4 : 0)
             
             HStack(spacing: 16) {
-                Button {
-                    showSearch = true
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        //.font(.title3.weight(.bold))
-                        .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
-                        .frame(width: 48, height: 48)
-                        .foregroundColor(.primary)
+                if context == "default" {
+                    Button {
+                        showSearch = true
+                    } label: {
+                        Image(systemName: "magnifyingglass")
+                            .font(.title3.weight(.bold))
+                            .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
+                            .frame(width: 48, height: 48)
+                            .foregroundColor(.primary)
+                    }
+                    Button {
+                        showNotifications = true
+                    } label: {
+                        Image(systemName: "bell")
+                            .font(.title3.weight(.bold))
+                            .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
+                            .frame(width: 48, height: 48)
+                            .foregroundColor(.primary)
+                    }
+                    
                 }
-
-//                .sheet(isPresented: $showSearch) {
-//                    SearchView()
-//                }
-
-                Button {
-                    showNotifications = true
-                } label: {
-                    Image(systemName: "bell")
-                        //.font(.title3.weight(.bold))
-                        .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
-                        .frame(width: 48, height: 48)
-                        .foregroundColor(.primary)
-                }
-//                .sheet(isPresented: $showNotifications) {
-//                    NotificationsView(hasScrolled: .constant(false))
-//                       
-//                }
                 
-
+                else if context == "profile" {
+                    Button {
+                        showAccount = true
+                    } label: {
+                        Image(systemName: "gear")
+                            .font(.title3.weight(.bold))
+                            .animatableFont(size: hasScrolled ? 18 : 20, weight: .bold)
+                            .frame(width: 48, height: 48)
+                            .foregroundColor(.primary)
+                    }
+                }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
@@ -85,7 +95,7 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(title: "Featured", 
+        NavigationBar(title: "Featured", context: "profile",
                       hasScrolled: .constant(false)
         )
     }

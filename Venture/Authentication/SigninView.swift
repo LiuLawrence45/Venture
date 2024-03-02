@@ -16,7 +16,6 @@ struct SigninView: View {
     @FocusState var isEmailFocused: Bool
     @FocusState var isPasswordFocused: Bool
     @State var appear = [false, false, false]
-//    @AppStorage("isLogged") var isLogged = false
     
     
     @State var result: Result<Void, Error>?
@@ -96,7 +95,6 @@ struct SigninView: View {
             Button {
                 model.dismissModal.toggle()
                 signInButtonTapped()
-//                isLogged = true
             } label: {
                 AngularButton(title: "Sign in")
             }
@@ -126,15 +124,6 @@ struct SigninView: View {
                     }
                 }
         }
-//        .onOpenURL(perform: { url in
-//          Task {
-//            do {
-//              try await supabase.auth.session(from: url)
-//            } catch {
-//              self.result = .failure(error)
-//            }
-//          }
-//        })
         
     }
     
@@ -147,7 +136,6 @@ struct SigninView: View {
                 try await supabase.auth.signIn(
                     email: email,
                     password: password
-                    //redirectTo: URL(string: "io.supabase.user-management://login-callback")
                 )
                 result = .success(())
             }

@@ -13,6 +13,12 @@ struct AccountView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("isLogged") var isLogged = false
     @AppStorage("isLiteMode") var isLiteMode = true
+    
+    
+    //Handling the loading for sign out, and possible errors
+    @State var isLoading = false
+    @State var result: Result<Void, Error>?
+    
     var body: some View {
         NavigationView {
             List {
@@ -30,7 +36,7 @@ struct AccountView: View {
                 links
                 
                 Button {
-                    isLogged = false
+                    signOutButtonTapped()
                     dismiss()
                 } label: {
                     Text("Sign out")
@@ -117,6 +123,26 @@ struct AccountView: View {
         }
         .tint(isPinned ? .gray : .yellow)
     }
+    
+    
+    
+    //Function for handling sign-outs
+    func signOutButtonTapped(){
+        Task {
+            isLoading = true
+            defer { isLoading = false }
+            
+            do {
+                try await supabase.auth.signOut()
+            }
+            
+            catch {
+                result = .failure(error)
+            }
+        }
+    }
+    
+    
 }
 
 struct AccountView_Previews: PreviewProvider {

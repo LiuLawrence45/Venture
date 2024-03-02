@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignupView: View {
     @EnvironmentObject var model: Model
-    @State var text = ""
+    @State var email = ""
     @State var password = ""
     @State var circleInitialY = CGFloat.zero
     @State var circleY = CGFloat.zero
@@ -18,6 +18,9 @@ struct SignupView: View {
     @State var appear = [false, false, false]
     var dismissModal: () -> Void
     @AppStorage("isLogged") var isLogged = false
+    
+    @State var result: Result<Void, Error>?
+    @State var isLoading = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -52,12 +55,12 @@ struct SignupView: View {
     
     var form: some View {
         Group {
-            TextField("", text: $text)
+            TextField("", text: $email)
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
-                .placeholder(when: text.isEmpty) {
+                .placeholder(when: email.isEmpty) {
                     Text("Email address")
                         .foregroundColor(.primary)
                         .blendMode(.overlay)
@@ -101,7 +104,7 @@ struct SignupView: View {
             
             Button {
                 dismissModal()
-                isLogged = true
+                signUpButtonTapped()
             } label: {
                 AngularButton(title: "Create Account")
             }
@@ -134,6 +137,25 @@ struct SignupView: View {
         }
         withAnimation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8).delay(0.6)) {
             appear[2] = true
+        }
+    }
+    
+    func signUpButtonTapped(){
+        Task {
+            isLoading = true
+            defer { isLoading = false }
+            
+            do {
+                try await supabase.auth.signUp(
+                    email: email,
+                    password: password
+                )
+                result = .success(())
+            }
+            
+            catch {
+                result = .failure(error)
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ class Model: ObservableObject {
     
     // Detail View
     @Published var showDetail: Bool = false
-    @Published var selectedCourse: Int = 0
+    @Published var selectedPost: Int = 0
 }
 
 enum Modal: String {

@@ -66,7 +66,7 @@ struct OldNavigationBar: View {
 
 struct OldNavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(title: "Featured", 
+        NavigationBar(title: "Featured", context: "default", 
                       hasScrolled: .constant(false))
     }
 }

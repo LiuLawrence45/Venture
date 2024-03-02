@@ -51,10 +51,7 @@ struct FeedView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay(
-//                NavigationBar(title: "Ventures",
-//                              hasScrolled: $hasScrolled
-//                )
-                NavigationBar(title: "Ventures",
+                NavigationBar(title: "Ventures", context: "default", 
                               hasScrolled: $hasScrolled
                 )
             )
@@ -65,7 +62,6 @@ struct FeedView: View {
         }
         .statusBar(hidden: !showStatusBar)
         
-        //iOS 17
         .onChange(of: show) {
             withAnimation(.closeCard) {
                 if show == true {

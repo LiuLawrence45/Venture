@@ -204,7 +204,7 @@ struct PhotoPicker: View {
 
         }
         
-        .overlay(NavigationBar(title: "Your Venture", hasScrolled: .constant(true)))
+        .overlay(NavigationBar(title: "Your Venture", context: "default", hasScrolled: .constant(true)))
         .task {
             await loadImages() // Run asynchronously when the view appears
         }
