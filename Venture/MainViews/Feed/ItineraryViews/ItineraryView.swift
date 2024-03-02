@@ -10,9 +10,44 @@
     struct ItineraryView: View {
         
         var post: PostModel = posts[0] // for preview
+        @State var selectedTab: String = "main"
         
         var body: some View {
-            Text("Hello world")
+            VStack {
+                TabView {
+                    ForEach(post.media, id: \.self) { mediaItem in
+
+                        ZStack {
+                            Image(mediaItem)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.width)
+                                .clipped()
+                        }
+
+
+
+                    }
+
+                }.tabViewStyle(PageTabViewStyle())
+                .padding(.horizontal, 8)
+                .frame(height: 480)
+                .padding(.bottom, 8)
+                ItineraryFooter(post: posts[0])
+                    .padding(.bottom, 32)   
+                HStack(spacing: 0) {
+                    ItineraryTabBarButton(text: "Summary", selectedTab: $selectedTab, identifier: "main")
+                    ItineraryTabBarButton(text: "Map", selectedTab: $selectedTab, identifier: "map")
+                    ItineraryTabBarButton(text: "Comments", selectedTab: $selectedTab, identifier: "comments")
+                }
+                
+//                Divider()
+//                    .padding(.vertical, 8)
+                Spacer()
+            }
+
+
+            
         }
     }
 
@@ -50,9 +85,9 @@ struct ItineraryTabBarButton: View {
                         Rectangle()
                             .fill(Color.primary)
                             .frame(height: 2)
-                            .frame(width: 30)
+                            .frame(width: UIScreen.main.bounds.width/3)
                     }
-                    .frame(width: (UIScreen.main.bounds.width/2))
+                    .frame(width: (UIScreen.main.bounds.width/3))
 
                 }
                 else {
@@ -60,9 +95,9 @@ struct ItineraryTabBarButton: View {
                         Rectangle()
                             .fill(Color.clear)
                             .frame(height: 2)
-                            .frame(width: 30)
+                            .frame(width: UIScreen.main.bounds.width/3)
                     }
-                    .frame(width: (UIScreen.main.bounds.width/2))
+                    .frame(width: (UIScreen.main.bounds.width/3))
 
                 }
             }
