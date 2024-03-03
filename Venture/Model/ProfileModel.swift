@@ -31,51 +31,51 @@ struct ProfileModel: Identifiable {
     
     
 }
-
-struct Profile: Decodable {
-    
-    //Controllable
-    //let profilePicture: String?
-    let username: String?
-    let firstName: String?
-    let lastName: String?
-    let gender: String?
-    let school: String?
-    let occupation: String?
-    let profileDescription: String?
-
-
-    enum CodingKeys: String, CodingKey {
-        case username
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case gender
-        case school
-        case occupation
-        case profileDescription = "profile_description"
-    }
-}
-
-struct UpdateProfileParams: Encodable {
-    
-    //Controllable
-    //let profilePicture: String?
-    let username: String?
-    let firstName: String?
-    let lastName: String?
-    let gender: String?
-    let school: String?
-    let occupation: String?
-    let profileDescription: String?
-
-
-    enum CodingKeys: String, CodingKey {
-        case username
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case gender
-        case school
-        case occupation
-        case profileDescription = "profile_description"
-    }
-}
+//
+//struct Profile: Decodable {
+//    
+//    //Controllable
+//    //let profilePicture: String?
+//    let username: String?
+//    let firstName: String?
+//    let lastName: String?
+//    let gender: String?
+//    let school: String?
+//    let occupation: String?
+//    let profileDescription: String?
+//
+//
+//    enum CodingKeys: String, CodingKey {
+//        case username
+//        case firstName = "first_name"
+//        case lastName = "last_name"
+//        case gender
+//        case school
+//        case occupation
+//        case profileDescription = "profile_description"
+//    }
+//}
+//
+//struct UpdateProfileParams: Encodable {
+//    
+//    //Controllable
+//    //let profilePicture: String?
+//    let username: String?
+//    let firstName: String?
+//    let lastName: String?
+//    let gender: String?
+//    let school: String?
+//    let occupation: String?
+//    let profileDescription: String?
+//
+//
+//    enum CodingKeys: String, CodingKey {
+//        case username
+//        case firstName = "first_name"
+//        case lastName = "last_name"
+//        case gender
+//        case school
+//        case occupation
+//        case profileDescription = "profile_description"
+//    }
+//}

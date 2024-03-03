@@ -8,6 +8,8 @@
 import SwiftUI
 import PhotosUI
 import Firebase
+import FirebaseFirestore
+import FirebaseStorage
 
 struct SignupView: View {
     @EnvironmentObject var model: Model
@@ -76,6 +78,7 @@ struct SignupView: View {
             }
             
         }
+        .alert(errorMessage, isPresented: $showError, actions: {})
     }
     
     var form: some View {
@@ -105,18 +108,13 @@ struct SignupView: View {
                 Spacer()
                 
             }
-
             
-            TextField("", text: $username)
+            
+            TextField("Username", text: $username)
                 .textContentType(.username)
                 .keyboardType(.default)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
-                .placeholder(when: username.isEmpty) {
-                    Text("Username")
-                        .foregroundColor(.primary)
-                        .blendMode(.overlay)
-                }
                 .customField(icon: "person.fill")
                 .overlay(
                     GeometryReader { proxy in
@@ -189,7 +187,7 @@ struct SignupView: View {
                     case .failure(let error):
                         Text(error.localizedDescription).foregroundStyle(.red)
                     }
-
+                    
                     
                 }
             }
@@ -226,17 +224,67 @@ struct SignupView: View {
         }
     }
     
-    func signupUser(){
+    func signupUser() {
+        Task{
+            do {
+                
+                //Creating FireBase account
+                try await Auth.auth().createUser(withEmail: email, password: password)
+                
+                //Upload picture to Firebase
+                guard let userUID = Auth.auth().currentUser?.uid else{print("Failed to get user UID")
+                    return}
+                guard let imageData = userProfilePicData else {
+                    return}
+                print("User UID: \(userUID)")
+
+                let storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
+                
+                let _ = try await storageRef.putDataAsync(imageData)
+                
+                //Download Photo URL
+                let downloadURL = try await storageRef.downloadURL()
+                print("Download URL: \(downloadURL)")
+                
+                //Create a User Firestore Object
+                let user = User(username: username, userBio: "", userBioLink: "", school: "", userUID: userUID, userEmail: email)
+                do {
+                    //Saving User Doc into Firestore
+                    let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user) { error in
+                        
+                        if error == nil{
+                            print("Saved successfully!")
+                        }
+                        else{
+                            print(error)
+                        }
+                    }
+                } catch let error {
+                    print("Error saving user to Firestore: \(error)")
+                }
+
+            }
+            catch {
+                await setError(error)
+            }
+        }
         
+        func setError(_ error: Error) async {
+            await MainActor.run(body:  {
+                errorMessage = error.localizedDescription
+                showError.toggle()
+            })
+        }
+    }
+    
+    struct SignupView_Previews: PreviewProvider {
+        static var previews: some View {
+            SignupView(dismissModal: {})
+                .environmentObject(Model())
+        }
     }
 }
 
-struct SignupView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignupView(dismissModal: {})
-            .environmentObject(Model())
-    }
-}
 
 extension View {
     func placeholder<Content: View>(
