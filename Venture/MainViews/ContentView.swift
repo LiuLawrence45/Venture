@@ -33,35 +33,47 @@ struct ContentView: View {
         ZStack(alignment: .bottom) {
              
             NavigationView {
-                switch selectedTab {
-                case .feed:
-                    FeedView()
-                case .post:
-                    if readyForPhotoEditing {
-                        PhotoPicker(selectedItems: $selectedItems) // Assuming PhotoPicker is a view you've defined for editing
-                    } else {
-                        // Perhaps another view or action to select photos
-                        EmptyView() // Placeholder until photos are picked and readyForPhotoEditing is true
+                
+                VStack(spacing: 0)  {
+                    ZStack {
+                        switch selectedTab {
+                        case .feed:
+                                FeedView()
+                                TabBar()
+
+                        case .post:
+                            if readyForPhotoEditing {
+                                PhotoPicker(selectedItems: $selectedItems) // Assuming PhotoPicker is a view you've defined for editing
+                            } else {
+                                // Perhaps another view or action to select photos
+                                EmptyView() // Placeholder until photos are picked and readyForPhotoEditing is true
+                            }
+                        case .profile:
+                            MyProfileView(profile: profile)
+                            
+                        }
                     }
-                case .profile:
-                    MyProfileView(profile: profile)
+                    .onChange(of: selectedTab) { newTab in
+                        if newTab == .post {
+                            showingPhotoPicker = true
+                        }
+                    }
+                    .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedItems, matching: .images, photoLibrary: .shared())
+                    .onChange(of: selectedItems) { _ in
+                        if !selectedItems.isEmpty {
+                            readyForPhotoEditing = true
+                        }
+                    }
                     
+                    if selectedTab != .feed {
+                        TabBar()
+                    }
+                    }
                 }
-            }
-            .onChange(of: selectedTab) { newTab in
-                if newTab == .post {
-                    showingPhotoPicker = true
-                }
-            }
-            .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedItems, matching: .images, photoLibrary: .shared())
-            .onChange(of: selectedItems) { _ in
-                if !selectedItems.isEmpty {
-                    readyForPhotoEditing = true
-                }
-            }
+
 
             
-            TabBar()
+
 //                .offset(y: model.showTab ? 0 : 0)
 //                .animation(.easeInOut(duration: 0.3), value: showModal)
             

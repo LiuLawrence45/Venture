@@ -11,6 +11,8 @@ struct FeedView: View {
     
     var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
     
+    @State private var tabBar: UITabBar! = nil
+    
     @State var show = false
     @State var showPost = false
     @State var selectedPost: PostModel = posts[0]
