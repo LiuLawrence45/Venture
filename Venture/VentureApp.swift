@@ -7,11 +7,14 @@
 
 import SwiftUI
 import Foundation
+import Firebase
 
 @main
 struct VentureApp: App {
-//    @StateObject var model = Model()
-//    @State var isAuthenticated = false
+    
+    init(){
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {

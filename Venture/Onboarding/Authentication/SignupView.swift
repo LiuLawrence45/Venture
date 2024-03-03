@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import PhotosUI
+import Firebase
 
 struct SignupView: View {
     @EnvironmentObject var model: Model
     @State var email = ""
     @State var username = ""
     @State var password = ""
+    @State var userProfilePicData: Data?
     @State var circleInitialY = CGFloat.zero
     @State var circleY = CGFloat.zero
     @FocusState var isUsernameFocused: Bool
@@ -19,10 +22,13 @@ struct SignupView: View {
     @FocusState var isEmailFocused: Bool
     @State var appear = [false, false, false]
     var dismissModal: () -> Void
-    @AppStorage("isLogged") var isLogged = false
+    //@AppStorage("isLogged") var isLogged = false
     
     @State var result: Result<Void, Error>?
-    @State var isLoading = false
+    @State var showImagePicker: Bool = false
+    @State var photoItem: PhotosPickerItem?
+    @State var showError: Bool = false
+    @State var errorMessage: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -52,10 +58,55 @@ struct SignupView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         )
         .onAppear { animate() }
+        .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
+        .onChange(of: photoItem) { newValue in
+            if let newValue {
+                Task {
+                    do {
+                        guard let imageData = try await newValue.loadTransferable(type: Data.self) else {
+                            return
+                        }
+                        
+                        await MainActor.run(body: {
+                            userProfilePicData = imageData
+                        })
+                    }
+                    catch{}
+                }
+            }
+            
+        }
     }
     
     var form: some View {
         Group {
+            
+            // User profile picture chooser
+            HStack {
+                Spacer()
+                ZStack {
+                    if let userProfilePicData, let image = UIImage(data: userProfilePicData){
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    else {
+                        Image("Avatar Default")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                }
+                .frame(width: 85, height: 85)
+                .clipShape(Circle())
+                .contentShape(Circle())
+                .onTapGesture {
+                    showImagePicker.toggle()
+                }
+                Spacer()
+                
+            }
+
+            
             TextField("", text: $username)
                 .textContentType(.username)
                 .keyboardType(.default)
@@ -125,7 +176,7 @@ struct SignupView: View {
             
             Button {
                 dismissModal()
-                signUpButtonTapped()
+                signupUser()
             } label: {
                 AngularButton(title: "Create Account")
             }
@@ -175,26 +226,8 @@ struct SignupView: View {
         }
     }
     
-    func signUpButtonTapped(){
-        Task {
-            isLoading = true
-            defer { isLoading = false }
-            
-            do {
-                try await supabase.auth.signUp(
-                    email: email,
-                    password: password
-                )
-                result = .success(())
-                try await supabase.auth.signIn(
-                    email: email,
-                    password: password
-                )
-                result = .success(())
-            } catch {
-                result = .failure(error)
-            }
-        }
+    func signupUser(){
+        
     }
 }
 

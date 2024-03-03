@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SigninView: View {
     @EnvironmentObject var model: Model
@@ -16,10 +17,8 @@ struct SigninView: View {
     @FocusState var isEmailFocused: Bool
     @FocusState var isPasswordFocused: Bool
     @State var appear = [false, false, false]
-    
-    
-    @State var result: Result<Void, Error>?
-    @State var isLoading = false
+    @State var showError: Bool = false
+    @State var errorMessage: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -50,6 +49,9 @@ struct SigninView: View {
         )
         .modifier(OutlineModifier(cornerRadius: 30))
         .onAppear { animate() }
+        
+        //Display alert for errors, etc...
+        .alert(errorMessage, isPresented: $showError, actions: {})
     }
     
     var form: some View {
@@ -92,23 +94,10 @@ struct SigninView: View {
                 })
             
             Button {
+                loginUser()
                 model.dismissModal.toggle()
-                signInButtonTapped()
             } label: {
                 AngularButton(title: "Sign in")
-            }
-            
-            if let result  {
-                Section {
-                    switch result {
-                    case .success:
-                        Text("Success")
-                    case .failure(let error):
-                        Text(error.localizedDescription).foregroundStyle(.red)
-                    }
-
-                    
-                }
             }
             
             Divider()
@@ -130,7 +119,7 @@ struct SigninView: View {
                     .foregroundColor(.primary.opacity(0.7))
                     .accentColor(.primary.opacity(0.7))
                 Button {
-                    
+                    resetPassword()
                 } label: {
                     
                     Text("**Reset Password**")
@@ -141,29 +130,11 @@ struct SigninView: View {
                 
                 
             }
+            
 
 
         }
         
-    }
-    
-    func signInButtonTapped(){
-        Task {
-            isLoading = true
-            defer { isLoading = false }
-            
-            do {
-                try await supabase.auth.signIn(
-                    email: email,
-                    password: password
-                )
-                result = .success(())
-            }
-            
-            catch {
-                result = .failure(error)
-            }
-        }
     }
     
     func animate() {
@@ -175,6 +146,39 @@ struct SigninView: View {
         }
         withAnimation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8).delay(0.6)) {
             appear[2] = true
+        }
+    }
+    
+    func loginUser() {
+        Task{
+            do {
+                try await Auth.auth().signIn(withEmail: email, password: password)
+                print("User found")
+            }
+            
+            catch {
+                await setError(error)
+            }
+        }
+    }
+    
+    func setError(_ error: Error) async {
+        await MainActor.run(body:  {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
+    }
+    
+    func resetPassword(){
+        Task{
+            do {
+                try await Auth.auth().sendPasswordReset(withEmail: email)
+                print("Link sent")
+            }
+            
+            catch {
+                await setError(error)
+            }
         }
     }
 }
