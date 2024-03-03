@@ -62,13 +62,13 @@ struct ContentView: View {
 
             
             TabBar()
-//                .offset(y: model.showTab ? 200 : 0)
+//                .offset(y: model.showTab ? 0 : 0)
 //                .animation(.easeInOut(duration: 0.3), value: showModal)
             
 
         }
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            Color.clear.frame(height: 78)
+        .safeAreaInset(edge: .bottom, spacing: 3) {
+            Color.clear.frame(height: 72)
         }
         //.dynamicTypeSize(.large ... .xxLarge)
         .dynamicTypeSize(.large ... .large)

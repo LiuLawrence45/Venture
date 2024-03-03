@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBar: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
-    @State var color: Color = .teal
+    @State var color: Color = .white.opacity(0.6)
     @State var tabItemWidth: CGFloat = 0
     @EnvironmentObject var model: Model
     
@@ -22,8 +22,8 @@ struct TabBar: View {
             }
             .padding(.horizontal, 8)
             .padding(.top, 14)
-            .frame(height: hasHomeIndicator ? 88 : 62, alignment: .top)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 34 : 0, style: .continuous))
+            .frame(height: hasHomeIndicator ? 76 : 62, alignment: .top)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
             .background(
                 background
             )
@@ -33,7 +33,7 @@ struct TabBar: View {
             .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
-            .offset(y: model.showTab ? 200 : 0)
+            .offset(y: model.showTab ? 0 : 0)
             .accessibility(hidden: !model.showTab)
         }
     }
@@ -43,7 +43,7 @@ struct TabBar: View {
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                     selectedTab = item.tab
-                    color = item.color
+                    color = item.color.opacity(0.6)
                 }
             } label: {
                 VStack(spacing: 0) {

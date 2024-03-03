@@ -23,7 +23,7 @@ struct FeedView: View {
         ZStack {
             
             //Either we want VSCO vibe or this. Change background color.
-            Color("Background").ignoresSafeArea()
+//            Color("Background").ignoresSafeArea()
             
 //            if model.showDetail {
 //                detail

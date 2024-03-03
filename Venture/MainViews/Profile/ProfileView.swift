@@ -11,7 +11,7 @@ struct ProfileView: View {
     
     @State var selectedTab: String = "posts"
     @Namespace var animation
-    @Environment(\.colorScheme) var scheme
+//    @Environment(\.colorScheme) var scheme
     @State var hasScrolled = false
     
     
@@ -37,7 +37,7 @@ struct ProfileView: View {
 
     var body: some View {
         ZStack {
-            Color("Background").ignoresSafeArea()
+//            Color("Background").ignoresSafeArea()
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 scrollDetection 

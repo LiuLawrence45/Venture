@@ -27,7 +27,7 @@ struct MyProfileView: View {
 
     var body: some View {
         ZStack {
-            Color("Background").ignoresSafeArea()
+            //Color("Background").ignoresSafeArea()
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 
@@ -61,7 +61,7 @@ struct MyProfileView: View {
             }
             .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
 
-            .background(Image("Blob 1").offset(x: -100, y: -400))
+//            .background(Image("Blob 1").offset(x: -100, y: -400))
         }
         
         
