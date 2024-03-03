@@ -71,19 +71,12 @@ struct ContentView: View {
                     }
                 }
 
-
-            
-
-//                .offset(y: model.showTab ? 0 : 0)
-//                .animation(.easeInOut(duration: 0.3), value: showModal)
-            
-
         }
         .safeAreaInset(edge: .bottom, spacing: 3) {
             Color.clear.frame(height: 72)
         }
-        //.dynamicTypeSize(.large ... .xxLarge)
-        .dynamicTypeSize(.large ... .large)
+        .dynamicTypeSize(.large ... .xxLarge)
+//        .dynamicTypeSize(.large ... .large)
         
     }
     

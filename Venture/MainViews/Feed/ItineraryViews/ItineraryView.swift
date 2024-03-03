@@ -12,6 +12,7 @@ import SwiftUI
 //Typical spacing in this is multiples of 8: Most is 8 spacing, but between Footer and below is 32.
 
 struct ItineraryView: View {
+    @Environment(\.dismiss) var dismiss
     
     var post: PostModel = posts[0] // for preview
     @State var selectedTab: String = "main"
@@ -70,23 +71,32 @@ struct ItineraryView: View {
                     }
             }
         }
-        .edgesIgnoringSafeArea(.bottom) // Ensure the floating bar can extend to the bottom edge of the screen 
-//        .onAppear {
-//            withAnimation(.easeOut) {
-//                print("Appear")
-//                model.showTab = false
-//            }
-//        }
-//        .onDisappear {
-//            withAnimation(.easeIn){
-//                print("Disappear")
-//                model.showTab = true
-//            }
-//        }
+        .edgesIgnoringSafeArea(.bottom) // Ensure the floating bar can extend to the bottom edge of the screen
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Label("Back", systemImage: "chevron.backward")
+                }
 
-        
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                }) {
+                    Label("Settings", systemImage: "ellipsis")
+                }
+
+            }
+
+
+        }
+        .tint(.primary)
         
     }
+
     
 }
 
