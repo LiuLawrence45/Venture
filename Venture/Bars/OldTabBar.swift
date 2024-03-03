@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabBar: View {
+struct OldTabBar: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
     @State var color: Color = .white.opacity(0.6)
     @State var tabItemWidth: CGFloat = 0
@@ -22,8 +22,14 @@ struct TabBar: View {
             }
             .padding(.horizontal, 8)
             .padding(.top, 14)
-            .frame(height: hasHomeIndicator ? 72 : 86, alignment: .top)
-            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
+            .frame(height: hasHomeIndicator ? 76 : 62, alignment: .top)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
+            .background(
+                background
+            )
+            .overlay(
+                overlay
+            )
             .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
@@ -52,7 +58,7 @@ struct TabBar: View {
                 .frame(maxWidth: .infinity)
             }
             .foregroundStyle(selectedTab == item.tab ? .primary : .secondary)
-            .blendMode(selectedTab == item.tab ? .normal : .normal)
+            .blendMode(selectedTab == item.tab ? .overlay : .normal)
             .overlay(
                 GeometryReader { proxy in
                     Color.clear.preference(key: TabPreferenceKey.self, value: proxy.size.width)
@@ -91,9 +97,9 @@ struct TabBar: View {
     
 }
 
-struct TabBar_Previews: PreviewProvider {
+struct OldTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        OldTabBar()
             .environmentObject(Model())
             .previewInterfaceOrientation(.portrait)
     }

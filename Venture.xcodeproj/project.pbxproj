@@ -16,6 +16,7 @@
 		7B481EE42B9366CA00F08899 /* OldItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE32B9366CA00F08899 /* OldItineraryView.swift */; };
 		7B481EE62B936A5200F08899 /* ItineraryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE52B936A5200F08899 /* ItineraryFooter.swift */; };
 		7B481EE82B93AD4200F08899 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE72B93AD4200F08899 /* CommentsView.swift */; };
+		7B481EEA2B94061B00F08899 /* OldTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE92B94061B00F08899 /* OldTabBar.swift */; };
 		7B4C9DD92B65908E00BAE8F3 /* ImageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */; };
 		7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4FD1402B586EDF00FBBAB9 /* Functions.swift */; };
 		7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5901BC2B55583E00FF4213 /* PostHeader.swift */; };
@@ -104,6 +105,7 @@
 		7B481EE32B9366CA00F08899 /* OldItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldItineraryView.swift; sourceTree = "<group>"; };
 		7B481EE52B936A5200F08899 /* ItineraryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryFooter.swift; sourceTree = "<group>"; };
 		7B481EE72B93AD4200F08899 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		7B481EE92B94061B00F08899 /* OldTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldTabBar.swift; sourceTree = "<group>"; };
 		7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetails.swift; sourceTree = "<group>"; };
 		7B4FD1402B586EDF00FBBAB9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				7BDA19372B5175C20020FE88 /* TabBar.swift */,
+				7B481EE92B94061B00F08899 /* OldTabBar.swift */,
 				7B6275772B50CE7F00FDA0F0 /* NavigationBar.swift */,
 			);
 			path = Bars;
@@ -688,6 +691,7 @@
 				7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */,
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
 				7B6275A32B514E2E00FDA0F0 /* NotificationModel.swift in Sources */,
+				7B481EEA2B94061B00F08899 /* OldTabBar.swift in Sources */,
 				7B6275822B50D37000FDA0F0 /* BlobView.swift in Sources */,
 				7B96D5FA2B92C1C3001F060F /* AngularButton.swift in Sources */,
 				7B6275962B512FDF00FDA0F0 /* ItineraryModel.swift in Sources */,
