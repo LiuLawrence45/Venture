@@ -10,13 +10,13 @@ import SwiftUI
 struct SignupView: View {
     @EnvironmentObject var model: Model
     @State var email = ""
+    @State var username = ""
     @State var password = ""
-    @State var confirmPassword = ""
     @State var circleInitialY = CGFloat.zero
     @State var circleY = CGFloat.zero
-    @FocusState var isEmailFocused: Bool
+    @FocusState var isUsernameFocused: Bool
     @FocusState var isPasswordFocused: Bool
-    @FocusState var isConfirmPasswordFocused: Bool
+    @FocusState var isEmailFocused: Bool
     @State var appear = [false, false, false]
     var dismissModal: () -> Void
     @AppStorage("isLogged") var isLogged = false
@@ -26,12 +26,11 @@ struct SignupView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Sign up")
+            Text("Welcome to Weeknd")
                 .font(.largeTitle).bold()
-                .blendMode(.overlay)
                 .slideFadeIn(show: appear[0], offset: 30)
             
-            Text("Discover and document the best for you.")
+            Text("We're so glad you're here!")
                 .font(.headline)
                 .foregroundColor(.primary.opacity(0.7))
                 .slideFadeIn(show: appear[1], offset: 20)
@@ -57,17 +56,17 @@ struct SignupView: View {
     
     var form: some View {
         Group {
-            TextField("", text: $email)
-                .textContentType(.emailAddress)
-                .keyboardType(.emailAddress)
+            TextField("", text: $username)
+                .textContentType(.username)
+                .keyboardType(.default)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
-                .placeholder(when: email.isEmpty) {
-                    Text("Email address")
+                .placeholder(when: username.isEmpty) {
+                    Text("Username")
                         .foregroundColor(.primary)
                         .blendMode(.overlay)
                 }
-                .customField(icon: "envelope.open.fill")
+                .customField(icon: "person.fill")
                 .overlay(
                     GeometryReader { proxy in
                         let offset = proxy.frame(in: .named("stack")).minY + 22
@@ -78,11 +77,31 @@ struct SignupView: View {
                             circleY = value
                         }
                 )
+                .focused($isUsernameFocused)
+                .onChange(of: isUsernameFocused) { isUsernameFocused in
+                    if isUsernameFocused {
+                        withAnimation {
+                            circleY = circleInitialY
+                        }
+                    }
+                }
+            
+            TextField("", text: $email)
+                .textContentType(.emailAddress)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .placeholder(when: email.isEmpty){
+                    Text("Email Address")
+                        .foregroundColor(.primary)
+                        .blendMode(.overlay)
+                }
+                .customField(icon: "envelope.open.fill")
                 .focused($isEmailFocused)
                 .onChange(of: isEmailFocused) { isEmailFocused in
                     if isEmailFocused {
                         withAnimation {
-                            circleY = circleInitialY
+                            circleY = circleInitialY + 70
                         }
                     }
                 }
@@ -99,24 +118,7 @@ struct SignupView: View {
                 .onChange(of: isPasswordFocused) { isPasswordFocused in
                     if isPasswordFocused {
                         withAnimation {
-                            circleY = circleInitialY + 70
-                        }
-                    }
-                }
-            
-            SecureField("", text: $confirmPassword)
-                .textContentType(.password)
-                .placeholder(when: confirmPassword.isEmpty) {
-                    Text("Confirm Password")
-                        .foregroundColor(.primary)
-                        .blendMode(.overlay)
-                }
-                .customField(icon: "key.fill")
-                .focused($isPasswordFocused)
-                .onChange(of: isPasswordFocused) { isPasswordFocused in
-                    if isPasswordFocused {
-                        withAnimation {
-                            circleY = circleInitialY + 70
+                            circleY = circleInitialY + 140
                         }
                     }
                 }
@@ -142,7 +144,7 @@ struct SignupView: View {
             }
             
             
-            Text("By clicking on Sign up, you agree to our **[Terms of service](https://designcode.io)** and **Privacy policy**.")
+            Text("By clicking on Sign up, you agree to our **[Terms of Service](https://google.com)** and **Privacy policy**.")
                 .font(.footnote)
                 .foregroundColor(.primary.opacity(0.7))
                 .accentColor(.primary.opacity(0.7))
@@ -177,11 +179,6 @@ struct SignupView: View {
         Task {
             isLoading = true
             defer { isLoading = false }
-            
-            guard password == confirmPassword else {
-                result = .failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Passwords do not match."]))
-                return
-            }
             
             do {
                 try await supabase.auth.signUp(

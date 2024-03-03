@@ -25,7 +25,6 @@ struct SigninView: View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Sign in")
                 .font(.largeTitle).bold()
-                .blendMode(.overlay)
                 .slideFadeIn(show: appear[0], offset: 30)
             
             Text("Discover and document the best for you.")
@@ -123,6 +122,27 @@ struct SigninView: View {
                         model.selectedModal = .signUp
                     }
                 }
+            
+            
+            HStack(spacing: 0){
+                Text("Need help getting in? ")
+                    .font(.footnote)
+                    .foregroundColor(.primary.opacity(0.7))
+                    .accentColor(.primary.opacity(0.7))
+                Button {
+                    
+                } label: {
+                    
+                    Text("**Reset Password**")
+                        .font(.footnote)
+                        .foregroundColor(.primary.opacity(0.7))
+                        .accentColor(.primary.opacity(0.7))
+                }
+                
+                
+            }
+
+
         }
         
     }
