@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B23DDC02B95097200C5B2E7 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7B23DDBF2B95097200C5B2E7 /* Supabase */; };
 		7B481ED52B9333FE00F08899 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED42B9333FE00F08899 /* MyProfileView.swift */; };
 		7B481ED82B93370F00F08899 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED72B93370F00F08899 /* EditProfileView.swift */; };
 		7B481EDA2B93571D00F08899 /* OldFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED92B93571D00F08899 /* OldFeedView.swift */; };
@@ -73,7 +74,6 @@
 		7B96D6072B92D05A001F060F /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96D6062B92D05A001F060F /* AppView.swift */; };
 		7B9B502E2B582AF100A3AD61 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B502D2B582AF100A3AD61 /* CommentView.swift */; };
 		7BAA41B12B67739F009D67DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA41B02B67739F009D67DC /* Location.swift */; };
-		7BD059E32B92BAE200D818F3 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7BD059E22B92BAE200D818F3 /* Supabase */; };
 		7BD059E72B92BB1800D818F3 /* Supabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD059E62B92BB1800D818F3 /* Supabase.swift */; };
 		7BD059EA2B92BE4F00D818F3 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD059E92B92BE4F00D818F3 /* SignupView.swift */; };
 		7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19372B5175C20020FE88 /* TabBar.swift */; };
@@ -183,7 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BD059E32B92BAE200D818F3 /* Supabase in Frameworks */,
+				7B23DDC02B95097200C5B2E7 /* Supabase in Frameworks */,
 				7B481EEF2B940EB400F08899 /* FirebaseAuth in Frameworks */,
 				7B481EF12B941B6D00F08899 /* FirebaseFirestore in Frameworks */,
 				7B481EF52B941B7500F08899 /* FirebaseStorage in Frameworks */,
@@ -529,11 +529,11 @@
 			);
 			name = Venture;
 			packageProductDependencies = (
-				7BD059E22B92BAE200D818F3 /* Supabase */,
 				7B481EEE2B940EB400F08899 /* FirebaseAuth */,
 				7B481EF02B941B6D00F08899 /* FirebaseFirestore */,
 				7B481EF22B941B6D00F08899 /* FirebaseFirestoreSwift */,
 				7B481EF42B941B7500F08899 /* FirebaseStorage */,
+				7B23DDBF2B95097200C5B2E7 /* Supabase */,
 			);
 			productName = Venture;
 			productReference = 7B6275312B50BECE00FDA0F0 /* Venture.app */;
@@ -1072,6 +1072,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7B23DDBF2B95097200C5B2E7 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BD059E12B92BAE200D818F3 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
 		7B481EEE2B940EB400F08899 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7B481EED2B940EB400F08899 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1091,11 +1096,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B481EED2B940EB400F08899 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		7BD059E22B92BAE200D818F3 /* Supabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7BD059E12B92BAE200D818F3 /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

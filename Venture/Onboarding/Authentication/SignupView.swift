@@ -24,13 +24,18 @@ struct SignupView: View {
     @FocusState var isEmailFocused: Bool
     @State var appear = [false, false, false]
     var dismissModal: () -> Void
-    //@AppStorage("isLogged") var isLogged = false
     
     @State var result: Result<Void, Error>?
     @State var showImagePicker: Bool = false
     @State var photoItem: PhotosPickerItem?
     @State var showError: Bool = false
     @State var errorMessage: String = ""
+    
+    @AppStorage("log_status") var logStatus: Bool = false
+    @AppStorage("user_profile_url") var profileURL: URL?
+    @AppStorage("user_name") var userNameStored: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -45,6 +50,7 @@ struct SignupView: View {
             
             form.slideFadeIn(show: appear[2], offset: 10)
         }
+        .alert(errorMessage, isPresented: $showError, actions: {})
         .coordinateSpace(name: "stack")
         .padding(20)
         .padding(.vertical, 20)
@@ -78,7 +84,7 @@ struct SignupView: View {
             }
             
         }
-        .alert(errorMessage, isPresented: $showError, actions: {})
+
     }
     
     var form: some View {
@@ -123,7 +129,7 @@ struct SignupView: View {
                     }
                         .onPreferenceChange(CirclePreferenceKey.self) { value in
                             circleInitialY = value
-                            circleY = value
+//                            circleY = value
                         }
                 )
                 .focused($isUsernameFocused)
@@ -179,19 +185,6 @@ struct SignupView: View {
                 AngularButton(title: "Create Account")
             }
             
-            if let result  {
-                Section {
-                    switch result {
-                    case .success:
-                        Text("Success")
-                    case .failure(let error):
-                        Text(error.localizedDescription).foregroundStyle(.red)
-                    }
-                    
-                    
-                }
-            }
-            
             
             Text("By clicking on Sign up, you agree to our **[Terms of Service](https://google.com)** and **Privacy policy**.")
                 .font(.footnote)
@@ -231,11 +224,18 @@ struct SignupView: View {
                 //Creating FireBase account
                 try await Auth.auth().createUser(withEmail: email, password: password)
                 
-                //Upload picture to Firebase
+//                //Upload picture to Firebase
                 guard let userUID = Auth.auth().currentUser?.uid else{print("Failed to get user UID")
                     return}
-                guard let imageData = userProfilePicData else {
-                    return}
+                
+                
+                guard let imageData = userProfilePicData 
+                        
+                //This is ending it earlier Figure out how to run the below only when imageData is loaded. 
+                else {
+                    print ("Failed to get imageData")
+                    return
+                }
                 print("User UID: \(userUID)")
 
                 let storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
@@ -248,20 +248,20 @@ struct SignupView: View {
                 
                 //Create a User Firestore Object
                 let user = User(username: username, userBio: "", userBioLink: "", school: "", userUID: userUID, userEmail: email)
-                do {
-                    //Saving User Doc into Firestore
-                    let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user) { error in
-                        
-                        if error == nil{
-                            print("Saved successfully!")
-                        }
-                        else{
-                            print(error)
-                        }
+                
+                let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: {
+                    error in
+                    if error == nil {
+                        print("Saved successfully")
                     }
-                } catch let error {
-                    print("Error saving user to Firestore: \(error)")
-                }
+                })
+//                do {
+//                    //Saving User Doc into Firestore
+//                    let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user) 
+//                    print("Saved user doc to firestore!")
+//                } catch let error {
+//                    print("Error saving user to Firestore: \(error)")
+//                }
 
             }
             catch {
