@@ -36,6 +36,8 @@ struct SignupView: View {
     @AppStorage("user_name") var userNameStored: String = ""
     @AppStorage("user_UID") var userUID: String = ""
     
+    @State var isLoading: Bool = false
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -84,6 +86,9 @@ struct SignupView: View {
             }
             
         }
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
 
     }
     
@@ -218,6 +223,7 @@ struct SignupView: View {
     }
     
     func signupUser() {
+        isLoading = true
         Task{
             do {
                 
@@ -231,7 +237,7 @@ struct SignupView: View {
                 
                 guard let imageData = userProfilePicData 
                         
-                //This is ending it earlier Figure out how to run the below only when imageData is loaded. 
+                //This is ending it earlier Figure out how to run the below only when imageData is loaded.
                 else {
                     print ("Failed to get imageData")
                     return
@@ -253,6 +259,10 @@ struct SignupView: View {
                     error in
                     if error == nil {
                         print("Saved successfully")
+                        userNameStored = username
+                        self.userUID = userUID
+                        profileURL = downloadURL
+                        logStatus = true
                     }
                 })
 //                do {
@@ -274,6 +284,7 @@ struct SignupView: View {
                 errorMessage = error.localizedDescription
                 showError.toggle()
             })
+            isLoading = false
         }
     }
     

@@ -19,6 +19,9 @@ struct SigninView: View {
     @State var appear = [false, false, false]
     @State var showError: Bool = false
     @State var errorMessage: String = ""
+    @State var isLoading: Bool = false
+    
+    @AppStorage("log_status") var logStatus: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -52,6 +55,9 @@ struct SigninView: View {
         
         //Display alert for errors, etc...
         .alert(errorMessage, isPresented: $showError, actions: {})
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
     }
     
     var form: some View {
@@ -150,10 +156,12 @@ struct SigninView: View {
     }
     
     func loginUser() {
+        isLoading = true
         Task{
             do {
                 try await Auth.auth().signIn(withEmail: email, password: password)
                 print("User found")
+                logStatus = true
             }
             
             catch {
@@ -166,6 +174,7 @@ struct SigninView: View {
         await MainActor.run(body:  {
             errorMessage = error.localizedDescription
             showError.toggle()
+            isLoading = false
         })
     }
     

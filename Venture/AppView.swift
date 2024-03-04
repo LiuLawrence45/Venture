@@ -10,11 +10,11 @@ import SwiftUI
 struct AppView: View {
     
     @StateObject var model = Model()
-    @State var isAuthenticated = false
+    @AppStorage("log_status") var logStatus: Bool = false
     
     var body: some View {
         Group {
-            if isAuthenticated {
+            if logStatus {
                 ContentView()
                     .environmentObject(model)
                     // .statusBarHidden(true) // This is a temporary measure just since I can't figure it out right now.
@@ -23,13 +23,6 @@ struct AppView: View {
                 ParentView()
                     .environmentObject(model)
                     // .statusBarHidden(true)
-            }
-        }
-        .task {
-            for await state in await supabase.auth.authStateChanges {
-                if [.initialSession, .signedIn, .signedOut].contains(state.event) {
-                    isAuthenticated = state.session != nil
-                }
             }
         }
     }

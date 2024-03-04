@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B23DDC02B95097200C5B2E7 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7B23DDBF2B95097200C5B2E7 /* Supabase */; };
+		7B23DDC22B95A7BF00C5B2E7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23DDC12B95A7BF00C5B2E7 /* LoadingView.swift */; };
 		7B481ED52B9333FE00F08899 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED42B9333FE00F08899 /* MyProfileView.swift */; };
 		7B481ED82B93370F00F08899 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED72B93370F00F08899 /* EditProfileView.swift */; };
 		7B481EDA2B93571D00F08899 /* OldFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED92B93571D00F08899 /* OldFeedView.swift */; };
@@ -102,6 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B23DDC12B95A7BF00C5B2E7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		7B481ED42B9333FE00F08899 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		7B481ED72B93370F00F08899 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7B481ED92B93571D00F08899 /* OldFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFeedView.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				7B62757D2B50CF8400FDA0F0 /* AccountView.swift */,
 				7B96D6002B92C6FC001F060F /* FakeProfileView.swift */,
 				7B84D4282B93216F007141B9 /* ParentView.swift */,
+				7B23DDC12B95A7BF00C5B2E7 /* LoadingView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				7B96D5FA2B92C1C3001F060F /* AngularButton.swift in Sources */,
 				7B6275962B512FDF00FDA0F0 /* ItineraryModel.swift in Sources */,
 				7B6275AD2B51685D00FDA0F0 /* DemoRecommendations.swift in Sources */,
+				7B23DDC22B95A7BF00C5B2E7 /* LoadingView.swift in Sources */,
 				7B62759A2B513B9500FDA0F0 /* ItineraryDescription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
