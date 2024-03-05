@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
 
 struct SigninView: View {
     @EnvironmentObject var model: Model
@@ -17,10 +18,16 @@ struct SigninView: View {
     @FocusState var isEmailFocused: Bool
     @FocusState var isPasswordFocused: Bool
     @State var appear = [false, false, false]
+    
+    //Loading variables
     @State var showError: Bool = false
     @State var errorMessage: String = ""
     @State var isLoading: Bool = false
     
+    //User Defaults
+    @AppStorage("user_profile_url") var profileURL: URL?
+    @AppStorage("user_name") var userNameStored: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
     @AppStorage("log_status") var logStatus: Bool = false
     
     var body: some View {
@@ -161,13 +168,28 @@ struct SigninView: View {
             do {
                 try await Auth.auth().signIn(withEmail: email, password: password)
                 print("User found")
-                logStatus = true
+//                logStatus = true
             }
             
             catch {
                 await setError(error)
             }
         }
+    }
+    
+    func fetchUser() async throws {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let user = try await Firestore.firestore().collection("Users").document(userID).getDocument(as: User.self)
+        
+        //UI Updating run on main thread
+        await MainActor.run(body: {
+            
+            //Setting user defaults data and changing app's auth status.
+            userUID = userID
+            userNameStored = user.username
+            profileURL = user.userProfileURL
+            logStatus = true
+        })
     }
     
     func setError(_ error: Error) async {

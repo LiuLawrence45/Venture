@@ -27,3 +27,9 @@ struct LoadingView: View {
     }
 
 }
+
+#Preview {
+    LoadingView(show: .constant(true))
+}
+
+

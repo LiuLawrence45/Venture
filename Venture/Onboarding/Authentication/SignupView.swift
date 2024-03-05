@@ -230,23 +230,30 @@ struct SignupView: View {
                 //Creating FireBase account
                 try await Auth.auth().createUser(withEmail: email, password: password)
                 
-//                //Upload picture to Firebase
+                //Upload picture to Firebase
                 guard let userUID = Auth.auth().currentUser?.uid else{print("Failed to get user UID")
                     return}
                 
-                
-                guard let imageData = userProfilePicData 
-                        
-                //This is ending it earlier Figure out how to run the below only when imageData is loaded.
-                else {
-                    print ("Failed to get imageData")
-                    return
-                }
                 print("User UID: \(userUID)")
-
-                let storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
                 
-                let _ = try await storageRef.putDataAsync(imageData)
+                
+                var storageRef = Storage.storage().reference().child("Profile_Images").child("Avatar Default.jpg")
+                //Uploading and downloading PhotoURL.
+                if let imageData = userProfilePicData {
+                    storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
+                    
+                    let _ = try await storageRef.putDataAsync(imageData)
+                }
+                    
+                else {
+                    print ("No input image assigned")
+                    //return
+                }
+                
+                
+
+                
+
                 
                 //Download Photo URL
                 let downloadURL = try await storageRef.downloadURL()
@@ -265,13 +272,6 @@ struct SignupView: View {
                         logStatus = true
                     }
                 })
-//                do {
-//                    //Saving User Doc into Firestore
-//                    let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user) 
-//                    print("Saved user doc to firestore!")
-//                } catch let error {
-//                    print("Error saving user to Firestore: \(error)")
-//                }
 
             }
             catch {
