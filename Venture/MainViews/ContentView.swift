@@ -42,9 +42,7 @@ struct ContentView: View {
                             
                         case .post:
                             EmptyView()
-                                .onAppear {
-                                    createNewPost = true
-                                }
+                            TabBar()
                         case .profile:
                             MyProfileView(profile: profile)
 //                                .background(Color.blue)  Debugging for future frame issues
@@ -52,31 +50,28 @@ struct ContentView: View {
                             
                         }
                     }
-                    
-
-                    
-                    // Handling selectedTab is bad... I'm creating a new instance of TabBar each time. This will slow down the UI. Doesn't work since its outside of the ZStack. Not sure, this is something we can optimize later.
-                                    //                    if selectedTab != .feed {
-                                    //                        TabBar()
-                                    //                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .120)
-                                    //
-                                    //                            .background(Color.purple)
-                                    //                    }
+                }
+                .onChange(of: selectedTab) { newValue in
+                    if newValue == .post {
+                        createNewPost = true
+                    }
+                    else {
+                        createNewPost = false
+                    }
+                }
+                .fullScreenCover(isPresented: $createNewPost){
+                    CreateNewPost { post in
+                        print("Hello")
+                    }
                 }
             }
             
         }
-        .fullScreenCover(isPresented: $createNewPost){
-            CreateNewPost { post in
-                
-            }
-        }
+
         .safeAreaInset(edge: .bottom, spacing: 3) {
             Color.clear.frame(height: 68)
-//                .background(Color.green)
         }
         .dynamicTypeSize(.large ... .xxLarge)
-        //        .dynamicTypeSize(.large ... .large)
         
     }
     
