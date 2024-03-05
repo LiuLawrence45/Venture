@@ -19,7 +19,7 @@ struct LoadingView: View {
                     
                     ProgressView()
                         .padding(15)
-                        .background(.white, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+//                        .background(.white, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 }
             }
         }

@@ -170,6 +170,7 @@ struct SigninView: View {
                 try await Auth.auth().signIn(withEmail: email, password: password)
                 print("User found")
 //                logStatus = true
+                try await fetchUser()
             }
             
             catch {

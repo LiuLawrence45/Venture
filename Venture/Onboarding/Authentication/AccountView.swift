@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct AccountView: View {
     @State var isDeleted = false
     @State var isPinned = false
     @Environment(\.dismiss) var dismiss
-    @AppStorage("isLogged") var isLogged = false
+    @AppStorage("log_status") var logStatus = false
     @AppStorage("isLiteMode") var isLiteMode = true
     
     
@@ -36,8 +37,9 @@ struct AccountView: View {
                 links
                 
                 Button {
-                    signOutButtonTapped()
-                    dismiss()
+                    
+                    logOutUser()
+                    logStatus = false
                 } label: {
                     Text("Sign out")
                 }
@@ -70,6 +72,12 @@ struct AccountView: View {
             }
             .tint(.primary) 
         }
+    }
+    
+    
+    func logOutUser(){
+        try? Auth.auth().signOut()
+        logStatus = false
     }
     
     var profile: some View {

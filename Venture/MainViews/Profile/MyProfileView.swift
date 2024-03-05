@@ -5,6 +5,7 @@
 //  Created by Lawrence Liu on 3/2/24.
 
 import SwiftUI
+import Firebase
 
 struct MyProfileView: View {
     
@@ -50,6 +51,7 @@ struct MyProfileView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
+
                 
                 switch selectedTab {
                     case "posts":
@@ -60,18 +62,18 @@ struct MyProfileView: View {
                     PostView
                 }
             })
-//            .background(Color.red)
+            .refreshable {}
             .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
             .frame(maxHeight: .infinity)
-
             .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
         }
         
         
     }
+
     
     
     var scrollDetection: some View {
