@@ -31,7 +31,7 @@ struct FeedView: View {
 //                detail
 //            }
             
-            ScrollView {
+            ScrollView(showsIndicators: false){
                 scrollDetection
                 
                 LazyVGrid(columns: columns, spacing: 20) {

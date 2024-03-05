@@ -22,7 +22,7 @@ struct TabBar: View {
             }
             .padding(.horizontal, 8)
             .padding(.top, 14)
-            .frame(height: hasHomeIndicator ? 86 : 86, alignment: .top) //Used to be 72 vs 86
+            .frame(height: hasHomeIndicator ? 72 : 86, alignment: .top) //Used to be 72 vs 86
             .background(.thinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
 //            .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)

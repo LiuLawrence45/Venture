@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct EditProfileView: View {
+    @Environment(\.dismiss) var dismiss
 
     @State var username = ""
     @State var firstName = ""
@@ -22,7 +23,33 @@ struct EditProfileView: View {
     
     var body: some View {
         
-        Text("Hello")
+        Group {
+            Text("Hello")
+            
+        } 
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Label("Back", systemImage: "chevron.backward")
+                }
+
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                }) {
+                    Label("Settings", systemImage: "ellipsis")
+                }
+
+            }
+
+
+        }
+        .tint(.primary)
+
 //        NavigationStack {
 //            Form {
 //                Section {

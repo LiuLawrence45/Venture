@@ -47,6 +47,28 @@ struct AccountView: View {
             .navigationTitle("Account")
             .navigationBarTitleDisplayMode(.inline)
 //            .navigationBarItems(trailing: Button { dismiss() } label: { Text("Done").bold() })
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Label("Back", systemImage: "chevron.backward")
+                    }
+
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                    }) {
+                        Label("Settings", systemImage: "ellipsis")
+                    }
+
+                }
+
+
+            }
+            .tint(.primary) 
         }
     }
     

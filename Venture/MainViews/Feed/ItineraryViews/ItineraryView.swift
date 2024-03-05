@@ -82,14 +82,6 @@ struct ItineraryView: View {
                 }
 
             }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                }) {
-                    Label("Settings", systemImage: "ellipsis")
-                }
-
-            }
 
 
         }
