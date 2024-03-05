@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
+import FirebaseFirestore
 
 struct AccountView: View {
     @State var isDeleted = false
@@ -14,11 +16,16 @@ struct AccountView: View {
     @Environment(\.dismiss) var dismiss
     @AppStorage("log_status") var logStatus = false
     @AppStorage("isLiteMode") var isLiteMode = true
+    @State var showError: Bool = false
+    @State var errorMessage: String = ""
     
     
     //Handling the loading for sign out, and possible errors
     @State var isLoading = false
     @State var result: Result<Void, Error>?
+    
+    //My Profile
+    @State private var myProfile: User?
     
     var body: some View {
         Group {
@@ -72,8 +79,26 @@ struct AccountView: View {
             }
             .tint(.primary) 
         }
+        .task {
+            
+            if myProfile != nil {return} //This limits to the first time the tab is called. Keeps it from being called every single time, as .task runs like .onAppear.
+            await fetchUserData()
+        }
+        .refreshable{
+            myProfile = nil
+            await fetchUserData()
+        }
     }
     
+    
+    func fetchUserData() async {
+        guard let userUID = Auth.auth().currentUser?.uid else {return}
+        let user = try? await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+        
+        await MainActor.run(body: {
+            myProfile = user
+        })
+    }
     
     func logOutUser(){
         try? Auth.auth().signOut()
@@ -98,8 +123,17 @@ struct AccountView: View {
                         .offset(x: 200, y: 0)
                         .scaleEffect(0.6)
                 )
-            Text("Lawrence Liu")
-                .font(.title.weight(.semibold))
+            if let myProfile {
+                HStack(spacing: 0){
+                    Text(myProfile.firstName ?? "Firstname")
+                        .font(.title.weight(.semibold))
+                    Text(" ")
+                    Text(myProfile.lastName ?? "Lastname")
+                        .font(.title.weight(.semibold))
+                }
+
+            }
+
             HStack {
                 Image(systemName: "location")
                     .imageScale(.large)
@@ -171,6 +205,38 @@ struct AccountView: View {
                 result = .failure(error)
             }
         }
+    }
+    
+    //Later implemented. But good logic for removing documents, etc...
+    func deleteAccount(){
+        Task{
+            
+            do {
+                guard let userUID = Auth.auth().currentUser?.uid else{return}
+                
+                //Delete Image from storage
+                let reference = Storage.storage().reference().child("Profile_Images").child(userUID)
+                try await reference.delete()
+                
+                //Delete Firestore User Documents
+                try await Firestore.firestore().collection("Users").document(userUID).delete()
+
+                //Delete auth account
+                try await Auth.auth().currentUser?.delete()
+                logStatus = false
+                
+            } catch {
+                await setError(error)
+            }
+
+        }
+    }
+    
+    func setError(_ error: Error) async {
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
     
     
