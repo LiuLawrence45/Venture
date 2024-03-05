@@ -40,11 +40,14 @@ struct EditProfileView: View {
     @AppStorage("user_name") var userNameStored: String = ""
     @AppStorage("user_UID") var userUID: String = ""
     
+    @State private var myProfile: User?
+    
     
     var body: some View {
-        
-        Group {
-            NavigationStack {
+        VStack {
+            
+            HStack{
+                Spacer()
                 ZStack {
                     if let userProfilePicData, let image = UIImage(data: userProfilePicData){
                         Image(uiImage: image)
@@ -63,43 +66,64 @@ struct EditProfileView: View {
                 .onTapGesture {
                     showImagePicker.toggle()
                 }
-                
-                Form {
-                    Section {
-                        TextField("Username", text: $username)
-                            .textContentType(.username)
-                            .textInputAutocapitalization(.never)
-                        TextField("First Name", text: $firstName)
-                            .textContentType(.name)
-                        TextField("Last Name", text: $lastName)
-                            .textContentType(.name)
-                        TextField("Gender", text: $gender)
-                            .textContentType(.name)
-                        TextField("School", text: $school)
-                            .textContentType(.name)
-                        TextField("Occupation", text: $occupation)
-                            .textContentType(.name)
-                        TextField("Profile Description", text: $profileDescription)
-                            .textContentType(.username)
-                            .textInputAutocapitalization(.never)
-                    }
-                    
-                    Section {
-                        Button("Update profile") {
-                            //updateProfileButtonTapped()
+                Spacer()
+            }
+            .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
+            .onChange(of: photoItem) { newValue in
+                if let newValue {
+                    Task {
+                        do {
+                            guard let imageData = try await newValue.loadTransferable(type: Data.self) else {
+                                return
+                            }
+                            
+                            await MainActor.run(body: {
+                                userProfilePicData = imageData
+                            })
                         }
-                        .bold()
-                        
-                        if isLoading {
-                            ProgressView()
-                        }
+                        catch{}
                     }
                 }
-                .navigationTitle("Profile")
+                
             }
-            .task {
-                //await getInitialProfile()
+            .overlay(content: {
+                LoadingView(show: $isLoading)
+            })
+            
+            
+            Form {
+                Section {
+                    TextField("Username", text: $username)
+                        .textContentType(.username)
+                        .textInputAutocapitalization(.never)
+                    TextField("First Name", text: $firstName)
+                        .textContentType(.name)
+                    TextField("Last Name", text: $lastName)
+                        .textContentType(.name)
+//                    TextField("Gender", text: $gender)
+//                        .textContentType(.name)
+                    TextField("School", text: $school)
+                        .textContentType(.name)
+                    TextField("Occupation", text: $occupation)
+                        .textContentType(.name)
+                    TextField("Profile Description", text: $profileDescription)
+                        .textContentType(.username)
+                        .textInputAutocapitalization(.never)
+                }
             }
+            
+            Section {
+                Button("Update profile") {
+                    updateProfile()
+                }
+                .bold()
+            }
+            .navigationTitle("Update Profile")
+            
+        }
+        .task {
+            if myProfile != nil {return}
+            await fetchUserData()
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -123,75 +147,93 @@ struct EditProfileView: View {
             
         }
         .tint(.primary)
+
     }
     
+    func fetchUserData() async {
+        guard let userUID = Auth.auth().currentUser?.uid else {return}
+        let user = try? await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+        
+        await MainActor.run(body: {
+            myProfile = user
+            username = myProfile?.username ?? ""
+            firstName = myProfile?.firstName ?? ""
+            lastName = myProfile?.lastName ?? ""
+            school = myProfile?.school ?? ""
+            userBioLink = myProfile?.userBioLink ?? ""
+            profileDescription = myProfile?.userBio ?? ""
+            occupation = myProfile?.occupation ?? ""
+            gender = myProfile?.gender ?? ""
+            email = myProfile?.userEmail ?? ""
+            
+        })
+    }
     
-//    func updateProfile() {
-//        isLoading = true
-//        Task{
-//            do {
-//                //Upload picture to Firebase
-//                guard let userUID = Auth.auth().currentUser?.uid else{print("Failed to get user UID")
-//                    return}
-//                
-//                print("User UID: \(userUID)")
-//                
-//                
-//                var storageRef = Storage.storage().reference().child("Profile_Images").child("Avatar Default.jpg")
-//                //Uploading and downloading PhotoURL.
-//                if let imageData = userProfilePicData {
-//                    storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
-//                    
-//                    let _ = try await storageRef.putDataAsync(imageData)
-//                }
-//                    
-//                else {
-//                    print ("No input image assigned")
-//                    //return
-//                }
-//                
-//                
-//
-//                
-//
-//                
-//                //Download Photo URL
-//                let downloadURL = try await storageRef.downloadURL()
-//                print("Download URL: \(downloadURL)")
-//                
-//                //Create a User Firestore Object
-//                let user = User(username: username, userBio: "", userBioLink: "", school: "", userUID: userUID, userEmail: email)
-//                
-//                let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: {
-//                    error in
-//                    if error == nil {
-//                        print("Saved successfully")
-//                        userNameStored = username
-//                        self.userUID = userUID
-//                        profileURL = downloadURL
-//                        logStatus = true
-//                    }
-//                })
-//
-//            }
-//            catch {
-//                await setError(error)
-//            }
-//        }
-//        
-//        func setError(_ error: Error) async {
-//            await MainActor.run(body:  {
-//                errorMessage = error.localizedDescription
-//                showError.toggle()
-//            })
-//            isLoading = false
-//        }
-//    }
+    func updateProfile() {
+        isLoading = true
+        Task{
+            do {
+                //Upload picture to Firebase
+                guard let userUID = Auth.auth().currentUser?.uid else{print("Failed to get user UID")
+                    return}
+                
+                print("User UID: \(userUID)")
+                
+                
+                var storageRef = Storage.storage().reference().child("Profile_Images").child("Avatar Default.jpg")
+                //Uploading and downloading PhotoURL.
+                if let imageData = userProfilePicData {
+                    storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
+                    
+                    let _ = try await storageRef.putDataAsync(imageData)
+                }
+                    
+                else {
+                    print ("No input image assigned")
+                    //return
+                }
+                
+                //Download Photo URL
+                let downloadURL = try await storageRef.downloadURL()
+                print("Download URL: \(downloadURL)")
+        
+                
+                let user = User(username: username, firstName: firstName, lastName: lastName, userBio: profileDescription, school: school,  userEmail: email, occupation: occupation)
+                
+                let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: {
+                    error in
+                    if error == nil {
+                        print("Saved successfully")
+                        userNameStored = username
+                        self.userUID = userUID
+                        profileURL = downloadURL
+                        logStatus = true
+                    }
+                })
+
+            }
+            catch {
+                await setError(error)
+            }
+        }
+        
+        func setError(_ error: Error) async {
+            await MainActor.run(body:  {
+                errorMessage = error.localizedDescription
+                showError.toggle()
+            })
+            isLoading = false
+        }
+    }
     
+  
     
 }
 
 
-#Preview {
-    EditProfileView()
+struct EditProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditProfileView()
+            .environmentObject(Model())
+    }
 }
