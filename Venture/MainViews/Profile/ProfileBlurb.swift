@@ -53,25 +53,33 @@ struct ProfileBlurb: View {
                         HStack {
                             Image(systemName: "house")
                                 .offset(x: -1 )
-                            Text(user.school ?? "No school entered")
+                            Text(user.school ?? "No school entered.")
                                 .offset(x: -2 )
 
                         }
                         .foregroundStyle(.secondary)
                         .font(.footnote)
                         
-                        if let bioLink = URL(string: user.userBioLink ?? "") {
-                            HStack {
-                                Image(systemName: "hand.point.right")
-    //                            Text(profile.occupation)
-                                Link(user.userBioLink!, destination: bioLink)
+                        HStack {
+                            Image(systemName: "hand.point.right")
+                            Text(user.occupation ?? "No occupation entered.")
 
-                            }
-                            .foregroundStyle(.secondary)
-                            .font(.caption)
-                            .tint(.blue)
-                            .lineLimit(1)
                         }
+                        .foregroundStyle(.secondary)
+                        .font(.footnote)
+                        
+//                        if let bioLink = URL(string: user.userBioLink ?? "") {
+//                            HStack {
+//                                Image(systemName: "hand.point.right")
+//    //                            Text(profile.occupation)
+//                                Link(user.userBioLink!, destination: bioLink)
+//
+//                            }
+//                            .foregroundStyle(.secondary)
+//                            .font(.caption)
+//                            .tint(.blue)
+//                            .lineLimit(1)
+//                        }
 
                     }
                 }
