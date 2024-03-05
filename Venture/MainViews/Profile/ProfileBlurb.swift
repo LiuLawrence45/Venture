@@ -6,51 +6,75 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileBlurb: View {
     
     var profile: ProfileModel = profiles[1]
+    var user: User
     var body: some View {
 
         VStack() {
             
             HStack (alignment: .center, spacing: 24){
                 Spacer()
-                Image(profile.profilePicture)
-                    .resizable()
-                    .frame(width: 72, height: 72)
-                    .mask(Circle())
-                    .offset(x: -20)
+                
+                WebImage(url: user.userProfileURL).placeholder{
+                    Image("NullProfile")
+                }
+                .resizable()
+                .frame(width: 72, height: 72)
+                .mask(Circle())
+                .offset(x: -20)
+//                Image(profile.profilePicture)
+//                    .resizable()
+//                    .frame(width: 72, height: 72)
+//                    .mask(Circle())
+//                    .offset(x: -20)
                 
                 VStack (alignment: .leading){
-                    Text("\(profile.firstName) \(profile.lastName)")
-                    //Text("Lawrence Liu")
-                        .font(.title2.weight(.bold))
-                        .padding(.bottom, 10)
+                    HStack(spacing: 0){
+                        Text(user.firstName ?? "")
+                        Text(" ")
+                        Text(user.lastName ?? "")
+                    }
+                    .font(.title2.weight(.bold))
+                    .padding(.bottom, 10)
+                    
+                    //Text("\(user.firstName) \(user.lastName)")
+
                     
                     VStack(alignment: .leading, spacing: 6){
-                        HStack {
+                        HStack{
                             Image(systemName: "person.crop.circle")
-                            Text(profile.gender)
+//                            Text(profile.gender)
+                            Text(user.username)
                         }
                         .foregroundStyle(.secondary)
                         .font(.footnote)
                         HStack {
                             Image(systemName: "house")
                                 .offset(x: -1 )
-                            Text(profile.school)
+                            Text(user.school ?? "No school entered")
                                 .offset(x: -2 )
 
                         }
                         .foregroundStyle(.secondary)
                         .font(.footnote)
-                        HStack {
-                            Image(systemName: "hand.point.right")
-                            Text(profile.occupation)
+                        
+                        if let bioLink = URL(string: user.userBioLink ?? "") {
+                            HStack {
+                                Image(systemName: "hand.point.right")
+    //                            Text(profile.occupation)
+                                Link(user.userBioLink!, destination: bioLink)
 
+                            }
+                            .foregroundStyle(.secondary)
+                            .font(.caption)
+                            .tint(.blue)
+                            .lineLimit(1)
                         }
-                        .foregroundStyle(.secondary)
-                        .font(.caption)
+
                     }
                 }
                 Spacer()
@@ -59,11 +83,12 @@ struct ProfileBlurb: View {
 
             }
             .padding(.bottom,  20)
-            Text(profile.profileDescription)
+            Text(user.userBio ?? "")
                 .opacity(0.8)
                 .font(.footnote)
                 .padding(.bottom, 20)
                 .italic()
+                .lineLimit(2)
             
             
             HStack(spacing: 40){
@@ -83,5 +108,5 @@ struct ProfileBlurb: View {
     
 
 #Preview {
-    ProfileBlurb()
+    ProfileBlurb(user: demoUser)
 }

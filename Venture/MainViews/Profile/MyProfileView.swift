@@ -6,6 +6,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
 
 struct MyProfileView: View {
     
@@ -21,8 +22,14 @@ struct MyProfileView: View {
     @State var selection = ""
     @State var likedItems: [Bool]
     
+    
     //Firebase syncing
     @AppStorage("log_status") var logStatus: Bool = false
+    @State var errorMessage: String = ""
+    @State var showError: Bool = false
+    @State var isLoading: Bool = false
+    
+    @State private var myProfile: User?
 
     init(profile: ProfileModel) {
         self.profile = profile
@@ -35,7 +42,7 @@ struct MyProfileView: View {
             
             ScrollView(.vertical, showsIndicators: false, content: {
                 
-                ProfileBlurb(profile: profile)
+                ProfileBlurb(user: myProfile ?? demoUserEmpty)
                     .padding(.horizontal, 10)
                     .padding(.bottom, 10)
                 
@@ -62,16 +69,57 @@ struct MyProfileView: View {
                     PostView
                 }
             })
-            .refreshable {}
             .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
             .frame(maxHeight: .infinity)
             .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
+            
+            //Loading overlay, copy and paste
+            .overlay {
+                LoadingView(show: $isLoading)
+            }
+            
+            
+            //Error alert overlay, copy and paste
+            .alert(errorMessage, isPresented: $showError){
+                
+            }
+            
+            //Fetching data
+            .task {
+                if myProfile != nil{return}
+                
+                await fetchUserData()
+            }
+            .refreshable {
+                myProfile = nil
+                await fetchUserData()
+            }
+            
         }
         
         
+    }
+    
+    //Fetching user data
+    func fetchUserData() async {
+        guard let userUID = Auth.auth().currentUser?.uid else {return}
+        let user = try? await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+        
+        await MainActor.run(body: {
+            myProfile = user
+        })
+    }
+    
+    //Setting the error for profile
+    func setError(_ error: Error) async {
+        await MainActor.run(body: {
+            isLoading = false
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
 
     

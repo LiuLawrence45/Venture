@@ -42,7 +42,7 @@ struct ProfileView: View {
             ScrollView(.vertical, showsIndicators: false, content: {
                 scrollDetection 
                 
-                ProfileBlurb(profile: profile)
+                ProfileBlurb(user: demoUser)
                     .padding(.horizontal, 10)
                 
                 VStack(spacing: 0) {
