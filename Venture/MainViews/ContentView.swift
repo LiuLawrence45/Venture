@@ -22,9 +22,7 @@ struct ContentView: View {
     
     
     //For showing photo picker
-    @State private var showingPhotoPicker = false
-    @State private var selectedItems: [PhotosPickerItem] = []
-    @State private var isEditingPhotos = false
+    @State private var createNewPost: Bool = false
     
     var profile = profiles[0]
     
@@ -43,29 +41,15 @@ struct ContentView: View {
                             TabBar()
                             
                         case .post:
-                            if readyForPhotoEditing {
-                                PhotoPicker(selectedItems: $selectedItems) // Assuming PhotoPicker is a view you've defined for editing
-                            } else {
-                                // Perhaps another view or action to select photos
-                                EmptyView() // Placeholder until photos are picked and readyForPhotoEditing is true
-                            }
-                            TabBar()
+                            EmptyView()
+                                .onAppear {
+                                    createNewPost = true
+                                }
                         case .profile:
                             MyProfileView(profile: profile)
 //                                .background(Color.blue)  Debugging for future frame issues
                             TabBar()
                             
-                        }
-                    }
-                    .onChange(of: selectedTab) { newTab in
-                        if newTab == .post {
-                            showingPhotoPicker = true
-                        }
-                    }
-                    .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedItems, matching: .images, photoLibrary: .shared())
-                    .onChange(of: selectedItems) { _ in
-                        if !selectedItems.isEmpty {
-                            readyForPhotoEditing = true
                         }
                     }
                     
@@ -81,6 +65,11 @@ struct ContentView: View {
                 }
             }
             
+        }
+        .fullScreenCover(isPresented: $createNewPost){
+            CreateNewPost { post in
+                
+            }
         }
         .safeAreaInset(edge: .bottom, spacing: 3) {
             Color.clear.frame(height: 68)

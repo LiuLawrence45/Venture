@@ -21,7 +21,7 @@ var tabItems = [
 //    TabItem(text: "Profile", icon: "person.crop.circle", tab: .profile, color: .pink)
     
     TabItem(text: "Journeys", icon: "figure.run", tab: .feed, color: .white),
-    TabItem(text: "Post", icon: "timelapse", tab: .post, color: .white),
+    TabItem(text: "Post", icon: "plus", tab: .post, color: .white),
     TabItem(text: "Profile", icon: "person.crop.circle", tab: .profile, color: .white) 
 ]
 

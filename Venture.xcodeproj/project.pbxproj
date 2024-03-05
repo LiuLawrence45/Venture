@@ -20,7 +20,6 @@
 		7B481EE42B9366CA00F08899 /* OldItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE32B9366CA00F08899 /* OldItineraryView.swift */; };
 		7B481EE62B936A5200F08899 /* ItineraryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE52B936A5200F08899 /* ItineraryFooter.swift */; };
 		7B481EE82B93AD4200F08899 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE72B93AD4200F08899 /* CommentsView.swift */; };
-		7B481EEA2B94061B00F08899 /* OldTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE92B94061B00F08899 /* OldTabBar.swift */; };
 		7B481EEF2B940EB400F08899 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7B481EEE2B940EB400F08899 /* FirebaseAuth */; };
 		7B481EF12B941B6D00F08899 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7B481EF02B941B6D00F08899 /* FirebaseFirestore */; };
 		7B481EF32B941B6D00F08899 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7B481EF22B941B6D00F08899 /* FirebaseFirestoreSwift */; };
@@ -78,6 +77,7 @@
 		7B9B502E2B582AF100A3AD61 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B502D2B582AF100A3AD61 /* CommentView.swift */; };
 		7B9BA2862B97B3C000F06415 /* CreateNewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BA2852B97B3C000F06415 /* CreateNewPost.swift */; };
 		7B9BA2882B97B43100F06415 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BA2872B97B43100F06415 /* Post.swift */; };
+		7B9BA28A2B97CCCA00F06415 /* OldTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9BA2892B97CCCA00F06415 /* OldTabBar.swift */; };
 		7BAA41B12B67739F009D67DC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAA41B02B67739F009D67DC /* Location.swift */; };
 		7BD059E72B92BB1800D818F3 /* Supabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD059E62B92BB1800D818F3 /* Supabase.swift */; };
 		7BD059EA2B92BE4F00D818F3 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD059E92B92BE4F00D818F3 /* SignupView.swift */; };
@@ -118,7 +118,6 @@
 		7B481EE32B9366CA00F08899 /* OldItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldItineraryView.swift; sourceTree = "<group>"; };
 		7B481EE52B936A5200F08899 /* ItineraryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryFooter.swift; sourceTree = "<group>"; };
 		7B481EE72B93AD4200F08899 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
-		7B481EE92B94061B00F08899 /* OldTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldTabBar.swift; sourceTree = "<group>"; };
 		7B481EF62B94203D00F08899 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7B481EFA2B94565A00F08899 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B4C9DD82B65908E00BAE8F3 /* ImageDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetails.swift; sourceTree = "<group>"; };
@@ -176,6 +175,7 @@
 		7B9B502D2B582AF100A3AD61 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		7B9BA2852B97B3C000F06415 /* CreateNewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPost.swift; sourceTree = "<group>"; };
 		7B9BA2872B97B43100F06415 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7B9BA2892B97CCCA00F06415 /* OldTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldTabBar.swift; sourceTree = "<group>"; };
 		7BAA41B02B67739F009D67DC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7BD059E62B92BB1800D818F3 /* Supabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supabase.swift; sourceTree = "<group>"; };
 		7BD059E92B92BE4F00D818F3 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				7BDA19372B5175C20020FE88 /* TabBar.swift */,
-				7B481EE92B94061B00F08899 /* OldTabBar.swift */,
+				7B9BA2892B97CCCA00F06415 /* OldTabBar.swift */,
 				7B6275772B50CE7F00FDA0F0 /* NavigationBar.swift */,
 			);
 			path = Bars;
@@ -723,6 +723,7 @@
 				7B6275922B5128CC00FDA0F0 /* ItineraryView.swift in Sources */,
 				7B4C9DD92B65908E00BAE8F3 /* ImageDetails.swift in Sources */,
 				7B96D5FC2B92C230001F060F /* SigninView.swift in Sources */,
+				7B9BA28A2B97CCCA00F06415 /* OldTabBar.swift in Sources */,
 				7B89DFE42B58608A00DA1EC6 /* DemoUserPosts.swift in Sources */,
 				7B6275712B50CA6B00FDA0F0 /* FeaturedPost.swift in Sources */,
 				7B6275782B50CE7F00FDA0F0 /* NavigationBar.swift in Sources */,
@@ -745,7 +746,6 @@
 				7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */,
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
 				7B6275A32B514E2E00FDA0F0 /* NotificationModel.swift in Sources */,
-				7B481EEA2B94061B00F08899 /* OldTabBar.swift in Sources */,
 				7B9BA2882B97B43100F06415 /* Post.swift in Sources */,
 				7B6275822B50D37000FDA0F0 /* BlobView.swift in Sources */,
 				7B9BA2862B97B3C000F06415 /* CreateNewPost.swift in Sources */,

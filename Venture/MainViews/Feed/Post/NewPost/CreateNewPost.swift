@@ -55,10 +55,10 @@ struct CreateNewPost: View {
                     Text("Post")
                         .font(.callout)
                         .fontWeight(.bold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 6)
-                        .background(.black, in: Capsule())
+                        .background(.primary, in: Capsule())
                 }
             }
             
@@ -97,6 +97,9 @@ struct CreateNewPost: View {
                 .padding(15)
             }
             
+            Group {
+                
+            }
             Divider()
             
             HStack {
@@ -119,6 +122,7 @@ struct CreateNewPost: View {
             .accentColor(.primary)
             .padding(.horizontal, 10)
             .padding(.vertical, 10)
+
             
             Spacer()
         }
@@ -129,7 +133,7 @@ struct CreateNewPost: View {
                 .fill(.gray.opacity(0.05))
                 .ignoresSafeArea()
         }
-        
+
         //Programmable photosPicker
         .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
         

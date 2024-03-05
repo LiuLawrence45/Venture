@@ -24,14 +24,10 @@ struct TabBar: View {
             .padding(.top, 14)
             .frame(height: hasHomeIndicator ? 72 : 86, alignment: .top) //Used to be 72 vs 86
             .background(.thinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
-//            .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
-            .ignoresSafeArea() 
-//            .offset(y: model.showTab ? 0 : 0)
-//            .accessibility(hidden: !model.showTab)
+            .ignoresSafeArea()
 
         }
-//        .background(Color.red)
     }
     
     var buttons: some View {

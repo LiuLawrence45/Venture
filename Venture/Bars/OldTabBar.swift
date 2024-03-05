@@ -22,19 +22,14 @@ struct OldTabBar: View {
             }
             .padding(.horizontal, 8)
             .padding(.top, 14)
-            .frame(height: hasHomeIndicator ? 76 : 62, alignment: .top)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
-            .background(
-                background
-            )
-            .overlay(
-                overlay
-            )
-            .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
+            .frame(height: hasHomeIndicator ? 72 : 86, alignment: .top) //Used to be 72 vs 86
+            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: hasHomeIndicator ? 0 : 0, style: .continuous))
+//            .strokeStyle(cornerRadius: hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
-            .offset(y: model.showTab ? 0 : 0)
-            .accessibility(hidden: !model.showTab)
+//            .offset(y: model.showTab ? 0 : 0)
+//            .accessibility(hidden: !model.showTab)
+
         }
     }
     
@@ -58,7 +53,7 @@ struct OldTabBar: View {
                 .frame(maxWidth: .infinity)
             }
             .foregroundStyle(selectedTab == item.tab ? .primary : .secondary)
-            .blendMode(selectedTab == item.tab ? .overlay : .normal)
+            .blendMode(selectedTab == item.tab ? .normal : .normal)
             .overlay(
                 GeometryReader { proxy in
                     Color.clear.preference(key: TabPreferenceKey.self, value: proxy.size.width)
