@@ -20,17 +20,12 @@ struct ProfileBlurb: View {
                 Spacer()
                 
                 WebImage(url: user.userProfileURL).placeholder{
-                    Image("NullProfile")
+                    Image("Avatar Default")
+                        .resizable()
+                        .frame(width: 72, height: 72)
+                        .mask(Circle())
+                        .offset(x: -20)
                 }
-                .resizable()
-                .frame(width: 72, height: 72)
-                .mask(Circle())
-                .offset(x: -20)
-//                Image(profile.profilePicture)
-//                    .resizable()
-//                    .frame(width: 72, height: 72)
-//                    .mask(Circle())
-//                    .offset(x: -20)
                 
                 VStack (alignment: .leading){
                     HStack(spacing: 0){

@@ -25,7 +25,6 @@ struct SignupView: View {
     @State var appear = [false, false, false]
     var dismissModal: () -> Void
     
-    @State var result: Result<Void, Error>?
     @State var showImagePicker: Bool = false
     @State var photoItem: PhotosPickerItem?
     @State var showError: Bool = false
