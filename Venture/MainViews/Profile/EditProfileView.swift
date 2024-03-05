@@ -10,6 +10,7 @@ import PhotosUI
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import SDWebImageSwiftUI
 
 
 
@@ -53,16 +54,22 @@ struct EditProfileView: View {
                         Image(uiImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .frame(width: 72, height: 72)
+                            .mask(Circle())
+                        
                     }
                     else {
-                        Image("Avatar Default")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
+                        WebImage(url: myProfile?.userProfileURL).placeholder{
+                            Image("Avatar Default")
+
+                        }
+                        .resizable()
+                        .frame(width: 72, height: 72)
+                        .mask(Circle())
+                        .aspectRatio(contentMode: .fill)
+
                     }
                 }
-                .frame(width: 85, height: 85)
-                .clipShape(Circle())
-                .contentShape(Circle())
                 .onTapGesture {
                     showImagePicker.toggle()
                 }
@@ -86,9 +93,6 @@ struct EditProfileView: View {
                 }
                 
             }
-            .overlay(content: {
-                LoadingView(show: $isLoading)
-            })
             
             
             Form {
@@ -100,6 +104,9 @@ struct EditProfileView: View {
                         .textContentType(.name)
                     TextField("Last Name", text: $lastName)
                         .textContentType(.name)
+                }
+                
+                Section(footer: Text("This is information great to have displayed on your profile!")){
 //                    TextField("Gender", text: $gender)
 //                        .textContentType(.name)
                     TextField("School", text: $school)
@@ -112,6 +119,7 @@ struct EditProfileView: View {
                 }
             }
             
+            
             Section {
                 Button("Update profile") {
                     updateProfile()
@@ -121,6 +129,9 @@ struct EditProfileView: View {
             .navigationTitle("Update Profile")
             
         }
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
         .task {
             if myProfile != nil {return}
             await fetchUserData()
@@ -165,6 +176,7 @@ struct EditProfileView: View {
             occupation = myProfile?.occupation ?? ""
             gender = myProfile?.gender ?? ""
             email = myProfile?.userEmail ?? ""
+//            userProfileURL = myProfile.userProfileURL ??
             
         })
     }
@@ -179,26 +191,27 @@ struct EditProfileView: View {
                 
                 print("User UID: \(userUID)")
                 
-                
+                var downloadURL: URL?
                 var storageRef = Storage.storage().reference().child("Profile_Images").child("Avatar Default.jpg")
                 //Uploading and downloading PhotoURL.
                 if let imageData = userProfilePicData {
                     storageRef = Storage.storage().reference().child("Profile_Images").child(userUID)
                     
                     let _ = try await storageRef.putDataAsync(imageData)
+                    downloadURL = try await storageRef.downloadURL()
                 }
                     
                 else {
                     print ("No input image assigned")
+                    downloadURL = self.myProfile?.userProfileURL ?? profileURL
                     //return
                 }
                 
-                //Download Photo URL
-                let downloadURL = try await storageRef.downloadURL()
+//                //Download Photo URL
                 print("Download URL: \(downloadURL)")
         
                 
-                let user = User(username: username, firstName: firstName, lastName: lastName, userBio: profileDescription, school: school,  userEmail: email, occupation: occupation)
+                let user = User(username: username, firstName: firstName, lastName: lastName, userBio: profileDescription, school: school,  userEmail: email, userProfileURL: downloadURL, occupation: occupation)
                 
                 let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: {
                     error in
@@ -210,6 +223,10 @@ struct EditProfileView: View {
                         logStatus = true
                     }
                 })
+                
+                await MainActor.run {
+                    isLoading = false
+                }
 
             }
             catch {
