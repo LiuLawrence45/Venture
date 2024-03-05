@@ -164,6 +164,7 @@ struct SigninView: View {
     
     func loginUser() {
         isLoading = true
+        closeKeyboard()
         Task{
             do {
                 try await Auth.auth().signIn(withEmail: email, password: password)
@@ -211,6 +212,10 @@ struct SigninView: View {
                 await setError(error)
             }
         }
+    }
+    
+    func closeKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

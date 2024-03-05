@@ -134,7 +134,7 @@ struct SignupView: View {
                     }
                         .onPreferenceChange(CirclePreferenceKey.self) { value in
                             circleInitialY = value
-//                            circleY = value
+                            circleY = value
                         }
                 )
                 .focused($isUsernameFocused)
@@ -224,6 +224,7 @@ struct SignupView: View {
     
     func signupUser() {
         isLoading = true
+        closeKeyboard()
         Task{
             do {
                 
@@ -285,6 +286,10 @@ struct SignupView: View {
                 showError.toggle()
             })
             isLoading = false
+        }
+        
+        func closeKeyboard(){
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
     

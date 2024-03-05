@@ -19,6 +19,9 @@ struct MyProfileView: View {
     
     @State var selection = ""
     @State var likedItems: [Bool]
+    
+    //Firebase syncing
+    @AppStorage("log_status") var logStatus: Bool = false
 
     init(profile: ProfileModel) {
         self.profile = profile
@@ -42,9 +45,11 @@ struct MyProfileView: View {
                     }
                     .offset(y: 14)
                     .frame(height: 52 ) // You can adjust this as necessary
+
                     
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+
                 
                 switch selectedTab {
                     case "posts":
@@ -55,13 +60,14 @@ struct MyProfileView: View {
                     PostView
                 }
             })
+//            .background(Color.red)
             .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
-            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
+            .frame(maxHeight: .infinity)
 
-//            .background(Image("Blob 1").offset(x: -100, y: -400))
+            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
         }
         
         

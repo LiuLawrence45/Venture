@@ -28,19 +28,20 @@ struct ContentView: View {
     
     var profile = profiles[0]
     
-    var body: some View { 
+    var body: some View {
         
         ZStack(alignment: .bottom) {
-             
+            
             NavigationView {
                 
                 VStack(spacing: 0)  {
                     ZStack {
                         switch selectedTab {
                         case .feed:
-                                FeedView()
-                                TabBar()
-
+                            FeedView()
+                                .background(Color.red)
+                            TabBar()
+                            
                         case .post:
                             if readyForPhotoEditing {
                                 PhotoPicker(selectedItems: $selectedItems) // Assuming PhotoPicker is a view you've defined for editing
@@ -50,6 +51,8 @@ struct ContentView: View {
                             }
                         case .profile:
                             MyProfileView(profile: profile)
+                                .background(Color.blue) 
+                            TabBar()
                             
                         }
                     }
@@ -65,18 +68,23 @@ struct ContentView: View {
                         }
                     }
                     
-                    if selectedTab != .feed {
-                        TabBar()
-                    }
-                    }
+                    // Handling selectedTab is bad... I'm creating a new instance of TabBar each time. This will slow down the UI. 
+//                    if selectedTab != .feed {
+//                        TabBar()
+//                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .120)  
+//                            
+//                            .background(Color.purple)
+//                    }
                 }
-
+            }
+            
         }
         .safeAreaInset(edge: .bottom, spacing: 3) {
             Color.clear.frame(height: 72)
+//                .background(Color.green)
         }
         .dynamicTypeSize(.large ... .xxLarge)
-//        .dynamicTypeSize(.large ... .large)
+        //        .dynamicTypeSize(.large ... .large)
         
     }
     
