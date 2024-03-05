@@ -13,7 +13,7 @@
 import SwiftUI
 import AVKit
 
-struct Post: View {
+struct PostView: View {
     var namespace: Namespace.ID
     var post: PostModel = posts[0] // for preview
     
@@ -196,11 +196,11 @@ private func isVideo(_ mediaItem: String) -> Bool {
 
 
 
-struct Post_Previews: PreviewProvider {
+struct PostView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
         //Post(namespace: namespace, show: .constant(true))
-        Post(namespace: namespace)
+        PostView(namespace: namespace)
     }
 }

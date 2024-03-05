@@ -61,11 +61,11 @@ struct ProfileView: View {
                 
                 switch selectedTab {
                     case "posts":
-                        PostView
+                        PostsView
                     case "downtogo":
                         bucketList
                 default:
-                    PostView
+                    PostsView
                 }
             })
             .scrollClipDisabled() //iOS 17.0
@@ -167,7 +167,7 @@ struct ProfileView: View {
 }
 
 
-var PostView: some View {
+var PostsView: some View {
     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
         
         ImageView(image: "Bingsuu!", width: (UIScreen.main.bounds.width) / 3)

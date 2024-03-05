@@ -56,7 +56,7 @@ struct FeedView: View {
     var showPosts: some View {
         ForEach(posts) { post in
             NavigationLink(destination: ItineraryView(post: post)){
-                Post(namespace: namespace, post: post)
+                PostView(namespace: namespace, post: post)
                     .accessibilityElement(children: .combine)
                     .accessibilityAddTraits(.isButton)
             }

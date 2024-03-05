@@ -62,11 +62,11 @@ struct MyProfileView: View {
                 
                 switch selectedTab {
                     case "posts":
-                        PostView
+                        PostsView
                     case "downtogo":
                         bucketList
                 default:
-                    PostView
+                    PostsView
                 }
             })
             .scrollClipDisabled()

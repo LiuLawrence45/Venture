@@ -15,7 +15,8 @@ struct AppView: View {
     var body: some View {
         Group {
             if logStatus {
-                ContentView()
+                CreateNewPost{_ in}
+                //ContentView()
                     .environmentObject(model)
                     // .statusBarHidden(true) // This is a temporary measure just since I can't figure it out right now.
             }
