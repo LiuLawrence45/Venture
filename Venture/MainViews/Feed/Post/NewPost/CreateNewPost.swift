@@ -7,6 +7,8 @@
 
 import SwiftUI
 import PhotosUI
+import Firebase
+import FirebaseStorage
 
 struct CreateNewPost: View {
     
@@ -30,6 +32,7 @@ struct CreateNewPost: View {
     @State private var showImagePicker: Bool = false
     @State private var photoItem: PhotosPickerItem?
     @FocusState private var showKeyboard: Bool //Focus state is used to toggle the keyboard on and off
+    @State private var showError: Bool = false
     
     
     //Body
@@ -48,7 +51,7 @@ struct CreateNewPost: View {
                 
                 Spacer()
                 
-                Button(action: {}) {
+                Button(action: {createPost()}) {
                     Text("Post")
                         .font(.callout)
                         .fontWeight(.bold)
@@ -126,7 +129,11 @@ struct CreateNewPost: View {
                 .fill(.gray.opacity(0.05))
                 .ignoresSafeArea()
         }
+        
+        //Programmable photosPicker
         .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
+        
+        //Programmable
         .onChange(of: photoItem) { newValue in
             if let newValue {
                 Task {
@@ -143,6 +150,72 @@ struct CreateNewPost: View {
                 }
             }
         }
+        
+        //Error alert
+        .alert(errorMessage, isPresented: $showError, actions: {})
+        
+        //Loading View
+        .overlay {
+            LoadingView(show: $isLoading)
+        }
+        
+    }
+    
+    //Post content to FireBase
+    func createPost(){
+        isLoading = true
+        showKeyboard = false
+        
+        Task {
+            do {
+                guard let profileURL = profileURL else {return}
+                
+                //Uploading image, if any
+                let imageReferenceID = "\(userUID)\(Date())"
+                let storageRef = Storage.storage().reference().child("Post_Images").child(imageReferenceID)
+                
+                if let postImageData{
+                    let _ = try await storageRef.putDataAsync(postImageData)
+                    let downloadURL = try await storageRef.downloadURL()
+                    
+                    let post = Post(text: postText, imageURL: downloadURL, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    
+                    try await createDocumentAtFirebase(post)
+                    
+                } else {
+                    //Directly post text data to Firebase (since there are no images)
+                    let post = Post(text: postText, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    
+                    try await createDocumentAtFirebase(post)
+                }
+            }
+            
+            catch {
+                
+            }
+        }
+    }
+    
+    func createDocumentAtFirebase(_ post: Post) async throws {
+        
+        //Write the document to Firebase
+        
+        let _ = try Firestore.firestore().collection("Posts").addDocument(from: post, completion: {error in
+            if error == nil {
+                //Post successfully stored
+                isLoading = false
+                onPost(post)
+                dismiss()
+            }
+        })
+        
+    }
+    
+    func setError(_ error: Error) async {
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
 }
 
