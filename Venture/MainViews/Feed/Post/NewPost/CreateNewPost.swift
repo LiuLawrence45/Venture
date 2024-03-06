@@ -16,9 +16,7 @@ struct CreateNewPost: View {
     //Callbacks
     var onPost: (Post) -> ()
     
-    //Post Properties
-    @State private var postText: String = ""
-    @State private var postImageData: [Data] = []
+
     
     
     //Stored User Defaults
@@ -37,8 +35,11 @@ struct CreateNewPost: View {
     @State private var showModal = false
     
     
-    //More information for posts
-    @State private var location: String = "Add location"
+    //Post Properties
+    @State private var postText: String = ""
+    @State private var postImageData: [Data] = []
+    @State private var postTitle: String = ""
+    @State private var postLocation: String = "Add location"
     
     
     //Body
@@ -77,10 +78,38 @@ struct CreateNewPost: View {
                     PostCarousel(postImageData: $postImageData)
                     
                     
+                    //Add Title
+                    HStack(spacing: 15){
+                        Text("🌱")
+                        TextField("Type in a quick title!", text: $postTitle, axis: .vertical)
+                            .focused($showKeyboard)
+                    }
+                    
+                    //Purely decorative
                     HStack {
+                        Text("|")
+                            .offset(x: 10)
+                            .opacity(0.2)
+                        Spacer()
+                    }
+
+                    
+                    //Quick Caption (postText)
+                    HStack(spacing: 15) {
+                        Text("🎤")
+                        TextField("Need a caption too...", text: $postText, axis: .vertical)
+                            .focused($showKeyboard)
+                    }
+
+                    
+                    Divider()
+                        .padding(.vertical, 10)
+                    
+                    //Adding automated location
+                    HStack(spacing: 15){
                            Text("📍")
-                           Text(location)
-                            .opacity(0.7)
+                           Text(postLocation)
+                            .opacity(0.2)
                            Spacer()
                            Image(systemName: "chevron.right")
                     }
@@ -88,11 +117,28 @@ struct CreateNewPost: View {
                         self.showModal = true
                     }
                     .fullScreenCover(isPresented: $showModal) {
-                        LocationPickerView(isPresented: self.$showModal, selectedLocation: self.$location)
+                        LocationPickerView(isPresented: self.$showModal, selectedLocation: self.$postLocation)
                     }
                     
-//                    TextField("Show us your trip and a quick caption!", text: $postText, axis: .vertical)
-//                        .focused($showKeyboard)
+                    Divider()
+                        .padding(.vertical, 10)
+
+//                    HStack {
+//                        Image(systemName: "pencil.circle.fill")
+//                        Text("Add a title")
+//                        Spacer()
+//                        Text("\(postTitle.count) / 80")
+//                    }
+//                    .padding()
+//                    .onTapGesture {
+//                        self.showTitleScreen = true
+//                    }
+//                    .sheet(isPresented: $showTitleScreen) {
+//                        TitleEntryView(titleText: self.$titleText)
+//                    }
+                    
+                    
+
                      
                 }
                 .padding(15)
@@ -108,9 +154,13 @@ struct CreateNewPost: View {
                     showImagePicker.toggle()
                     
                 } label: {
-                    Image(systemName: "photo.on.rectangle")
-                        .font(.title3)
-                        .foregroundColor(.primary)
+                    HStack {
+                        Text("Upload Images")
+                        Image(systemName:  "photo.on.rectangle")
+                            .font(.caption)
+                            .foregroundColor(.primary)
+                    }
+
                 }
                 Spacer()
                 
