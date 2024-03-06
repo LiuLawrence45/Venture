@@ -11,7 +11,7 @@ import Firebase
 struct ReusablePostsView: View {
     @Binding var posts: [Post]
     
-    @State var isFetching: Bool = true
+    @State var isFetching: Bool = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -42,7 +42,7 @@ struct ReusablePostsView: View {
             
             //Safe guard to fetch only once
             guard posts.isEmpty else {return}
-            
+            isFetching = true
             await fetchPosts()
         }
         .refreshable {
@@ -58,7 +58,11 @@ struct ReusablePostsView: View {
     @ViewBuilder
     func Posts()->some View {
         ForEach(posts){ post in
-            Text(post.text)      
+            PostView(post: post) {updatedPost in
+                
+            } onDelete: {
+                
+            }
         }
     }
     

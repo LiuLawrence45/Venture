@@ -12,15 +12,20 @@
 
 import SwiftUI
 import AVKit
+import SDWebImageSwiftUI
 
 struct PostView: View {
-    var namespace: Namespace.ID
-    var post: PostModel = demoPosts[0] // for preview
+//    var namespace: Namespace.ID
     
-//    @Binding var show: Bool
+    //Preview variables
+//    var post: PostModel = demoPosts[0]
+    var post: Post
+    var profile = profiles[0]
+
+    //Possible video player in the future
     @State private var player: AVPlayer?
     
-    //For liking
+    //For liking posts
     @State private var animateHeart = false
     @State private var likeAnimation = false
     @State private var isLiked = false
@@ -36,153 +41,94 @@ struct PostView: View {
         }
     }
     
+    // Callbacks for functions
+    var onUpdate: (Post) -> ()
+    var onDelete: () -> ()
     
-    
-    var profile = profiles[0] // for preview
+
     var body: some View {
         VStack {
-            PostHeader(post: post, profile: profile)
-            TabView {
-                ForEach(post.media, id: \.self) { mediaItem in
-
-                    ZStack {
-                        Image(mediaItem)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width)
-                            .clipped()
-                            .onTapGesture(count: 2){
-                                likeAnimation = true
-                                performAnimation()
-                                self.isLiked = true
+//            PostHeader(post: post)    This is outdated. Let's create from scratch below.
+            HStack {
+                WebImage(url: post.userProfileURL)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 36, height: 36)
+                    .mask(Circle())
+                
+                VStack(alignment: .leading){
+                    
+                    
+                    //This was originally a button.
+                    Text(post.userName)
+                        .font(.caption)
+                        .multilineTextAlignment(.leading)
+                        .fontWeight(.semibold)
+                        .frame(alignment: .leading)
+                    
+                    Text(post.publishedDate.formatted(date: .numeric, time: .shortened))
+                    .font(.caption2)
+                    .multilineTextAlignment(.trailing)
+                    .frame(alignment: .trailing)
+                    .opacity(0.6)
+                    
+                    Text(post.text)
+                        .textSelection(.enabled)
+                        .padding(.vertical, 8)
+                    
+                    if let postImageURL = post.imageURL.first{
+                        GeometryReader {
+                            let size = $0.size
+                            WebImage(url: postImageURL)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: size.width, height: size.height)
+                                .clipped()
                         }
-
-
-                        Image(systemName: isLiked ?
-                              "cursorarrow.click.2" : "heart.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .scaleEffect(likeAnimation ? 1: 0)
-                        .opacity(likeAnimation ? 0.5 : 0)
-                        .animation(.spring())
-                        .foregroundColor(isLiked ? .red : .black)
+                        .frame(height: 200)
                     }
-
-
-
+                    
                 }
-
-            }.tabViewStyle(PageTabViewStyle())
-            .padding(.horizontal, 8)
-            .frame(height: 480)
-            
-            PostFooter(post: post)
-            
-        }
-        
+            }
+//            
+//            TabView {
+//                ForEach(post.media, id: \.self) { mediaItem in
 //
-//        VStack{
-//
-//            PostHeader(post: post, profile: profile)
-//            //Post and following
-//            VStack {
-//                Spacer()
-//                VStack(alignment: .leading, spacing: 12) {
-//                    Group {
-//                        Text(post.title)
-//                            //.font(.subheadline.weight(.bold))
-//                            .animatableFont(size: 18, weight: .bold)
-//                            .matchedGeometryEffect(id: "title\(post.id)", in: namespace)
-//                            //.opacity(0.5)
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        Text(post.caption ?? "")
-//                            .font(.footnote)
-//                            .fontWeight(.semibold)
-//                            //.opacity(0.5)
-//                            .matchedGeometryEffect(id: "text\(post.id)", in: namespace)
-//                    }
-//                    .offset(y: -20)
-//
-//                }
-//                .padding(20)
-//                .background(
-//                    Rectangle()
-//                        .fill(.ultraThinMaterial)
-//                        .mask(RoundedRectangle(cornerRadius: 0, style: .continuous))
-//                        .blur(radius: 50)
-//                        .matchedGeometryEffect(id: "blur\(post.id)", in: namespace)
-//                )
-//            }
-//            .foregroundStyle(.white)
-//            .background(
-//                //Image("Background 6")
-//
-//                TabView {
-//                    ForEach(post.media, id: \.self) { mediaItem in
-//
-//                        ZStack {
-//                            Image(mediaItem)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: UIScreen.main.bounds.width)
-//                                .clipped()
-//                                .onTapGesture(count: 2){
-//                                    likeAnimation = true
-//                                    performAnimation()
-//                                    self.isLiked = true
-//                            }
-//
-//
-//                            Image(systemName: isLiked ?
-//                                  "bolt.heart" : "heart")
+//                    ZStack {
+//                        Image(mediaItem)
 //                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 150, height: 150)
-//                            .scaleEffect(likeAnimation ? 1: 0)
-//                            .opacity(likeAnimation ? 1 : 0)
-//                            .animation(.spring())
-//                            .foregroundColor(isLiked ? .red : .black)
+//                            .aspectRatio(contentMode: .fill)
+//                            .frame(width: UIScreen.main.bounds.width)
+//                            .clipped()
+//                            .onTapGesture(count: 2){
+//                                likeAnimation = true
+//                                performAnimation()
+//                                self.isLiked = true
 //                        }
 //
 //
-//
+//                        Image(systemName: isLiked ?
+//                              "cursorarrow.click.2" : "heart.circle")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 150, height: 150)
+//                        .scaleEffect(likeAnimation ? 1: 0)
+//                        .opacity(likeAnimation ? 0.5 : 0)
+//                        .animation(.spring())
+//                        .foregroundColor(isLiked ? .red : .black)
 //                    }
 //
-//                }.tabViewStyle(PageTabViewStyle())
 //
 //
-//            )
-//            .padding(.horizontal, 10)
-//            .overlay(
-//
-//                Button {
-//                    self.animateHeart = true
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + self.duration, execute: {
-//                        self.animateHeart = false
-//                        self.isLiked.toggle()
-//                    })
-//
-//                } label: {
-//                    Image(systemName: "bolt.heart").imageScale(.large)
 //                }
-//                .opacity(isLiked ? 1 : 0.3)
-//                .accentColor(isLiked ? .red : .white)
-//                .scaleEffect(animateHeart ? animationScale : 1)
-//                .animation(.easeIn(duration: duration))
-//                .padding(.horizontal, 10)
 //
-//
-//
-//                ,
-//                alignment: .trailing
-//
-//
-//            )
-//        .frame(height: 480) //Play around with this for vibes. This is also dynamic based on what the user wants to post.
-//
-////        PostFooter(post: post)
-//        }
+//            }.tabViewStyle(PageTabViewStyle())
+//            .padding(.horizontal, 8)
+//            .frame(height: 480)
+            
+            //PostFooter(post: post)
+            
+        }
         
     }
 
@@ -201,6 +147,7 @@ struct PostView_Previews: PreviewProvider {
     
     static var previews: some View {
         //Post(namespace: namespace, show: .constant(true))
-        PostView(namespace: namespace)
+//        PostView(namespace: namespace)
+        ContentView()
     }
 }
