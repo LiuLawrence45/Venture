@@ -55,13 +55,13 @@ struct CreateNewPost: View {
             
             //Carousel for pictures, and "Description"
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 15){
+                VStack(spacing: 16){
                     
                     PostCarousel(postImageData: $postImageData)
                     
                     
                     //Add Title
-                    HStack(spacing: 15){
+                    HStack(spacing: 16){
                         Text("🌱")
                         TextField("Type in a quick title!", text: $postTitle, axis: .vertical)
                             .focused($showKeyboard)
@@ -77,7 +77,7 @@ struct CreateNewPost: View {
 
                     
                     //Quick Caption (postText)
-                    HStack(spacing: 15) {
+                    HStack(spacing: 16) {
                         Text("🎤")
                         TextField("Need a caption too...", text: $postCaption, axis: .vertical)
                             .focused($showKeyboard)
@@ -106,7 +106,7 @@ struct CreateNewPost: View {
 
                      
                     //Add Costs; only allows in number input
-                    HStack(spacing: 15){
+                    HStack(spacing: 16){
                         Text("💸")
                         TextField("Cost for trip per person", text: $tripCost, axis: .vertical)
                             .keyboardType(.numberPad)
@@ -125,7 +125,7 @@ struct CreateNewPost: View {
                     }
                     
                     //Car needed?
-                    HStack(spacing: 15) {
+                    HStack(spacing: 16) {
                         Text("🚗")
                         Toggle(isOn: $tripCar){
                             HStack{
@@ -151,7 +151,7 @@ struct CreateNewPost: View {
                     }
                     
                     //How many people?
-                    HStack(spacing: 15){
+                    HStack(spacing: 16){
                         Text("🙋‍♀️")
                         TextField("How many people?", text: $tripPeople, axis: .vertical)
                             .keyboardType(.numberPad)
@@ -169,7 +169,7 @@ struct CreateNewPost: View {
                     //Adding itinerary
                     ItineraryEditorComponent(tripItinerary: $tripItinerary, showItineraryModal: $showItineraryModal)
                 }
-                .padding(15)
+                .padding(16)
                 
             }
             
@@ -205,7 +205,7 @@ struct CreateNewPost: View {
             
             Spacer()
         }
-        .padding(.horizontal, 15)
+        .padding(.horizontal, 16)
         .padding(.vertical, 10)
 //        .background {
 //            Rectangle()
@@ -237,7 +237,7 @@ struct CreateNewPost: View {
         @Binding var showItineraryModal: Bool
 
         var body: some View {
-            HStack(spacing: 15){
+            HStack(spacing: 16){
                 Text("⚡️")
                 Text(tripItinerary)
                     .opacity(0.2)
@@ -261,7 +261,7 @@ struct CreateNewPost: View {
         @Binding var showLocationModal: Bool
 
         var body: some View {
-            HStack(spacing: 15){
+            HStack(spacing: 16){
                 Text("📍")
                 Text(postLocation)
                 Spacer()
@@ -349,7 +349,7 @@ struct CreateNewPost: View {
                     var imageURLs = [URL]()
                     
                     for (index, individualImage) in postImageData.enumerated() {
-                        let uniqueImageID = imageReferenceID
+                        let uniqueImageID = "\(imageReferenceID)\(index)"
                         let storageRef = Storage.storage().reference().child("Post_Images").child(uniqueImageID)
                         
                         let _ = try await storageRef.putDataAsync(individualImage)

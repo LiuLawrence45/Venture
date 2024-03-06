@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 
 
@@ -15,7 +16,6 @@ struct ItineraryView: View {
     @Environment(\.dismiss) var dismiss
     
     var post: Post
-//    var post: PostModel = demoPosts[0] // for preview
     @State var selectedTab: String = "main"
     @EnvironmentObject var model: Model
     
@@ -23,25 +23,28 @@ struct ItineraryView: View {
         ZStack {
             ScrollView {
                 VStack {
-//                    TabView {
-//                        ForEach(post.media, id: \.self) { mediaItem in
-//                            
-//                            ZStack {
-//                                Image(mediaItem)
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fill)
-//                                    .frame(width: UIScreen.main.bounds.width)
-//                                    .clipped()
-//                            }
-//                        }
-//                        
-//                    }.tabViewStyle(PageTabViewStyle())
-//                        .frame(height: 480)
-//                        .padding(.bottom, 8)
+                    
+                    TabView {
+                        ForEach(post.imageURLs, id: \.self){ imageURL in
+                            ZStack {
+                                WebImage(url: imageURL)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: UIScreen.main.bounds.width - 16, height: 480)
+
+                                    .clipped()
+                                    
+                            }
+                            
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle())
+                    .frame(height: 480)
+                    .padding(.horizontal, 8)
+                    .padding(.bottom, 8)
+                    
                     ItineraryFooter(post: post)
                         .padding(.bottom, 16)
-        //            Divider()
-        //                .padding(.vertical, 8)
                     
                     //Significant Padding. Here is the Tab Bar
                     HStack(spacing: 0) {
@@ -49,24 +52,29 @@ struct ItineraryView: View {
                         ItineraryTabBarButton(text: "Discussion", selectedTab: $selectedTab, identifier: "discussion")
                     }
                     .padding(.bottom, 16)
+                    
+                    //Tab Switches
                     switch selectedTab {
                     case "posts":
                         summary(post: post)
                     case "discussion":
                         discussion
-        //                ItineraryMapView()
-        //                    .frame(height: 50)
+
                     default:
                         summary(post: post)
                     }
+                    
+
                     Spacer()
+                    
+
                 }
                 
             }
             if selectedTab == "discussion" {
                 VStack {
                     Spacer()
-                    floatingCommentBar
+//                    floatingCommentBar
                             .transition(.move(edge: .bottom).combined(with: .opacity)) // Smooth transition for appearing
                             .animation(.easeInOut, value: selectedTab) // Animate the transition
                     }
@@ -93,40 +101,40 @@ struct ItineraryView: View {
     
 }
 
-var floatingCommentBar: some View {
-        HStack(alignment: .bottom){
-            
-            NavigationLink(destination: ProfileView(profile: profiles[0])){
-                Image(profiles[0].profilePicture)
-                    .resizable()
-                    .frame(width: 36, height: 36)
-                    .mask(Circle())
-                    .padding(.leading, 20)
-            }
-            .accentColor(.primary)
-              
-            
-            
-            Button {
-                
-            } label: {
-                Text("_Add a Comment..._")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(10)
-                    .opacity(0.3)
-                    .font(.footnote)
-                    .accentColor(.primary)
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-                    .padding(.trailing, 20)
-            }
-
-
-        }
-        .padding(.bottom, 15)
-        .padding(.top, 10)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 0, style: .continuous))
-
-}
+//var floatingCommentBar: some View {
+//        HStack(alignment: .bottom){
+//            
+//            NavigationLink(destination: MyProfileView()){
+//                Image(profiles[0].profilePicture)
+//                    .resizable()
+//                    .frame(width: 36, height: 36)
+//                    .mask(Circle())
+//                    .padding(.leading, 20)
+//            }
+//            .accentColor(.primary)
+//              
+//            
+//            
+//            Button {
+//                
+//            } label: {
+//                Text("_Add a Comment..._")
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                    .padding(10)
+//                    .opacity(0.3)
+//                    .font(.footnote)
+//                    .accentColor(.primary)
+//                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//                    .padding(.trailing, 20)
+//            }
+//
+//
+//        }
+//        .padding(.bottom, 15)
+//        .padding(.top, 10)
+//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 0, style: .continuous))
+//
+//}
 
 
 //Content to overfill the discussion
@@ -134,12 +142,19 @@ var discussion: some View {
    
     
     VStack {
-        CommentsView()
-            .padding(.bottom, 8)
-        CommentsView()
-            .padding(.bottom, 8)
-        CommentsView()
-            .padding(.bottom, 8) 
+        
+        NotReadyView()
+//        CommentsView()
+//            .padding(.bottom, 8)
+//        CommentsView()
+//            .padding(.bottom, 8)
+//        CommentsView()
+//            .padding(.bottom, 8) 
+        
+        Group {
+            Text("")
+                .frame(height: 200)
+        }
     }
 
 }
@@ -150,7 +165,14 @@ struct summary: View {
     var body: some View {
         Text(post.tripItinerary)
             .padding(.horizontal, 8)
+        
+        Group {
+            Text("")
+                .frame(height: 200)
+        }
     }
+    
+    
 }
 
 

@@ -15,11 +15,11 @@ import PhotosUI
 
 struct ContentView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .feed
-    @AppStorage("showModal") var showModal = false
     @AppStorage("showSearch") var showSearch: Bool = false
     @State private var readyForPhotoEditing = false
     @EnvironmentObject var model: Model
     
+    @State var showModal: Bool = false
     
     //For showing photo picker
     @State private var createNewPost: Bool = false
@@ -41,15 +41,15 @@ struct ContentView: View {
                         switch selectedTab {
                         case .feed:
                             FeedView(posts: $recentPosts)
-                            TabBar()
+                            TabBar(showModal: $showModal)
                             
                         case .post:
                             EmptyView()
-                            TabBar()
+                            TabBar(showModal: $showModal)
                         case .profile:
                             MyProfileView(profile: profile)
 //                                .background(Color.blue)  Debugging for future frame issues
-                            TabBar()
+                            TabBar(showModal: $showModal)
                             
                         }
                     }
@@ -62,7 +62,7 @@ struct ContentView: View {
                         createNewPost = false
                     }
                 }
-                .fullScreenCover(isPresented: $createNewPost){
+                .fullScreenCover(isPresented: $showModal){
                     CreateNewPost { post in
                         print("Hello")
                     }

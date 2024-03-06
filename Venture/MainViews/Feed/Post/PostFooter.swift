@@ -36,7 +36,7 @@ struct PostFooter: View {
             HStack(spacing: 0){
                 Text(post.caption)
                     .foregroundStyle(.secondary)
-                    .font(.caption)
+                    .font(.footnote)
                 Spacer()
                 PostInteraction()
 

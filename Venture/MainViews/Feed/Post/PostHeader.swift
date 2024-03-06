@@ -15,7 +15,7 @@ struct PostHeader: View {
         HStack(alignment: .center){
             Button {
             } label: {
-                NavigationLink(destination: EmptyView()){
+                NavigationLink(destination: NotReadyView()){
                     WebImage(url: post.userProfileURL)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -31,7 +31,7 @@ struct PostHeader: View {
                 Button {
                     
                 } label:  {
-                    NavigationLink(destination: EmptyView()){
+                    NavigationLink(destination: NotReadyView()){
                         Text(post.userName) //replace with structure after
                             .font(.caption)
                             .multilineTextAlignment(.leading)
