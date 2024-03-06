@@ -39,15 +39,15 @@ struct CreateNewPost: View {
     var body: some View {
         VStack {
             HStack {
-                Menu {
-                    Button("Cancel", role: .destructive){
-                        dismiss()
-                    }
-                } label: {
-                    Text("Cancel")
-                        .font(.callout)
-                        .foregroundColor(.primary)
+                Button {
+                    dismiss()
                 }
+            label: {
+                Text("Cancel")
+                    .font(.callout)
+                    .opacity(0.7)
+                    .foregroundColor(.primary)
+            }
                 
                 Spacer()
                 
@@ -65,65 +65,8 @@ struct CreateNewPost: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15){
                     
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack {
-                            ForEach(postImageData.indices, id: \.self) { index in
-                                if let image = UIImage(data: postImageData[index]){
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 128, height: 128)
-                                        .clipped()
-                                        .cornerRadius(8)
-                                    
-                                    //Will implement this later.
-                                        .overlay(alignment: .topTrailing) {
-                                            Button {
-                                                withAnimation {
-                                                    self.removeImage(at: index)
-                                                    print("Image is at index: ", index)
-                                                    
-                                                }
-                                            } label: {
-                                                Image(systemName: "xmark.circle.fill")
-                                                    .padding(10)
-                                                    .foregroundColor(.red)
-                                            }
-                                        }
-                                }
-                                
-                            }
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    //                    if let postImageData, let image = UIImage(data: postImageData){
-                    //                        GeometryReader {
-                    //                            let size = $0.size
-                    //                            Image(uiImage: image)
-                    //                                .resizable()
-                    //                                .aspectRatio(contentMode: .fill)
-                    //                                .frame(width: size.width, height: size.height)
-                    ////                                .clipShape()
-                    //                                .overlay(alignment: .topTrailing){
-                    //                                    Button {
-                    //                                        withAnimation(.easeInOut(duration: 0.25)){
-                    //                                            self.postImageData = nil
-                    //                                        }
-                    //
-                    //                                    } label: {
-                    //                                        Image(systemName: "trash")
-                    //                                            .fontWeight(.bold)
-                    //                                            .tint(.red)
-                    //                                    }
-                    //                                    .padding(10)
-                    //                                }
-                    //                        }
-                    //                        .clipped()
-                    //                        .frame(height: 220)
-                    //                    }
+                    PostCarousel(postImageData: $postImageData)
+
                     
                     TextField("What's happening?", text: $postText, axis: .vertical)
                         .focused($showKeyboard)
@@ -188,11 +131,6 @@ struct CreateNewPost: View {
         
     }
     
-    //Helper function to remove an image from photoImageData. Does not currently work for non-last images.
-    func removeImage(at index: Int) {
-        postImageData.remove(at: index)
-    }
-    
     //Processing selected Photos from the photoItems array. Adds all images from photoItems from photoItemPicker to the postImageData.
     func processSelectedPhotos(){
         Task {
@@ -219,13 +157,20 @@ struct CreateNewPost: View {
             do {
                 guard let profileURL = profileURL else {return}
                 
-                //Uploading image, if any
-                let imageReferenceID = "\(userUID)\(Date())"
-                let storageRef = Storage.storage().reference().child("Post_Images").child(imageReferenceID)
                 
-                if let _ = postImageData.first {
+                //If there exists imageData within the post.
+                if let _ = postImageData.first{
+                    
+                    //Overall image reference ID
+                    let imageReferenceID = "\(userUID)\(Date())"
+                    
+                    //Uploading image, if any
                     var imageURLs = [URL]()
-                    for individualImage in postImageData {
+                    
+                    for (index, individualImage) in postImageData.enumerated() {
+                        let uniqueImageID = "\(imageReferenceID)_\(index)"
+                        let storageRef = Storage.storage().reference().child("Post_Images").child(uniqueImageID)
+                        
                         let _ = try await storageRef.putDataAsync(individualImage)
                         let downloadURL = try await storageRef.downloadURL()
                         imageURLs.append(downloadURL)
@@ -235,16 +180,18 @@ struct CreateNewPost: View {
                     
                     try await createDocumentAtFirebase(post)
                     
-                } else {
-                    //Directly post text data to Firebase (since there are no images)
-                    let post = Post(text: postText, userName: userName, userUID: userUID, userProfileURL: profileURL)
-                    
-                    try await createDocumentAtFirebase(post)
+                } 
+                
+                
+                //If there is no image data provided.
+                else {
+                    isLoading = false
+                    throw AtLeastOneImage.withMessage("Please add at least one image to your post.")
                 }
             }
             
             catch {
-                
+                await setError(error)
             }
         }
     }
@@ -264,12 +211,68 @@ struct CreateNewPost: View {
         
     }
     
+    //Custom error
+    enum AtLeastOneImage: Error {
+        case withMessage(String)
+    }
+    
     func setError(_ error: Error) async {
         await MainActor.run(body: {
             errorMessage = error.localizedDescription
             showError.toggle()
         })
     }
+}
+
+
+
+// Struct PostCarousel; separated to increase loading speeds. If need to increase more, make it equatable.
+
+struct PostCarousel: View {
+    
+    @Binding var postImageData: [Data]
+    var body: some View {
+        //Horizontal carousel of images
+        ScrollView(.horizontal, showsIndicators: false){
+            
+            //Apparently this is faster than an HStack.
+            LazyHStack {
+                
+                //Looping through each image provided.
+                ForEach(postImageData.indices, id: \.self) { index in
+                    if let image = UIImage(data: postImageData[index]){
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 128, height: 128)
+                            .clipped()
+                            .cornerRadius(8)
+                        
+                        //Trash overlay, to remove image.
+                            .overlay(alignment: .topTrailing) {
+                                Button {
+                                    withAnimation {
+                                        self.removeImage(at: index)
+                                        
+                                    }
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .padding(10)
+                                        .foregroundColor(.red)
+                                }
+                            }
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    //Helper function to remove an image from photoImageData. Does not currently work for non-last images.
+    func removeImage(at index: Int) {
+        postImageData.remove(at: index)
+    }
+
 }
 
 #Preview {
