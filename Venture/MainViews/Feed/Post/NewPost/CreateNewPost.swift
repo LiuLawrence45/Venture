@@ -349,7 +349,7 @@ struct CreateNewPost: View {
                     var imageURLs = [URL]()
                     
                     for (index, individualImage) in postImageData.enumerated() {
-                        let uniqueImageID = "\(imageReferenceID)_\(index)"
+                        let uniqueImageID = imageReferenceID
                         let storageRef = Storage.storage().reference().child("Post_Images").child(uniqueImageID)
                         
                         let _ = try await storageRef.putDataAsync(individualImage)

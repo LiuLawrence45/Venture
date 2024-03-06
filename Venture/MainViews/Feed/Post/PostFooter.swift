@@ -65,6 +65,13 @@ struct PostFooter: View {
                 })
             }
         }
+        .onDisappear {
+            //Removes the listener (stopping unwanted live updates when not on the screen)
+            
+            if let docListener{
+                docListener.remove()
+            }
+        }
 
 
     }

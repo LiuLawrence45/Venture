@@ -58,15 +58,6 @@ struct PostHeader: View {
             
             Spacer()
             
-            Button {
-                
-            }
-        label: {
-            Image(systemName: "ellipsis")
-                .padding(.trailing, 10)
-                .opacity(0.6)
-        }
-        .accentColor(.primary)
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)

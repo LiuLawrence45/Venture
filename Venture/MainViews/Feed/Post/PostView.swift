@@ -12,6 +12,9 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import FirebaseStorage
+import FirebaseFirestore
+import Firebase
 
 struct PostView: View {
     
@@ -22,6 +25,7 @@ struct PostView: View {
     var onUpdate: (Post) -> ()
     var onDelete: () -> ()
     
+    @AppStorage("user_UID") private var userUID: String = ""
 
     var body: some View {
         VStack {
@@ -53,13 +57,49 @@ struct PostView: View {
 
             
             
-            //Post footing information. GUI change soon.
+            //Post footing information. GUI change soon. Has liking and disliking capabilities.
             PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete)
         }
+        .overlay(alignment: .topTrailing, content: {
+            if post.userUID == userUID {
+                Menu {
+                    Button("Delete Post", role: .destructive, action: deletePost)
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .font(.caption)
+                        .rotationEffect(.init(degrees: -90))
+                        .foregroundColor(.primary)
+                        .padding(8)
+                        .contentShape(Rectangle())
+                    
+                }
+            }
+        })
+
         
     }
     
     
+    
+    //Deleting a Post. Remember, liking and disliking are in PostFooter
+    func deletePost(){
+        Task {
+            
+            do {
+                if post.imageReferenceID != "" {
+                    try await Storage.storage().reference().child("Post_Images").child(post.imageReferenceID).delete()
+                }
+                
+                guard let postID = post.id else {return}
+                try await Firestore.firestore().collection("Posts").document(postID).delete()
+            }
+            
+            catch {
+                print(error.localizedDescription)
+            }
+
+        }
+    }
 
         
 
