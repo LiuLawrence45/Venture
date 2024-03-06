@@ -65,6 +65,8 @@
 		7B7CB3F52B984A5500EEF9D7 /* OldPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */; };
 		7B7CB3F92B98612000EEF9D7 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */; };
 		7B7CB3FB2B986D5800EEF9D7 /* EditItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FA2B986D5800EEF9D7 /* EditItineraryView.swift */; };
+		7B7CB3FE2B987EB800EEF9D7 /* Michroma-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */; };
+		7B7CB4002B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -166,6 +168,8 @@
 		7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OldPostHeader.swift; path = Venture/MainViews/Feed/Post/OldPostHeader.swift; sourceTree = SOURCE_ROOT; };
 		7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
 		7B7CB3FA2B986D5800EEF9D7 /* EditItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItineraryView.swift; sourceTree = "<group>"; };
+		7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Michroma-Regular.ttf"; sourceTree = "<group>"; };
+		7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 		7B6275332B50BECE00FDA0F0 /* Venture */ = {
 			isa = PBXGroup;
 			children = (
+				7B7CB3FC2B987EAC00EEF9D7 /* Fonts */,
 				7B481EFA2B94565A00F08899 /* GoogleService-Info.plist */,
 				7B96D5FF2B92C689001F060F /* Info.plist */,
 				7B6275342B50BECE00FDA0F0 /* VentureApp.swift */,
@@ -492,6 +497,15 @@
 				7B96D5F92B92C1C3001F060F /* AngularButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		7B7CB3FC2B987EAC00EEF9D7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */,
+				7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		7B9BA2832B97191D00F06415 /* Archive Models */ = {
@@ -671,6 +685,8 @@
 				7B481EFB2B94565A00F08899 /* GoogleService-Info.plist in Resources */,
 				7B62753C2B50BECF00FDA0F0 /* Preview Assets.xcassets in Resources */,
 				7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */,
+				7B7CB4002B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf in Resources */,
+				7B7CB3FE2B987EB800EEF9D7 /* Michroma-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
