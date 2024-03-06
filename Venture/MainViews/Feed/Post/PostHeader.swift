@@ -43,8 +43,10 @@ struct PostHeader: View {
                 .accentColor(.primary)
                 
                 HStack(spacing: 2){
-                    Text("Time Posted (for beta testing):").bold()
-                    Text(post.publishedDate.formatted(date: .numeric, time: .shortened))
+//                    Text("Time Posted (for beta testing):").bold()
+//                    Text(post.publishedDate.formatted(date: .numeric, time: .shortened))
+                    Text("Title:").bold()
+                    Text(post.title)
                     
                 }
                 .font(.caption2)

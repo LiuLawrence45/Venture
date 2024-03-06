@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItineraryFooter: View {
     
-    var post: PostModel
+    var post: Post
     @State private var showModal = false
     var body: some View {
         
@@ -57,6 +57,6 @@ struct ItineraryFooter: View {
 }
 
 
-#Preview {
-    ItineraryFooter(post: demoPosts[0])
-}
+//#Preview {
+//    ItineraryFooter(post: demoPosts[0])
+//}

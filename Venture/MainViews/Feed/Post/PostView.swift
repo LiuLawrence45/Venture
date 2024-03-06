@@ -29,64 +29,38 @@ struct PostView: View {
             //Post heading information (username, time, etc...)
             PostHeader(post: post)
             
-            //All images in the horizontal carousel
-            TabView {
-                ForEach(post.imageURLs, id: \.self){ imageURL in
-                    ZStack {
-                        WebImage(url: imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width - 16, height: 480)
+            
+            NavigationLink(destination: ItineraryView(post: post)) {
+                //All images in the horizontal carousel
+                TabView {
+                    ForEach(post.imageURLs, id: \.self){ imageURL in
+                        ZStack {
+                            WebImage(url: imageURL)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.width - 16, height: 480)
 
-                            .clipped()
-                            
+                                .clipped()
+                                
+                        }
+                        
                     }
-                    
                 }
+                .tabViewStyle(PageTabViewStyle())
             }
-            .tabViewStyle(PageTabViewStyle())
-            .padding(.horizontal, 8)
             .frame(height: 480)
+            .padding(.horizontal, 8)
+
             
             
             //Post footing information. GUI change soon.
             PostFooter(post: post)
-            
-            PostInteraction()
         }
         
     }
     
     
-    //Like, dislike interaction. Probably implement this in the actual itinerary section.
-    @ViewBuilder
-    func PostInteraction() -> some View {
-        HStack(spacing: 6) {
-            Button {
-                
-            } label: {
-                Image(systemName: post.likedIDs.contains("") ? "hand.thumbsup.fill" : "hand.thumbsup")
-            }
-            
-            Text("\(post.likedIDs.count)")
-                .font(.caption)
-                .foregroundColor(.primary)
-                .opacity(0.7)
-            
-            Button {
-                
-            } label: {
-                Image(systemName: post.dislikedIDs.contains("") ? "hand.thumbsdown.fill": "hand.thumbsdown")
-            }
-            
-            Text("\(post.dislikedIDs.count)")
-                .font(.caption)
-                .foregroundColor(.primary)
-                .opacity(0.7)
-        }
-        .padding(.vertical, 8)
-        .foregroundColor(.primary)
-    }
+
         
 
 }

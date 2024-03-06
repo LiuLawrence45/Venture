@@ -14,7 +14,8 @@ import SwiftUI
 struct ItineraryView: View {
     @Environment(\.dismiss) var dismiss
     
-    var post: PostModel = demoPosts[0] // for preview
+    var post: Post
+//    var post: PostModel = demoPosts[0] // for preview
     @State var selectedTab: String = "main"
     @EnvironmentObject var model: Model
     
@@ -22,22 +23,22 @@ struct ItineraryView: View {
         ZStack {
             ScrollView {
                 VStack {
-                    TabView {
-                        ForEach(post.media, id: \.self) { mediaItem in
-                            
-                            ZStack {
-                                Image(mediaItem)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: UIScreen.main.bounds.width)
-                                    .clipped()
-                            }
-                        }
-                        
-                    }.tabViewStyle(PageTabViewStyle())
-                        .frame(height: 480)
-                        .padding(.bottom, 8)
-                    ItineraryFooter(post: demoPosts[0])
+//                    TabView {
+//                        ForEach(post.media, id: \.self) { mediaItem in
+//                            
+//                            ZStack {
+//                                Image(mediaItem)
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                                    .frame(width: UIScreen.main.bounds.width)
+//                                    .clipped()
+//                            }
+//                        }
+//                        
+//                    }.tabViewStyle(PageTabViewStyle())
+//                        .frame(height: 480)
+//                        .padding(.bottom, 8)
+                    ItineraryFooter(post: post)
                         .padding(.bottom, 16)
         //            Divider()
         //                .padding(.vertical, 8)
@@ -50,13 +51,13 @@ struct ItineraryView: View {
                     .padding(.bottom, 16)
                     switch selectedTab {
                     case "posts":
-                        summary
+                        summary(post: post)
                     case "discussion":
                         discussion
         //                ItineraryMapView()
         //                    .frame(height: 50)
                     default:
-                        summary
+                        summary(post: post)
                     }
                     Spacer()
                 }
@@ -144,73 +145,12 @@ var discussion: some View {
 }
 
 //Content to overfill the summmary
-var summary: some View {
-    VStack(){
-        
-        // Fill with "post_summary" after.
-        Text("Escape to our oceanfront sanctuary, just 15 minutes from SF and SFO. Set on the second floor of a duplex, the large windows offer breathtaking ocean views.")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-        
-        Divider()
-            .padding(.vertical, 8)
-        
-        // Fill with "pay_details" after. Should be a formatted list. Padding is 8 between each section. From header to words underneath, padding is 6.
-        Text("Payment Details")
-            .fontWeight(.bold)
-            .padding(.bottom, 6)
-        Text("**1.** ZipCar was pretty expensive. Ordering from ZipCar costed around $30.\n**2.** The site was $50\n**3.** Food costed around a lot of money.")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-            .padding(.bottom, 8)
-        
-        Text("Travel Details ")
-            .fontWeight(.bold)
-            .padding(.bottom, 6)
-        Text("**1.** ZipCar was pretty expensive. Ordering from ZipCar costed around $30.\n**2.** The site was $50\n**3.** Food costed around a lot of money.")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-            .padding(.bottom, 8)
-        
-        Text("Organization Details ")
-            .fontWeight(.bold)
-            .padding(.bottom, 6)
-        Text("**1.** ZipCar was pretty expensive. Ordering from ZipCar costed around $30.\n**2.** The site was $50\n**3.** Food costed around a lot of money.")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-        
-        Divider()
-            .padding(.vertical, 8)
-        
-        Text("Stop 1: San Gregorio Beach")
-            .fontWeight(.bold)
-            .padding(.bottom, 6)
-        Text("Totally a really great time. I understood the waves and they splashed so big! San Gregorio is so cool!")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-            .padding(.bottom, 8)
-        
-        Text("Stop 2: Venture Retreat Center")
-            .fontWeight(.bold)
-            .padding(.bottom, 6)
-        Text("Totally a really great time. I understood the waves and they splashed so big! San Gregorio is so cool!")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-            .padding(.bottom, 8)
-        
-        Text("Stop 3: Half-Moon Bay")
-            .fontWeight(.bold)
-            .padding(.bottom, 6)
-        Text("Totally a really great time. I understood the waves and they splashed so big! Half-Moon Bay is so cool!")
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-            .padding(.bottom, 8)
-        
-        
-        
+struct summary: View {
+    var post: Post
+    var body: some View {
+        Text(post.tripItinerary)
+            .padding(.horizontal, 8)
     }
-    .padding(.horizontal, 8)
-
 }
 
 
@@ -260,15 +200,15 @@ struct ItineraryTabBarButton: View {
 }
 
 
-struct ItineraryView_Previews: PreviewProvider {
-    
-    @Namespace static var namespace
-    
-    static var previews: some View {
-        ItineraryView()
-        .environmentObject(Model())
-    }
-}
+//struct ItineraryView_Previews: PreviewProvider {
+//    
+//    @Namespace static var namespace
+//    
+//    static var previews: some View {
+//        ItineraryView()
+//        .environmentObject(Model())
+//    }
+//}
 
 
 
