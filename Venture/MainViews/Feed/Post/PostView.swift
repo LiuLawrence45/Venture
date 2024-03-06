@@ -54,7 +54,7 @@ struct PostView: View {
             
             
             //Post footing information. GUI change soon.
-            PostFooter(post: post)
+            PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete)
         }
         
     }

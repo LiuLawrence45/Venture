@@ -6,11 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseStorage
+import Firebase
 
 struct PostFooter: View {
     
     var post: Post
+    var onUpdate: (Post) -> ()
+    var onDelete: () -> ()
     @State private var showModal = false
+    
+    //View Properties
+    @AppStorage("user_UID") private var userUID: String = ""
+    @State private var docListener: ListenerRegistration?
+ 
     var body: some View {
         
         VStack(alignment: .leading){
@@ -32,8 +42,29 @@ struct PostFooter: View {
 
             }
         }
-//        .background(.ultraThickMaterial)
         .padding(.horizontal, 8)
+        .onAppear{
+            
+            //Adding only once...
+            if docListener == nil {
+                guard let postID = post.id else {return}
+                docListener = Firestore.firestore().collection("Posts").document(postID).addSnapshotListener({ snapshot, error in
+                    
+                    if let snapshot{
+                        if snapshot.exists {
+                            
+                            //Document updated, fetching updated document
+                            if let updatedPost = try? snapshot.data(as: Post.self){
+                                onUpdate(updatedPost)
+                            }
+                        }
+                        else {
+                           onDelete()
+                        }
+                    }
+                })
+            }
+        }
 
 
     }
@@ -43,10 +74,8 @@ struct PostFooter: View {
     @ViewBuilder
     func PostInteraction() -> some View {
         HStack(spacing: 6) {
-            Button {
-                
-            } label: {
-                Image(systemName: post.likedIDs.contains("") ? "hand.thumbsup.fill" : "hand.thumbsup")
+            Button(action: likePost) {
+                Image(systemName: post.likedIDs.contains(userUID) ? "bubbles.and.sparkles.fill" : "bubbles.and.sparkles")
             }
             
             Text("\(post.likedIDs.count)")
@@ -54,10 +83,8 @@ struct PostFooter: View {
                 .foregroundColor(.primary)
                 .opacity(0.7)
             
-            Button {
-                
-            } label: {
-                Image(systemName: post.dislikedIDs.contains("") ? "hand.thumbsdown.fill": "hand.thumbsdown")
+            Button(action: dislikePost){
+                Image(systemName: post.dislikedIDs.contains(userUID) ? "moon.zzz.fill": "moon.zzz")
             }
             
             Text("\(post.dislikedIDs.count)")
@@ -67,6 +94,47 @@ struct PostFooter: View {
         }
         .padding(.vertical, 8)
         .foregroundColor(.primary)
+    }
+    
+    
+    //Liking post function
+    func likePost(){
+        Task {
+            guard let postID = post.id else {return}
+            if post.likedIDs.contains(userUID) {
+                //Removing the User ID from the array
+                try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                    "likedIDs": FieldValue.arrayRemove([userUID])
+                ])
+            }
+            else {
+                //Adding user ID to liked array and removing our ID from disliked array (if added before)
+                try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                    "likedIDs": FieldValue.arrayUnion([userUID]),
+                    "dislikedIDs": FieldValue.arrayRemove([userUID])
+                ])
+            }
+        }
+    }
+    
+    //Dislike a post!
+    func dislikePost(){
+        Task {
+            guard let postID = post.id else {return}
+            if post.dislikedIDs.contains(userUID) {
+                //Removing the User ID from the array
+                try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                    "dislikedIDs": FieldValue.arrayRemove([userUID])
+                ])
+            }
+            else {
+                //Adding user ID to liked array and removing our ID from disliked array (if added before)
+                try await Firestore.firestore().collection("Posts").document(postID).updateData([
+                    "likedIDs": FieldValue.arrayRemove([userUID]),
+                    "dislikedIDs": FieldValue.arrayUnion([userUID])
+                ])
+            }
+        }
     }
     
 }

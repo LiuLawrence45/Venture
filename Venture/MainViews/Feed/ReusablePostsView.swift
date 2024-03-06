@@ -89,8 +89,18 @@ struct ReusablePostsView: View {
         ForEach(posts){ post in
             PostView(post: post) {updatedPost in
                 
+                //Updating Post in the Array
+                if let index = posts.firstIndex(where: { post in
+                    post.id == updatedPost.id
+                    
+                }){
+                    posts[index].likedIDs = updatedPost.likedIDs
+                    posts[index].dislikedIDs = updatedPost.dislikedIDs
+                }
             } onDelete: {
-                
+                withAnimation(.easeInOut(duration: 0.25)){
+                    posts.removeAll{post == $0}
+                }
             }
         }
     }
