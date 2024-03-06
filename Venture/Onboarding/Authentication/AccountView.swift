@@ -195,15 +195,15 @@ struct AccountView: View {
     func signOutButtonTapped(){
         Task {
             isLoading = true
-            defer { isLoading = false }
-            
-            do {
-                try await supabase.auth.signOut()
-            }
-            
-            catch {
-                result = .failure(error)
-            }
+//            defer { isLoading = false }
+//            
+//            do {
+//                try await supabase.auth.signOut()
+//            }
+//            
+//            catch {
+//                result = .failure(error)
+//            }
         }
     }
     
