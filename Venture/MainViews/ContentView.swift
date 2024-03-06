@@ -40,7 +40,7 @@ struct ContentView: View {
                     ZStack {
                         switch selectedTab {
                         case .feed:
-                            ReusablePostsView(posts: $recentPosts)
+                            FeedView(posts: $recentPosts)
                             TabBar()
                             
                         case .post:

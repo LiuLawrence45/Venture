@@ -60,7 +60,7 @@
 		7B6275A72B514E6700FDA0F0 /* NotificationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275A62B514E6700FDA0F0 /* NotificationRow.swift */; };
 		7B6275AB2B51682400FDA0F0 /* RecommendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275AA2B51682400FDA0F0 /* RecommendationModel.swift */; };
 		7B6275AD2B51685D00FDA0F0 /* DemoRecommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275AC2B51685D00FDA0F0 /* DemoRecommendations.swift */; };
-		7B7CB3F12B983D6700EEF9D7 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */; };
+		7B7CB3F12B983D6700EEF9D7 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F02B983D6700EEF9D7 /* FeedView.swift */; };
 		7B7CB3F32B98437C00EEF9D7 /* OldPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */; };
 		7B7CB3F52B984A5500EEF9D7 /* OldPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */; };
 		7B7CB3F92B98612000EEF9D7 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */; };
@@ -70,6 +70,8 @@
 		7B7CB4022B988D8A00EEF9D7 /* OldSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */; };
 		7B7DC7E22B98A8A800C43D4A /* OldProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E12B98A8A800C43D4A /* OldProfileView.swift */; };
 		7B7DC7E42B98AC2800C43D4A /* ReusableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E32B98AC2800C43D4A /* ReusableProfileView.swift */; };
+		7B7DC7E62B98B3BC00C43D4A /* PersonalFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E52B98B3BC00C43D4A /* PersonalFeedView.swift */; };
+		7B7DC7E82B98B52600C43D4A /* PostViewCondensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -92,7 +94,6 @@
 		7BDA19382B5175C20020FE88 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19372B5175C20020FE88 /* TabBar.swift */; };
 		7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA19392B51760B0020FE88 /* Tab.swift */; };
 		7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA193C2B517A220020FE88 /* ProfileView.swift */; };
-		7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA194C2B5554F50020FE88 /* FeedView.swift */; };
 		7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFCF062B6730590052825C /* ItineraryMapView.swift */; };
 		7BF48A782B63E1B400720BB5 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */; };
 /* End PBXBuildFile section */
@@ -166,7 +167,7 @@
 		7B6275A62B514E6700FDA0F0 /* NotificationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRow.swift; sourceTree = "<group>"; };
 		7B6275AA2B51682400FDA0F0 /* RecommendationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationModel.swift; sourceTree = "<group>"; };
 		7B6275AC2B51685D00FDA0F0 /* DemoRecommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRecommendations.swift; sourceTree = "<group>"; };
-		7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
+		7B7CB3F02B983D6700EEF9D7 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostView.swift; sourceTree = "<group>"; };
 		7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OldPostHeader.swift; path = Venture/MainViews/Feed/Post/OldPostHeader.swift; sourceTree = SOURCE_ROOT; };
 		7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
@@ -176,6 +177,8 @@
 		7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSearchView.swift; sourceTree = "<group>"; };
 		7B7DC7E12B98A8A800C43D4A /* OldProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfileView.swift; sourceTree = "<group>"; };
 		7B7DC7E32B98AC2800C43D4A /* ReusableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileView.swift; sourceTree = "<group>"; };
+		7B7DC7E52B98B3BC00C43D4A /* PersonalFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFeedView.swift; sourceTree = "<group>"; };
+		7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCondensed.swift; sourceTree = "<group>"; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -199,7 +202,6 @@
 		7BDA19372B5175C20020FE88 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		7BDA19392B51760B0020FE88 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		7BDA193C2B517A220020FE88 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		7BDA194C2B5554F50020FE88 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		7BEFCF062B6730590052825C /* ItineraryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryMapView.swift; sourceTree = "<group>"; };
 		7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,8 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				7B62759D2B51483600FDA0F0 /* ItineraryViews */,
-				7BDA194C2B5554F50020FE88 /* FeedView.swift */,
-				7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */,
+				7B7CB3F02B983D6700EEF9D7 /* FeedView.swift */,
+				7B7DC7E52B98B3BC00C43D4A /* PersonalFeedView.swift */,
 				7B481ED12B93332200F08899 /* Post */,
 			);
 			path = Feed;
@@ -296,6 +298,7 @@
 				7B5901BE2B55586A00FF4213 /* PostFooter.swift */,
 				7B5901BC2B55583E00FF4213 /* PostHeader.swift */,
 				7B62756E2B50C96400FDA0F0 /* PostView.swift */,
+				7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				7B62757C2B50CF4700FDA0F0 /* AvatarView.swift in Sources */,
 				7B481EE02B935A2600F08899 /* OldPostFooter.swift in Sources */,
 				7B4FD1412B586EDF00FBBAB9 /* Functions.swift in Sources */,
+				7B7DC7E82B98B52600C43D4A /* PostViewCondensed.swift in Sources */,
 				7B481ED82B93370F00F08899 /* EditProfileView.swift in Sources */,
 				7B5901BD2B55583E00FF4213 /* PostHeader.swift in Sources */,
 				7B96D5F62B92C13F001F060F /* Modifiers.swift in Sources */,
@@ -777,12 +781,12 @@
 				7B7CB3F32B98437C00EEF9D7 /* OldPostView.swift in Sources */,
 				7B6275802B50D2DE00FDA0F0 /* HexagonView.swift in Sources */,
 				7B9B502E2B582AF100A3AD61 /* CommentView.swift in Sources */,
-				7B7CB3F12B983D6700EEF9D7 /* ReusablePostsView.swift in Sources */,
+				7B7DC7E62B98B3BC00C43D4A /* PersonalFeedView.swift in Sources */,
+				7B7CB3F12B983D6700EEF9D7 /* FeedView.swift in Sources */,
 				7B62758E2B51078700FDA0F0 /* Animations.swift in Sources */,
 				7B6275632B50C60B00FDA0F0 /* Styles.swift in Sources */,
 				7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */,
 				7B481EE42B9366CA00F08899 /* OldItineraryView.swift in Sources */,
-				7BDA194D2B5554F50020FE88 /* FeedView.swift in Sources */,
 				7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */,
 				7BDA193A2B51760B0020FE88 /* Tab.swift in Sources */,
 				7B6275A32B514E2E00FDA0F0 /* NotificationModel.swift in Sources */,

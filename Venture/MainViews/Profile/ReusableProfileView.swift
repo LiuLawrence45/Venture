@@ -43,7 +43,7 @@ struct ReusableProfileView: View {
                     .foregroundColor(.primary)
                     .padding(.vertical, 15)
                 
-                ReusablePostsView(basedOnUID: true, uid: user.userUID ?? "", posts: $fetchedPosts)
+                FeedView(basedOnUID: true, uid: user.userUID ?? "", posts: $fetchedPosts)
             }
         }
         .task {

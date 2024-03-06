@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-struct ReusablePostsView: View {
+struct PersonalFeedView: View {
     
     var basedOnUID: Bool = false
     var uid: String = ""
@@ -17,7 +17,8 @@ struct ReusablePostsView: View {
     
     @State var contentHasScrolled = false
 
-    var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
+//    var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
+    var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
     
 
     
@@ -28,7 +29,6 @@ struct ReusablePostsView: View {
         
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
-                scrollDetection
                 LazyVGrid(columns: columns, spacing: 20) {
                     if isFetching {
                         ProgressView()
@@ -52,12 +52,10 @@ struct ReusablePostsView: View {
                         }
                     }
                 }
-                .offset(y: 68)
             }
             .coordinateSpace(name: "scroll")
             
         }
-        .overlay(NavigationBar(title: "Weeknd", context: "default", hasScrolled: $contentHasScrolled))
         .task {
             
             //Safe guard to fetch only once
@@ -65,42 +63,14 @@ struct ReusablePostsView: View {
             isFetching = true
             await fetchPosts()
         }
-        .refreshable {
-            //Disable refresh for UID based posts
-            guard !basedOnUID else {return}
-            
-            //Scroll to refresh
-            isFetching = true
-            posts = []
-            //Resetting pagination Doc
-            paginationDoc = nil
-            await fetchPosts()
-        }
         
-    }
-    
-    //Scroll detection for top of navBar
-    var scrollDetection: some View {
-        GeometryReader { proxy in
-            let offset = proxy.frame(in: .named("scroll")).minY
-            Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
-        }
-        .onPreferenceChange(ScrollPreferenceKey.self) { value in
-            withAnimation(.easeInOut) {
-                if value < 0 {
-                    contentHasScrolled = true
-                } else {
-                    contentHasScrolled = false
-                }
-            }
-        }
     }
     
     //Accepts multiple views to stitch into a single
     @ViewBuilder
     func Posts()->some View {
         ForEach(posts){ post in
-            PostView(post: post) {updatedPost in
+            PostViewCondensed(post: post) {updatedPost in
                 
                 //Updating Post in the Array
                 if let index = posts.firstIndex(where: { post in

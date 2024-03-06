@@ -66,11 +66,11 @@ struct MyProfileView: View {
                 
                 switch selectedTab {
                     case "posts":
-                        ReusablePostsView(posts: $fetchedPosts)
+                        PersonalFeedView(posts: $fetchedPosts)
                     case "downtogo":
                         bucketList
                 default:
-                    ReusablePostsView(posts: $fetchedPosts)
+                    PersonalFeedView(posts: $fetchedPosts)
                 }
             })
             .scrollClipDisabled()
