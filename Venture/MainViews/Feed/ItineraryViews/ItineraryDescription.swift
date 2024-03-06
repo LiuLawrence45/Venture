@@ -94,7 +94,7 @@ struct ItineraryDescription_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        ItineraryDescription(itinerary: posts[0].itinerary!)
+        ItineraryDescription(itinerary: demoPosts[0].itinerary!)
         
         //(namespace: namespace, show: .constant(true))
             //.environmentObject(Model())

@@ -15,7 +15,7 @@ struct FeedView: View {
     
     @State var show = false
     @State var showPost = false
-    @State var selectedPost: PostModel = posts[0]
+    @State var selectedPost: PostModel = demoPosts[0]
     @State var contentHasScrolled = false
     
     @EnvironmentObject var model: Model
@@ -54,7 +54,7 @@ struct FeedView: View {
     }
     
     var showPosts: some View {
-        ForEach(posts) { post in
+        ForEach(demoPosts) { post in
             NavigationLink(destination: ItineraryView(post: post)){
                 PostView(namespace: namespace, post: post)
                     .accessibilityElement(children: .combine)

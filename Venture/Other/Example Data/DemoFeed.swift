@@ -12,7 +12,7 @@ import SwiftUI
  */
 //var posts : [PostModel] = profiles.flatMap { $0.posts }
 
-var posts = [
+var demoPosts = [
 
     
     PostModel(

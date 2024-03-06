@@ -66,7 +66,7 @@ struct SearchView: View {
     }
     
     var content: some View {
-        ForEach(Array(posts.enumerated()), id: \.offset) { index, item in
+        ForEach(Array(demoPosts.enumerated()), id: \.offset) { index, item in
             if item.title.contains(text) || text == "" {
                 if index != 0 { Divider() }
                 Button {

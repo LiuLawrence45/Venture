@@ -58,5 +58,5 @@ struct ItineraryFooter: View {
 
 
 #Preview {
-    ItineraryFooter(post: posts[0])
+    ItineraryFooter(post: demoPosts[0])
 }

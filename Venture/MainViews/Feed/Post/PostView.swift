@@ -15,7 +15,7 @@ import AVKit
 
 struct PostView: View {
     var namespace: Namespace.ID
-    var post: PostModel = posts[0] // for preview
+    var post: PostModel = demoPosts[0] // for preview
     
 //    @Binding var show: Bool
     @State private var player: AVPlayer?

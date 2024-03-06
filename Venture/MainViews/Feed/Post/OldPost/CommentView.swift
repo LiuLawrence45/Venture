@@ -108,5 +108,5 @@ struct CommentView: View {
 }
 
 #Preview {
-    CommentView(post: posts[0], profile: profiles[0])
+    CommentView(post: demoPosts[0], profile: profiles[0])
 }

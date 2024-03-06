@@ -14,7 +14,7 @@ import SwiftUI
 struct ItineraryView: View {
     @Environment(\.dismiss) var dismiss
     
-    var post: PostModel = posts[0] // for preview
+    var post: PostModel = demoPosts[0] // for preview
     @State var selectedTab: String = "main"
     @EnvironmentObject var model: Model
     
@@ -37,7 +37,7 @@ struct ItineraryView: View {
                     }.tabViewStyle(PageTabViewStyle())
                         .frame(height: 480)
                         .padding(.bottom, 8)
-                    ItineraryFooter(post: posts[0])
+                    ItineraryFooter(post: demoPosts[0])
                         .padding(.bottom, 16)
         //            Divider()
         //                .padding(.vertical, 8)

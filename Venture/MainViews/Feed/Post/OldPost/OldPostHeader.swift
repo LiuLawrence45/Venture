@@ -78,5 +78,5 @@ struct OldPostHeader: View {
 }
 
 #Preview {
-    OldPostHeader(post: posts[0], profile: profiles[0])
+    OldPostHeader(post: demoPosts[0], profile: profiles[0])
 }

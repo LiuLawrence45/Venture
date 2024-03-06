@@ -26,6 +26,10 @@ struct ContentView: View {
     
     var profile = profiles[0]
     
+    
+    //For feed
+    @State private var recentPosts: [Post] = []
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -36,7 +40,8 @@ struct ContentView: View {
                     ZStack {
                         switch selectedTab {
                         case .feed:
-                            FeedView()
+                            ReusablePostsView(posts: $recentPosts)
+                            //FeedView()
 //                                .background(Color.red) Debugging for future frame issues
                             TabBar()
                             

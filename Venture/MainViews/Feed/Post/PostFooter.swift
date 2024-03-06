@@ -66,7 +66,7 @@ struct PostFooter: View {
 struct ModalView: View {
     var body: some View {
         VStack {
-            CommentView(post: posts[0], profile: profiles[0])
+            CommentView(post: demoPosts[0], profile: profiles[0])
         }
         .padding(.top, 20)
         .padding(.bottom, 0) 
@@ -75,5 +75,5 @@ struct ModalView: View {
 }
 
 #Preview {
-    PostFooter(post: posts[0])
+    PostFooter(post: demoPosts[0])
 }

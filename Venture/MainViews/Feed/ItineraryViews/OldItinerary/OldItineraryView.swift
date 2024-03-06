@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OldItineraryView: View {
     var namespace: Namespace.ID
-    var post: PostModel = posts[0]
+    var post: PostModel = demoPosts[0]
     @Binding var show: Bool
     @State var appear = [false, false, false]
     //@EnvironmentObject var model: Model
