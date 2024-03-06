@@ -36,10 +36,12 @@ struct CreateNewPost: View {
     
     
     //Post Properties
-    @State private var postText: String = ""
+    @State private var postCaption: String = ""
     @State private var postImageData: [Data] = []
     @State private var postTitle: String = ""
     @State private var postLocation: String = "Add location"
+    @State private var tripCost: String = ""
+    @State private var tripCar: Bool = false
     
     
     //Body
@@ -97,7 +99,7 @@ struct CreateNewPost: View {
                     //Quick Caption (postText)
                     HStack(spacing: 15) {
                         Text("🎤")
-                        TextField("Need a caption too...", text: $postText, axis: .vertical)
+                        TextField("Need a caption too...", text: $postCaption, axis: .vertical)
                             .focused($showKeyboard)
                     }
 
@@ -122,6 +124,56 @@ struct CreateNewPost: View {
                     
                     Divider()
                         .padding(.vertical, 10)
+                    
+                    Text("Trip Details")
+                        .fontWeight(.bold)
+                        .font(.title3)
+                        .padding(.bottom, 10)
+                     
+                    //Add Costs; has some sketchy logic for allowing only numbers in
+                    HStack(spacing: 15){
+                        Text("💸")
+                        TextField("Cost for trip per person", text: $tripCost, axis: .vertical)
+                            .keyboardType(.numberPad)
+                            .focused($showKeyboard)
+                            .onReceive(tripCost.publisher.collect()) {
+                                self.tripCost = String($0.prefix(while: { $0.isNumber }))
+                            }
+                    }
+                    
+                    //Purely decorative
+                    HStack {
+                        Text("|")
+                            .offset(x: 10)
+                            .opacity(0.2)
+                        Spacer()
+                    }
+                    
+                    //Quick Caption (postText)
+                    HStack(spacing: 15) {
+                        Text("🚗")
+                        Toggle(isOn: $tripCar){
+                            HStack{
+                                Text("Car Needed?")
+                                    .opacity(0.2)
+                                if tripCar == false {
+                                    Text("Nope!")
+                                        .opacity(0.2)
+                                }
+                                else {
+                                    Text("Yep!")
+                                        .opacity(0.2)
+                                }
+                            }
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: .primary))
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
 
 //                    HStack {
 //                        Image(systemName: "pencil.circle.fill")
@@ -249,7 +301,7 @@ struct CreateNewPost: View {
                         imageURLs.append(downloadURL)
                     }
                     
-                    let post = Post(text: postText, imageURLs: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(caption: postCaption, imageURLs: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
                     
                     try await createDocumentAtFirebase(post)
                     

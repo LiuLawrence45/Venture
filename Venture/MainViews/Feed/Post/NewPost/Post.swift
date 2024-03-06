@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 //Post Model
 struct Post: Identifiable, Codable {
     @DocumentID var id: String?
-    var text: String
+    var caption: String
     var imageURLs: [URL] = []
     var imageReferenceID: String = ""
     var publishedDate: Date = Date()
@@ -25,7 +25,7 @@ struct Post: Identifiable, Codable {
     
     enum CodingKeys: CodingKey {
         case id
-        case text
+        case caption
         case imageURLs
         case imageReferenceID
         case publishedDate
