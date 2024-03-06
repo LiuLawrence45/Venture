@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseStorage
 import FirebaseFirestore
+import SDWebImageSwiftUI
 
 struct AccountView: View {
     @State var isDeleted = false
@@ -107,13 +108,11 @@ struct AccountView: View {
     
     var profile: some View {
         VStack(spacing: 8) {
-            Image(systemName: "person.crop.circle.fill.badge.checkmark")
-                .symbolVariant(.circle.fill)
-                .font(.system(size: 32))
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.blue, .blue.opacity(0.3))
-                .padding()
-                .background(Circle().fill(.ultraThinMaterial))
+            WebImage(url: myProfile?.userProfileURL)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 72, height: 72)
+                .mask(Circle())
                 .background(
                     HexagonView()
                         .offset(x: -50, y: -100)
@@ -136,9 +135,9 @@ struct AccountView: View {
 
             HStack {
                 Image(systemName: "location")
-                    .imageScale(.large)
-                Text("218 Springhouse Lane")
-                    .foregroundColor(.secondary)
+                    .imageScale(.medium)
+                Text("Stanford University")
+                    .foregroundColor(.primary)
             }
         }
         .frame(maxWidth: .infinity)
@@ -147,10 +146,10 @@ struct AccountView: View {
     
     var menu: some View {
         Section {
-            NavigationLink(destination: ContentView()) {
+            NavigationLink(destination: NotReadyView()) {
                 Label("Settings", systemImage: "gear")
             }
-            NavigationLink { ContentView() } label: {
+            NavigationLink (destination: NotReadyView()) {
                 Label("Help", systemImage: "questionmark")
             }
         }

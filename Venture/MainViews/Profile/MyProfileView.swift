@@ -152,11 +152,7 @@ struct MyProfileView: View {
     
      
     var bucketList: some View {
-        VStack {
-            Spacer()
-            Text("Under development. Come back soon! :P")
-        
-        }
+        NotReadyView()
     }
     
 //    var bucketList: some View {

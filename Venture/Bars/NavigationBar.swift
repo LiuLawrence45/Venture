@@ -28,7 +28,8 @@ struct NavigationBar: View {
                 EmptyView()
             }
             
-            NavigationLink(destination: NotificationsView(hasScrolled: .constant(true)), isActive: $showNotifications) {
+            //Replace NotReadyView() with NotificationsView(hasScrolled: .constant(true)
+            NavigationLink(destination: NotReadyView(), isActive: $showNotifications){
                 EmptyView()
             }
             
