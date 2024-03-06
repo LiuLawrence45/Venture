@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "LOGO (4).jpg",
+      "filename" : "WEEKND 40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "LOGO (3).jpg",
+      "filename" : "WEEKND 60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -28,24 +28,25 @@
       "size" : "29x29"
     },
     {
-      "filename" : "LOGO (2).jpg",
+      "filename" : "WEEKND 80.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "WEEKND 121.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "LOGO (1).jpg",
+      "filename" : "WEEKND 120.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "LOGO.jpg",
+      "filename" : "WEEKND 180.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -96,7 +97,7 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "App Icon iOS.png",
+      "filename" : "Weeknd Logo 3.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

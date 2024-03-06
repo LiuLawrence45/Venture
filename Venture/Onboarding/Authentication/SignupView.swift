@@ -41,11 +41,13 @@ struct SignupView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Welcome to Weeknd")
-                .font(.largeTitle).bold()
+//                .font(.largeTitle).bold()
+                .font(.custom("Michroma-Regular", size: 32))
                 .slideFadeIn(show: appear[0], offset: 30)
             
-            Text("We're so glad you're here!")
-                .font(.headline)
+            Text("We're glad you're here.")
+//                .font(.headline)
+                .font(.custom("Michroma-Regular", size: 18))
                 .foregroundColor(.primary.opacity(0.7))
                 .slideFadeIn(show: appear[1], offset: 20)
             

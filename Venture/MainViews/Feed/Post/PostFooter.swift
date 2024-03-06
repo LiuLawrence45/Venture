@@ -90,7 +90,7 @@ struct PostFooter: View {
     func PostInteraction() -> some View {
         HStack(spacing: 6) {
             Button(action: likePost) {
-                Image(systemName: post.likedIDs.contains(userUID) ? "bubbles.and.sparkles.fill" : "bubbles.and.sparkles")
+                Image(systemName: post.likedIDs.contains(userUID) ? "hand.thumbsup.circle.fill" : "hand.thumbsup.circle")
             }
             
             Text("\(post.likedIDs.count)")
@@ -99,7 +99,7 @@ struct PostFooter: View {
                 .opacity(0.7)
             
             Button(action: dislikePost){
-                Image(systemName: post.dislikedIDs.contains(userUID) ? "moon.zzz.fill": "moon.zzz")
+                Image(systemName: post.dislikedIDs.contains(userUID) ? "hand.thumbsdown.circle.fill": "hand.thumbsdown.circle")
             }
             
             Text("\(post.dislikedIDs.count)")

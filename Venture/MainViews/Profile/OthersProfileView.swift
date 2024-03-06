@@ -74,7 +74,7 @@ struct OthersProfileView: View {
             })
             .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
-                Color.clear.frame(height: 70)
+                Color.clear.frame(height: 16)
             }
             .frame(maxHeight: .infinity)
             
@@ -111,10 +111,9 @@ struct OthersProfileView: View {
                 }
                 
             }
-            
-            
         }
-        .foregroundColor(.primary)
+        .tint(.primary)
+
     }
     
     //Fetching user data
