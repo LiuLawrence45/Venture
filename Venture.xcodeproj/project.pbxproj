@@ -63,6 +63,7 @@
 		7B7CB3F12B983D6700EEF9D7 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */; };
 		7B7CB3F32B98437C00EEF9D7 /* OldPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */; };
 		7B7CB3F52B984A5500EEF9D7 /* OldPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */; };
+		7B7CB3F92B98612000EEF9D7 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -162,6 +163,7 @@
 		7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostView.swift; sourceTree = "<group>"; };
 		7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OldPostHeader.swift; path = Venture/MainViews/Feed/Post/OldPostHeader.swift; sourceTree = SOURCE_ROOT; };
+		7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -274,8 +276,8 @@
 		7B481ED12B93332200F08899 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				7B9BA2842B97B3B800F06415 /* NewPost */,
 				7B481EE12B935A6E00F08899 /* OldPost */,
+				7B9BA2842B97B3B800F06415 /* NewPost */,
 				7B5901BE2B55586A00FF4213 /* PostFooter.swift */,
 				7B5901BC2B55583E00FF4213 /* PostHeader.swift */,
 				7B62756E2B50C96400FDA0F0 /* PostView.swift */,
@@ -505,6 +507,7 @@
 			children = (
 				7B9BA2852B97B3C000F06415 /* CreateNewPost.swift */,
 				7B9BA2872B97B43100F06415 /* Post.swift */,
+				7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */,
 			);
 			path = NewPost;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				7B89DFE42B58608A00DA1EC6 /* DemoUserPosts.swift in Sources */,
 				7B6275712B50CA6B00FDA0F0 /* FeaturedPost.swift in Sources */,
 				7B6275782B50CE7F00FDA0F0 /* NavigationBar.swift in Sources */,
+				7B7CB3F92B98612000EEF9D7 /* LocationPickerView.swift in Sources */,
 				7B96D6012B92C6FC001F060F /* FakeProfileView.swift in Sources */,
 				7B62756F2B50C96400FDA0F0 /* PostView.swift in Sources */,
 				7B481EE62B936A5200F08899 /* ItineraryFooter.swift in Sources */,

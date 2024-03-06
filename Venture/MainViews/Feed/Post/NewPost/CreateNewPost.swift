@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 import Firebase
 import FirebaseStorage
+import CoreLocation
 
 struct CreateNewPost: View {
     
@@ -33,11 +34,18 @@ struct CreateNewPost: View {
     @State private var photoItems: [PhotosPickerItem] = []
     @FocusState private var showKeyboard: Bool //Focus state is used to toggle the keyboard on and off
     @State private var showError: Bool = false
+    @State private var showModal = false
+    
+    
+    //More information for posts
+    @State private var location: String = "Add location"
     
     
     //Body
     var body: some View {
         VStack {
+            
+            //Top of the post (cancel, and Post buttons)
             HStack {
                 Button {
                     dismiss()
@@ -62,22 +70,37 @@ struct CreateNewPost: View {
                 }
             }
             
+            //Carousel for pictures, and "Description"
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15){
                     
                     PostCarousel(postImageData: $postImageData)
-
                     
-                    TextField("What's happening?", text: $postText, axis: .vertical)
-                        .focused($showKeyboard)
                     
+                    HStack {
+                           Text("📍")
+                           Text(location)
+                            .opacity(0.7)
+                           Spacer()
+                           Image(systemName: "chevron.right")
+                    }
+                    .onTapGesture {
+                        self.showModal = true
+                    }
+                    .fullScreenCover(isPresented: $showModal) {
+                        LocationPickerView(isPresented: self.$showModal, selectedLocation: self.$location)
+                    }
+                    
+//                    TextField("Show us your trip and a quick caption!", text: $postText, axis: .vertical)
+//                        .focused($showKeyboard)
+                     
                 }
                 .padding(15)
-            }
-            
-            Group {
                 
             }
+            
+            //
+            
             Divider()
             
             HStack {
@@ -106,11 +129,11 @@ struct CreateNewPost: View {
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        .background {
-            Rectangle()
-                .fill(.gray.opacity(0.05))
-                .ignoresSafeArea()
-        }
+//        .background {
+//            Rectangle()
+//                .fill(.gray.opacity(0.05))
+//                .ignoresSafeArea()
+//        }
         
         
         //Programmable photosPicker
@@ -180,7 +203,7 @@ struct CreateNewPost: View {
                     
                     try await createDocumentAtFirebase(post)
                     
-                } 
+                }
                 
                 
                 //If there is no image data provided.
@@ -223,8 +246,6 @@ struct CreateNewPost: View {
         })
     }
 }
-
-
 
 // Struct PostCarousel; separated to increase loading speeds. If need to increase more, make it equatable.
 
@@ -272,7 +293,7 @@ struct PostCarousel: View {
     func removeImage(at index: Int) {
         postImageData.remove(at: index)
     }
-
+    
 }
 
 #Preview {
