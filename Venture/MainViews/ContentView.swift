@@ -41,8 +41,6 @@ struct ContentView: View {
                         switch selectedTab {
                         case .feed:
                             ReusablePostsView(posts: $recentPosts)
-                            //FeedView()
-//                                .background(Color.red) Debugging for future frame issues
                             TabBar()
                             
                         case .post:

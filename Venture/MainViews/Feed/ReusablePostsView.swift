@@ -10,11 +10,16 @@ import Firebase
 
 struct ReusablePostsView: View {
     
-    @State var contentHasScrolled = false
+    var basedOnUID: Bool = false
+    var uid: String = ""
     @Binding var posts: [Post]
+    @State private var isFetching: Bool = false
+    
+    @State var contentHasScrolled = false
+
     var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
     
-    @State var isFetching: Bool = false
+
     
     //Pagination settings
     @State private var paginationDoc: QueryDocumentSnapshot?
@@ -61,9 +66,14 @@ struct ReusablePostsView: View {
             await fetchPosts()
         }
         .refreshable {
+            //Disable refresh for UID based posts
+            guard !basedOnUID else {return}
+            
             //Scroll to refresh
             isFetching = true
             posts = []
+            //Resetting pagination Doc
+            paginationDoc = nil
             await fetchPosts()
         }
         
@@ -134,6 +144,11 @@ struct ReusablePostsView: View {
                     .limit(to: 20)
             }
             
+            //New query for UID based Document Search
+            if basedOnUID{
+                query = query
+                    .whereField("userUID", isEqualTo: uid)
+            }
 
             let docs = try await query.getDocuments()
             let fetchedPosts = docs.documents.compactMap { doc -> Post? in

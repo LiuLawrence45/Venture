@@ -19,7 +19,7 @@ struct SearchUserView: View {
         List {
             ForEach(fetchedUsers) { user in
                 NavigationLink {
-                    
+                    ReusableProfileView(user: user)
                 } label: {
                     HStack {
                         Text(user.username)

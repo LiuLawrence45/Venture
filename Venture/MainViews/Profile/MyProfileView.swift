@@ -29,7 +29,11 @@ struct MyProfileView: View {
     @State var showError: Bool = false
     @State var isLoading: Bool = false
     
+    
+    // Customized per profile
     @State private var myProfile: User?
+    @State private var fetchedPosts: [Post] = []
+    @AppStorage("user_UID") private var userUID: String = ""
 
     init(profile: ProfileModel) {
         self.profile = profile
@@ -62,11 +66,11 @@ struct MyProfileView: View {
                 
                 switch selectedTab {
                     case "posts":
-                        PostsView
+                        ReusablePostsView(posts: $fetchedPosts)
                     case "downtogo":
                         bucketList
                 default:
-                    PostsView
+                    ReusablePostsView(posts: $fetchedPosts)
                 }
             })
             .scrollClipDisabled()
@@ -141,76 +145,83 @@ struct MyProfileView: View {
     }
     
      
-    
     var bucketList: some View {
-        
         VStack {
-            Text("Public Bucket List")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .padding(.top, 20)
-                .padding(.bottom, 10)
-            VStack() {
-                ForEach(Array(profile.bucketList.enumerated()), id: \.offset) { index, item in
-                    if index != 0 { Divider() }
-                    HStack {
-                        Image(systemName: likedItems[index] ? "heart.fill" : "heart") // Replace with the actual heart icon image if it's not a system image
-                            .font(.body.weight(.bold))
-                            .frame(width: 36, height: 36)
-                            .foregroundColor(likedItems[index] ? .red : .secondary)
-                            .background(.ultraThinMaterial, in: Circle())
-                            .strokeStyle(cornerRadius: 14)
-
-                        
-                        
-                        Text(item)
-                            .fontWeight(.regular)
-                            .opacity(0.8)
-                        
-                        Spacer()
-                    }
-                    .onTapGesture(count: 2){
-                         // Toggle the liked state when the heart icon is tapped
-                         likedItems[index].toggle()
-                     }
-
-                    .padding(.vertical, 8)
-                    .padding(.horizontal)
-                }
-            }
-            .padding()
-            //.background(RoundedRectangle(cornerRadius: 30).fill(Color("Overlay")))
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-            .padding(.horizontal)
-            
-            Text("'D2G' Experiences")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .padding(.top, 20)
-                .padding(.bottom, 10)
-            
-            
-            //Temporary hard coding
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
-                
-                ImageView(image: "IMG_5136", width: (UIScreen.main.bounds.width) / 3)
-                    .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
-            }
-
-            .overlay(
-                RoundedRectangle(cornerRadius: 30, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                    .stroke(Color.clear, lineWidth: 2)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 30))
-            .padding(10)
-            
-            Rectangle()
-                .foregroundColor(Color.black.opacity(0.0))
-                .frame(height: 75)
+            Spacer()
+            Text("Under development. Come back soon! :P")
+        
         }
-        
-        
     }
+    
+//    var bucketList: some View {
+//        
+//        VStack {
+//            Text("Public Bucket List")
+//                .font(.title3)
+//                .fontWeight(.semibold)
+//                .padding(.top, 20)
+//                .padding(.bottom, 10)
+//            VStack() {
+//                ForEach(Array(profile.bucketList.enumerated()), id: \.offset) { index, item in
+//                    if index != 0 { Divider() }
+//                    HStack {
+//                        Image(systemName: likedItems[index] ? "heart.fill" : "heart") // Replace with the actual heart icon image if it's not a system image
+//                            .font(.body.weight(.bold))
+//                            .frame(width: 36, height: 36)
+//                            .foregroundColor(likedItems[index] ? .red : .secondary)
+//                            .background(.ultraThinMaterial, in: Circle())
+//                            .strokeStyle(cornerRadius: 14)
+//
+//                        
+//                        
+//                        Text(item)
+//                            .fontWeight(.regular)
+//                            .opacity(0.8)
+//                        
+//                        Spacer()
+//                    }
+//                    .onTapGesture(count: 2){
+//                         // Toggle the liked state when the heart icon is tapped
+//                         likedItems[index].toggle()
+//                     }
+//
+//                    .padding(.vertical, 8)
+//                    .padding(.horizontal)
+//                }
+//            }
+//            .padding()
+//            //.background(RoundedRectangle(cornerRadius: 30).fill(Color("Overlay")))
+//            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//            .padding(.horizontal)
+//            
+//            Text("'D2G' Experiences")
+//                .font(.title3)
+//                .fontWeight(.semibold)
+//                .padding(.top, 20)
+//                .padding(.bottom, 10)
+//            
+//            
+//            //Temporary hard coding
+//            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3), spacing: 0) {
+//                
+//                ImageView(image: "IMG_5136", width: (UIScreen.main.bounds.width) / 3)
+//                    .frame(width: (UIScreen.main.bounds.width - 40) / 3, height: UIScreen.main.bounds.width / 3)
+//            }
+//
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 30, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+//                    .stroke(Color.clear, lineWidth: 2)
+//            )
+//            .clipShape(RoundedRectangle(cornerRadius: 30))
+//            .padding(10)
+//            
+//            Rectangle()
+//                .foregroundColor(Color.black.opacity(0.0))
+//                .frame(height: 75)
+//        }
+//        
+//        
+//    }
 }
 
 
