@@ -17,14 +17,17 @@ struct TabBar: View {
     
     var body: some View {
         GeometryReader { proxy in
-            let hasHomeIndicator = proxy.safeAreaInsets.bottom - 88 > 20
             
-            HStack {
+            //New logic for determining if has homeIndicator: If it has less safeAreaInset, then it has a homeIndicator.
+            let hasHomeIndicator = proxy.safeAreaInsets.bottom <= 20
+            
+            HStack(spacing: 32){
                 buttons
             }
-            .padding(.horizontal, 8)
-            .padding(.top, 14)
-            .frame(height: hasHomeIndicator ? 72 : 86, alignment: .top) //Used to be 72 vs 86
+
+            .padding(.vertical, 4)
+            
+            .frame(height: hasHomeIndicator ? 50 : 68, alignment: .top) //Used to be 72 vs 86
             .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 0, style: .continuous))
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
@@ -34,7 +37,6 @@ struct TabBar: View {
     
     var buttons: some View {
         ForEach(tabItems) { item in
-            
             Group {
                 if item.tab == .post {
                     Button(action: {

@@ -72,7 +72,7 @@ struct OthersProfileView: View {
                 }
                 .frame(height: 160)
             })
-            .scrollClipDisabled()
+//            .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 16)
             }

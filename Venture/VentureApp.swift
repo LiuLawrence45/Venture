@@ -22,11 +22,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct VentureApp: App {
     
+    @Environment(\.colorScheme) var colorScheme
+
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
             AppView()
+                .environment(\.colorScheme, .dark)
         }
     }
 }

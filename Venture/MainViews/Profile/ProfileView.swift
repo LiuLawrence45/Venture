@@ -68,7 +68,7 @@ struct ProfileView: View {
                     PostsView
                 }
             })
-            .scrollClipDisabled() //iOS 17.0
+//            .scrollClipDisabled() //iOS 17.0
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 0)
             }
