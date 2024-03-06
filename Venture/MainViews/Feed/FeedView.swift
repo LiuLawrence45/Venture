@@ -53,6 +53,12 @@ struct FeedView: View {
                     }
                 }
                 .offset(y: 68)
+                
+                //Empty View just to be able to scroll down fully
+                Group{
+                    Text("")
+                }
+                .frame(height: 160)
             }
             .coordinateSpace(name: "scroll")
             

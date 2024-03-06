@@ -45,7 +45,7 @@ struct MyProfileView: View {
             //Color("Background").ignoresSafeArea()
             
             ScrollView(.vertical, showsIndicators: false, content: {
-                
+                scrollDetection
                 ProfileBlurb(user: myProfile ?? demoUserEmpty)
                     .padding(.horizontal, 10)
                     .padding(.bottom, 10)
@@ -72,13 +72,19 @@ struct MyProfileView: View {
                 default:
                     PersonalFeedView(posts: $fetchedPosts)
                 }
+                
+                //Empty View just to be able to scroll down fully
+                Group{
+                    Text("")
+                }
+                .frame(height: 160)
             })
             .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
             .frame(maxHeight: .infinity)
-            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: .constant(false)))
+            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: $hasScrolled))
             
             //Loading overlay, copy and paste
             .overlay {
