@@ -32,7 +32,8 @@ struct CreateNewPost: View {
     @State private var photoItems: [PhotosPickerItem] = []
     @FocusState private var showKeyboard: Bool //Focus state is used to toggle the keyboard on and off
     @State private var showError: Bool = false
-    @State private var showModal = false
+    @State private var showLocationModal = false
+    @State private var showItineraryModal = false
     
     
     //Post Properties
@@ -42,36 +43,14 @@ struct CreateNewPost: View {
     @State private var postLocation: String = "Add location"
     @State private var tripCost: String = ""
     @State private var tripCar: Bool = false
+    @State private var tripItinerary: String = "Create your trip itinerary here :)"
     
     
     //Body
     var body: some View {
         VStack {
             
-            //Top of the post (cancel, and Post buttons)
-            HStack {
-                Button {
-                    dismiss()
-                }
-            label: {
-                Text("Cancel")
-                    .font(.callout)
-                    .opacity(0.7)
-                    .foregroundColor(.primary)
-            }
-                
-                Spacer()
-                
-                Button(action: {createPost()}) {
-                    Text("Post")
-                        .font(.callout)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 6)
-                        .background(.primary, in: Capsule())
-                }
-            }
+            TopPostBar(dismiss: dismiss, createPost: createPost)
             
             //Carousel for pictures, and "Description"
             ScrollView(.vertical, showsIndicators: false) {
@@ -108,19 +87,7 @@ struct CreateNewPost: View {
                         .padding(.vertical, 10)
                     
                     //Adding automated location
-                    HStack(spacing: 15){
-                           Text("📍")
-                           Text(postLocation)
-                            .opacity(0.2)
-                           Spacer()
-                           Image(systemName: "chevron.right")
-                    }
-                    .onTapGesture {
-                        self.showModal = true
-                    }
-                    .fullScreenCover(isPresented: $showModal) {
-                        LocationPickerView(isPresented: self.$showModal, selectedLocation: self.$postLocation)
-                    }
+                    LocationPickerComponent(postLocation: $postLocation, showLocationModal: $showLocationModal)
                     
                     Divider()
                         .padding(.vertical, 10)
@@ -130,7 +97,7 @@ struct CreateNewPost: View {
                         .font(.title3)
                         .padding(.bottom, 10)
                      
-                    //Add Costs; has some sketchy logic for allowing only numbers in
+                    //Add Costs; only allows in number input
                     HStack(spacing: 15){
                         Text("💸")
                         TextField("Cost for trip per person", text: $tripCost, axis: .vertical)
@@ -158,11 +125,9 @@ struct CreateNewPost: View {
                                     .opacity(0.2)
                                 if tripCar == false {
                                     Text("Nope!")
-                                        .opacity(0.2)
                                 }
                                 else {
                                     Text("Yep!")
-                                        .opacity(0.2)
                                 }
                             }
                         }
@@ -170,28 +135,11 @@ struct CreateNewPost: View {
                         
                     }
                     
+                    Divider()
+                        .padding(.vertical, 10)
                     
-                    
-                    
-                    
-
-//                    HStack {
-//                        Image(systemName: "pencil.circle.fill")
-//                        Text("Add a title")
-//                        Spacer()
-//                        Text("\(postTitle.count) / 80")
-//                    }
-//                    .padding()
-//                    .onTapGesture {
-//                        self.showTitleScreen = true
-//                    }
-//                    .sheet(isPresented: $showTitleScreen) {
-//                        TitleEntryView(titleText: self.$titleText)
-//                    }
-                    
-                    
-
-                     
+                    //Adding itinerary
+                    ItineraryEditorComponent(tripItinerary: $tripItinerary, showItineraryModal: $showItineraryModal)
                 }
                 .padding(15)
                 
@@ -237,7 +185,7 @@ struct CreateNewPost: View {
 //                .ignoresSafeArea()
 //        }
         
-        
+         
         //Programmable photosPicker
         .photosPicker(isPresented: $showImagePicker, selection: $photoItems, matching: .images)
         
@@ -252,6 +200,85 @@ struct CreateNewPost: View {
         //Loading View
         .overlay {
             LoadingView(show: $isLoading)
+        }
+        
+    }
+    
+    struct ItineraryEditorComponent: View {
+        @Binding var tripItinerary: String
+        @Binding var showItineraryModal: Bool
+
+        var body: some View {
+            HStack(spacing: 15){
+                Text("⚡️")
+                Text("Create your itinerary!")
+                    .opacity(0.2)
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
+            .onTapGesture {
+                self.showItineraryModal = true
+            }
+            .fullScreenCover(isPresented: $showItineraryModal) {
+                // Make sure you have defined EditItineraryView
+                EditItineraryView(isPresented: self.$showItineraryModal, tripItinerary: self.$tripItinerary)
+            }
+        }
+    }
+    
+    //Location Picker Component
+    struct LocationPickerComponent: View {
+        @Binding var postLocation: String
+        @Binding var showLocationModal: Bool
+
+        var body: some View {
+            HStack(spacing: 15){
+                Text("📍")
+                Text(postLocation)
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
+            .onTapGesture {
+                self.showLocationModal = true
+            }
+            .fullScreenCover(isPresented: $showLocationModal) {
+                LocationPickerView(isPresented: self.$showLocationModal, selectedLocation: self.$postLocation)
+            }
+        }
+    }
+
+    
+    
+    //Top Post Component
+    struct TopPostBar: View {
+        let dismiss: DismissAction
+        let createPost: () -> Void
+        
+        var body: some View {
+            //Top of the post (cancel, and Post buttons)
+            HStack {
+                Button {
+                    dismiss()
+                }
+            label: {
+                Text("Cancel")
+                    .font(.callout)
+                    .opacity(0.7)
+                    .foregroundColor(.primary)
+            }
+                
+                Spacer()
+                
+                Button(action: {createPost()}) {
+                    Text("Post")
+                        .font(.callout)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 6)
+                        .background(.primary, in: Capsule())
+                }
+            }
         }
         
     }
@@ -349,8 +376,8 @@ struct CreateNewPost: View {
     }
 }
 
-// Struct PostCarousel; separated to increase loading speeds. If need to increase more, make it equatable.
 
+// Struct PostCarousel; separated to increase loading speeds. If need to increase more, make it equatable.
 struct PostCarousel: View {
     
     @Binding var postImageData: [Data]
