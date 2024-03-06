@@ -40,7 +40,7 @@
 		7B62756F2B50C96400FDA0F0 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62756E2B50C96400FDA0F0 /* PostView.swift */; };
 		7B6275712B50CA6B00FDA0F0 /* FeaturedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275702B50CA6B00FDA0F0 /* FeaturedPost.swift */; };
 		7B6275782B50CE7F00FDA0F0 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275772B50CE7F00FDA0F0 /* NavigationBar.swift */; };
-		7B62757A2B50CEAB00FDA0F0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275792B50CEAB00FDA0F0 /* SearchView.swift */; };
+		7B62757A2B50CEAB00FDA0F0 /* SearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275792B50CEAB00FDA0F0 /* SearchUserView.swift */; };
 		7B62757C2B50CF4700FDA0F0 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62757B2B50CF4700FDA0F0 /* AvatarView.swift */; };
 		7B62757E2B50CF8400FDA0F0 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62757D2B50CF8400FDA0F0 /* AccountView.swift */; };
 		7B6275802B50D2DE00FDA0F0 /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B62757F2B50D2DE00FDA0F0 /* HexagonView.swift */; };
@@ -67,6 +67,7 @@
 		7B7CB3FB2B986D5800EEF9D7 /* EditItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FA2B986D5800EEF9D7 /* EditItineraryView.swift */; };
 		7B7CB3FE2B987EB800EEF9D7 /* Michroma-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */; };
 		7B7CB4002B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */; };
+		7B7CB4022B988D8A00EEF9D7 /* OldSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -143,7 +144,7 @@
 		7B62756E2B50C96400FDA0F0 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		7B6275702B50CA6B00FDA0F0 /* FeaturedPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPost.swift; sourceTree = "<group>"; };
 		7B6275772B50CE7F00FDA0F0 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
-		7B6275792B50CEAB00FDA0F0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		7B6275792B50CEAB00FDA0F0 /* SearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserView.swift; sourceTree = "<group>"; };
 		7B62757B2B50CF4700FDA0F0 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		7B62757D2B50CF8400FDA0F0 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		7B62757F2B50D2DE00FDA0F0 /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 		7B7CB3FA2B986D5800EEF9D7 /* EditItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItineraryView.swift; sourceTree = "<group>"; };
 		7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Michroma-Regular.ttf"; sourceTree = "<group>"; };
 		7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSearchView.swift; sourceTree = "<group>"; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -252,7 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				7B481ECD2B93323000F08899 /* Notifications */,
-				7B6275792B50CEAB00FDA0F0 /* SearchView.swift */,
+				7B6275792B50CEAB00FDA0F0 /* SearchUserView.swift */,
+				7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */,
 			);
 			path = SideViews;
 			sourceTree = "<group>";
@@ -723,7 +726,7 @@
 				7B6275AB2B51682400FDA0F0 /* RecommendationModel.swift in Sources */,
 				7B481EE82B93AD4200F08899 /* CommentsView.swift in Sources */,
 				7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */,
-				7B62757A2B50CEAB00FDA0F0 /* SearchView.swift in Sources */,
+				7B62757A2B50CEAB00FDA0F0 /* SearchUserView.swift in Sources */,
 				7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */,
 				7B7CB3F52B984A5500EEF9D7 /* OldPostHeader.swift in Sources */,
 				7BAA41B12B67739F009D67DC /* Location.swift in Sources */,
@@ -735,6 +738,7 @@
 				7BD059E72B92BB1800D818F3 /* Supabase.swift in Sources */,
 				7BF48A782B63E1B400720BB5 /* PhotoPicker.swift in Sources */,
 				7B6275612B50C5DE00FDA0F0 /* ProfileBlurb.swift in Sources */,
+				7B7CB4022B988D8A00EEF9D7 /* OldSearchView.swift in Sources */,
 				7B481ED52B9333FE00F08899 /* MyProfileView.swift in Sources */,
 				7B6275352B50BECE00FDA0F0 /* VentureApp.swift in Sources */,
 				7B84D4292B93216F007141B9 /* ParentView.swift in Sources */,

@@ -24,7 +24,7 @@ struct NavigationBar: View {
         ZStack {
             
             //Navigation Links for NavBar
-            NavigationLink(destination: SearchView(), isActive: $showSearch) {
+            NavigationLink(destination: SearchUserView(), isActive: $showSearch) {
                 EmptyView()
             }
             
