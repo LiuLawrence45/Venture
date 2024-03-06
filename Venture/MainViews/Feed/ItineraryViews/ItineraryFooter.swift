@@ -6,22 +6,38 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 struct ItineraryFooter: View {
     
+    //Fetching user from Post.
+    @State var fetchedUser: User = demoUser
     var post: Post
+    
     @State private var showModal = false
     var body: some View {
         
         VStack(alignment: .leading){
             HStack {
-                Text(post.userName)
-                    .foregroundStyle(.secondary)
-                    .font(.footnote) 
+                
+                Button {
+                } label: {
+                    NavigationLink(destination: OthersProfileView(myProfile: fetchedUser)){
+                        Text(post.userName)
+                            .foregroundStyle(.secondary)
+                            .font(.footnote)
+                    }
+                    
+                }
+
                 
                 Spacer()
                 Text("Central Location: \(post.location)")
                     .font(.footnote)
+            }
+            .task {
+                fetchUser()
             }
             
             Divider()
@@ -54,6 +70,8 @@ struct ItineraryFooter: View {
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 0)
+        
+
         
         Divider()
         
@@ -106,6 +124,31 @@ struct ItineraryFooter: View {
 
         
         
+    }
+    
+    
+    func fetchUser() {
+        let docRef = Firestore.firestore().collection("Users").document(post.userUID)
+        
+        docRef.getDocument{ (document, error) in
+            let result = Result {
+                try document?.data(as: User.self)
+            }
+            
+            switch result {
+            case .success(let user):
+                if let user = user {
+                    fetchedUser = user
+                }
+                else {
+                    print("Document does not exist")
+                }
+            
+            case .failure(let error):
+                print("Error decoding user: \(error.localizedDescription)")
+            }
+            
+        }
     }
 }
 

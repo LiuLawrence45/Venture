@@ -20,6 +20,7 @@ struct PostView: View {
     
     //Only necessary variable.
     var post: Post
+    @State private var fetchedUsers: [User] = []
     
     // Callbacks for functions
     var onUpdate: (Post) -> ()
@@ -31,7 +32,9 @@ struct PostView: View {
         VStack {
             
             //Post heading information (username, time, etc...)
-            PostHeader(post: post)
+            if !fetchedUsers.isEmpty {
+                PostHeader(post: post, user: fetchedUsers[0])
+            }
             
             
             NavigationLink(destination: ItineraryView(post: post)) {
@@ -73,7 +76,7 @@ struct PostView: View {
                 
             }
             .frame(height: 320)
-            .padding(.horizontal, 16) //Change back to 8 if we are doing normal carousel. 
+            .padding(.horizontal, 16) //Change back to 8 if we are doing normal carousel.
             .overlay(
                 PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete),
                 alignment: .bottom
@@ -99,11 +102,32 @@ struct PostView: View {
                 }
             }
         })
-
         
     }
     
     
+    //Matching by username. Is there any way to match by userID? Yes. Just don't be stupid. use userUID. The below code is garbage. Need to change.
+    func findUser() async {
+        do {
+            
+            let snapshot = try await Firestore.firestore().collection("Users").whereField("username", isEqualTo: post.userName).getDocuments()
+            
+            // Map documents to users
+            let users = try snapshot.documents.compactMap { doc -> User? in
+                try doc.data(as: User.self)
+            }
+            
+            await MainActor.run {
+                fetchedUsers = users
+            }
+        }
+        
+        catch {
+            print(error.localizedDescription)
+        }
+
+        
+    }
     
     //Deleting a Post. Remember, liking and disliking are in PostFooter
     func deletePost(){

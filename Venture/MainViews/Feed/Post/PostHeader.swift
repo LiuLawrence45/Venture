@@ -10,12 +10,13 @@ import SDWebImageSwiftUI
 
 struct PostHeader: View {
     var post: Post
+    var user: User
     var body: some View {
         //Profile intro
         HStack(alignment: .center){
             Button {
             } label: {
-                NavigationLink(destination: NotReadyView()){
+                NavigationLink(destination: OthersProfileView(myProfile: user)){
                     WebImage(url: post.userProfileURL)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
