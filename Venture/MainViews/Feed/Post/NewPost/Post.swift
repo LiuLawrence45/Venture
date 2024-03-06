@@ -11,7 +11,15 @@ import FirebaseFirestoreSwift
 //Post Model
 struct Post: Identifiable, Codable {
     @DocumentID var id: String?
+    
+    var title: String
     var caption: String
+    var location: String
+    var cost: String
+    var carNeeded: Bool
+    var tripItinerary: String
+    var people: String
+    
     var imageURLs: [URL] = []
     var imageReferenceID: String = ""
     var publishedDate: Date = Date()
@@ -25,7 +33,15 @@ struct Post: Identifiable, Codable {
     
     enum CodingKeys: CodingKey {
         case id
+        
+        case title
         case caption
+        case location
+        case cost
+        case carNeeded
+        case tripItinerary
+        case people
+        
         case imageURLs
         case imageReferenceID
         case publishedDate

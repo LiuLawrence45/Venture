@@ -44,6 +44,7 @@ struct CreateNewPost: View {
     @State private var tripCost: String = ""
     @State private var tripCar: Bool = false
     @State private var tripItinerary: String = "Create your trip itinerary here :)"
+    @State private var tripPeople: String = ""
     
     
     //Body
@@ -92,10 +93,17 @@ struct CreateNewPost: View {
                     Divider()
                         .padding(.vertical, 10)
                     
-                    Text("Trip Details")
-                        .fontWeight(.bold)
-                        .font(.title3)
-                        .padding(.bottom, 10)
+                    HStack(spacing: 0) {
+                        Text("Trip Details")
+                            .fontWeight(.bold)
+                            .font(.headline)
+                            .padding(.bottom, 10)
+                        
+                        Text(" (all optional)")
+                            .font(.headline)
+                            .padding(.bottom, 10)
+                    }
+
                      
                     //Add Costs; only allows in number input
                     HStack(spacing: 15){
@@ -116,7 +124,7 @@ struct CreateNewPost: View {
                         Spacer()
                     }
                     
-                    //Quick Caption (postText)
+                    //Car needed?
                     HStack(spacing: 15) {
                         Text("🚗")
                         Toggle(isOn: $tripCar){
@@ -132,8 +140,28 @@ struct CreateNewPost: View {
                             }
                         }
                         .toggleStyle(SwitchToggleStyle(tint: .primary))
-                        
                     }
+                    
+                    //Purely decorative
+                    HStack {
+                        Text("|")
+                            .offset(x: 10)
+                            .opacity(0.2)
+                        Spacer()
+                    }
+                    
+                    //How many people?
+                    HStack(spacing: 15){
+                        Text("🙋‍♀️")
+                        TextField("How many people?", text: $tripPeople, axis: .vertical)
+                            .keyboardType(.numberPad)
+                            .focused($showKeyboard)
+                            .onReceive(tripPeople.publisher.collect()) {
+                                self.tripPeople = String($0.prefix(while: { $0.isNumber }))
+                            }
+                    }
+                    
+                    
                     
                     Divider()
                         .padding(.vertical, 10)
@@ -211,8 +239,9 @@ struct CreateNewPost: View {
         var body: some View {
             HStack(spacing: 15){
                 Text("⚡️")
-                Text("Create your itinerary!")
+                Text(tripItinerary)
                     .opacity(0.2)
+                    .lineLimit(1)
                 Spacer()
                 Image(systemName: "chevron.right")
             }
@@ -328,7 +357,7 @@ struct CreateNewPost: View {
                         imageURLs.append(downloadURL)
                     }
                     
-                    let post = Post(caption: postCaption, imageURLs: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(title: postTitle, caption: postCaption, location: postLocation, cost: tripCost, carNeeded: tripCar, tripItinerary: tripItinerary, people: tripPeople, imageURLs: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
                     
                     try await createDocumentAtFirebase(post)
                     
