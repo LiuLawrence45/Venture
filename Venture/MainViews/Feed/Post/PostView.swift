@@ -35,30 +35,54 @@ struct PostView: View {
             
             
             NavigationLink(destination: ItineraryView(post: post)) {
-                //All images in the horizontal carousel
-                TabView {
-                    ForEach(post.imageURLs, id: \.self){ imageURL in
-                        ZStack {
+                
+                //Alternate view of what Katie said: ZStack
+                
+                ZStack(alignment: .center) {
+                    ForEach(Array(post.imageURLs.enumerated().prefix(3)), id: \.offset){ index, imageURL in
                             WebImage(url: imageURL)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: UIScreen.main.bounds.width - 16, height: 480)
-
+                                .frame(width: UIScreen.main.bounds.width - 16, height: 240)
                                 .clipped()
-                                
+                                .shadow(radius: 4)
+                                .offset(x: CGFloat(index * -6), y: CGFloat(index * 10))
+
                         }
-                        
-                    }
                 }
-                .tabViewStyle(PageTabViewStyle())
+                
+                
+                //All images in the horizontal carousel
+                    
+//                TabView {
+//                    ForEach(post.imageURLs, id: \.self){ imageURL in
+//                        ZStack {
+//                            WebImage(url: imageURL)
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                                .frame(width: UIScreen.main.bounds.width - 16, height: 480)
+//
+//                                .clipped()
+//                                
+//                        }
+//                        
+//                    }
+//                }
+//                .tabViewStyle(PageTabViewStyle())
+                
+                
             }
-            .frame(height: 480)
-            .padding(.horizontal, 8)
+            .frame(height: 320)
+            .padding(.horizontal, 16) //Change back to 8 if we are doing normal carousel. 
+            .overlay(
+                PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete),
+                alignment: .bottom
+            )
 
             
             
             //Post footing information. GUI change soon. Has liking and disliking capabilities.
-            PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete)
+//            PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete)
         }
         .overlay(alignment: .topTrailing, content: {
             if post.userUID == userUID {
