@@ -27,10 +27,6 @@
 //            //Either we want VSCO vibe or this. Change background color.
 ////            Color("Background").ignoresSafeArea()
 //            
-////            if model.showDetail {
-////                detail
-////            }
-//            
 //            ScrollView(showsIndicators: false){
 //                scrollDetection
 //                
@@ -53,29 +49,29 @@
 //        .overlay(NavigationBar(title: "Featured", context: "default", hasScrolled: $contentHasScrolled))
 //    }
 //    
-//    var showPosts: some View {
-//        ForEach(demoPosts) { post in
-//            NavigationLink(destination: ItineraryView(post: post)){
-//                PostView(namespace: namespace, post: post)
-//                    .accessibilityElement(children: .combine)
-//                    .accessibilityAddTraits(.isButton)
-//            }
-//            .accentColor(.primary)
-////            .onAppear {
-////                withAnimation(.easeIn) {
-////                    print("Appear")
-////                    model.showTab = false
-////                }
+////    var showPosts: some View {
+////        ForEach(demoPosts) { post in
+////            NavigationLink(destination: ItineraryView(post: post)){
+////                PostView(namespace: namespace, post: post)
+////                    .accessibilityElement(children: .combine)
+////                    .accessibilityAddTraits(.isButton)
 ////            }
-////            .onDisappear {
-////                withAnimation(.easeOut){
-////                    print("Disappear")
-////                    model.showTab = true
-////                }
-////            }
-//
-//        }
-//    }
+////            .accentColor(.primary)
+//////            .onAppear {
+//////                withAnimation(.easeIn) {
+//////                    print("Appear")
+//////                    model.showTab = false
+//////                }
+//////            }
+//////            .onDisappear {
+//////                withAnimation(.easeOut){
+//////                    print("Disappear")
+//////                    model.showTab = true
+//////                }
+//////            }
+////
+////        }
+////    }
 //    
 //    
 //    var scrollDetection: some View {

@@ -48,49 +48,20 @@ struct PostView: View {
 
     var body: some View {
         VStack {
-//            PostHeader(post: post)    This is outdated. Let's create from scratch below.
-            HStack {
-                WebImage(url: post.userProfileURL)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 36, height: 36)
-                    .mask(Circle())
-                
-                VStack(alignment: .leading){
-                    
-                    
-                    //This was originally a button.
-                    Text(post.userName)
-                        .font(.caption)
-                        .multilineTextAlignment(.leading)
-                        .fontWeight(.semibold)
-                        .frame(alignment: .leading)
-                    
-                    Text(post.publishedDate.formatted(date: .numeric, time: .shortened))
-                    .font(.caption2)
-                    .multilineTextAlignment(.trailing)
-                    .frame(alignment: .trailing)
-                    .opacity(0.6)
-                    
-                    Text(post.text)
-                        .textSelection(.enabled)
-                        .padding(.vertical, 8)
-                    
-                    if let postImageURL = post.imageURL.first{
-                        GeometryReader {
-                            let size = $0.size
-                            WebImage(url: postImageURL)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: size.width, height: size.height)
-                                .clipped()
-                        }
-                        .frame(height: 200)
-                    }
-                    
+            PostHeader(post: post)
+            
+            if let postImageURL = post.imageURL.first{
+                GeometryReader {
+                    let size = $0.size
+                    WebImage(url: postImageURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: size.width, height: size.height)
+                        .clipped()
                 }
+                .frame(height: 200)
             }
-//            
+//
 //            TabView {
 //                ForEach(post.media, id: \.self) { mediaItem in
 //
@@ -147,7 +118,7 @@ struct PostView_Previews: PreviewProvider {
     
     static var previews: some View {
         //Post(namespace: namespace, show: .constant(true))
-//        PostView(namespace: namespace)
+//        PostView(post: <#Post#>, onUpdate: <#(Post) -> ()#>, onDelete: <#() -> ()#>)
         ContentView()
     }
 }

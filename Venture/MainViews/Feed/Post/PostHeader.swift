@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct PostHeader: View {
-    var post: PostModel
-    var profile: ProfileModel
+    var post: Post
     var body: some View {
         //Profile intro
         HStack(alignment: .center){
             Button {
             } label: {
-                NavigationLink(destination: ProfileView(profile: profile)){
-                    Image(profile.profilePicture)
+                NavigationLink(destination: EmptyView()){
+                    WebImage(url: post.userProfileURL)
                         .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 36, height: 36)
                         .mask(Circle())
                 }
@@ -30,8 +31,8 @@ struct PostHeader: View {
                 Button {
                     
                 } label:  {
-                    NavigationLink(destination: ProfileView(profile: profile)){
-                        Text(profile.username) //replace with structure after
+                    NavigationLink(destination: EmptyView()){
+                        Text(post.userName) //replace with structure after
                             .font(.caption)
                             .multilineTextAlignment(.leading)
                             .fontWeight(.semibold)
@@ -44,9 +45,9 @@ struct PostHeader: View {
                 Group {
                     Text("_For you:_") +
                     Text(" ") +
-                    Text(String(post.friendsMutuals[0])).bold().italic() +
+                    Text("3").bold().italic() +
                     Text(" friends, ") +
-                    Text(String(post.friendsMutuals[1])).bold().italic() +
+                    Text("4").bold().italic() +
                     Text(" mutuals are down to go.").italic()
                     
                     
@@ -76,6 +77,6 @@ struct PostHeader: View {
     }
 }
 
-#Preview {
-    PostHeader(post: demoPosts[0], profile: profiles[0])
-}
+//#Preview {
+//    PostHeader(post: demoPosts[0], profile: profiles[0])
+//}

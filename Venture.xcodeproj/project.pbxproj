@@ -18,7 +18,6 @@
 		7B481ED82B93370F00F08899 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED72B93370F00F08899 /* EditProfileView.swift */; };
 		7B481EDA2B93571D00F08899 /* OldFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481ED92B93571D00F08899 /* OldFeedView.swift */; };
 		7B481EDC2B93583000F08899 /* OldPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EDB2B93583000F08899 /* OldPost.swift */; };
-		7B481EDE2B9359D800F08899 /* OldPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EDD2B9359D800F08899 /* OldPostHeader.swift */; };
 		7B481EE02B935A2600F08899 /* OldPostFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EDF2B935A2600F08899 /* OldPostFooter.swift */; };
 		7B481EE42B9366CA00F08899 /* OldItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE32B9366CA00F08899 /* OldItineraryView.swift */; };
 		7B481EE62B936A5200F08899 /* ItineraryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481EE52B936A5200F08899 /* ItineraryFooter.swift */; };
@@ -63,6 +62,7 @@
 		7B6275AD2B51685D00FDA0F0 /* DemoRecommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6275AC2B51685D00FDA0F0 /* DemoRecommendations.swift */; };
 		7B7CB3F12B983D6700EEF9D7 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */; };
 		7B7CB3F32B98437C00EEF9D7 /* OldPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */; };
+		7B7CB3F52B984A5500EEF9D7 /* OldPostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -114,7 +114,6 @@
 		7B481ED72B93370F00F08899 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		7B481ED92B93571D00F08899 /* OldFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFeedView.swift; sourceTree = "<group>"; };
 		7B481EDB2B93583000F08899 /* OldPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPost.swift; sourceTree = "<group>"; };
-		7B481EDD2B9359D800F08899 /* OldPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostHeader.swift; sourceTree = "<group>"; };
 		7B481EDF2B935A2600F08899 /* OldPostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostFooter.swift; sourceTree = "<group>"; };
 		7B481EE32B9366CA00F08899 /* OldItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldItineraryView.swift; sourceTree = "<group>"; };
 		7B481EE52B936A5200F08899 /* ItineraryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryFooter.swift; sourceTree = "<group>"; };
@@ -162,6 +161,7 @@
 		7B6275AC2B51685D00FDA0F0 /* DemoRecommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRecommendations.swift; sourceTree = "<group>"; };
 		7B7CB3F02B983D6700EEF9D7 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
 		7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldPostView.swift; sourceTree = "<group>"; };
+		7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OldPostHeader.swift; path = Venture/MainViews/Feed/Post/OldPostHeader.swift; sourceTree = SOURCE_ROOT; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -316,11 +316,11 @@
 		7B481EE12B935A6E00F08899 /* OldPost */ = {
 			isa = PBXGroup;
 			children = (
+				7B7CB3F42B984A5500EEF9D7 /* OldPostHeader.swift */,
 				7B7CB3F22B98437C00EEF9D7 /* OldPostView.swift */,
 				7B9B502D2B582AF100A3AD61 /* CommentView.swift */,
 				7B481EDF2B935A2600F08899 /* OldPostFooter.swift */,
 				7B481EDB2B93583000F08899 /* OldPost.swift */,
-				7B481EDD2B9359D800F08899 /* OldPostHeader.swift */,
 			);
 			path = OldPost;
 			sourceTree = "<group>";
@@ -699,10 +699,10 @@
 				7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */,
 				7B6275AB2B51682400FDA0F0 /* RecommendationModel.swift in Sources */,
 				7B481EE82B93AD4200F08899 /* CommentsView.swift in Sources */,
-				7B481EDE2B9359D800F08899 /* OldPostHeader.swift in Sources */,
 				7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */,
 				7B62757A2B50CEAB00FDA0F0 /* SearchView.swift in Sources */,
 				7B5901BF2B55586A00FF4213 /* PostFooter.swift in Sources */,
+				7B7CB3F52B984A5500EEF9D7 /* OldPostHeader.swift in Sources */,
 				7BAA41B12B67739F009D67DC /* Location.swift in Sources */,
 				7B6275902B5107CD00FDA0F0 /* PreferenceKeys.swift in Sources */,
 				7B6275372B50BECE00FDA0F0 /* ContentView.swift in Sources */,

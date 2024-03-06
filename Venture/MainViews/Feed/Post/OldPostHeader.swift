@@ -14,7 +14,6 @@ struct OldPostHeader: View {
         //Profile intro
         HStack(alignment: .center){
             Button {
-                //NavigationLink(<#T##LocalizedStringKey#>, value: <#T##P?#>)
             } label: {
                 NavigationLink(destination: ProfileView(profile: profile)){
                     Image(profile.profilePicture)
@@ -73,7 +72,7 @@ struct OldPostHeader: View {
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 15)
+        .padding(.horizontal, 8)
     }
 }
 
