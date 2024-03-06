@@ -17,7 +17,7 @@ struct CreateNewPost: View {
      
     //Post Properties
     @State private var postText: String = ""
-    @State private var postImageData: Data?
+    @State private var postImageData: [Data] = []
     
     
     //Stored User Defaults
@@ -30,7 +30,7 @@ struct CreateNewPost: View {
     @State private var isLoading: Bool = false
     @State private var errorMessage: String = ""
     @State private var showImagePicker: Bool = false
-    @State private var photoItem: PhotosPickerItem?
+    @State private var photoItems: [PhotosPickerItem] = []
     @FocusState private var showKeyboard: Bool //Focus state is used to toggle the keyboard on and off
     @State private var showError: Bool = false
     
@@ -64,31 +64,56 @@ struct CreateNewPost: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15){
-                    if let postImageData, let image = UIImage(data: postImageData){
-                        GeometryReader {
-                            let size = $0.size
+                    
+                    ForEach(postImageData.indices, id: \.self) { index in
+                        if let image = UIImage(data: postImageData[index]){
                             Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: size.width, height: size.height)
-//                                .clipShape()
-                                .overlay(alignment: .topTrailing){
+                                .frame(width: 220, height: 220)
+                                .clipped()
+                                .cornerRadius(8)
+                                .overlay(alignment: .topTrailing) {
                                     Button {
-                                        withAnimation(.easeInOut(duration: 0.25)){
-                                            self.postImageData = nil
+                                        withAnimation {
+                                            //postImageData.remove(at: index)
                                         }
-                                        
                                     } label: {
-                                        Image(systemName: "trash")
-                                            .fontWeight(.bold)
-                                            .tint(.red)
+                                        Image(systemName: "xmark.circle.fill")
+                                            .padding(10)
+                                            .foregroundColor(.red)
                                     }
-                                    .padding(10)
                                 }
                         }
-                        .clipped()
-                        .frame(height: 220)
+                        
                     }
+
+                    
+//                    if let postImageData, let image = UIImage(data: postImageData){
+//                        GeometryReader {
+//                            let size = $0.size
+//                            Image(uiImage: image)
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                                .frame(width: size.width, height: size.height)
+////                                .clipShape()
+//                                .overlay(alignment: .topTrailing){
+//                                    Button {
+//                                        withAnimation(.easeInOut(duration: 0.25)){
+//                                            self.postImageData = nil
+//                                        }
+//                                        
+//                                    } label: {
+//                                        Image(systemName: "trash")
+//                                            .fontWeight(.bold)
+//                                            .tint(.red)
+//                                    }
+//                                    .padding(10)
+//                                }
+//                        }
+//                        .clipped()
+//                        .frame(height: 220)
+//                    }
                     
                     TextField("What's happening?", text: $postText, axis: .vertical)
                         .focused($showKeyboard)
@@ -135,24 +160,11 @@ struct CreateNewPost: View {
         }
 
         //Programmable photosPicker
-        .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
+        .photosPicker(isPresented: $showImagePicker, selection: $photoItems, matching: .images)
         
         //Programmable
-        .onChange(of: photoItem) { newValue in
-            if let newValue {
-                Task {
-                    if let rawImageData = try? await newValue.loadTransferable(type: Data.self),
-                       let image = UIImage(data: rawImageData),
-                       let compressedImageData = image.jpegData(compressionQuality: 0.5){
-                        
-                        // UI must be done on main thread
-                        await MainActor.run(body: {
-                            postImageData = compressedImageData
-                            photoItem = nil
-                        })
-                    }
-                }
-            }
+        .onChange(of: photoItems) { _ in
+            processSelectedPhotos()
         }
         
         //Error alert
@@ -163,6 +175,23 @@ struct CreateNewPost: View {
             LoadingView(show: $isLoading)
         }
         
+    }
+    
+    //Processing selected Photos from the photoItems array. Adds all images from photoItems from photoItemPicker to the postImageData.
+    func processSelectedPhotos(){
+        Task {
+            for photoItem in photoItems {
+                if let rawImageData = try? await photoItem.loadTransferable(type: Data.self),
+                   let image = UIImage(data: rawImageData),
+                   let compressedImageData = image.jpegData(compressionQuality: 0.5){
+                    
+                    await MainActor.run(body: {
+                        postImageData.append(compressedImageData)
+                    })
+                }
+
+            }
+        }
     }
     
     //Post content to FireBase
@@ -178,11 +207,15 @@ struct CreateNewPost: View {
                 let imageReferenceID = "\(userUID)\(Date())"
                 let storageRef = Storage.storage().reference().child("Post_Images").child(imageReferenceID)
                 
-                if let postImageData{
-                    let _ = try await storageRef.putDataAsync(postImageData)
-                    let downloadURL = try await storageRef.downloadURL()
+                if let _ = postImageData.first {
+                    var imageURLs = [URL]()
+                    for individualImage in postImageData {
+                        let _ = try await storageRef.putDataAsync(individualImage)
+                        let downloadURL = try await storageRef.downloadURL()
+                        imageURLs.append(downloadURL)
+                    }
                     
-                    let post = Post(text: postText, imageURL: downloadURL, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(text: postText, imageURL: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
                     
                     try await createDocumentAtFirebase(post)
                     

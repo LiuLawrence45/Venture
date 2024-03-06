@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 struct Post: Identifiable, Codable {
     @DocumentID var id: String?
     var text: String
-    var imageURL: URL?
+    var imageURL: [URL] = []
     var imageReferenceID: String = ""
     var publishedDate: Date = Date()
     var likedIDs: [String] = []
