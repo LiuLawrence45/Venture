@@ -14,7 +14,7 @@ struct CreateNewPost: View {
     
     //Callbacks
     var onPost: (Post) -> ()
-     
+    
     //Post Properties
     @State private var postText: String = ""
     @State private var postImageData: [Data] = []
@@ -65,59 +65,69 @@ struct CreateNewPost: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 15){
                     
-                    ForEach(postImageData.indices, id: \.self) { index in
-                        if let image = UIImage(data: postImageData[index]){
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 220, height: 220)
-                                .clipped()
-                                .cornerRadius(8)
-                                .overlay(alignment: .topTrailing) {
-                                    Button {
-                                        withAnimation {
-                                            //postImageData.remove(at: index)
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack {
+                            ForEach(postImageData.indices, id: \.self) { index in
+                                if let image = UIImage(data: postImageData[index]){
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 128, height: 128)
+                                        .clipped()
+                                        .cornerRadius(8)
+                                    
+                                    //Will implement this later.
+                                        .overlay(alignment: .topTrailing) {
+                                            Button {
+                                                withAnimation {
+                                                    self.removeImage(at: index)
+                                                    print("Image is at index: ", index)
+                                                    
+                                                }
+                                            } label: {
+                                                Image(systemName: "xmark.circle.fill")
+                                                    .padding(10)
+                                                    .foregroundColor(.red)
+                                            }
                                         }
-                                    } label: {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .padding(10)
-                                            .foregroundColor(.red)
-                                    }
                                 }
+                                
+                            }
                         }
-                        
                     }
-
                     
-//                    if let postImageData, let image = UIImage(data: postImageData){
-//                        GeometryReader {
-//                            let size = $0.size
-//                            Image(uiImage: image)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: size.width, height: size.height)
-////                                .clipShape()
-//                                .overlay(alignment: .topTrailing){
-//                                    Button {
-//                                        withAnimation(.easeInOut(duration: 0.25)){
-//                                            self.postImageData = nil
-//                                        }
-//                                        
-//                                    } label: {
-//                                        Image(systemName: "trash")
-//                                            .fontWeight(.bold)
-//                                            .tint(.red)
-//                                    }
-//                                    .padding(10)
-//                                }
-//                        }
-//                        .clipped()
-//                        .frame(height: 220)
-//                    }
+                    
+                    
+                    
+                    //                    if let postImageData, let image = UIImage(data: postImageData){
+                    //                        GeometryReader {
+                    //                            let size = $0.size
+                    //                            Image(uiImage: image)
+                    //                                .resizable()
+                    //                                .aspectRatio(contentMode: .fill)
+                    //                                .frame(width: size.width, height: size.height)
+                    ////                                .clipShape()
+                    //                                .overlay(alignment: .topTrailing){
+                    //                                    Button {
+                    //                                        withAnimation(.easeInOut(duration: 0.25)){
+                    //                                            self.postImageData = nil
+                    //                                        }
+                    //
+                    //                                    } label: {
+                    //                                        Image(systemName: "trash")
+                    //                                            .fontWeight(.bold)
+                    //                                            .tint(.red)
+                    //                                    }
+                    //                                    .padding(10)
+                    //                                }
+                    //                        }
+                    //                        .clipped()
+                    //                        .frame(height: 220)
+                    //                    }
                     
                     TextField("What's happening?", text: $postText, axis: .vertical)
                         .focused($showKeyboard)
-
+                    
                 }
                 .padding(15)
             }
@@ -142,12 +152,12 @@ struct CreateNewPost: View {
                     showKeyboard = false
                     
                 }
-
+                
             }
             .accentColor(.primary)
             .padding(.horizontal, 10)
             .padding(.vertical, 10)
-
+            
             
             Spacer()
         }
@@ -158,7 +168,8 @@ struct CreateNewPost: View {
                 .fill(.gray.opacity(0.05))
                 .ignoresSafeArea()
         }
-
+        
+        
         //Programmable photosPicker
         .photosPicker(isPresented: $showImagePicker, selection: $photoItems, matching: .images)
         
@@ -177,6 +188,11 @@ struct CreateNewPost: View {
         
     }
     
+    //Helper function to remove an image from photoImageData. Does not currently work for non-last images.
+    func removeImage(at index: Int) {
+        postImageData.remove(at: index)
+    }
+    
     //Processing selected Photos from the photoItems array. Adds all images from photoItems from photoItemPicker to the postImageData.
     func processSelectedPhotos(){
         Task {
@@ -189,7 +205,7 @@ struct CreateNewPost: View {
                         postImageData.append(compressedImageData)
                     })
                 }
-
+                
             }
         }
     }
