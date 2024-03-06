@@ -176,7 +176,7 @@ struct CreateNewPost: View {
                         imageURLs.append(downloadURL)
                     }
                     
-                    let post = Post(text: postText, imageURL: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(text: postText, imageURLs: imageURLs, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
                     
                     try await createDocumentAtFirebase(post)
                     

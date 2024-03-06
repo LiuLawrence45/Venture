@@ -42,14 +42,9 @@ struct PostHeader: View {
                 }
                 .accentColor(.primary)
                 
-                Group {
-                    Text("_For you:_") +
-                    Text(" ") +
-                    Text("3").bold().italic() +
-                    Text(" friends, ") +
-                    Text("4").bold().italic() +
-                    Text(" mutuals are down to go.").italic()
-                    
+                HStack(spacing: 2){
+                    Text("Time Posted (for beta testing):").bold()
+                    Text(post.publishedDate.formatted(date: .numeric, time: .shortened))
                     
                 }
                 .font(.caption2)

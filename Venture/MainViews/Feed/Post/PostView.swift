@@ -15,12 +15,10 @@ import AVKit
 import SDWebImageSwiftUI
 
 struct PostView: View {
-//    var namespace: Namespace.ID
     
     //Preview variables
-//    var post: PostModel = demoPosts[0]
     var post: Post
-    var profile = profiles[0]
+
 
     //Possible video player in the future
     @State private var player: AVPlayer?
@@ -50,17 +48,27 @@ struct PostView: View {
         VStack {
             PostHeader(post: post)
             
-            if let postImageURL = post.imageURL.first{
-                GeometryReader {
-                    let size = $0.size
-                    WebImage(url: postImageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: size.width, height: size.height)
-                        .clipped()
+            
+            //This should be in a TabView
+            
+            TabView {
+                ForEach(post.imageURLs, id: \.self){ imageURL in
+                    ZStack {
+                        WebImage(url: imageURL)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width - 16, height: 480)
+
+                            .clipped()
+                            
+                    }
+                    
                 }
-                .frame(height: 200)
             }
+            .tabViewStyle(PageTabViewStyle())
+            .padding(.horizontal, 8)
+            .frame(height: 480)
+
 //
 //            TabView {
 //                ForEach(post.media, id: \.self) { mediaItem in
@@ -96,7 +104,6 @@ struct PostView: View {
 //            }.tabViewStyle(PageTabViewStyle())
 //            .padding(.horizontal, 8)
 //            .frame(height: 480)
-            
             //PostFooter(post: post)
             
         }
