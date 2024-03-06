@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostFooter: View {
     
-    var post: PostModel
+    var post: Post
     @State private var showModal = false
     var body: some View {
         
@@ -38,42 +38,23 @@ struct PostFooter: View {
             }
         }
         .padding(.horizontal, 8)
-        
-//        Button {
-//            self.showModal = true
-//            
-//        } label: {
-//            Group {
-//                Text("View all ") +
-//                Text(String(post.numberOfComments)) +
-//                Text(" comments...")
-//            }
-//            .frame(maxWidth: .infinity, alignment: .leading)
-//            .padding(.horizontal, 20)
-//            .padding(.vertical, 2)
-//            .opacity(0.5)
-//            .font(.footnote)
-//            .accentColor(.primary)
-//        }
-//        .sheet(isPresented: $showModal) {
-//            ModalView() 
-//                .presentationDetents([.medium, .large])
-//        }
-//
+
     }
 }
 
-struct ModalView: View {
-    var body: some View {
-        VStack {
-            CommentView(post: demoPosts[0], profile: profiles[0])
-        }
-        .padding(.top, 20)
-        .padding(.bottom, 0) 
-
-    } 
-}
-
+//Can use later if want to implement a Modal View
+//struct ModalView: View {
+//    var body: some View {
+//        VStack {
+//            CommentView(post: demoPosts[0], profile: profiles[0])
+//        }
+//        .padding(.top, 20)
+//        .padding(.bottom, 0) 
+//
+//    } 
+//}
+//
 #Preview {
-    PostFooter(post: demoPosts[0])
+    //This is outdated. Do not use demoPosts[0]
+    ContentView()
 }
