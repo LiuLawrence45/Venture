@@ -76,6 +76,8 @@
 		7B7DC7F12B9951CB00C43D4A /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 7B7DC7F02B9951CB00C43D4A /* CropViewController */; };
 		7B7DC7F32B9951CB00C43D4A /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 7B7DC7F22B9951CB00C43D4A /* TOCropViewController */; };
 		7B7DC7F52B9951E900C43D4A /* ImageCropperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7F42B9951E900C43D4A /* ImageCropperView.swift */; };
+		7B7DC7F82B99698000C43D4A /* Raleway-VariableFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7DC7F62B99698000C43D4A /* Raleway-VariableFont.ttf */; };
+		7B7DC7F92B99698000C43D4A /* Raleway-Italic-VariableFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7DC7F72B99698000C43D4A /* Raleway-Italic-VariableFont.ttf */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -185,6 +187,8 @@
 		7B7DC7E92B98BBA200C43D4A /* NotReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotReadyView.swift; sourceTree = "<group>"; };
 		7B7DC7ED2B98D74800C43D4A /* OthersProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersProfileView.swift; sourceTree = "<group>"; };
 		7B7DC7F42B9951E900C43D4A /* ImageCropperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropperView.swift; sourceTree = "<group>"; };
+		7B7DC7F62B99698000C43D4A /* Raleway-VariableFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-VariableFont.ttf"; sourceTree = "<group>"; };
+		7B7DC7F72B99698000C43D4A /* Raleway-Italic-VariableFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic-VariableFont.ttf"; sourceTree = "<group>"; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -527,6 +531,8 @@
 			children = (
 				7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */,
 				7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */,
+				7B7DC7F72B99698000C43D4A /* Raleway-Italic-VariableFont.ttf */,
+				7B7DC7F62B99698000C43D4A /* Raleway-VariableFont.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -707,7 +713,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7DC7F92B99698000C43D4A /* Raleway-Italic-VariableFont.ttf in Resources */,
 				7B481EFB2B94565A00F08899 /* GoogleService-Info.plist in Resources */,
+				7B7DC7F82B99698000C43D4A /* Raleway-VariableFont.ttf in Resources */,
 				7B62753C2B50BECF00FDA0F0 /* Preview Assets.xcassets in Resources */,
 				7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */,
 				7B7CB4002B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf in Resources */,

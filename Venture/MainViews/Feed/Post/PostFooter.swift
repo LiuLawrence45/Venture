@@ -49,6 +49,7 @@ struct PostFooter: View {
             }
         }
         .padding(.horizontal, 8)
+        .padding(.bottom, 8)
         
         //Remove this background if we want to get rid of the gray.
         .background(Color(red: 29.0/255.0, green: 29.0/255.0, blue: 29.0/255.0))

@@ -41,7 +41,7 @@ struct ItineraryFooter: View {
 
                 
                 Spacer()
-                Text("Central Location: \(post.location)")
+                Text("Location: \(post.location)")
                     .font(.callout)
             }
             .task {

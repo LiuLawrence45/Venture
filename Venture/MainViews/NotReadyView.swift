@@ -15,19 +15,19 @@ struct NotReadyView: View {
             Text("Under development. Come back soon! :P")
         }
         .padding(16)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Label("Back", systemImage: "chevron.backward")
-                }
-                .tint(.primary)
-                
-            }
-        }
-        .foregroundColor(.white)
+//        .navigationBarBackButtonHidden(true)
+//        .toolbar {
+//            ToolbarItem(placement: .topBarLeading) {
+//                Button(action: {
+//                    dismiss()
+//                }) {
+//                    Label("Back", systemImage: "chevron.backward")
+//                }
+//                .tint(.primary)
+//                
+//            }
+//        }
+//        .foregroundColor(.white)
     }
 }
 

@@ -21,11 +21,13 @@ struct AppView: View {
                     .environmentObject(model)
                     .environment(\.colorScheme, .dark)
                     // .statusBarHidden(true) // This is a temporary measure just since I can't figure it out right now.
+//                    .environment(\.font, Font.custom("Raleway", size: 14))
             }
             else {
                 ParentView()
                     .environmentObject(model)
                     .preferredColorScheme(.dark)
+                    .environment(\.font, Font.custom("Raleway", size: 14))
                     // .statusBarHidden(true)
             }
         }

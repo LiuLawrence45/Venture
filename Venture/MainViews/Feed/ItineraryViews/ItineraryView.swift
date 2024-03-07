@@ -32,11 +32,18 @@ struct ItineraryView: View {
                     TabView {
                         ForEach(post.imageURLs, id: \.self){ imageURL in
                             ZStack {
-                                WebImage(url: imageURL)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: UIScreen.main.bounds.width - 16, height: 480)
-                                    .clipped()
+                                HStack {
+                                    Spacer()
+                                    WebImage(url: imageURL)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+    //                                    .frame(width: UIScreen.main.bounds.width - 16, height: 480)
+                                        .frame(width: 384, height: 480)
+                                        .clipped()
+                                    
+                                    Spacer()
+                                }
+
                                     
                             }
                             

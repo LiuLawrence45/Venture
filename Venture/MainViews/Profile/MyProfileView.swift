@@ -50,6 +50,7 @@ struct MyProfileView: View {
                 ProfileBlurb(user: myProfile ?? demoUserEmpty)
                     .padding(.horizontal, 10)
                     .padding(.bottom, 10)
+                    .environment(\.font, Font.custom("Raleway", size: 14))
                 
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
