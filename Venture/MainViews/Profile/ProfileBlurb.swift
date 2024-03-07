@@ -61,25 +61,12 @@ struct ProfileBlurb: View {
                         .font(.footnote)
                         
                         HStack {
-                            Image(systemName: "hand.point.right")
+                            Image(systemName: "suitcase.fill")
                             Text(user.occupation ?? "No occupation entered.")
 
                         }
                         .foregroundStyle(.secondary)
                         .font(.footnote)
-                        
-//                        if let bioLink = URL(string: user.userBioLink ?? "") {
-//                            HStack {
-//                                Image(systemName: "hand.point.right")
-//    //                            Text(profile.occupation)
-//                                Link(user.userBioLink!, destination: bioLink)
-//
-//                            }
-//                            .foregroundStyle(.secondary)
-//                            .font(.caption)
-//                            .tint(.blue)
-//                            .lineLimit(1)
-//                        }
 
                     }
                 }
@@ -88,21 +75,20 @@ struct ProfileBlurb: View {
             
 
             }
-            .padding(.bottom,  20)
+            .padding(.bottom,  10)
             Text(user.userBio ?? "")
                 .opacity(0.8)
                 .font(.footnote)
-                .padding(.bottom, 20)
                 .italic()
                 .lineLimit(2)
             
             
-            HStack(spacing: 40){
-                Text("\(profile.posts.count) Posts")
-                    .fontWeight(.semibold)
-                Text ("\(profile.numFriends) friends")
-                    .fontWeight(.semibold)
-            }
+//            HStack(spacing: 40){
+//                Text("\(profile.posts.count) Posts")
+//                    .fontWeight(.semibold)
+//                Text ("\(profile.numFriends) friends")
+//                    .fontWeight(.semibold)
+//            }
         }
         .frame(alignment: .center)
         .padding(20)
