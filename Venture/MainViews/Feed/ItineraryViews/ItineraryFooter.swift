@@ -27,7 +27,7 @@ struct ItineraryFooter: View {
                         NavigationLink(destination: OthersProfileView(myProfile: fetchedUser, uid: fetchedUser.userUID!)){
                             Text(post.userName)
                                 .foregroundStyle(.secondary)
-                                .font(.footnote)
+                                .font(.callout)
                         }
                     }
                     else {
@@ -42,7 +42,7 @@ struct ItineraryFooter: View {
                 
                 Spacer()
                 Text("Central Location: \(post.location)")
-                    .font(.footnote)
+                    .font(.callout)
             }
             .task {
                 fetchUser()
@@ -63,7 +63,7 @@ struct ItineraryFooter: View {
             HStack(spacing: 16) {
                 Text("🎤")
                 Text(post.caption)
-                    .font(.footnote)
+                    .font(.callout)
                     .foregroundColor(.secondary)
             }
 
@@ -78,7 +78,7 @@ struct ItineraryFooter: View {
         HStack(spacing: 0) {
             Text("Trip Details")
                 .fontWeight(.bold)
-                .font(.body)
+                .font(.title3)
                 
         }
 
@@ -91,7 +91,7 @@ struct ItineraryFooter: View {
                     Text("Cost per person: \(post.cost)")
                     Spacer()
                 }
-                .font(.footnote)
+                .font(.callout)
             }
 
             //Car needed?
@@ -106,7 +106,7 @@ struct ItineraryFooter: View {
                 }
                 
             }
-            .font(.footnote)
+            .font(.callout)
 
             //How many people?
             if post.people != "" {
@@ -114,11 +114,12 @@ struct ItineraryFooter: View {
                     Text("🙋‍♀️")
                     Text("\(post.people) people went on this trip")
                 }
-                .font(.footnote)
+                .font(.callout)
             }
 
             Divider()
-                .padding(.vertical, 8)
+                .padding(.bottom, 6)
+                .padding(.top, 10)
 
         }
 

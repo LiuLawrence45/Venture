@@ -169,6 +169,7 @@ struct summary: View {
     var body: some View {
         Text(post.tripItinerary)
             .padding(.horizontal, 8)
+            
         
         Group {
             Text("")
@@ -193,7 +194,9 @@ struct ItineraryTabBarButton: View {
         }, label: {
             VStack(spacing: 4 ){
                 Text(text) // Use Text instead of Image
-                    .font(.system(size: 14, weight: .medium)) // Customize the font as needed
+//                    .font(.system(size: 14, weight: .medium)) // Customize the font as needed
+                    .fontWeight(.bold)
+                    .font(.title3)
                     .foregroundColor(selectedTab == identifier ? .primary : .secondary)
                 
                 // Conditionally show underline only under the selected tab
