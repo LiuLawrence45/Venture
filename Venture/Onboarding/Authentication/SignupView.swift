@@ -62,9 +62,9 @@ struct SignupView: View {
         .cornerRadius(30)
         .background(
             VStack {
-                Circle().fill(.blue).frame(width: 88, height: 88)
-                    .offset(x: 0, y: circleY)
-                    .scaleEffect(appear[0] ? 1 : 0.1)
+//                Circle().fill(.blue).frame(width: 88, height: 88)
+//                    .offset(x: 0, y: circleY)
+//                    .scaleEffect(appear[0] ? 1 : 0.1)
             }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         )

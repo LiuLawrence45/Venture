@@ -25,7 +25,7 @@ struct AppView: View {
             else {
                 ParentView()
                     .environmentObject(model)
-                    .environment(\.colorScheme, .dark)
+                    .preferredColorScheme(.dark)
                     // .statusBarHidden(true)
             }
         }
