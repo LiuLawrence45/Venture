@@ -64,8 +64,8 @@ struct ContentView: View {
                 }
                 .fullScreenCover(isPresented: $showModal){
                     CreateNewPost { post in
-                        print("Hello")
                     }
+                    .preferredColorScheme(.dark)
                 }
             }
             

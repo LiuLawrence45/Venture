@@ -31,21 +31,24 @@ struct PostFooter: View {
                     //.font(.title2)
 
                 Spacer()
-                Text("$\(post.cost)")
-                    //.font(.title3)
-                    .font(.custom("Michroma-Regular", size: 18))
+                if post.cost != "" {
+                    Text("$\(post.cost)")
+                        //.font(.title3)
+                        .font(.custom("Michroma-Regular", size: 18))
+                }
             }
             .padding(.vertical, 1)
             HStack(spacing: 0){
                 Text(post.caption)
                     .foregroundStyle(.secondary)
-                    //.font(.footnote)
-                    .font(.custom("Michroma-Regular", size: 12))
+                    .font(.footnote)
+                    .font(.custom("Michroma-Regular", size: 12)) //Font will and can be changed.
                 Spacer()
                 PostInteraction()
 
             }
         }
+        .padding(.horizontal, 8)
         
         //Remove this background if we want to get rid of the gray.
         .background(Color(red: 29.0/255.0, green: 29.0/255.0, blue: 29.0/255.0))

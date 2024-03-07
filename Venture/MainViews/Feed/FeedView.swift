@@ -31,8 +31,8 @@ struct FeedView: View {
                 scrollDetection
                 LazyVGrid(columns: columns, spacing: 20) {
                     if isFetching {
-                        ProgressView()
-                            .padding(.top, 30)
+//                        ProgressView()
+//                            .padding(.top, 30)
                     }
                     else {
                         

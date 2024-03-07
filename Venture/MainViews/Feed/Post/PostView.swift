@@ -49,7 +49,7 @@ struct PostView: View {
                                 .frame(width: UIScreen.main.bounds.width - 16, height: 240)
                                 .clipped()
                                 .shadow(radius: 4)
-                                .offset(x: CGFloat(index * -6), y: CGFloat(index * 10))
+                                .offset(x: CGFloat(index * -8), y: CGFloat(index * 10))
 
                         }
                 }

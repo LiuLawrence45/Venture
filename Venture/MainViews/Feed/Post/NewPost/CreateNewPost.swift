@@ -26,6 +26,7 @@ struct CreateNewPost: View {
     
     //View Properties
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) var colorScheme
     @State private var isLoading: Bool = false
     @State private var errorMessage: String = ""
     @State private var showImagePicker: Bool = false
@@ -49,185 +50,192 @@ struct CreateNewPost: View {
     
     //Body
     var body: some View {
-        VStack {
-            
-            TopPostBar(dismiss: dismiss, createPost: createPost)
-            
-            //Carousel for pictures, and "Description"
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 16){
-                    
-                    PostCarousel(postImageData: $postImageData)
-                    
-                    
-                    //Add Title
-                    HStack(spacing: 16){
-                        Text("🌱")
-                        TextField("Type in a quick title!", text: $postTitle, axis: .vertical)
-                            .focused($showKeyboard)
-                    }
-                    
-                    //Purely decorative
-                    HStack {
-                        Text("|")
-                            .offset(x: 10)
-                            .opacity(0.2)
-                        Spacer()
-                    }
-
-                    
-                    //Quick Caption (postText)
-                    HStack(spacing: 16) {
-                        Text("🎤")
-                        TextField("Need a caption too...", text: $postCaption, axis: .vertical)
-                            .focused($showKeyboard)
-                    }
-
-                    
-                    Divider()
-                        .padding(.vertical, 10)
-                    
-                    //Adding automated location
-                    LocationPickerComponent(postLocation: $postLocation, showLocationModal: $showLocationModal)
-                    
-                    Divider()
-                        .padding(.vertical, 10)
-                    
-                    HStack(spacing: 0) {
-                        Text("Trip Details")
-                            .fontWeight(.bold)
-                            .font(.headline)
-                            .padding(.bottom, 10)
+        
+        
+        ZStack {
+            VStack {
+                
+                TopPostBar(dismiss: dismiss, createPost: createPost)
+                
+                //Carousel for pictures, and "Description"
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 16){
                         
-                        Text(" (all optional)")
-                            .font(.headline)
-                            .padding(.bottom, 10)
-                    }
-
-                     
-                    //Add Costs; only allows in number input
-                    HStack(spacing: 16){
-                        Text("💸")
-                        TextField("Cost for trip per person", text: $tripCost, axis: .vertical)
-                            .keyboardType(.numberPad)
-                            .focused($showKeyboard)
-                            .onReceive(tripCost.publisher.collect()) {
-                                self.tripCost = String($0.prefix(while: { $0.isNumber }))
-                            }
-                    }
-                    
-                    //Purely decorative
-                    HStack {
-                        Text("|")
-                            .offset(x: 10)
-                            .opacity(0.2)
-                        Spacer()
-                    }
-                    
-                    //Car needed?
-                    HStack(spacing: 16) {
-                        Text("🚗")
-                        Toggle(isOn: $tripCar){
-                            HStack{
-                                Text("Car Needed?")
-                                    .opacity(0.2)
-                                if tripCar == false {
-                                    Text("Nope!")
-                                }
-                                else {
-                                    Text("Yep!")
-                                }
-                            }
+                        PostCarousel(postImageData: $postImageData)
+                        
+                        
+                        //Add Title
+                        HStack(spacing: 16){
+                            Text("🌱")
+                            TextField("Type in a quick title!", text: $postTitle, axis: .vertical)
+                                .focused($showKeyboard)
                         }
-                        .toggleStyle(SwitchToggleStyle(tint: .primary))
-                    }
-                    
-                    //Purely decorative
-                    HStack {
-                        Text("|")
-                            .offset(x: 10)
-                            .opacity(0.2)
-                        Spacer()
-                    }
-                    
-                    //How many people?
-                    HStack(spacing: 16){
-                        Text("🙋‍♀️")
-                        TextField("How many people?", text: $tripPeople, axis: .vertical)
-                            .keyboardType(.numberPad)
-                            .focused($showKeyboard)
-                            .onReceive(tripPeople.publisher.collect()) {
-                                self.tripPeople = String($0.prefix(while: { $0.isNumber }))
-                            }
-                    }
-                    
-                    
-                    
-                    Divider()
-                        .padding(.vertical, 10)
-                    
-                    //Adding itinerary
-                    ItineraryEditorComponent(tripItinerary: $tripItinerary, showItineraryModal: $showItineraryModal)
-                }
-                .padding(16)
-                
-            }
-            
-            //
-            
-            Divider()
-            
-            HStack {
-                Button {
-                    showImagePicker.toggle()
-                    
-                } label: {
-                    HStack {
-                        Text("Upload Images")
-                        Image(systemName:  "photo.on.rectangle")
-                            .font(.caption)
-                            .foregroundColor(.primary)
-                    }
 
-                }
-                Spacer()
-                
-                Button("Done"){
-                    showKeyboard = false
+                        
+                        //Purely decorative
+                        HStack {
+                            Text("|")
+                                .offset(x: 10)
+                                .opacity(0.2)
+                            Spacer()
+                        }
+
+                        
+                        //Quick Caption (postText)
+                        HStack(spacing: 16) {
+                            Text("🎤")
+                            TextField("Need a caption too...", text: $postCaption, axis: .vertical)
+                                .focused($showKeyboard)
+                        }
+
+                        
+                        Divider()
+                            .padding(.vertical, 10)
+                        
+                        //Adding automated location
+                        LocationPickerComponent(postLocation: $postLocation, showLocationModal: $showLocationModal)
+                            .environment(\.colorScheme, .dark)
+                        
+                        Divider()
+                            .padding(.vertical, 10)
+                        
+                        HStack(spacing: 0) {
+                            Text("Trip Details")
+                                .fontWeight(.bold)
+                                .font(.headline)
+                                .padding(.bottom, 10)
+                            
+                            Text(" (all optional)")
+                                .font(.headline)
+                                .padding(.bottom, 10)
+                        }
+
+                         
+                        //Add Costs; only allows in number input
+                        HStack(spacing: 16){
+                            Text("💸")
+                            TextField("Cost for trip per person", text: $tripCost, axis: .vertical)
+                                .keyboardType(.numberPad)
+                                .focused($showKeyboard)
+                                .onReceive(tripCost.publisher.collect()) {
+                                    self.tripCost = String($0.prefix(while: { $0.isNumber }))
+                                }
+                        }
+                        
+                        //Purely decorative
+                        HStack {
+                            Text("|")
+                                .offset(x: 10)
+                                .opacity(0.2)
+                            Spacer()
+                        }
+                        
+                        //Car needed?
+                        HStack(spacing: 16) {
+                            Text("🚗")
+                            Toggle(isOn: $tripCar){
+                                HStack{
+                                    Text("Car Needed?")
+                                        .opacity(0.2)
+                                    if tripCar == false {
+                                        Text("Nope!")
+                                    }
+                                    else {
+                                        Text("Yep!")
+                                    }
+                                }
+                            }
+                            .toggleStyle(SwitchToggleStyle(tint: .primary))
+                        }
+                        
+                        //Purely decorative
+                        HStack {
+                            Text("|")
+                                .offset(x: 10)
+                                .opacity(0.2)
+                            Spacer()
+                        }
+                        
+                        //How many people?
+                        HStack(spacing: 16){
+                            Text("🙋‍♀️")
+                            TextField("How many people?", text: $tripPeople, axis: .vertical)
+                                .keyboardType(.numberPad)
+                                .focused($showKeyboard)
+                                .onReceive(tripPeople.publisher.collect()) {
+                                    self.tripPeople = String($0.prefix(while: { $0.isNumber }))
+                                }
+                        }
+                        
+                        
+                        
+                        Divider()
+                            .padding(.vertical, 10)
+                        
+                        //Adding itinerary
+                        ItineraryEditorComponent(tripItinerary: $tripItinerary, showItineraryModal: $showItineraryModal)
+                            .environment(\.colorScheme, .dark)
+                    }
+                    .padding(8)
                     
                 }
                 
+                //
+                
+                Divider()
+                
+                HStack {
+                    Button {
+                        showImagePicker.toggle()
+                        
+                    } label: {
+                        HStack {
+                            Text("Upload Images")
+                            Image(systemName:  "photo.on.rectangle")
+                                .font(.caption)
+                                .foregroundColor(.primary)
+                        }
+
+                    }
+                    Spacer()
+                    
+                    Button("Done"){
+                        showKeyboard = false
+                        
+                    }
+                    
+                }
+                .accentColor(.primary)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 10)
+                
+                
+                Spacer()
             }
-            .accentColor(.primary)
-            .padding(.horizontal, 10)
+//            .padding(.horizontal, 8)
             .padding(.vertical, 10)
+    //        .background {
+    //            Rectangle()
+    //                .fill(.gray.opacity(0.05))
+    //                .ignoresSafeArea()
+    //        }
             
+             
+            //Programmable photosPicker
+            .photosPicker(isPresented: $showImagePicker, selection: $photoItems, matching: .images)
             
-            Spacer()
+            //Programmable
+            .onChange(of: photoItems) { _ in
+                processSelectedPhotos()
+            }
+            
+            //Error alert
+            .alert(errorMessage, isPresented: $showError, actions: {})
+            
+            //Loading View
+            .overlay {
+                LoadingView(show: $isLoading)
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 10)
-//        .background {
-//            Rectangle()
-//                .fill(.gray.opacity(0.05))
-//                .ignoresSafeArea()
-//        }
-        
-         
-        //Programmable photosPicker
-        .photosPicker(isPresented: $showImagePicker, selection: $photoItems, matching: .images)
-        
-        //Programmable
-        .onChange(of: photoItems) { _ in
-            processSelectedPhotos()
-        }
-        
-        //Error alert
-        .alert(errorMessage, isPresented: $showError, actions: {})
-        
-        //Loading View
-        .overlay {
-            LoadingView(show: $isLoading)
         }
         
     }
@@ -251,6 +259,8 @@ struct CreateNewPost: View {
             .fullScreenCover(isPresented: $showItineraryModal) {
                 // Make sure you have defined EditItineraryView
                 EditItineraryView(isPresented: self.$showItineraryModal, tripItinerary: self.$tripItinerary)
+                    .environment(\.colorScheme, .dark)
+//                Color("Background").ignoresSafeArea()
             }
         }
     }
@@ -272,6 +282,7 @@ struct CreateNewPost: View {
             }
             .fullScreenCover(isPresented: $showLocationModal) {
                 LocationPickerView(isPresented: self.$showLocationModal, selectedLocation: self.$postLocation)
+                    .preferredColorScheme(.dark)
             }
         }
     }
@@ -305,7 +316,7 @@ struct CreateNewPost: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 20)
                         .padding(.vertical, 6)
-                        .background(.primary, in: Capsule())
+                        .background(.purple, in: Capsule())
                 }
             }
         }

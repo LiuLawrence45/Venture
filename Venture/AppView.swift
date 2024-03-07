@@ -11,6 +11,7 @@ struct AppView: View {
     
     @StateObject var model = Model()
     @AppStorage("log_status") var logStatus: Bool = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Group {
@@ -18,11 +19,13 @@ struct AppView: View {
 //                CreateNewPost{_ in}
                 ContentView()
                     .environmentObject(model)
+                    .environment(\.colorScheme, .dark)
                     // .statusBarHidden(true) // This is a temporary measure just since I can't figure it out right now.
             }
             else {
                 ParentView()
                     .environmentObject(model)
+                    .environment(\.colorScheme, .dark)
                     // .statusBarHidden(true)
             }
         }

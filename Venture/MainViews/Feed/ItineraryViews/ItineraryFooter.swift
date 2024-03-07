@@ -49,14 +49,6 @@ struct ItineraryFooter: View {
                 Text(post.title)
             }
             .fontWeight(.bold)
-            
-            //Purely decorative
-            HStack {
-                Text("|")
-                    .offset(x: 10)
-                    .opacity(0.2)
-                Spacer()
-            }
 
             
             //Quick Caption (postText)
@@ -115,10 +107,10 @@ struct ItineraryFooter: View {
                     Text("\(post.people) people went on this trip")
                 }
                 .font(.footnote)
-                .padding(.bottom, 8)
             }
 
             Divider()
+                .padding(.vertical, 8)
 
         }
 
