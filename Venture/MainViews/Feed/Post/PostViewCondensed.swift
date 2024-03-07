@@ -58,7 +58,9 @@ struct PostViewCondensed: View {
         .overlay(alignment: .topTrailing, content: {
             if post.userUID == userUID {
                 Menu {
-                    Button("Delete Post", role: .destructive, action: deletePost)
+                    Button("Delete Post", role: .destructive){
+                        deletePost(post: post)
+                    }
                 } label: {
                     Image(systemName: "ellipsis")
                         .font(.caption)
@@ -76,22 +78,28 @@ struct PostViewCondensed: View {
     
     
     //Deleting a Post. Remember, liking and disliking are in PostFooter
-    func deletePost(){
+    func deletePost(post: Post){
         Task {
-            
             do {
-                if post.imageReferenceID != "" {
-                    try await Storage.storage().reference().child("Post_Images").child(post.imageReferenceID).delete()
+                // If the post has an image reference ID indicating there are images associated with it
+                if !post.imageReferenceID.isEmpty {
+                    // Assume imageURLs contains the URLs of all images associated with the post
+                    let numberOfImages = post.imageURLs.count
+
+                    for index in 0..<numberOfImages {
+                        let uniqueImageID = "\(post.imageReferenceID)\(index)"
+                        let storageRef = Storage.storage().reference().child("Post_Images").child(uniqueImageID)
+                        try await storageRef.delete()
+                    }
                 }
-                
+
+                // After deleting all images associated with the post, delete the post document itself
                 guard let postID = post.id else {return}
                 try await Firestore.firestore().collection("Posts").document(postID).delete()
-            }
-            
-            catch {
+            } catch {
+                // Handle errors, such as showing an error message to the user
                 print(error.localizedDescription)
             }
-
         }
     }
 

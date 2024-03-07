@@ -54,26 +54,6 @@ struct PostView: View {
                         }
                 }
                 
-                
-                //All images in the horizontal carousel
-                    
-//                TabView {
-//                    ForEach(post.imageURLs, id: \.self){ imageURL in
-//                        ZStack {
-//                            WebImage(url: imageURL)
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .frame(width: UIScreen.main.bounds.width - 16, height: 480)
-//
-//                                .clipped()
-//                                
-//                        }
-//                        
-//                    }
-//                }
-//                .tabViewStyle(PageTabViewStyle())
-                
-                
             }
             .frame(height: 320)
             .padding(.horizontal, 16) //Change back to 8 if we are doing normal carousel.
@@ -87,21 +67,24 @@ struct PostView: View {
             //Post footing information. GUI change soon. Has liking and disliking capabilities.
 //            PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete)
         }
-        .overlay(alignment: .topTrailing, content: {
-            if post.userUID == userUID {
-                Menu {
-                    Button("Delete Post", role: .destructive, action: deletePost)
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .font(.caption)
-                        .rotationEffect(.init(degrees: -90))
-                        .foregroundColor(.primary)
-                        .padding(8)
-                        .contentShape(Rectangle())
-                    
-                }
-            }
-        })
+//        .overlay(alignment: .topTrailing, content: {
+//            if post.userUID == userUID {
+//                Menu {
+//                    Button("Delete Post", role: .destructive) {
+//                        Task {
+//                            await deletePost(post: post)
+//                        }
+//                    }
+//                } label: {
+//                    Image(systemName: "ellipsis")
+//                        .font(.caption)
+//                        .foregroundColor(.primary)
+//                        .padding(8)
+//                        .contentShape(Rectangle())
+//                    
+//                }
+//            }
+//        })
         
     }
     
@@ -130,22 +113,28 @@ struct PostView: View {
     }
     
     //Deleting a Post. Remember, liking and disliking are in PostFooter
-    func deletePost(){
+    func deletePost(post: Post){
         Task {
-            
             do {
-                if post.imageReferenceID != "" {
-                    try await Storage.storage().reference().child("Post_Images").child(post.imageReferenceID).delete()
+                // If the post has an image reference ID indicating there are images associated with it
+                if !post.imageReferenceID.isEmpty {
+                    // Assume imageURLs contains the URLs of all images associated with the post
+                    let numberOfImages = post.imageURLs.count
+
+                    for index in 0..<numberOfImages {
+                        let uniqueImageID = "\(post.imageReferenceID)\(index)"
+                        let storageRef = Storage.storage().reference().child("Post_Images").child(uniqueImageID)
+                        try await storageRef.delete()
+                    }
                 }
-                
+
+                // After deleting all images associated with the post, delete the post document itself
                 guard let postID = post.id else {return}
                 try await Firestore.firestore().collection("Posts").document(postID).delete()
-            }
-            
-            catch {
+            } catch {
+                // Handle errors, such as showing an error message to the user
                 print(error.localizedDescription)
             }
-
         }
     }
 
