@@ -48,11 +48,13 @@ struct NavigationBar: View {
             
             Text(title)
                 .font(.custom("Michroma-Regular", size: hasScrolled ? 22: 34))
-//                .animatableFont(size: hasScrolled ? 22 : 34, weight: .bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 20)
                 .padding(.top, 20)
                 .offset(y: hasScrolled ? -4 : 0)
+                .shadow(color: .white.opacity(0.6), radius: 10, x: 0, y: 0)
+                .shadow(color: .white.opacity(0.6), radius: 20, x: 0, y: 0)
+                .shadow(color: .white.opacity(0.5), radius: 30, x: 0, y: 0)
             
             HStack(spacing: 16) {
                 if context == "default" {
@@ -100,7 +102,7 @@ struct NavigationBar: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
-            .padding(.trailing, 20)
+//            .padding(.trailing, 20)
             .padding(.top, 20)
             .offset(y: hasScrolled ? -4 : 0)
             .opacity(displayIcons ? 100 : 0)

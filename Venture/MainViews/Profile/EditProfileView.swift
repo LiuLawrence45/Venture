@@ -211,7 +211,7 @@ struct EditProfileView: View {
                 print("Download URL: \(downloadURL)")
         
                 
-                let user = User(username: username, firstName: firstName, lastName: lastName, userBio: profileDescription, school: school,  userEmail: email, userProfileURL: downloadURL, occupation: occupation)
+                let user = User(username: username, firstName: firstName, lastName: lastName, userBio: profileDescription, school: school, userUID: userUID, userEmail: email, userProfileURL: downloadURL, occupation: occupation)
                 
                 let _ = try Firestore.firestore().collection("Users").document(userUID).setData(from: user, completion: {
                     error in

@@ -19,7 +19,16 @@ struct SearchUserView: View {
         List {
             ForEach(fetchedUsers) { user in
                 NavigationLink {
-                    ReusableProfileView(user: user)
+                    if (user.userUID != nil){
+                        OthersProfileView(myProfile: user, uid: user.userUID!)
+                    }
+                    else {
+                        Group {
+                            Text ("User userUID not found: \(user.userUID)")
+                        }
+
+                    }
+
                 } label: {
                     HStack {
                         Text(user.username)
@@ -35,9 +44,17 @@ struct SearchUserView: View {
         .navigationTitle("Search Users")
         .searchable(text: $searchText)
         
+        //First time, showing top recommended users
+        .onAppear {
+            Task {await fetchTopUsers()}
+        }
+        
+        //When user submits a query
         .onSubmit(of: .search, {
             Task {await searchUsers()}
         })
+        
+        //Whenever the searchText is submitted / changed
         .onChange(of: searchText, perform: { newValue in
             if newValue.isEmpty {
                 fetchedUsers = []
@@ -61,6 +78,7 @@ struct SearchUserView: View {
         
     }
     
+    
     func searchUsers() async {
         do {
             let queryLowerCased = searchText.lowercased()
@@ -82,6 +100,25 @@ struct SearchUserView: View {
             }
         }
         catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func fetchTopUsers() async {
+        do {
+            // Adjust the query to fetch top 40 users. This might need to be adapted based on your database structure
+            let snapshot = try await Firestore.firestore().collection("Users")
+                .limit(to: 40) // Limits the query to the top 40 users
+                .getDocuments()
+
+            let users = try snapshot.documents.compactMap { doc -> User? in
+                try doc.data(as: User.self)
+            }
+            
+            await MainActor.run {
+                fetchedUsers = users
+            }
+        } catch {
             print(error.localizedDescription)
         }
     }

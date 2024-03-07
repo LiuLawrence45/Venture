@@ -34,6 +34,7 @@ struct MyProfileView: View {
     @State private var myProfile: User?
     @State private var fetchedPosts: [Post] = []
     @AppStorage("user_UID") private var userUID: String = ""
+    @State private var isFetching: Bool = false
 
     init(profile: ProfileModel) {
         self.profile = profile
@@ -66,11 +67,11 @@ struct MyProfileView: View {
                 
                 switch selectedTab {
                     case "posts":
-                        PersonalFeedView(posts: $fetchedPosts)
+                    PersonalFeedView(needFetching: true, posts: $fetchedPosts)
                     case "downtogo":
                         bucketList
                 default:
-                    PersonalFeedView(posts: $fetchedPosts)
+                    PersonalFeedView(needFetching: true, posts: $fetchedPosts)
                 }
                 
                 //Empty View just to be able to scroll down fully
@@ -79,7 +80,6 @@ struct MyProfileView: View {
                 }
                 .frame(height: 160)
             })
-//            .scrollClipDisabled()
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
@@ -112,6 +112,9 @@ struct MyProfileView: View {
         
         
     }
+    
+    
+    
     
     //Fetching user data
     func fetchUserData() async {

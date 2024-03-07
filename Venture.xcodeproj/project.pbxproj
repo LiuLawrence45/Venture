@@ -69,7 +69,6 @@
 		7B7CB4002B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */; };
 		7B7CB4022B988D8A00EEF9D7 /* OldSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */; };
 		7B7DC7E22B98A8A800C43D4A /* OldProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E12B98A8A800C43D4A /* OldProfileView.swift */; };
-		7B7DC7E42B98AC2800C43D4A /* ReusableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E32B98AC2800C43D4A /* ReusableProfileView.swift */; };
 		7B7DC7E62B98B3BC00C43D4A /* PersonalFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E52B98B3BC00C43D4A /* PersonalFeedView.swift */; };
 		7B7DC7E82B98B52600C43D4A /* PostViewCondensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */; };
 		7B7DC7EA2B98BBA200C43D4A /* NotReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E92B98BBA200C43D4A /* NotReadyView.swift */; };
@@ -178,7 +177,6 @@
 		7B7CB3FF2B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		7B7CB4012B988D8A00EEF9D7 /* OldSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldSearchView.swift; sourceTree = "<group>"; };
 		7B7DC7E12B98A8A800C43D4A /* OldProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfileView.swift; sourceTree = "<group>"; };
-		7B7DC7E32B98AC2800C43D4A /* ReusableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileView.swift; sourceTree = "<group>"; };
 		7B7DC7E52B98B3BC00C43D4A /* PersonalFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFeedView.swift; sourceTree = "<group>"; };
 		7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCondensed.swift; sourceTree = "<group>"; };
 		7B7DC7E92B98BBA200C43D4A /* NotReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotReadyView.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				7B481ED42B9333FE00F08899 /* MyProfileView.swift */,
-				7B7DC7E32B98AC2800C43D4A /* ReusableProfileView.swift */,
 				7B7DC7ED2B98D74800C43D4A /* OthersProfileView.swift */,
 				7B481ED72B93370F00F08899 /* EditProfileView.swift */,
 				7BDA193C2B517A220020FE88 /* ProfileView.swift */,
@@ -731,7 +728,6 @@
 			files = (
 				7B62757E2B50CF8400FDA0F0 /* AccountView.swift in Sources */,
 				7B6275A52B514E3C00FDA0F0 /* DemoNotifications.swift in Sources */,
-				7B7DC7E42B98AC2800C43D4A /* ReusableProfileView.swift in Sources */,
 				7B7CB3FB2B986D5800EEF9D7 /* EditItineraryView.swift in Sources */,
 				7B481EDA2B93571D00F08899 /* OldFeedView.swift in Sources */,
 				7B96D6072B92D05A001F060F /* AppView.swift in Sources */,

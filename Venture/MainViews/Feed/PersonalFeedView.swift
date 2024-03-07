@@ -12,10 +12,13 @@ struct PersonalFeedView: View {
     
     var basedOnUID: Bool = false
     var uid: String = ""
+    var needFetching: Bool = true
     @Binding var posts: [Post]
     @State private var isFetching: Bool = false
     
     @State var contentHasScrolled = false
+    
+    @AppStorage("user_UID") var userUID: String = ""
 
 //    var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
     var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
@@ -58,10 +61,15 @@ struct PersonalFeedView: View {
         }
         .task {
             
-            //Safe guard to fetch only once
-            guard posts.isEmpty else {return}
-            isFetching = true
-            await fetchPosts()
+            if needFetching {
+                //Safe guard to fetch only once
+                if posts.isEmpty {
+                    isFetching = true
+                    await fetchPosts()
+            }
+            
+
+            }
         }
         
     }
@@ -102,23 +110,9 @@ struct PersonalFeedView: View {
         do {
             var query: Query!
             //Implementing Pagination
-            if let paginationDoc {
                 query = Firestore.firestore().collection("Posts")
                     .order(by: "publishedDate", descending: true)
-                    .start(afterDocument: paginationDoc)
-                    .limit(to: 20)
-            }
-            else {
-                query = Firestore.firestore().collection("Posts")
-                    .order(by: "publishedDate", descending: true)
-                    .limit(to: 20)
-            }
-            
-            //New query for UID based Document Search
-            if basedOnUID{
-                query = query
-                    .whereField("userUID", isEqualTo: uid)
-            }
+                    .whereField("userUID", isEqualTo: userUID)
 
             let docs = try await query.getDocuments()
             let fetchedPosts = docs.documents.compactMap { doc -> Post? in
@@ -127,7 +121,6 @@ struct PersonalFeedView: View {
             }
             await MainActor.run(body: {
                 posts.append(contentsOf: fetchedPosts)
-                paginationDoc = docs.documents.last
                 isFetching = false
             })
         }

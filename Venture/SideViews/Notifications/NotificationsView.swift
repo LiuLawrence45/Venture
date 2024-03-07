@@ -13,6 +13,7 @@ struct NotificationsView: View {
     
     @Binding var hasScrolled: Bool
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ScrollView {
@@ -65,7 +66,19 @@ struct NotificationsView: View {
             .padding(.vertical, 8)
             .listRowSeparator(.hidden)
         }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Label("Back", systemImage: "chevron.backward")
+                }
+                
+            }
+        }
     }
+    
 }
 
 #Preview {

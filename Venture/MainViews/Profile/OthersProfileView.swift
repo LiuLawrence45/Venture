@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct OthersProfileView: View {
     
+
     @State var selectedTab: String = "posts"
     @Namespace var animation
     @Environment(\.colorScheme) var scheme
@@ -31,8 +32,10 @@ struct OthersProfileView: View {
     
     // Customized per profile
     @State var myProfile: User?
+    var uid = ""
     @State private var fetchedPosts: [Post] = []
-    @AppStorage("user_UID") private var userUID: String = ""
+    @State private var posts: [Post] = []
+    @State private var isFetching: Bool = false
 
     var body: some View {
         ZStack {
@@ -59,11 +62,11 @@ struct OthersProfileView: View {
                 
                 switch selectedTab {
                 case "posts":
-                    PersonalFeedView(posts: $fetchedPosts)
+                    PersonalFeedView(needFetching: false, posts: $posts)
                 case "downtogo":
                     bucketList
                 default:
-                    PersonalFeedView(posts: $fetchedPosts)
+                    PersonalFeedView(needFetching: false, posts: $posts)
                 }
                 
                 //Empty View just to be able to scroll down fully
@@ -91,13 +94,7 @@ struct OthersProfileView: View {
             
             //Fetching data
             .task {
-                if myProfile != nil{return}
-                
-                await fetchUserData()
-            }
-            .refreshable {
-                myProfile = nil
-                await fetchUserData()
+                await fetchPosts()
             }
             
         }
@@ -113,18 +110,45 @@ struct OthersProfileView: View {
             }
         }
         .tint(.primary)
+        
 
     }
     
-    //Fetching user data
-    func fetchUserData() async {
-        guard let userUID = Auth.auth().currentUser?.uid else {return}
-        let user = try? await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+    //Fetching posts
+    func fetchPosts() async {
         
-        await MainActor.run(body: {
-            myProfile = user
-        })
+        do {
+            var query: Query!
+            //Implementing Pagination
+                query = Firestore.firestore().collection("Posts")
+                    .order(by: "publishedDate", descending: true)
+                    .whereField("userUID", isEqualTo: uid)
+
+            let docs = try await query.getDocuments()
+            let fetchedPosts = docs.documents.compactMap { doc -> Post? in
+                try? doc.data(as: Post.self)
+                
+            }
+            await MainActor.run(body: {
+                posts.append(contentsOf: fetchedPosts)
+                isFetching = false
+            })
+        }
+        
+        catch {
+            print(error.localizedDescription)
+        }
     }
+    
+    //Fetching user data
+//    func fetchUserData() async {
+//        guard let userUID = Auth.auth().currentUser?.uid else {return}
+//        let user = try? await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self)
+//        
+//        await MainActor.run(body: {
+//            myProfile = user
+//        })
+//    }
     
     var scrollDetection: some View {
         GeometryReader { proxy in
@@ -150,9 +174,6 @@ struct OthersProfileView: View {
             showError.toggle()
         })
     }
-
-    
-    
      
     var bucketList: some View {
         NotReadyView()

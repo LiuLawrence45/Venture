@@ -23,11 +23,19 @@ struct ItineraryFooter: View {
                 
                 Button {
                 } label: {
-                    NavigationLink(destination: OthersProfileView(myProfile: fetchedUser)){
-                        Text(post.userName)
-                            .foregroundStyle(.secondary)
-                            .font(.footnote)
+                    if (fetchedUser.userUID != nil) {
+                        NavigationLink(destination: OthersProfileView(myProfile: fetchedUser, uid: fetchedUser.userUID!)){
+                            Text(post.userName)
+                                .foregroundStyle(.secondary)
+                                .font(.footnote)
+                        }
                     }
+                    else {
+                        Group {
+                            Text("User UID not found: \(fetchedUser.userUID)")
+                        }
+                    }
+
                     
                 }
 
