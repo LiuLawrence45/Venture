@@ -19,6 +19,11 @@ struct ItineraryView: View {
     @State var selectedTab: String = "main"
     @EnvironmentObject var model: Model
     
+    
+    //Cropping tools
+    @State private var selectedImageForCropping: UIImage? = nil
+    @State private var showingImageCropper: Bool = false
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -31,7 +36,6 @@ struct ItineraryView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: UIScreen.main.bounds.width - 16, height: 480)
-
                                     .clipped()
                                     
                             }

@@ -46,7 +46,7 @@ struct CreateNewPost: View {
     @State private var tripCar: Bool = false
     @State private var tripItinerary: String = "Create your trip itinerary here :)"
     @State private var tripPeople: String = ""
-    
+
     
     //Body
     var body: some View {
@@ -420,6 +420,13 @@ struct CreateNewPost: View {
 // Struct PostCarousel; separated to increase loading speeds. If need to increase more, make it equatable.
 struct PostCarousel: View {
     
+    
+    //Cropping tools
+    @State private var selectedImageForCropping: UIImage? = nil
+    @State private var indexForCropping: Int? = nil
+    @State private var showingImageCropper: Bool = false
+
+    
     @Binding var postImageData: [Data]
     var body: some View {
         //Horizontal carousel of images
@@ -437,7 +444,11 @@ struct PostCarousel: View {
                             .frame(width: 128, height: 128)
                             .clipped()
                             .cornerRadius(8)
-                        
+                            .onTapGesture {
+                                    self.selectedImageForCropping = image
+                                    self.showingImageCropper = true
+                                    self.indexForCropping = index
+                                }
                         //Trash overlay, to remove image.
                             .overlay(alignment: .topTrailing) {
                                 Button {
@@ -449,6 +460,18 @@ struct PostCarousel: View {
                                     Image(systemName: "trash")
                                         .padding(10)
                                         .foregroundColor(.red)
+                                }
+                            }
+                        
+                        //Cropping overlay
+                            .sheet(isPresented: $showingImageCropper) {
+                                if let selectedImageForCropping = selectedImageForCropping {
+                                    ImageCropperView(isPresented: $showingImageCropper, image: $selectedImageForCropping) { croppedImage in
+                                        if let index = self.indexForCropping, let croppedImageData = croppedImage!.jpegData(compressionQuality: 0.5) {
+                                            // Update the postImageData array with the cropped image data
+                                            postImageData[index] = croppedImageData
+                                        }
+                                    }
                                 }
                             }
                     }

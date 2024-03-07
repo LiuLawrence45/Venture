@@ -73,6 +73,9 @@
 		7B7DC7E82B98B52600C43D4A /* PostViewCondensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */; };
 		7B7DC7EA2B98BBA200C43D4A /* NotReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7E92B98BBA200C43D4A /* NotReadyView.swift */; };
 		7B7DC7EE2B98D74800C43D4A /* OthersProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7ED2B98D74800C43D4A /* OthersProfileView.swift */; };
+		7B7DC7F12B9951CB00C43D4A /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 7B7DC7F02B9951CB00C43D4A /* CropViewController */; };
+		7B7DC7F32B9951CB00C43D4A /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 7B7DC7F22B9951CB00C43D4A /* TOCropViewController */; };
+		7B7DC7F52B9951E900C43D4A /* ImageCropperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7DC7F42B9951E900C43D4A /* ImageCropperView.swift */; };
 		7B84D4292B93216F007141B9 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B84D4282B93216F007141B9 /* ParentView.swift */; };
 		7B89DFDE2B585D7300DA1EC6 /* DemoProfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */; };
 		7B89DFE02B585DCA00DA1EC6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */; };
@@ -181,6 +184,7 @@
 		7B7DC7E72B98B52600C43D4A /* PostViewCondensed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCondensed.swift; sourceTree = "<group>"; };
 		7B7DC7E92B98BBA200C43D4A /* NotReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotReadyView.swift; sourceTree = "<group>"; };
 		7B7DC7ED2B98D74800C43D4A /* OthersProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersProfileView.swift; sourceTree = "<group>"; };
+		7B7DC7F42B9951E900C43D4A /* ImageCropperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropperView.swift; sourceTree = "<group>"; };
 		7B84D4282B93216F007141B9 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		7B89DFDD2B585D7200DA1EC6 /* DemoProfiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProfiles.swift; sourceTree = "<group>"; };
 		7B89DFDF2B585DCA00DA1EC6 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -215,9 +219,11 @@
 			files = (
 				7B158AE02B983C3B00494150 /* SDWebImageSwiftUI in Frameworks */,
 				7B158AD82B983C2A00494150 /* FirebaseAuth in Frameworks */,
+				7B7DC7F32B9951CB00C43D4A /* TOCropViewController in Frameworks */,
 				7B158ADE2B983C2A00494150 /* FirebaseStorage in Frameworks */,
 				7B158ADA2B983C2A00494150 /* FirebaseFirestore in Frameworks */,
 				7B158ADC2B983C2A00494150 /* FirebaseFirestoreSwift in Frameworks */,
+				7B7DC7F12B9951CB00C43D4A /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +494,8 @@
 				7B6275992B513B9500FDA0F0 /* ItineraryDescription.swift */,
 				7BAA41B02B67739F009D67DC /* Location.swift */,
 				7BEFCF062B6730590052825C /* ItineraryMapView.swift */,
+				7B7CB3FA2B986D5800EEF9D7 /* EditItineraryView.swift */,
+				7B7DC7F42B9951E900C43D4A /* ImageCropperView.swift */,
 			);
 			path = ItineraryViews;
 			sourceTree = "<group>";
@@ -539,7 +547,6 @@
 				7B9BA2852B97B3C000F06415 /* CreateNewPost.swift */,
 				7B9BA2872B97B43100F06415 /* Post.swift */,
 				7B7CB3F82B98612000EEF9D7 /* LocationPickerView.swift */,
-				7B7CB3FA2B986D5800EEF9D7 /* EditItineraryView.swift */,
 			);
 			path = NewPost;
 			sourceTree = "<group>";
@@ -603,6 +610,8 @@
 				7B158ADB2B983C2A00494150 /* FirebaseFirestoreSwift */,
 				7B158ADD2B983C2A00494150 /* FirebaseStorage */,
 				7B158ADF2B983C3B00494150 /* SDWebImageSwiftUI */,
+				7B7DC7F02B9951CB00C43D4A /* CropViewController */,
+				7B7DC7F22B9951CB00C43D4A /* TOCropViewController */,
 			);
 			productName = Venture;
 			productReference = 7B6275312B50BECE00FDA0F0 /* Venture.app */;
@@ -680,6 +689,7 @@
 				7BD059E12B92BAE200D818F3 /* XCRemoteSwiftPackageReference "supabase-swift" */,
 				7B481EED2B940EB400F08899 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7B23DDC52B96EDE100C5B2E7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				7B7DC7EF2B9951CB00C43D4A /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 7B6275322B50BECE00FDA0F0 /* Products */;
 			projectDirPath = "";
@@ -800,6 +810,7 @@
 				7B9BA2862B97B3C000F06415 /* CreateNewPost.swift in Sources */,
 				7B96D5FA2B92C1C3001F060F /* AngularButton.swift in Sources */,
 				7B6275962B512FDF00FDA0F0 /* ItineraryModel.swift in Sources */,
+				7B7DC7F52B9951E900C43D4A /* ImageCropperView.swift in Sources */,
 				7B6275AD2B51685D00FDA0F0 /* DemoRecommendations.swift in Sources */,
 				7B23DDC22B95A7BF00C5B2E7 /* LoadingView.swift in Sources */,
 				7B62759A2B513B9500FDA0F0 /* ItineraryDescription.swift in Sources */,
@@ -1154,6 +1165,14 @@
 				version = 10.19.0;
 			};
 		};
+		7B7DC7EF2B9951CB00C43D4A /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.1;
+			};
+		};
 		7BD059E12B92BAE200D818F3 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/supabase-community/supabase-swift";
@@ -1189,6 +1208,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B23DDC52B96EDE100C5B2E7 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		7B7DC7F02B9951CB00C43D4A /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B7DC7EF2B9951CB00C43D4A /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		7B7DC7F22B9951CB00C43D4A /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7B7DC7EF2B9951CB00C43D4A /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
