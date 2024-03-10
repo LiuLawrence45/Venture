@@ -42,20 +42,38 @@ struct PostView: View {
                 //Alternate view of what Katie said: ZStack
                 
                 ZStack(alignment: .center) {
-                    ForEach(Array(post.imageURLs.enumerated().prefix(3)), id: \.offset){ index, imageURL in
+                    ForEach(Array(post.imageURLs.enumerated().prefix(1)), id: \.offset){ index, imageURL in
                             WebImage(url: imageURL)
                                 .resizable()
+                        
+                        /* OLD FORMATTING */
+//                                .aspectRatio(contentMode: .fill)
+//                                .frame(width: UIScreen.main.bounds.width - 16, height: 240)
+//                                .shadow(radius: 4)
+//                                .offset(x: CGFloat(index * -8), y: CGFloat(index * 10))
+                        
+                        /* NEW FORMATTING */
+//                                .aspectRatio(contentMode: .fill)    
+//                                .frame(width: UIScreen.main.bounds.width - 64 + CGFloat(index * 20), height: 240)
+//
+////                                .mask(RoundedRectangle(cornerRadius: 2, style: .continuous))
+//                                .clipped()
+//                                .shadow(radius: 4)
+//                                .offset(y: CGFloat(index * 10))
+                        
+                        /* NEWEST FORMATTING */
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: UIScreen.main.bounds.width - 16, height: 240)
                                 .clipped()
                                 .shadow(radius: 4)
-                                .offset(x: CGFloat(index * -8), y: CGFloat(index * 10))
+
 
                         }
                 }
                 
             }
-            .frame(height: 320)
+            
+            .frame(height: 280 ) // Changes the offset of the Footer to the frame. 
             .padding(.horizontal, 16) //Change back to 8 if we are doing normal carousel.
             .overlay(
                 PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete),
@@ -67,24 +85,6 @@ struct PostView: View {
             //Post footing information. GUI change soon. Has liking and disliking capabilities.
 //            PostFooter(post: post, onUpdate: onUpdate, onDelete: onDelete)
         }
-//        .overlay(alignment: .topTrailing, content: {
-//            if post.userUID == userUID {
-//                Menu {
-//                    Button("Delete Post", role: .destructive) {
-//                        Task {
-//                            await deletePost(post: post)
-//                        }
-//                    }
-//                } label: {
-//                    Image(systemName: "ellipsis")
-//                        .font(.caption)
-//                        .foregroundColor(.primary)
-//                        .padding(8)
-//                        .contentShape(Rectangle())
-//                    
-//                }
-//            }
-//        })
         
     }
     

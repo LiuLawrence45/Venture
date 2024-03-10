@@ -15,11 +15,11 @@ struct ParentView: View {
         case .signIn:
             SigninView()
                 .environmentObject(model)
-                .environment(\.font, Font.custom("Raleway", size: 14))
+//                .environment(\.font, Font.custom("Raleway", size: 14))
         case .signUp:
             SignupView(dismissModal: {})
                 .environmentObject(model)
-                .environment(\.font, Font.custom("Raleway", size: 14))
+//                .environment(\.font, Font.custom("Raleway", size: 14))
         }
     }
 }

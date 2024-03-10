@@ -48,7 +48,6 @@ struct FeedView: View {
                         //Display all available posts
                         else {
                             Posts()
-                                .padding(.bottom, 10)
                         }
                     }
                 }
@@ -63,7 +62,7 @@ struct FeedView: View {
             .coordinateSpace(name: "scroll")
             
         }
-        .overlay(NavigationBar(title: "Weeknd", context: "default", hasScrolled: $contentHasScrolled))
+        .overlay(NavigationBar(title: "weeknd", context: "default", hasScrolled: $contentHasScrolled))
         .task {
             
             //Safe guard to fetch only once
@@ -128,6 +127,7 @@ struct FeedView: View {
                     Task{await fetchPosts()}
                 }
             }
+            Divider()
         }
 
     }

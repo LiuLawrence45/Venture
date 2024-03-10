@@ -6,6 +6,9 @@
 	<array>
 		<string>Michroma-Regular.ttf</string>
 		<string>Raleway-VariableFont.ttf</string>
+		<string>CourierPrime-Regular.ttf</string>
+		<string>CourierPrime-Bold.ttf</string>
+		<string>CourierPrime-Italic.ttf</string>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>

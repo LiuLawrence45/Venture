@@ -41,7 +41,7 @@ struct ContentView: View {
                         switch selectedTab {
                         case .feed:
                             FeedView(posts: $recentPosts)
-                                .environment(\.font, Font.custom("Raleway", size: 14))
+//                                .environment(\.font, Font.custom("Raleway", size: 14))
                             TabBar(showModal: $showModal)
                             
                         case .post:
@@ -49,7 +49,7 @@ struct ContentView: View {
                             TabBar(showModal: $showModal)
                         case .profile:
                             MyProfileView(profile: profile)
-                                .environment(\.font, Font.custom("Raleway", size: 14))
+//                                .environment(\.font, Font.custom("Raleway", size: 14))
 //                                .background(Color.blue)  Debugging for future frame issues
                             TabBar(showModal: $showModal)
                             
@@ -68,7 +68,7 @@ struct ContentView: View {
                     CreateNewPost { post in
                     }
                     .preferredColorScheme(.dark)
-                    .environment(\.font, Font.custom("Raleway", size: 14))
+//                                   .environment(\.font, Font.custom("Raleway", size: 14))
                 }
             }
             

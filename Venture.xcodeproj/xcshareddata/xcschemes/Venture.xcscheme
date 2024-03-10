@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B6275302B50BECE00FDA0F0"
-               BuildableName = "Venture.app"
-               BlueprintName = "Venture"
+               BuildableName = "Weeknd.app"
+               BlueprintName = "Weeknd"
                ReferencedContainer = "container:Venture.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -68,8 +68,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B6275302B50BECE00FDA0F0"
-            BuildableName = "Venture.app"
-            BlueprintName = "Venture"
+            BuildableName = "Weeknd.app"
+            BlueprintName = "Weeknd"
             ReferencedContainer = "container:Venture.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B6275302B50BECE00FDA0F0"
-            BuildableName = "Venture.app"
-            BlueprintName = "Venture"
+            BuildableName = "Weeknd.app"
+            BlueprintName = "Weeknd"
             ReferencedContainer = "container:Venture.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

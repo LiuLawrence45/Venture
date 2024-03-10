@@ -102,6 +102,10 @@
 		7BDA193D2B517A220020FE88 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDA193C2B517A220020FE88 /* ProfileView.swift */; };
 		7BEFCF072B6730590052825C /* ItineraryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFCF062B6730590052825C /* ItineraryMapView.swift */; };
 		7BF48A782B63E1B400720BB5 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */; };
+		7BFDB5B52B99882700B0DD1A /* CourierPrime-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFDB5B12B99882700B0DD1A /* CourierPrime-Bold.ttf */; };
+		7BFDB5B62B99882700B0DD1A /* CourierPrime-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFDB5B22B99882700B0DD1A /* CourierPrime-Italic.ttf */; };
+		7BFDB5B72B99882700B0DD1A /* CourierPrime-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFDB5B32B99882700B0DD1A /* CourierPrime-Regular.ttf */; };
+		7BFDB5B82B99882700B0DD1A /* CourierPrime-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFDB5B42B99882700B0DD1A /* CourierPrime-BoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +142,7 @@
 		7B4FD1402B586EDF00FBBAB9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7B5901BC2B55583E00FF4213 /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
 		7B5901BE2B55586A00FF4213 /* PostFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooter.swift; sourceTree = "<group>"; };
-		7B6275312B50BECE00FDA0F0 /* Venture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6275312B50BECE00FDA0F0 /* Weeknd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weeknd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6275342B50BECE00FDA0F0 /* VentureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentureApp.swift; sourceTree = "<group>"; };
 		7B6275362B50BECE00FDA0F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7B6275382B50BECF00FDA0F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +218,10 @@
 		7BDA193C2B517A220020FE88 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7BEFCF062B6730590052825C /* ItineraryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryMapView.swift; sourceTree = "<group>"; };
 		7BF48A772B63E1B400720BB5 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		7BFDB5B12B99882700B0DD1A /* CourierPrime-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierPrime-Bold.ttf"; sourceTree = "<group>"; };
+		7BFDB5B22B99882700B0DD1A /* CourierPrime-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierPrime-Italic.ttf"; sourceTree = "<group>"; };
+		7BFDB5B32B99882700B0DD1A /* CourierPrime-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierPrime-Regular.ttf"; sourceTree = "<group>"; };
+		7BFDB5B42B99882700B0DD1A /* CourierPrime-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierPrime-BoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,7 +397,7 @@
 		7B6275322B50BECE00FDA0F0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B6275312B50BECE00FDA0F0 /* Venture.app */,
+				7B6275312B50BECE00FDA0F0 /* Weeknd.app */,
 				7B6275412B50BECF00FDA0F0 /* VentureTests.xctest */,
 				7B62754B2B50BECF00FDA0F0 /* VentureUITests.xctest */,
 			);
@@ -533,6 +541,10 @@
 				7B7CB3FD2B987EB800EEF9D7 /* Michroma-Regular.ttf */,
 				7B7DC7F72B99698000C43D4A /* Raleway-Italic-VariableFont.ttf */,
 				7B7DC7F62B99698000C43D4A /* Raleway-VariableFont.ttf */,
+				7BFDB5B12B99882700B0DD1A /* CourierPrime-Bold.ttf */,
+				7BFDB5B42B99882700B0DD1A /* CourierPrime-BoldItalic.ttf */,
+				7BFDB5B22B99882700B0DD1A /* CourierPrime-Italic.ttf */,
+				7BFDB5B32B99882700B0DD1A /* CourierPrime-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -597,9 +609,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B6275302B50BECE00FDA0F0 /* Venture */ = {
+		7B6275302B50BECE00FDA0F0 /* Weeknd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B6275552B50BECF00FDA0F0 /* Build configuration list for PBXNativeTarget "Venture" */;
+			buildConfigurationList = 7B6275552B50BECF00FDA0F0 /* Build configuration list for PBXNativeTarget "Weeknd" */;
 			buildPhases = (
 				7B62752D2B50BECE00FDA0F0 /* Sources */,
 				7B62752E2B50BECE00FDA0F0 /* Frameworks */,
@@ -609,7 +621,7 @@
 			);
 			dependencies = (
 			);
-			name = Venture;
+			name = Weeknd;
 			packageProductDependencies = (
 				7B158AD72B983C2A00494150 /* FirebaseAuth */,
 				7B158AD92B983C2A00494150 /* FirebaseFirestore */,
@@ -620,7 +632,7 @@
 				7B7DC7F22B9951CB00C43D4A /* TOCropViewController */,
 			);
 			productName = Venture;
-			productReference = 7B6275312B50BECE00FDA0F0 /* Venture.app */;
+			productReference = 7B6275312B50BECE00FDA0F0 /* Weeknd.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7B6275402B50BECF00FDA0F0 /* VentureTests */ = {
@@ -701,7 +713,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B6275302B50BECE00FDA0F0 /* Venture */,
+				7B6275302B50BECE00FDA0F0 /* Weeknd */,
 				7B6275402B50BECF00FDA0F0 /* VentureTests */,
 				7B62754A2B50BECF00FDA0F0 /* VentureUITests */,
 			);
@@ -716,8 +728,12 @@
 				7B7DC7F92B99698000C43D4A /* Raleway-Italic-VariableFont.ttf in Resources */,
 				7B481EFB2B94565A00F08899 /* GoogleService-Info.plist in Resources */,
 				7B7DC7F82B99698000C43D4A /* Raleway-VariableFont.ttf in Resources */,
+				7BFDB5B72B99882700B0DD1A /* CourierPrime-Regular.ttf in Resources */,
+				7BFDB5B82B99882700B0DD1A /* CourierPrime-BoldItalic.ttf in Resources */,
 				7B62753C2B50BECF00FDA0F0 /* Preview Assets.xcassets in Resources */,
 				7B6275392B50BECF00FDA0F0 /* Assets.xcassets in Resources */,
+				7BFDB5B52B99882700B0DD1A /* CourierPrime-Bold.ttf in Resources */,
+				7BFDB5B62B99882700B0DD1A /* CourierPrime-Italic.ttf in Resources */,
 				7B7CB4002B987F2400EEF9D7 /* Orbitron-VariableFont_wght.ttf in Resources */,
 				7B7CB3FE2B987EB800EEF9D7 /* Michroma-Regular.ttf in Resources */,
 			);
@@ -847,12 +863,12 @@
 /* Begin PBXTargetDependency section */
 		7B6275432B50BECF00FDA0F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B6275302B50BECE00FDA0F0 /* Venture */;
+			target = 7B6275302B50BECE00FDA0F0 /* Weeknd */;
 			targetProxy = 7B6275422B50BECF00FDA0F0 /* PBXContainerItemProxy */;
 		};
 		7B62754D2B50BECF00FDA0F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B6275302B50BECE00FDA0F0 /* Venture */;
+			target = 7B6275302B50BECE00FDA0F0 /* Weeknd */;
 			targetProxy = 7B62754C2B50BECF00FDA0F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -982,6 +998,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Venture/Preview Content\"";
@@ -989,7 +1006,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Venture/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Weeknd;
+				INFOPLIST_KEY_CFBundleDisplayName = "Weeknd - everyday is the weeknd";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1001,9 +1018,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Venture.VentureApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1015,6 +1036,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Venture/Preview Content\"";
@@ -1022,7 +1044,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Venture/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Weeknd;
+				INFOPLIST_KEY_CFBundleDisplayName = "Weeknd - everyday is the weeknd";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1034,9 +1056,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Venture.VentureApplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1127,7 +1153,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B6275552B50BECF00FDA0F0 /* Build configuration list for PBXNativeTarget "Venture" */ = {
+		7B6275552B50BECF00FDA0F0 /* Build configuration list for PBXNativeTarget "Weeknd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B6275562B50BECF00FDA0F0 /* Debug */,

@@ -27,14 +27,16 @@ struct PostFooter: View {
             HStack {
                 Text(post.location)
                     .bold()
-                    .font(.custom("Michroma-Regular", size: 18))
+                    .font(.custom("Michroma-Regular", size: 14))
+                    .textCase(.uppercase)
+                    .kerning(2)
                     //.font(.title2)
 
                 Spacer()
                 if post.cost != "" {
                     Text("$\(post.cost)")
                         //.font(.title3)
-                        .font(.custom("Michroma-Regular", size: 18))
+                        .font(.custom("Michroma-Regular", size: 12))
                 }
             }
             .padding(.vertical, 1)
@@ -48,13 +50,17 @@ struct PostFooter: View {
 
             }
         }
-        .padding(.horizontal, 8)
+
+        .padding(.horizontal, 24)
         .padding(.bottom, 8)
+        .padding(.top, 12)
         
-        //Remove this background if we want to get rid of the gray.
-        .background(Color(red: 29.0/255.0, green: 29.0/255.0, blue: 29.0/255.0))
+
+        .background(.ultraThinMaterial)
         .opacity(0.93)
-        .padding(.horizontal, 8)
+//        .padding(.horizontal, 8)
+        .mask(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .frame(maxWidth: UIScreen.main.bounds.width - 8)
         .onAppear{
             
             //Adding only once...

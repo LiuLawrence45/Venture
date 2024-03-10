@@ -48,6 +48,7 @@ struct NavigationBar: View {
             
             Text(title)
                 .font(.custom("Michroma-Regular", size: hasScrolled ? 22: 34))
+                .kerning(5)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 20)
                 .padding(.top, 20)

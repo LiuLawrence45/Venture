@@ -26,6 +26,7 @@ struct ProfileBlurb: View {
 //                        .mask(Circle())
                 }
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 72, height: 72)
                 .mask(Circle())
                 .offset(x: -20)

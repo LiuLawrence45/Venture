@@ -118,8 +118,8 @@ struct SigninView: View {
             Divider()
             
             Text("No account yet? **Sign up**")
-//                .font(.footnote)
-                .font(.custom("Raleway", size: 13))
+                .font(.footnote)
+//                .font(.custom("Raleway", size: 13))
                 .foregroundColor(.primary.opacity(0.7))
                 .accentColor(.primary.opacity(0.7))
                 .onTapGesture {
@@ -131,8 +131,8 @@ struct SigninView: View {
             
             HStack(spacing: 0){
                 Text("Need help getting in? ")
-//                    .font(.footnote)
-                    .font(.custom("Raleway", size: 13))
+                    .font(.footnote)
+//                    .font(.custom("Raleway", size: 13))
                     .foregroundColor(.primary.opacity(0.7))
                     .accentColor(.primary.opacity(0.7))
                 Button {
@@ -140,8 +140,8 @@ struct SigninView: View {
                 } label: {
                     
                     Text("**Reset Password**")
-//                        .font(.footnote)
-                        .font(.custom("Raleway", size: 13))
+                        .font(.footnote)
+//                        .font(.custom("Raleway", size: 13))
                         .foregroundColor(.primary.opacity(0.7))
                         .accentColor(.primary.opacity(0.7))
                 }

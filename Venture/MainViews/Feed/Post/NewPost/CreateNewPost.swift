@@ -86,6 +86,11 @@ struct CreateNewPost: View {
                             Text("🎤")
                             TextField("Need a caption too...", text: $postCaption, axis: .vertical)
                                 .focused($showKeyboard)
+                                .onChange(of: postCaption) { newValue in
+                                    if newValue.count > 64 {
+                                        postCaption = String(newValue.prefix(64))
+                                    }
+                                }
                         }
 
                         

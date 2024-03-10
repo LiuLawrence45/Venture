@@ -50,7 +50,7 @@ struct MyProfileView: View {
                 ProfileBlurb(user: myProfile ?? demoUserEmpty)
                     .padding(.horizontal, 10)
                     .padding(.bottom, 10)
-                    .environment(\.font, Font.custom("Raleway", size: 14))
+//                    .environment(\.font, Font.custom("Raleway", size: 14))
                 
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
@@ -85,7 +85,7 @@ struct MyProfileView: View {
                 Color.clear.frame(height: 70)
             }
             .frame(maxHeight: .infinity)
-            .overlay(NavigationBar(title: "Profile", context: "profile", hasScrolled: $hasScrolled))
+            .overlay(NavigationBar(title: "profile", context: "profile", hasScrolled: $hasScrolled))
             
             //Loading overlay, copy and paste
             .overlay {

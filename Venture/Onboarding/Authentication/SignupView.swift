@@ -47,7 +47,7 @@ struct SignupView: View {
                 .slideFadeIn(show: appear[0], offset: 30)
             
             Text("We're glad you're here.")
-//                .font(.headline)
+                .font(.headline)
                 .font(.custom("Michroma-Regular", size: 18))
                 .foregroundColor(.primary.opacity(0.7))
                 .slideFadeIn(show: appear[1], offset: 20)
@@ -194,16 +194,16 @@ struct SignupView: View {
             
             
             Text("By clicking on Sign up, you agree to our **[Terms of Service](https://google.com)** and **Privacy policy**.")
-                //.font(.footnote)
-                .font(.custom("Raleway", size: 13))
+                .font(.footnote)
+//                .font(.custom("Raleway", size: 13))
                 .foregroundColor(.primary.opacity(0.7))
                 .accentColor(.primary.opacity(0.7))
             
             Divider()
             
             Text("Already have an account? **Sign in**")
-                //.font(.footnote)
-                .font(.custom("Raleway", size: 13))
+                .font(.footnote)
+//                .font(.custom("Raleway", size: 13))
                 .foregroundColor(.primary.opacity(0.7))
                 .accentColor(.primary.opacity(0.7))
                 .onTapGesture {

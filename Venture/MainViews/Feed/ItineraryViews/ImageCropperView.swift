@@ -20,14 +20,14 @@ struct ImageCropperView: UIViewControllerRepresentable {
         cropViewController.delegate = context.coordinator
         
         // Setting the aspect ratio preset
-       cropViewController.customAspectRatio = presetAspectRatio
+//       cropViewController.customAspectRatio = presetAspectRatio
        
        // If you want to force users to use the preset aspect ratio without the ability to adjust it
-       cropViewController.aspectRatioLockEnabled = true // This locks the aspect ratio
-       cropViewController.resetAspectRatioEnabled = false // This disables the ability to reset the aspect ratio to a different one
+//       cropViewController.aspectRatioLockEnabled = true // This locks the aspect ratio
+//       cropViewController.resetAspectRatioEnabled = false // This disables the ability to reset the aspect ratio to a different one
        
        // Optionally, you can also set the aspectRatioPickerButtonHidden to true if you want to hide the button that allows users to select different aspect ratios.
-       cropViewController.aspectRatioPickerButtonHidden = true
+//       cropViewController.aspectRatioPickerButtonHidden = true
         
         return cropViewController
     }
